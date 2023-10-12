@@ -1,4 +1,4 @@
-package edu.ncsu.csc.iTrust2.services;
+package edu.ncsu.csc.itrust2.services;
 
 import javax.transaction.Transactional;
 
@@ -6,7 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Component;
 
-import edu.ncsu.csc.iTrust2.repositories.PatientRepository;
+import edu.ncsu.csc.itrust2.repositories.PatientRepository;
 
 @Component
 @Transactional

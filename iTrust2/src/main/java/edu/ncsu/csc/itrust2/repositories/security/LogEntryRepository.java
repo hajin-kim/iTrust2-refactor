@@ -1,4 +1,4 @@
-package edu.ncsu.csc.iTrust2.repositories.security;
+package edu.ncsu.csc.itrust2.repositories.security;
 
 import java.time.ZonedDateTime;
 import java.util.List;
@@ -6,7 +6,7 @@ import java.util.List;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 
-import edu.ncsu.csc.iTrust2.models.security.LogEntry;
+import edu.ncsu.csc.itrust2.models.security.LogEntry;
 
 public interface LogEntryRepository extends JpaRepository<LogEntry, Long> {
 

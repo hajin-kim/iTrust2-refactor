@@ -1,4 +1,4 @@
-package edu.ncsu.csc.iTrust2.utils;
+package edu.ncsu.csc.itrust2.utils;
 
 import java.util.List;
 
@@ -6,10 +6,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Component;
 
-import edu.ncsu.csc.iTrust2.models.User;
-import edu.ncsu.csc.iTrust2.models.enums.TransactionType;
-import edu.ncsu.csc.iTrust2.models.security.LogEntry;
-import edu.ncsu.csc.iTrust2.services.security.LogEntryService;
+import edu.ncsu.csc.itrust2.models.User;
+import edu.ncsu.csc.itrust2.models.enums.TransactionType;
+import edu.ncsu.csc.itrust2.models.security.LogEntry;
+import edu.ncsu.csc.itrust2.services.security.LogEntryService;
 
 /**
  * Logging class to handle saving log-worthy events and for retrieving those

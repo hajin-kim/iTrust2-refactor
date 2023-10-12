@@ -1,4 +1,4 @@
-package edu.ncsu.csc.iTrust2.controllers.api;
+package edu.ncsu.csc.itrust2.controllers.api;
 
 import java.text.ParseException;
 import java.time.LocalDate;
@@ -16,15 +16,15 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import edu.ncsu.csc.iTrust2.controllers.api.comm.LogEntryRequestBody;
-import edu.ncsu.csc.iTrust2.controllers.api.comm.LogEntryTableRow;
-import edu.ncsu.csc.iTrust2.models.User;
-import edu.ncsu.csc.iTrust2.models.enums.Role;
-import edu.ncsu.csc.iTrust2.models.enums.TransactionType;
-import edu.ncsu.csc.iTrust2.models.security.LogEntry;
-import edu.ncsu.csc.iTrust2.services.UserService;
-import edu.ncsu.csc.iTrust2.services.security.LogEntryService;
-import edu.ncsu.csc.iTrust2.utils.LoggerUtil;
+import edu.ncsu.csc.itrust2.controllers.api.comm.LogEntryRequestBody;
+import edu.ncsu.csc.itrust2.controllers.api.comm.LogEntryTableRow;
+import edu.ncsu.csc.itrust2.models.User;
+import edu.ncsu.csc.itrust2.models.enums.Role;
+import edu.ncsu.csc.itrust2.models.enums.TransactionType;
+import edu.ncsu.csc.itrust2.models.security.LogEntry;
+import edu.ncsu.csc.itrust2.services.UserService;
+import edu.ncsu.csc.itrust2.services.security.LogEntryService;
+import edu.ncsu.csc.itrust2.utils.LoggerUtil;
 
 /**
  * REST controller for interacting with Log Entry-related endpoints This will

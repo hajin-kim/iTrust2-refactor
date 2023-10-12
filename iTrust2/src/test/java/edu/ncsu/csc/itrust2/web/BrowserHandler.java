@@ -1,4 +1,4 @@
-package edu.ncsu.csc.iTrust2.web;
+package edu.ncsu.csc.itrust2.web;
 
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;

@@ -1,4 +1,4 @@
-package edu.ncsu.csc.iTrust2.controllers.api;
+package edu.ncsu.csc.itrust2.controllers.api;
 
 import java.util.List;
 
@@ -14,11 +14,11 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import edu.ncsu.csc.iTrust2.forms.ICDCodeForm;
-import edu.ncsu.csc.iTrust2.models.ICDCode;
-import edu.ncsu.csc.iTrust2.models.enums.TransactionType;
-import edu.ncsu.csc.iTrust2.services.ICDCodeService;
-import edu.ncsu.csc.iTrust2.utils.LoggerUtil;
+import edu.ncsu.csc.itrust2.forms.ICDCodeForm;
+import edu.ncsu.csc.itrust2.models.ICDCode;
+import edu.ncsu.csc.itrust2.models.enums.TransactionType;
+import edu.ncsu.csc.itrust2.services.ICDCodeService;
+import edu.ncsu.csc.itrust2.utils.LoggerUtil;
 
 /**
  * Class that provides the REST endpoints for handling ICD Codes. They can be

@@ -1,11 +1,11 @@
-package edu.ncsu.csc.iTrust2.repositories.security;
+package edu.ncsu.csc.itrust2.repositories.security;
 
 import java.util.List;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 
-import edu.ncsu.csc.iTrust2.models.User;
-import edu.ncsu.csc.iTrust2.models.security.LoginLockout;
+import edu.ncsu.csc.itrust2.models.User;
+import edu.ncsu.csc.itrust2.models.security.LoginLockout;
 
 public interface LoginLockoutRepository extends JpaRepository<LoginLockout, Long> {
 

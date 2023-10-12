@@ -1,4 +1,4 @@
-package edu.ncsu.csc.iTrust2.services;
+package edu.ncsu.csc.itrust2.services;
 
 import java.time.ZonedDateTime;
 import java.util.List;
@@ -9,12 +9,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Component;
 
-import edu.ncsu.csc.iTrust2.forms.AppointmentRequestForm;
-import edu.ncsu.csc.iTrust2.models.AppointmentRequest;
-import edu.ncsu.csc.iTrust2.models.User;
-import edu.ncsu.csc.iTrust2.models.enums.AppointmentType;
-import edu.ncsu.csc.iTrust2.models.enums.Status;
-import edu.ncsu.csc.iTrust2.repositories.AppointmentRequestRepository;
+import edu.ncsu.csc.itrust2.forms.AppointmentRequestForm;
+import edu.ncsu.csc.itrust2.models.AppointmentRequest;
+import edu.ncsu.csc.itrust2.models.User;
+import edu.ncsu.csc.itrust2.models.enums.AppointmentType;
+import edu.ncsu.csc.itrust2.models.enums.Status;
+import edu.ncsu.csc.itrust2.repositories.AppointmentRequestRepository;
 
 @Component
 @Transactional

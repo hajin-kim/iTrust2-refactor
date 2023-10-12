@@ -1,17 +1,17 @@
-package edu.ncsu.csc.iTrust2.cucumber;
+package edu.ncsu.csc.itrust2.cucumber;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.springframework.beans.factory.annotation.Autowired;
 
-import edu.ncsu.csc.iTrust2.forms.UserForm;
-import edu.ncsu.csc.iTrust2.models.Hospital;
-import edu.ncsu.csc.iTrust2.models.Patient;
-import edu.ncsu.csc.iTrust2.models.Personnel;
-import edu.ncsu.csc.iTrust2.models.User;
-import edu.ncsu.csc.iTrust2.models.enums.Role;
-import edu.ncsu.csc.iTrust2.models.enums.State;
-import edu.ncsu.csc.iTrust2.services.HospitalService;
+import edu.ncsu.csc.itrust2.forms.UserForm;
+import edu.ncsu.csc.itrust2.models.Hospital;
+import edu.ncsu.csc.itrust2.models.Patient;
+import edu.ncsu.csc.itrust2.models.Personnel;
+import edu.ncsu.csc.itrust2.models.User;
+import edu.ncsu.csc.itrust2.models.enums.Role;
+import edu.ncsu.csc.itrust2.models.enums.State;
+import edu.ncsu.csc.itrust2.services.HospitalService;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.When;
 

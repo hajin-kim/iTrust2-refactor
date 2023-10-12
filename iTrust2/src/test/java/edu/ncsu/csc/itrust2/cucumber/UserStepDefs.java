@@ -1,4 +1,4 @@
-package edu.ncsu.csc.iTrust2.cucumber;
+package edu.ncsu.csc.itrust2.cucumber;
 
 import static org.junit.Assert.assertTrue;
 import static org.junit.Assert.fail;
@@ -8,8 +8,8 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebElement;
 
-import edu.ncsu.csc.iTrust2.models.User;
-import edu.ncsu.csc.iTrust2.models.enums.Role;
+import edu.ncsu.csc.itrust2.models.User;
+import edu.ncsu.csc.itrust2.models.enums.Role;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 

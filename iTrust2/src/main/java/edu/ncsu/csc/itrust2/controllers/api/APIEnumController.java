@@ -1,4 +1,4 @@
-package edu.ncsu.csc.iTrust2.controllers.api;
+package edu.ncsu.csc.itrust2.controllers.api;
 
 import java.util.Arrays;
 import java.util.Collection;
@@ -10,18 +10,18 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import edu.ncsu.csc.iTrust2.models.User;
-import edu.ncsu.csc.iTrust2.models.enums.AppointmentType;
-import edu.ncsu.csc.iTrust2.models.enums.BloodType;
-import edu.ncsu.csc.iTrust2.models.enums.Ethnicity;
-import edu.ncsu.csc.iTrust2.models.enums.Gender;
-import edu.ncsu.csc.iTrust2.models.enums.HouseholdSmokingStatus;
-import edu.ncsu.csc.iTrust2.models.enums.PatientSmokingStatus;
-import edu.ncsu.csc.iTrust2.models.enums.Role;
-import edu.ncsu.csc.iTrust2.models.enums.State;
-import edu.ncsu.csc.iTrust2.models.enums.Status;
-import edu.ncsu.csc.iTrust2.services.UserService;
-import edu.ncsu.csc.iTrust2.utils.LoggerUtil;
+import edu.ncsu.csc.itrust2.models.User;
+import edu.ncsu.csc.itrust2.models.enums.AppointmentType;
+import edu.ncsu.csc.itrust2.models.enums.BloodType;
+import edu.ncsu.csc.itrust2.models.enums.Ethnicity;
+import edu.ncsu.csc.itrust2.models.enums.Gender;
+import edu.ncsu.csc.itrust2.models.enums.HouseholdSmokingStatus;
+import edu.ncsu.csc.itrust2.models.enums.PatientSmokingStatus;
+import edu.ncsu.csc.itrust2.models.enums.Role;
+import edu.ncsu.csc.itrust2.models.enums.State;
+import edu.ncsu.csc.itrust2.models.enums.Status;
+import edu.ncsu.csc.itrust2.services.UserService;
+import edu.ncsu.csc.itrust2.utils.LoggerUtil;
 
 /**
  * This class provides GET endpoints for all of the Enums, so that they can be

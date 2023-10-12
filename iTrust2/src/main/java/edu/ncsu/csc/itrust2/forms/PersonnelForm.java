@@ -1,4 +1,4 @@
-package edu.ncsu.csc.iTrust2.forms;
+package edu.ncsu.csc.itrust2.forms;
 
 import javax.validation.constraints.Pattern;
 

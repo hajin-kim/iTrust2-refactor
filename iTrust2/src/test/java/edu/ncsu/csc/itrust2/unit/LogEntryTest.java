@@ -1,4 +1,4 @@
-package edu.ncsu.csc.iTrust2.unit;
+package edu.ncsu.csc.itrust2.unit;
 
 import java.time.ZonedDateTime;
 import java.time.temporal.ChronoUnit;
@@ -15,10 +15,10 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.transaction.annotation.Transactional;
 
-import edu.ncsu.csc.iTrust2.TestConfig;
-import edu.ncsu.csc.iTrust2.models.enums.TransactionType;
-import edu.ncsu.csc.iTrust2.models.security.LogEntry;
-import edu.ncsu.csc.iTrust2.services.security.LogEntryService;
+import edu.ncsu.csc.itrust2.TestConfig;
+import edu.ncsu.csc.itrust2.models.enums.TransactionType;
+import edu.ncsu.csc.itrust2.models.security.LogEntry;
+import edu.ncsu.csc.itrust2.services.security.LogEntryService;
 
 @RunWith ( SpringRunner.class )
 @EnableAutoConfiguration

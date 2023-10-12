@@ -1,4 +1,4 @@
-package edu.ncsu.csc.iTrust2.api;
+package edu.ncsu.csc.itrust2.api;
 
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.delete;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
@@ -25,18 +25,18 @@ import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import org.springframework.web.context.WebApplicationContext;
 
-import edu.ncsu.csc.iTrust2.common.TestUtils;
-import edu.ncsu.csc.iTrust2.forms.AppointmentRequestForm;
-import edu.ncsu.csc.iTrust2.forms.UserForm;
-import edu.ncsu.csc.iTrust2.models.AppointmentRequest;
-import edu.ncsu.csc.iTrust2.models.Patient;
-import edu.ncsu.csc.iTrust2.models.Personnel;
-import edu.ncsu.csc.iTrust2.models.User;
-import edu.ncsu.csc.iTrust2.models.enums.AppointmentType;
-import edu.ncsu.csc.iTrust2.models.enums.Role;
-import edu.ncsu.csc.iTrust2.models.enums.Status;
-import edu.ncsu.csc.iTrust2.services.AppointmentRequestService;
-import edu.ncsu.csc.iTrust2.services.UserService;
+import edu.ncsu.csc.itrust2.common.TestUtils;
+import edu.ncsu.csc.itrust2.forms.AppointmentRequestForm;
+import edu.ncsu.csc.itrust2.forms.UserForm;
+import edu.ncsu.csc.itrust2.models.AppointmentRequest;
+import edu.ncsu.csc.itrust2.models.Patient;
+import edu.ncsu.csc.itrust2.models.Personnel;
+import edu.ncsu.csc.itrust2.models.User;
+import edu.ncsu.csc.itrust2.models.enums.AppointmentType;
+import edu.ncsu.csc.itrust2.models.enums.Role;
+import edu.ncsu.csc.itrust2.models.enums.Status;
+import edu.ncsu.csc.itrust2.services.AppointmentRequestService;
+import edu.ncsu.csc.itrust2.services.UserService;
 
 /**
  * Test for the API functionality for interacting with appointment requests

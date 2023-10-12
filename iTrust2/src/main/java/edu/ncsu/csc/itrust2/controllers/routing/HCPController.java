@@ -1,4 +1,4 @@
-package edu.ncsu.csc.iTrust2.controllers.routing;
+package edu.ncsu.csc.itrust2.controllers.routing;
 
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
@@ -6,7 +6,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import edu.ncsu.csc.iTrust2.models.enums.Role;
+import edu.ncsu.csc.itrust2.models.enums.Role;
 
 /**
  * Controller class responsible for managing the behavior for the HCP Landing

@@ -1,4 +1,4 @@
-package edu.ncsu.csc.iTrust2.config;
+package edu.ncsu.csc.itrust2.config;
 
 import java.io.IOException;
 
@@ -12,8 +12,8 @@ import javax.servlet.http.HttpServletResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.filter.GenericFilterBean;
 
-import edu.ncsu.csc.iTrust2.services.security.LoginBanService;
-import edu.ncsu.csc.iTrust2.services.security.LoginLockoutService;
+import edu.ncsu.csc.itrust2.services.security.LoginBanService;
+import edu.ncsu.csc.itrust2.services.security.LoginLockoutService;
 
 public class IPFilter extends GenericFilterBean {
 

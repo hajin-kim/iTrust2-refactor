@@ -1,4 +1,4 @@
-package edu.ncsu.csc.iTrust2.services;
+package edu.ncsu.csc.itrust2.services;
 
 import java.util.List;
 import java.util.Optional;
@@ -6,7 +6,7 @@ import java.util.Optional;
 import org.springframework.data.domain.Example;
 import org.springframework.data.jpa.repository.JpaRepository;
 
-import edu.ncsu.csc.iTrust2.models.DomainObject;
+import edu.ncsu.csc.itrust2.models.DomainObject;
 
 /**
  * The Service class is responsible for providing CRUD operations against the

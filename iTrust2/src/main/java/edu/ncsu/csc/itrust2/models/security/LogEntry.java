@@ -1,4 +1,4 @@
-package edu.ncsu.csc.iTrust2.models.security;
+package edu.ncsu.csc.itrust2.models.security;
 
 import java.time.ZonedDateTime;
 
@@ -12,10 +12,10 @@ import javax.validation.constraints.NotNull;
 
 import com.google.gson.annotations.JsonAdapter;
 
-import edu.ncsu.csc.iTrust2.adapters.ZonedDateTimeAdapter;
-import edu.ncsu.csc.iTrust2.adapters.ZonedDateTimeAttributeConverter;
-import edu.ncsu.csc.iTrust2.models.DomainObject;
-import edu.ncsu.csc.iTrust2.models.enums.TransactionType;
+import edu.ncsu.csc.itrust2.adapters.ZonedDateTimeAdapter;
+import edu.ncsu.csc.itrust2.adapters.ZonedDateTimeAttributeConverter;
+import edu.ncsu.csc.itrust2.models.DomainObject;
+import edu.ncsu.csc.itrust2.models.enums.TransactionType;
 
 /**
  * Class that represents a LogEntry that is created in response to certain user

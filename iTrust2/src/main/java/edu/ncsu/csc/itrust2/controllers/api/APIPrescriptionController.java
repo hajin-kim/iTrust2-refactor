@@ -1,4 +1,4 @@
-package edu.ncsu.csc.iTrust2.controllers.api;
+package edu.ncsu.csc.itrust2.controllers.api;
 
 import java.util.List;
 
@@ -14,13 +14,13 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import edu.ncsu.csc.iTrust2.forms.PrescriptionForm;
-import edu.ncsu.csc.iTrust2.models.Prescription;
-import edu.ncsu.csc.iTrust2.models.User;
-import edu.ncsu.csc.iTrust2.models.enums.TransactionType;
-import edu.ncsu.csc.iTrust2.services.PrescriptionService;
-import edu.ncsu.csc.iTrust2.services.UserService;
-import edu.ncsu.csc.iTrust2.utils.LoggerUtil;
+import edu.ncsu.csc.itrust2.forms.PrescriptionForm;
+import edu.ncsu.csc.itrust2.models.Prescription;
+import edu.ncsu.csc.itrust2.models.User;
+import edu.ncsu.csc.itrust2.models.enums.TransactionType;
+import edu.ncsu.csc.itrust2.services.PrescriptionService;
+import edu.ncsu.csc.itrust2.services.UserService;
+import edu.ncsu.csc.itrust2.utils.LoggerUtil;
 
 /**
  * Provides REST endpoints that deal with prescriptions. Exposes functionality

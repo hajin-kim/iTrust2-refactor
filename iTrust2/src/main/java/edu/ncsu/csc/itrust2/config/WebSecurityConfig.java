@@ -1,4 +1,4 @@
-package edu.ncsu.csc.iTrust2.config;
+package edu.ncsu.csc.itrust2.config;
 
 import javax.servlet.Filter;
 import javax.sql.DataSource;

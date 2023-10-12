@@ -1,4 +1,4 @@
-package edu.ncsu.csc.iTrust2.models;
+package edu.ncsu.csc.itrust2.models;
 
 import java.time.LocalDate;
 
@@ -18,7 +18,7 @@ import org.springframework.data.jpa.convert.threeten.Jsr310JpaConverters.LocalDa
 
 import com.google.gson.annotations.JsonAdapter;
 
-import edu.ncsu.csc.iTrust2.adapters.LocalDateAdapter;
+import edu.ncsu.csc.itrust2.adapters.LocalDateAdapter;
 
 /**
  * Represents a prescription in the system. Each prescription is associated with

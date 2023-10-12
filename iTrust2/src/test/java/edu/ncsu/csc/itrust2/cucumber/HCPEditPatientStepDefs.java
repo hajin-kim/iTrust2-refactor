@@ -1,4 +1,4 @@
-package edu.ncsu.csc.iTrust2.cucumber;
+package edu.ncsu.csc.itrust2.cucumber;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
@@ -10,15 +10,15 @@ import java.time.LocalDate;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 
-import edu.ncsu.csc.iTrust2.forms.UserForm;
-import edu.ncsu.csc.iTrust2.models.Patient;
-import edu.ncsu.csc.iTrust2.models.Personnel;
-import edu.ncsu.csc.iTrust2.models.User;
-import edu.ncsu.csc.iTrust2.models.enums.BloodType;
-import edu.ncsu.csc.iTrust2.models.enums.Ethnicity;
-import edu.ncsu.csc.iTrust2.models.enums.Gender;
-import edu.ncsu.csc.iTrust2.models.enums.Role;
-import edu.ncsu.csc.iTrust2.models.enums.State;
+import edu.ncsu.csc.itrust2.forms.UserForm;
+import edu.ncsu.csc.itrust2.models.Patient;
+import edu.ncsu.csc.itrust2.models.Personnel;
+import edu.ncsu.csc.itrust2.models.User;
+import edu.ncsu.csc.itrust2.models.enums.BloodType;
+import edu.ncsu.csc.itrust2.models.enums.Ethnicity;
+import edu.ncsu.csc.itrust2.models.enums.Gender;
+import edu.ncsu.csc.itrust2.models.enums.Role;
+import edu.ncsu.csc.itrust2.models.enums.State;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;

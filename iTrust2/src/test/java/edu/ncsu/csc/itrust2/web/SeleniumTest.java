@@ -1,4 +1,4 @@
-package edu.ncsu.csc.iTrust2.web;
+package edu.ncsu.csc.itrust2.web;
 
 import java.util.List;
 

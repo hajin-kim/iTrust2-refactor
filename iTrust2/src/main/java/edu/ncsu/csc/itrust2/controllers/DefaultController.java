@@ -1,4 +1,4 @@
-package edu.ncsu.csc.iTrust2.controllers;
+package edu.ncsu.csc.itrust2.controllers;
 
 import java.util.List;
 
@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.view.RedirectView;
 
-import edu.ncsu.csc.iTrust2.models.enums.Role;
+import edu.ncsu.csc.itrust2.models.enums.Role;
 
 /**
  * Default controller that handles redirecting the logged-in user to one of the

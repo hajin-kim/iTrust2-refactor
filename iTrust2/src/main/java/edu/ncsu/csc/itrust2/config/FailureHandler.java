@@ -1,4 +1,4 @@
-package edu.ncsu.csc.iTrust2.config;
+package edu.ncsu.csc.itrust2.config;
 
 import java.io.IOException;
 import java.time.ZonedDateTime;
@@ -14,17 +14,17 @@ import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.web.authentication.SimpleUrlAuthenticationFailureHandler;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 
-import edu.ncsu.csc.iTrust2.models.User;
-import edu.ncsu.csc.iTrust2.models.enums.TransactionType;
-import edu.ncsu.csc.iTrust2.models.security.LoginAttempt;
-import edu.ncsu.csc.iTrust2.models.security.LoginBan;
-import edu.ncsu.csc.iTrust2.models.security.LoginLockout;
-import edu.ncsu.csc.iTrust2.services.UserService;
-import edu.ncsu.csc.iTrust2.services.security.LoginAttemptService;
-import edu.ncsu.csc.iTrust2.services.security.LoginBanService;
-import edu.ncsu.csc.iTrust2.services.security.LoginLockoutService;
-import edu.ncsu.csc.iTrust2.utils.EmailUtil;
-import edu.ncsu.csc.iTrust2.utils.LoggerUtil;
+import edu.ncsu.csc.itrust2.models.User;
+import edu.ncsu.csc.itrust2.models.enums.TransactionType;
+import edu.ncsu.csc.itrust2.models.security.LoginAttempt;
+import edu.ncsu.csc.itrust2.models.security.LoginBan;
+import edu.ncsu.csc.itrust2.models.security.LoginLockout;
+import edu.ncsu.csc.itrust2.services.UserService;
+import edu.ncsu.csc.itrust2.services.security.LoginAttemptService;
+import edu.ncsu.csc.itrust2.services.security.LoginBanService;
+import edu.ncsu.csc.itrust2.services.security.LoginLockoutService;
+import edu.ncsu.csc.itrust2.utils.EmailUtil;
+import edu.ncsu.csc.itrust2.utils.LoggerUtil;
 
 /**
  * Custom AuthenticationFailureHandler to record Failed attempts, and lockout or

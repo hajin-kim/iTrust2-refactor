@@ -1,4 +1,4 @@
-package edu.ncsu.csc.iTrust2.models;
+package edu.ncsu.csc.itrust2.models;
 
 import java.util.regex.Pattern;
 
@@ -10,8 +10,8 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.validation.constraints.NotNull;
 
-import edu.ncsu.csc.iTrust2.models.enums.HouseholdSmokingStatus;
-import edu.ncsu.csc.iTrust2.models.enums.PatientSmokingStatus;
+import edu.ncsu.csc.itrust2.models.enums.HouseholdSmokingStatus;
+import edu.ncsu.csc.itrust2.models.enums.PatientSmokingStatus;
 
 /**
  * Object persisted in the database that represents the BasicHealthMetrics of a

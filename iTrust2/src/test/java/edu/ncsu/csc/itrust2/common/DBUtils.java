@@ -1,4 +1,4 @@
-package edu.ncsu.csc.iTrust2.common;
+package edu.ncsu.csc.itrust2.common;
 
 import java.sql.Connection;
 import java.sql.DatabaseMetaData;

@@ -1,4 +1,4 @@
-package edu.ncsu.csc.iTrust2.config;
+package edu.ncsu.csc.itrust2.config;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationEvent;
@@ -11,12 +11,12 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.web.authentication.WebAuthenticationDetails;
 import org.springframework.stereotype.Component;
 
-import edu.ncsu.csc.iTrust2.models.enums.TransactionType;
-import edu.ncsu.csc.iTrust2.services.UserService;
-import edu.ncsu.csc.iTrust2.services.security.LoginAttemptService;
-import edu.ncsu.csc.iTrust2.services.security.LoginBanService;
-import edu.ncsu.csc.iTrust2.services.security.LoginLockoutService;
-import edu.ncsu.csc.iTrust2.utils.LoggerUtil;
+import edu.ncsu.csc.itrust2.models.enums.TransactionType;
+import edu.ncsu.csc.itrust2.services.UserService;
+import edu.ncsu.csc.itrust2.services.security.LoginAttemptService;
+import edu.ncsu.csc.itrust2.services.security.LoginBanService;
+import edu.ncsu.csc.itrust2.services.security.LoginLockoutService;
+import edu.ncsu.csc.itrust2.utils.LoggerUtil;
 
 /**
  * Listens for AuthenticationEvents to Log them and to clear FaieldAttempts on

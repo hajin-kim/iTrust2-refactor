@@ -1,4 +1,4 @@
-package edu.ncsu.csc.iTrust2.models.enums;
+package edu.ncsu.csc.itrust2.models.enums;
 
 /**
  * A TransactionType represents an event that took place in the system and that

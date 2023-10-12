@@ -1,4 +1,4 @@
-package edu.ncsu.csc.iTrust2.api;
+package edu.ncsu.csc.itrust2.api;
 
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.put;
@@ -20,17 +20,17 @@ import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import org.springframework.web.context.WebApplicationContext;
 
-import edu.ncsu.csc.iTrust2.common.TestUtils;
-import edu.ncsu.csc.iTrust2.forms.PatientForm;
-import edu.ncsu.csc.iTrust2.forms.UserForm;
-import edu.ncsu.csc.iTrust2.models.Patient;
-import edu.ncsu.csc.iTrust2.models.User;
-import edu.ncsu.csc.iTrust2.models.enums.BloodType;
-import edu.ncsu.csc.iTrust2.models.enums.Ethnicity;
-import edu.ncsu.csc.iTrust2.models.enums.Gender;
-import edu.ncsu.csc.iTrust2.models.enums.Role;
-import edu.ncsu.csc.iTrust2.models.enums.State;
-import edu.ncsu.csc.iTrust2.services.PatientService;
+import edu.ncsu.csc.itrust2.common.TestUtils;
+import edu.ncsu.csc.itrust2.forms.PatientForm;
+import edu.ncsu.csc.itrust2.forms.UserForm;
+import edu.ncsu.csc.itrust2.models.Patient;
+import edu.ncsu.csc.itrust2.models.User;
+import edu.ncsu.csc.itrust2.models.enums.BloodType;
+import edu.ncsu.csc.itrust2.models.enums.Ethnicity;
+import edu.ncsu.csc.itrust2.models.enums.Gender;
+import edu.ncsu.csc.itrust2.models.enums.Role;
+import edu.ncsu.csc.itrust2.models.enums.State;
+import edu.ncsu.csc.itrust2.services.PatientService;
 
 /**
  * Test for API functionality for interacting with Patients

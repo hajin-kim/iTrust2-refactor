@@ -1,4 +1,4 @@
-package edu.ncsu.csc.iTrust2.models;
+package edu.ncsu.csc.itrust2.models;
 
 import java.util.Collection;
 import java.util.HashSet;
@@ -20,8 +20,8 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
-import edu.ncsu.csc.iTrust2.forms.UserForm;
-import edu.ncsu.csc.iTrust2.models.enums.Role;
+import edu.ncsu.csc.itrust2.forms.UserForm;
+import edu.ncsu.csc.itrust2.models.enums.Role;
 
 /**
  * Basic class for a User in the system. This User class is a shared type that

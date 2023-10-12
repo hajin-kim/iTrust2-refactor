@@ -1,4 +1,4 @@
-package edu.ncsu.csc.iTrust2.api;
+package edu.ncsu.csc.itrust2.api;
 
 import static org.junit.Assert.assertTrue;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
@@ -29,26 +29,26 @@ import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.reflect.TypeToken;
 
-import edu.ncsu.csc.iTrust2.common.TestUtils;
-import edu.ncsu.csc.iTrust2.forms.DiagnosisForm;
-import edu.ncsu.csc.iTrust2.forms.OfficeVisitForm;
-import edu.ncsu.csc.iTrust2.forms.UserForm;
-import edu.ncsu.csc.iTrust2.models.Diagnosis;
-import edu.ncsu.csc.iTrust2.models.Hospital;
-import edu.ncsu.csc.iTrust2.models.ICDCode;
-import edu.ncsu.csc.iTrust2.models.OfficeVisit;
-import edu.ncsu.csc.iTrust2.models.Patient;
-import edu.ncsu.csc.iTrust2.models.Personnel;
-import edu.ncsu.csc.iTrust2.models.User;
-import edu.ncsu.csc.iTrust2.models.enums.AppointmentType;
-import edu.ncsu.csc.iTrust2.models.enums.HouseholdSmokingStatus;
-import edu.ncsu.csc.iTrust2.models.enums.PatientSmokingStatus;
-import edu.ncsu.csc.iTrust2.models.enums.Role;
-import edu.ncsu.csc.iTrust2.services.DiagnosisService;
-import edu.ncsu.csc.iTrust2.services.HospitalService;
-import edu.ncsu.csc.iTrust2.services.ICDCodeService;
-import edu.ncsu.csc.iTrust2.services.OfficeVisitService;
-import edu.ncsu.csc.iTrust2.services.UserService;
+import edu.ncsu.csc.itrust2.common.TestUtils;
+import edu.ncsu.csc.itrust2.forms.DiagnosisForm;
+import edu.ncsu.csc.itrust2.forms.OfficeVisitForm;
+import edu.ncsu.csc.itrust2.forms.UserForm;
+import edu.ncsu.csc.itrust2.models.Diagnosis;
+import edu.ncsu.csc.itrust2.models.Hospital;
+import edu.ncsu.csc.itrust2.models.ICDCode;
+import edu.ncsu.csc.itrust2.models.OfficeVisit;
+import edu.ncsu.csc.itrust2.models.Patient;
+import edu.ncsu.csc.itrust2.models.Personnel;
+import edu.ncsu.csc.itrust2.models.User;
+import edu.ncsu.csc.itrust2.models.enums.AppointmentType;
+import edu.ncsu.csc.itrust2.models.enums.HouseholdSmokingStatus;
+import edu.ncsu.csc.itrust2.models.enums.PatientSmokingStatus;
+import edu.ncsu.csc.itrust2.models.enums.Role;
+import edu.ncsu.csc.itrust2.services.DiagnosisService;
+import edu.ncsu.csc.itrust2.services.HospitalService;
+import edu.ncsu.csc.itrust2.services.ICDCodeService;
+import edu.ncsu.csc.itrust2.services.OfficeVisitService;
+import edu.ncsu.csc.itrust2.services.UserService;
 
 @RunWith ( SpringRunner.class )
 @SpringBootTest

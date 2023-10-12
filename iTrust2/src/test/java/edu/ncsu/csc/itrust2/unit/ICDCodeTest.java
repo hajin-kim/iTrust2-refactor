@@ -1,4 +1,4 @@
-package edu.ncsu.csc.iTrust2.unit;
+package edu.ncsu.csc.itrust2.unit;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
@@ -12,9 +12,9 @@ import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
-import edu.ncsu.csc.iTrust2.TestConfig;
-import edu.ncsu.csc.iTrust2.forms.ICDCodeForm;
-import edu.ncsu.csc.iTrust2.models.ICDCode;
+import edu.ncsu.csc.itrust2.TestConfig;
+import edu.ncsu.csc.itrust2.forms.ICDCodeForm;
+import edu.ncsu.csc.itrust2.models.ICDCode;
 
 /**
  * Class to test that ICDCode and ICDCodeForms are created from each other

@@ -1,4 +1,4 @@
-package edu.ncsu.csc.iTrust2.cucumber;
+package edu.ncsu.csc.itrust2.cucumber;
 
 import static org.junit.Assert.assertEquals;
 
@@ -17,10 +17,10 @@ import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.springframework.beans.factory.annotation.Autowired;
 
-import edu.ncsu.csc.iTrust2.forms.AppointmentRequestForm;
-import edu.ncsu.csc.iTrust2.models.AppointmentRequest;
-import edu.ncsu.csc.iTrust2.services.AppointmentRequestService;
-import edu.ncsu.csc.iTrust2.services.UserService;
+import edu.ncsu.csc.itrust2.forms.AppointmentRequestForm;
+import edu.ncsu.csc.itrust2.models.AppointmentRequest;
+import edu.ncsu.csc.itrust2.services.AppointmentRequestService;
+import edu.ncsu.csc.itrust2.services.UserService;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;

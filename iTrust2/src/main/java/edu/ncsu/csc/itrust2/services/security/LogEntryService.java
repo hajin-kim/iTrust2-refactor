@@ -1,4 +1,4 @@
-package edu.ncsu.csc.iTrust2.services.security;
+package edu.ncsu.csc.itrust2.services.security;
 
 import java.time.ZonedDateTime;
 import java.util.List;
@@ -10,9 +10,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Component;
 
-import edu.ncsu.csc.iTrust2.models.security.LogEntry;
-import edu.ncsu.csc.iTrust2.repositories.security.LogEntryRepository;
-import edu.ncsu.csc.iTrust2.services.Service;
+import edu.ncsu.csc.itrust2.models.security.LogEntry;
+import edu.ncsu.csc.itrust2.repositories.security.LogEntryRepository;
+import edu.ncsu.csc.itrust2.services.Service;
 
 @Component
 @Transactional
