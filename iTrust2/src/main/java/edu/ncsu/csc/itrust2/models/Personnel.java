@@ -1,15 +1,14 @@
 package edu.ncsu.csc.itrust2.models;
 
-import javax.persistence.Entity;
-import javax.persistence.EnumType;
-import javax.persistence.Enumerated;
-
-import org.hibernate.validator.constraints.Length;
-
 import edu.ncsu.csc.itrust2.forms.PersonnelForm;
 import edu.ncsu.csc.itrust2.forms.UserForm;
 import edu.ncsu.csc.itrust2.models.enums.Role;
 import edu.ncsu.csc.itrust2.models.enums.State;
+import org.hibernate.validator.constraints.Length;
+
+import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 
 @Entity
 public class Personnel extends User {

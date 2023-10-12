@@ -1,11 +1,11 @@
 package edu.ncsu.csc.itrust2.models;
 
+import edu.ncsu.csc.itrust2.forms.ICDCodeForm;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-
-import edu.ncsu.csc.itrust2.forms.ICDCodeForm;
 
 /**
  * Class for Diagnosis codes. These codes themselves are stored as a String,

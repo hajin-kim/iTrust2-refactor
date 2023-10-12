@@ -1,11 +1,9 @@
 package edu.ncsu.csc.itrust2.utils;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
-
 import edu.ncsu.csc.itrust2.models.Email;
 import edu.ncsu.csc.itrust2.models.User;
 import edu.ncsu.csc.itrust2.services.EmailService;
+import org.springframework.stereotype.Component;
 
 @Component
 public class EmailUtil {

@@ -1,17 +1,15 @@
 package edu.ncsu.csc.itrust2.models;
 
-import java.io.Serializable;
+import edu.ncsu.csc.itrust2.forms.HospitalForm;
+import edu.ncsu.csc.itrust2.models.enums.State;
+import org.hibernate.validator.constraints.Length;
 
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
 import javax.persistence.Id;
 import javax.validation.constraints.NotEmpty;
-
-import org.hibernate.validator.constraints.Length;
-
-import edu.ncsu.csc.itrust2.forms.HospitalForm;
-import edu.ncsu.csc.itrust2.models.enums.State;
+import java.io.Serializable;
 
 /**
  * Class representing a Hospital object, as stored in the DB

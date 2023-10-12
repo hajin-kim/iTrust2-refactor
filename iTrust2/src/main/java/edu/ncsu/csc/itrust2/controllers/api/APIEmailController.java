@@ -1,14 +1,12 @@
 package edu.ncsu.csc.itrust2.controllers.api;
 
-import java.util.List;
-
+import edu.ncsu.csc.itrust2.models.Email;
+import edu.ncsu.csc.itrust2.services.EmailService;
 import lombok.RequiredArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import edu.ncsu.csc.itrust2.models.Email;
-import edu.ncsu.csc.itrust2.services.EmailService;
+import java.util.List;
 
 @RestController
 @RequiredArgsConstructor

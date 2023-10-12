@@ -1,5 +1,8 @@
 package edu.ncsu.csc.itrust2.models;
 
+import edu.ncsu.csc.itrust2.forms.DrugForm;
+import org.hibernate.validator.constraints.Length;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -7,10 +10,6 @@ import javax.persistence.Id;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
-
-import org.hibernate.validator.constraints.Length;
-
-import edu.ncsu.csc.itrust2.forms.DrugForm;
 
 /**
  * Represents a drug in the NDC format.

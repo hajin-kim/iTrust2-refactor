@@ -1,13 +1,12 @@
 package edu.ncsu.csc.itrust2.controllers.routing;
 
+import edu.ncsu.csc.itrust2.models.enums.Role;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-
-import edu.ncsu.csc.itrust2.models.enums.Role;
 
 /**
  * Controller for the Patient landing screen and basic patient information

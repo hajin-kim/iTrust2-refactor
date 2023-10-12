@@ -1,6 +1,8 @@
 package edu.ncsu.csc.itrust2.models;
 
-import java.time.LocalDate;
+import com.google.gson.annotations.JsonAdapter;
+import edu.ncsu.csc.itrust2.adapters.LocalDateAdapter;
+import org.springframework.data.jpa.convert.threeten.Jsr310JpaConverters.LocalDateConverter;
 
 import javax.persistence.Basic;
 import javax.persistence.CascadeType;
@@ -13,12 +15,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
-
-import org.springframework.data.jpa.convert.threeten.Jsr310JpaConverters.LocalDateConverter;
-
-import com.google.gson.annotations.JsonAdapter;
-
-import edu.ncsu.csc.itrust2.adapters.LocalDateAdapter;
+import java.time.LocalDate;
 
 /**
  * Represents a prescription in the system. Each prescription is associated with

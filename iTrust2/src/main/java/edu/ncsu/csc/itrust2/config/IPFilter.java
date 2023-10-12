@@ -1,6 +1,10 @@
 package edu.ncsu.csc.itrust2.config;
 
-import java.io.IOException;
+import edu.ncsu.csc.itrust2.services.security.LoginBanService;
+import edu.ncsu.csc.itrust2.services.security.LoginLockoutService;
+import lombok.RequiredArgsConstructor;
+import org.springframework.stereotype.Component;
+import org.springframework.web.filter.GenericFilterBean;
 
 import javax.servlet.FilterChain;
 import javax.servlet.ServletException;
@@ -8,14 +12,7 @@ import javax.servlet.ServletRequest;
 import javax.servlet.ServletResponse;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-
-import lombok.RequiredArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
-import org.springframework.web.filter.GenericFilterBean;
-
-import edu.ncsu.csc.itrust2.services.security.LoginBanService;
-import edu.ncsu.csc.itrust2.services.security.LoginLockoutService;
+import java.io.IOException;
 
 @Component
 @RequiredArgsConstructor

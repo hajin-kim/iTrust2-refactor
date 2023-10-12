@@ -1,9 +1,7 @@
 package edu.ncsu.csc.itrust2.controllers;
 
-import java.io.IOException;
-
+import edu.ncsu.csc.itrust2.utils.LoggerUtil;
 import lombok.RequiredArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.ClassPathResource;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
@@ -13,7 +11,7 @@ import org.springframework.ui.Model;
 import org.springframework.util.StreamUtils;
 import org.springframework.web.bind.annotation.GetMapping;
 
-import edu.ncsu.csc.itrust2.utils.LoggerUtil;
+import java.io.IOException;
 
 /**
  * Controller for Personnel to edit their information

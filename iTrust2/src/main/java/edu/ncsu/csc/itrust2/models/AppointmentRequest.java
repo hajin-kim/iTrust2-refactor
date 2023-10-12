@@ -1,6 +1,10 @@
 package edu.ncsu.csc.itrust2.models;
 
-import java.time.ZonedDateTime;
+import com.google.gson.annotations.JsonAdapter;
+import edu.ncsu.csc.itrust2.adapters.ZonedDateTimeAdapter;
+import edu.ncsu.csc.itrust2.adapters.ZonedDateTimeAttributeConverter;
+import edu.ncsu.csc.itrust2.models.enums.AppointmentType;
+import edu.ncsu.csc.itrust2.models.enums.Status;
 
 import javax.persistence.Basic;
 import javax.persistence.Convert;
@@ -13,13 +17,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.validation.constraints.NotNull;
-
-import com.google.gson.annotations.JsonAdapter;
-
-import edu.ncsu.csc.itrust2.adapters.ZonedDateTimeAdapter;
-import edu.ncsu.csc.itrust2.adapters.ZonedDateTimeAttributeConverter;
-import edu.ncsu.csc.itrust2.models.enums.AppointmentType;
-import edu.ncsu.csc.itrust2.models.enums.Status;
+import java.time.ZonedDateTime;
 
 /**
  * Backing object for the Appointment Request system. This is the object that is

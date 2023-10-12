@@ -1,9 +1,11 @@
 package edu.ncsu.csc.itrust2.models;
 
-import java.util.Collection;
-import java.util.HashSet;
-import java.util.Set;
-import java.util.stream.Collectors;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import edu.ncsu.csc.itrust2.forms.UserForm;
+import edu.ncsu.csc.itrust2.models.enums.Role;
+import org.hibernate.validator.constraints.Length;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 
 import javax.persistence.Column;
 import javax.persistence.ElementCollection;
@@ -14,15 +16,10 @@ import javax.persistence.FetchType;
 import javax.persistence.Id;
 import javax.validation.constraints.Max;
 import javax.validation.constraints.Min;
-
-import org.hibernate.validator.constraints.Length;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
-import org.springframework.security.crypto.password.PasswordEncoder;
-
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-
-import edu.ncsu.csc.itrust2.forms.UserForm;
-import edu.ncsu.csc.itrust2.models.enums.Role;
+import java.util.Collection;
+import java.util.HashSet;
+import java.util.Set;
+import java.util.stream.Collectors;
 
 /**
  * Basic class for a User in the system. This User class is a shared type that

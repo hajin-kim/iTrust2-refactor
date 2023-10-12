@@ -1,15 +1,13 @@
 package edu.ncsu.csc.itrust2.forms;
 
+import edu.ncsu.csc.itrust2.models.User;
+import edu.ncsu.csc.itrust2.models.enums.Role;
+import org.hibernate.validator.constraints.Length;
+
+import javax.validation.constraints.NotEmpty;
 import java.util.HashSet;
 import java.util.Set;
 import java.util.stream.Collectors;
-
-import javax.validation.constraints.NotEmpty;
-
-import org.hibernate.validator.constraints.Length;
-
-import edu.ncsu.csc.itrust2.models.User;
-import edu.ncsu.csc.itrust2.models.enums.Role;
 
 /**
  * Form used for creating a new User. Will be parsed into an actual User object

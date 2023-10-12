@@ -1,18 +1,6 @@
 package edu.ncsu.csc.itrust2.models;
 
-import java.time.LocalDate;
-
-import javax.persistence.Basic;
-import javax.persistence.Convert;
-import javax.persistence.Entity;
-import javax.persistence.EnumType;
-import javax.persistence.Enumerated;
-
-import org.hibernate.validator.constraints.Length;
-import org.springframework.data.jpa.convert.threeten.Jsr310JpaConverters.LocalDateConverter;
-
 import com.google.gson.annotations.JsonAdapter;
-
 import edu.ncsu.csc.itrust2.adapters.LocalDateAdapter;
 import edu.ncsu.csc.itrust2.forms.PatientForm;
 import edu.ncsu.csc.itrust2.forms.UserForm;
@@ -21,6 +9,15 @@ import edu.ncsu.csc.itrust2.models.enums.Ethnicity;
 import edu.ncsu.csc.itrust2.models.enums.Gender;
 import edu.ncsu.csc.itrust2.models.enums.Role;
 import edu.ncsu.csc.itrust2.models.enums.State;
+import org.hibernate.validator.constraints.Length;
+import org.springframework.data.jpa.convert.threeten.Jsr310JpaConverters.LocalDateConverter;
+
+import javax.persistence.Basic;
+import javax.persistence.Convert;
+import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
+import java.time.LocalDate;
 
 @Entity
 public class Patient extends User {

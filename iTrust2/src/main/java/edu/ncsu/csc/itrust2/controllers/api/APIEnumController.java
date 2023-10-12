@@ -1,16 +1,5 @@
 package edu.ncsu.csc.itrust2.controllers.api;
 
-import java.util.Arrays;
-import java.util.Collection;
-import java.util.List;
-import java.util.Map;
-import java.util.stream.Collectors;
-
-import lombok.RequiredArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RestController;
-
 import edu.ncsu.csc.itrust2.models.User;
 import edu.ncsu.csc.itrust2.models.enums.AppointmentType;
 import edu.ncsu.csc.itrust2.models.enums.BloodType;
@@ -23,6 +12,15 @@ import edu.ncsu.csc.itrust2.models.enums.State;
 import edu.ncsu.csc.itrust2.models.enums.Status;
 import edu.ncsu.csc.itrust2.services.UserService;
 import edu.ncsu.csc.itrust2.utils.LoggerUtil;
+import lombok.RequiredArgsConstructor;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+import java.util.Arrays;
+import java.util.Collection;
+import java.util.List;
+import java.util.Map;
+import java.util.stream.Collectors;
 
 /**
  * This class provides GET endpoints for all of the Enums, so that they can be

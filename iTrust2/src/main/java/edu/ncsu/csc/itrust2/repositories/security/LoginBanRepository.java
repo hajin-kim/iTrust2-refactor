@@ -1,9 +1,8 @@
 package edu.ncsu.csc.itrust2.repositories.security;
 
-import org.springframework.data.jpa.repository.JpaRepository;
-
 import edu.ncsu.csc.itrust2.models.User;
 import edu.ncsu.csc.itrust2.models.security.LoginBan;
+import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface LoginBanRepository extends JpaRepository<LoginBan, Long> {
 

@@ -1,9 +1,9 @@
 package edu.ncsu.csc.itrust2.forms;
 
+import edu.ncsu.csc.itrust2.models.AppointmentRequest;
+
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
-
-import edu.ncsu.csc.itrust2.models.AppointmentRequest;
 
 /**
  * This is the in-memory object that is used for requesting an appointment. It

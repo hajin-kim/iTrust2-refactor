@@ -1,10 +1,15 @@
 package edu.ncsu.csc.itrust2.controllers.api;
 
-import java.util.List;
-import java.util.stream.Collectors;
-
+import edu.ncsu.csc.itrust2.forms.AppointmentRequestForm;
+import edu.ncsu.csc.itrust2.models.AppointmentRequest;
+import edu.ncsu.csc.itrust2.models.User;
+import edu.ncsu.csc.itrust2.models.enums.Role;
+import edu.ncsu.csc.itrust2.models.enums.Status;
+import edu.ncsu.csc.itrust2.models.enums.TransactionType;
+import edu.ncsu.csc.itrust2.services.AppointmentRequestService;
+import edu.ncsu.csc.itrust2.services.UserService;
+import edu.ncsu.csc.itrust2.utils.LoggerUtil;
 import lombok.RequiredArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
@@ -16,15 +21,8 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import edu.ncsu.csc.itrust2.forms.AppointmentRequestForm;
-import edu.ncsu.csc.itrust2.models.AppointmentRequest;
-import edu.ncsu.csc.itrust2.models.User;
-import edu.ncsu.csc.itrust2.models.enums.Role;
-import edu.ncsu.csc.itrust2.models.enums.Status;
-import edu.ncsu.csc.itrust2.models.enums.TransactionType;
-import edu.ncsu.csc.itrust2.services.AppointmentRequestService;
-import edu.ncsu.csc.itrust2.services.UserService;
-import edu.ncsu.csc.itrust2.utils.LoggerUtil;
+import java.util.List;
+import java.util.stream.Collectors;
 
 /**
  * Class that provides REST API endpoints for the AppointmentRequest model. In

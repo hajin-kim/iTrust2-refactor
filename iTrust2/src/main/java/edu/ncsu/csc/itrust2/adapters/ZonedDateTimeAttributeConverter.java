@@ -1,11 +1,10 @@
 package edu.ncsu.csc.itrust2.adapters;
 
+import javax.persistence.AttributeConverter;
+import javax.persistence.Converter;
 import java.sql.Timestamp;
 import java.time.ZoneId;
 import java.time.ZonedDateTime;
-
-import javax.persistence.AttributeConverter;
-import javax.persistence.Converter;
 
 /**
  * ZonedDateTime converter for database storage. This provides it to be readable

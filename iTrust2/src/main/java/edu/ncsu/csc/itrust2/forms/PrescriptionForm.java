@@ -1,8 +1,8 @@
 package edu.ncsu.csc.itrust2.forms;
 
-import java.io.Serializable;
-
 import edu.ncsu.csc.itrust2.models.Prescription;
+
+import java.io.Serializable;
 
 /**
  * A form for REST API communication. Contains fields for constructing

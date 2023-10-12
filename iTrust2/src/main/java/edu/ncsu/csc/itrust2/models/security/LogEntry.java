@@ -1,6 +1,10 @@
 package edu.ncsu.csc.itrust2.models.security;
 
-import java.time.ZonedDateTime;
+import com.google.gson.annotations.JsonAdapter;
+import edu.ncsu.csc.itrust2.adapters.ZonedDateTimeAdapter;
+import edu.ncsu.csc.itrust2.adapters.ZonedDateTimeAttributeConverter;
+import edu.ncsu.csc.itrust2.models.DomainObject;
+import edu.ncsu.csc.itrust2.models.enums.TransactionType;
 
 import javax.persistence.Basic;
 import javax.persistence.Convert;
@@ -9,13 +13,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.validation.constraints.NotNull;
-
-import com.google.gson.annotations.JsonAdapter;
-
-import edu.ncsu.csc.itrust2.adapters.ZonedDateTimeAdapter;
-import edu.ncsu.csc.itrust2.adapters.ZonedDateTimeAttributeConverter;
-import edu.ncsu.csc.itrust2.models.DomainObject;
-import edu.ncsu.csc.itrust2.models.enums.TransactionType;
+import java.time.ZonedDateTime;
 
 /**
  * Class that represents a LogEntry that is created in response to certain user

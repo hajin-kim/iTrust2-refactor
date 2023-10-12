@@ -1,15 +1,5 @@
 package edu.ncsu.csc.itrust2.controllers.api;
 
-import java.util.List;
-
-import lombok.RequiredArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RestController;
-
 import edu.ncsu.csc.itrust2.models.Diagnosis;
 import edu.ncsu.csc.itrust2.models.OfficeVisit;
 import edu.ncsu.csc.itrust2.models.User;
@@ -18,6 +8,14 @@ import edu.ncsu.csc.itrust2.services.DiagnosisService;
 import edu.ncsu.csc.itrust2.services.OfficeVisitService;
 import edu.ncsu.csc.itrust2.services.UserService;
 import edu.ncsu.csc.itrust2.utils.LoggerUtil;
+import lombok.RequiredArgsConstructor;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RestController;
+
+import java.util.List;
 
 /**
  * Class that provided the REST endpoints for dealing with diagnoses. Diagnoses

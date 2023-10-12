@@ -1,17 +1,15 @@
 package edu.ncsu.csc.itrust2.forms;
 
+import edu.ncsu.csc.itrust2.models.OfficeVisit;
+import edu.ncsu.csc.itrust2.models.enums.HouseholdSmokingStatus;
+import edu.ncsu.csc.itrust2.models.enums.PatientSmokingStatus;
+import org.hibernate.validator.constraints.Length;
+
+import javax.validation.constraints.NotEmpty;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
-
-import javax.validation.constraints.NotEmpty;
-
-import org.hibernate.validator.constraints.Length;
-
-import edu.ncsu.csc.itrust2.models.OfficeVisit;
-import edu.ncsu.csc.itrust2.models.enums.HouseholdSmokingStatus;
-import edu.ncsu.csc.itrust2.models.enums.PatientSmokingStatus;
 
 /**
  * Office Visit form used to document an Office Visit by the HCP. This will be

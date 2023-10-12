@@ -1,8 +1,8 @@
 package edu.ncsu.csc.itrust2.forms;
 
-import javax.validation.constraints.Pattern;
-
 import org.hibernate.validator.constraints.Length;
+
+import javax.validation.constraints.Pattern;
 
 /**
  * Form for registering a user as an iTrust2 personnel or for editing their
