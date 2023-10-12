@@ -7,7 +7,6 @@ import java.util.stream.Collectors;
 
 import javax.transaction.Transactional;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Component;
 
@@ -25,42 +24,53 @@ import edu.ncsu.csc.itrust2.repositories.OfficeVisitRepository;
 @Transactional
 public class OfficeVisitService extends Service {
 
-    @Autowired
-    private OfficeVisitRepository     repository;
+    private final OfficeVisitRepository officeVisitRepository;
 
-    @Autowired
-    private UserService               userService;
+    private final UserService               userService;
 
-    @Autowired
-    private AppointmentRequestService appointmentRequestService;
+    private final AppointmentRequestService appointmentRequestService;
 
-    @Autowired
-    private HospitalService           hospitalService;
+    private final HospitalService           hospitalService;
 
-    @Autowired
-    private BasicHealthMetricsService bhmService;
+    private final BasicHealthMetricsService bhmService;
 
-    @Autowired
-    private PrescriptionService       prescriptionService;
+    private final PrescriptionService       prescriptionService;
 
-    @Autowired
-    private DiagnosisService          diagnosisService;
+    private final DiagnosisService          diagnosisService;
+
+    public OfficeVisitService(
+            DiagnosisService diagnosisService,
+            PrescriptionService prescriptionService,
+            BasicHealthMetricsService bhmService,
+            HospitalService hospitalService,
+            AppointmentRequestService appointmentRequestService,
+            UserService userService,
+            OfficeVisitRepository officeVisitRepository
+    ) {
+        this.officeVisitRepository = officeVisitRepository;
+        this.userService = userService;
+        this.appointmentRequestService = appointmentRequestService;
+        this.hospitalService = hospitalService;
+        this.bhmService = bhmService;
+        this.prescriptionService = prescriptionService;
+        this.diagnosisService = diagnosisService;
+    }
 
     @Override
     protected JpaRepository getRepository () {
-        return repository;
+        return officeVisitRepository;
     }
 
     public List<OfficeVisit> findByHcp ( final User hcp ) {
-        return repository.findByHcp( hcp );
+        return officeVisitRepository.findByHcp( hcp );
     }
 
     public List<OfficeVisit> findByPatient ( final User patient ) {
-        return repository.findByPatient( patient );
+        return officeVisitRepository.findByPatient( patient );
     }
 
     public List<OfficeVisit> findByHcpAndPatient ( final User hcp, final User patient ) {
-        return repository.findByHcpAndPatient( hcp, patient );
+        return officeVisitRepository.findByHcpAndPatient( hcp, patient );
     }
 
     public OfficeVisit build ( final OfficeVisitForm ovf ) {

@@ -13,8 +13,11 @@ import edu.ncsu.csc.itrust2.repositories.ICDCodeRepository;
 @Transactional
 public class ICDCodeService extends Service {
 
-    @Autowired
-    private ICDCodeRepository repository;
+    private final ICDCodeRepository repository;
+
+    public ICDCodeService(ICDCodeRepository repository) {
+        this.repository = repository;
+    }
 
     @Override
     protected JpaRepository getRepository () {

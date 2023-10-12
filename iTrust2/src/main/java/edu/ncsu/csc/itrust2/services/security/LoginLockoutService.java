@@ -17,8 +17,11 @@ import edu.ncsu.csc.itrust2.services.Service;
 @Transactional
 public class LoginLockoutService extends Service {
 
-    @Autowired
-    private LoginLockoutRepository repository;
+    private final LoginLockoutRepository repository;
+
+    public LoginLockoutService(LoginLockoutRepository repository) {
+        this.repository = repository;
+    }
 
     @Override
     protected JpaRepository getRepository () {

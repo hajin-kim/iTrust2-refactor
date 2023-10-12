@@ -14,8 +14,11 @@ import edu.ncsu.csc.itrust2.services.Service;
 @Transactional
 public class LoginAttemptService extends Service {
 
-    @Autowired
-    private LoginAttemptRepository repository;
+    private final LoginAttemptRepository repository;
+
+    public LoginAttemptService(LoginAttemptRepository repository) {
+        this.repository = repository;
+    }
 
     @Override
     protected JpaRepository getRepository () {

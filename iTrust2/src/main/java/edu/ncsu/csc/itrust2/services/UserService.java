@@ -15,8 +15,11 @@ import edu.ncsu.csc.itrust2.repositories.UserRepository;
 @Primary
 public class UserService extends Service {
 
-    @Autowired
-    private UserRepository repository;
+    private final UserRepository repository;
+
+    public UserService(UserRepository repository) {
+        this.repository = repository;
+    }
 
     @Override
     protected JpaRepository getRepository () {

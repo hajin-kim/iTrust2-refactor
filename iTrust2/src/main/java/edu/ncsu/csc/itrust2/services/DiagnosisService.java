@@ -5,6 +5,7 @@ import java.util.stream.Collectors;
 
 import javax.transaction.Transactional;
 
+import edu.ncsu.csc.itrust2.repositories.OfficeVisitRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Component;
@@ -19,14 +20,19 @@ import edu.ncsu.csc.itrust2.repositories.DiagnosisRepository;
 @Transactional
 public class DiagnosisService extends Service {
 
-    @Autowired
-    private DiagnosisRepository repository;
+    private final DiagnosisRepository repository;
 
-    @Autowired
-    private OfficeVisitService  service;
+    private final OfficeVisitService  service;
 
-    @Autowired
-    private ICDCodeService      icdCodeService;
+    private final ICDCodeService      icdCodeService;
+
+    public DiagnosisService(DiagnosisRepository repository,
+                            OfficeVisitService service,
+                            ICDCodeService icdCodeService) {
+        this.repository = repository;
+        this.service = service;
+        this.icdCodeService = icdCodeService;
+    }
 
     @Override
     protected JpaRepository getRepository () {

@@ -12,8 +12,11 @@ import edu.ncsu.csc.itrust2.services.EmailService;
 @RestController
 public class APIEmailController extends APIController {
 
-    @Autowired
-    private EmailService service;
+    private final EmailService service;
+
+    public APIEmailController(EmailService service) {
+        this.service = service;
+    }
 
     @GetMapping ( BASE_PATH + "emails" )
     public List<Email> getEmails () {

@@ -32,11 +32,15 @@ import edu.ncsu.csc.itrust2.utils.LoggerUtil;
 @RestController
 public class APIEnumController extends APIController {
 
-    @Autowired
-    private LoggerUtil  loggerUtil;
+    private final LoggerUtil  loggerUtil;
 
-    @Autowired
-    private UserService userService;
+    private final UserService userService;
+
+    public APIEnumController(LoggerUtil loggerUtil, UserService userService) {
+        this.loggerUtil = loggerUtil;
+        this.userService = userService;
+    }
+
 
     /**
      * Get the blood types

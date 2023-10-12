@@ -39,14 +39,17 @@ import edu.ncsu.csc.itrust2.utils.LoggerUtil;
 @SuppressWarnings ( { "unchecked", "rawtypes" } )
 public class APILogEntryController extends APIController {
 
-    @Autowired
-    private LogEntryService leservice;
+    private final LogEntryService leservice;
 
-    @Autowired
-    private UserService     userService;
+    private final UserService     userService;
 
-    @Autowired
-    private LoggerUtil      loggerUtil;
+    private final LoggerUtil      loggerUtil;
+
+    public APILogEntryController(LogEntryService leservice, UserService userService, LoggerUtil loggerUtil) {
+        this.leservice = leservice;
+        this.userService = userService;
+        this.loggerUtil = loggerUtil;
+    }
 
     /**
      * Handles GET requests for the current user's log entries when searching by

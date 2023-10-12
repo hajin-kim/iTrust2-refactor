@@ -31,11 +31,14 @@ import edu.ncsu.csc.itrust2.utils.LoggerUtil;
 @RestController
 public class APIDrugController extends APIController {
 
-    @Autowired
-    private DrugService service;
+    private final DrugService service;
 
-    @Autowired
-    private LoggerUtil  loggerUtil;
+    private final LoggerUtil  loggerUtil;
+
+    public APIDrugController(DrugService service, LoggerUtil loggerUtil) {
+        this.service = service;
+        this.loggerUtil = loggerUtil;
+    }
 
     /**
      * Adds a new drug to the system. Requires admin permissions. Returns an

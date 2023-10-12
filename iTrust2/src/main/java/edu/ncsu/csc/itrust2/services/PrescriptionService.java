@@ -18,14 +18,17 @@ import edu.ncsu.csc.itrust2.repositories.PrescriptionRepository;
 @Transactional
 public class PrescriptionService extends Service {
 
-    @Autowired
-    private PrescriptionRepository repository;
+    private final PrescriptionRepository repository;
 
-    @Autowired
-    private DrugService            drugService;
+    private final DrugService            drugService;
 
-    @Autowired
-    private UserService            userService;
+    private final UserService            userService;
+
+    public PrescriptionService(PrescriptionRepository repository, DrugService drugService, UserService userService) {
+        this.repository = repository;
+        this.drugService = drugService;
+        this.userService = userService;
+    }
 
     @Override
     protected JpaRepository getRepository () {

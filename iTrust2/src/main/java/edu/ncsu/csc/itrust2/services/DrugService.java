@@ -13,8 +13,11 @@ import edu.ncsu.csc.itrust2.repositories.DrugRepository;
 @Transactional
 public class DrugService extends Service {
 
-    @Autowired
-    private DrugRepository repository;
+    private final DrugRepository repository;
+
+    public DrugService(DrugRepository repository) {
+        this.repository = repository;
+    }
 
     @Override
     protected JpaRepository getRepository () {

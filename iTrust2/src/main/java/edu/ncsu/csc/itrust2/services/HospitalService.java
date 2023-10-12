@@ -13,8 +13,11 @@ import edu.ncsu.csc.itrust2.repositories.HospitalRepository;
 @Transactional
 public class HospitalService extends Service {
 
-    @Autowired
-    private HospitalRepository repository;
+    private final HospitalRepository repository;
+
+    public HospitalService(HospitalRepository repository) {
+        this.repository = repository;
+    }
 
     @Override
     protected JpaRepository getRepository () {

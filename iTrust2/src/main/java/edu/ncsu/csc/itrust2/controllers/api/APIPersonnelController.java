@@ -30,11 +30,15 @@ import edu.ncsu.csc.itrust2.utils.LoggerUtil;
 @SuppressWarnings ( { "rawtypes", "unchecked" } )
 public class APIPersonnelController extends APIController {
 
-    @Autowired
-    private LoggerUtil       loggerUtil;
+    private final LoggerUtil       loggerUtil;
 
-    @Autowired
-    private PersonnelService service;
+    private final PersonnelService service;
+
+    public APIPersonnelController(LoggerUtil loggerUtil, PersonnelService service) {
+        this.loggerUtil = loggerUtil;
+        this.service = service;
+    }
+
 
     /**
      * Retrieves and returns a list of all Personnel stored in the system

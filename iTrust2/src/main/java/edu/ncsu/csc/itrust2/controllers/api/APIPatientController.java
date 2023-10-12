@@ -34,14 +34,17 @@ import edu.ncsu.csc.itrust2.utils.LoggerUtil;
 @SuppressWarnings ( { "rawtypes", "unchecked" } )
 public class APIPatientController extends APIController {
 
-    @Autowired
-    private PatientService patientService;
+    private final PatientService patientService;
 
-    @Autowired
-    private UserService    userService;
+    private final UserService    userService;
 
-    @Autowired
-    private LoggerUtil     loggerUtil;
+    private final LoggerUtil     loggerUtil;
+
+    public APIPatientController(PatientService patientService, UserService userService, LoggerUtil loggerUtil) {
+        this.patientService = patientService;
+        this.userService = userService;
+        this.loggerUtil = loggerUtil;
+    }
 
     /**
      * Retrieves and returns a list of all Patients stored in the system

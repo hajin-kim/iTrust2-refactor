@@ -23,8 +23,11 @@ import edu.ncsu.csc.itrust2.utils.LoggerUtil;
 @Controller
 public class UserController {
 
-    @Autowired
-    private LoggerUtil util;
+    private final LoggerUtil util;
+
+    public UserController(LoggerUtil util) {
+        this.util = util;
+    }
 
     /**
      * Controller for iTrust2 personnel to modify their demographics.

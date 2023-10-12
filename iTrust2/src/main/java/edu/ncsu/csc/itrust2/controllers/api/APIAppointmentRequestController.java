@@ -37,14 +37,17 @@ import edu.ncsu.csc.itrust2.utils.LoggerUtil;
 @SuppressWarnings ( { "unchecked", "rawtypes" } )
 public class APIAppointmentRequestController extends APIController {
 
-    @Autowired
-    private AppointmentRequestService service;
+    private final AppointmentRequestService service;
 
-    @Autowired
-    private LoggerUtil                loggerUtil;
+    private final LoggerUtil                loggerUtil;
 
-    @Autowired
-    private UserService               userService;
+    private final UserService               userService;
+
+    public APIAppointmentRequestController(AppointmentRequestService service, LoggerUtil loggerUtil, UserService userService) {
+        this.service = service;
+        this.loggerUtil = loggerUtil;
+        this.userService = userService;
+    }
 
     /**
      * Retrieves a list of all AppointmentRequests in the database

@@ -18,8 +18,11 @@ import edu.ncsu.csc.itrust2.services.Service;
 @Transactional
 public class LogEntryService extends Service {
 
-    @Autowired
-    private LogEntryRepository repository;
+    private final LogEntryRepository repository;
+
+    public LogEntryService(LogEntryRepository repository) {
+        this.repository = repository;
+    }
 
     @Override
     protected JpaRepository getRepository () {

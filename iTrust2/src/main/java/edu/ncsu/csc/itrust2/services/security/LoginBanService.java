@@ -14,8 +14,11 @@ import edu.ncsu.csc.itrust2.services.Service;
 @Transactional
 public class LoginBanService extends Service {
 
-    @Autowired
-    private LoginBanRepository repository;
+    private final LoginBanRepository repository;
+
+    public LoginBanService(LoginBanRepository repository) {
+        this.repository = repository;
+    }
 
     @Override
     protected JpaRepository getRepository () {

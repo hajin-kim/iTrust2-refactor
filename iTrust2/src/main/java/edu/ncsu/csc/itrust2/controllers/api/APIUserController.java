@@ -66,11 +66,14 @@ public class APIUserController extends APIController {
     private static final List<String> ALL_ROLES        = List.of( ROLE_ADMIN, ROLE_PATIENT, ROLE_HCP, ROLE_ER,
             ROLE_LABTECH, ROLE_VIROLOGIST, ROLE_OD, ROLE_OPH );
 
-    @Autowired
-    private LoggerUtil                loggerUtil;
+    private final LoggerUtil                loggerUtil;
 
-    @Autowired
-    private UserService               userService;
+    private final UserService               userService;
+
+    public APIUserController(LoggerUtil loggerUtil, UserService userService) {
+        this.loggerUtil = loggerUtil;
+        this.userService = userService;
+    }
 
     /**
      * Retrieves and returns a list of all Users in the system, regardless of

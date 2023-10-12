@@ -16,8 +16,11 @@ import edu.ncsu.csc.itrust2.repositories.EmailRepository;
 @Transactional
 public class EmailService extends Service {
 
-    @Autowired
-    private EmailRepository repository;
+    private final EmailRepository repository;
+
+    public EmailService(EmailRepository repository) {
+        this.repository = repository;
+    }
 
     @Override
     protected JpaRepository getRepository () {

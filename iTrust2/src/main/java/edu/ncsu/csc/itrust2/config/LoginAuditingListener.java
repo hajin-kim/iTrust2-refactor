@@ -28,20 +28,28 @@ import edu.ncsu.csc.itrust2.utils.LoggerUtil;
 @Component
 public class LoginAuditingListener implements ApplicationListener<ApplicationEvent> {
 
-    @Autowired
-    private LoggerUtil          util;
+    private final LoggerUtil          util;
 
-    @Autowired
-    private LoginAttemptService loginAttemptService;
+    private final LoginAttemptService loginAttemptService;
 
-    @Autowired
-    private LoginBanService     loginBanService;
+    private final LoginBanService     loginBanService;
 
-    @Autowired
-    private UserService         userService;
+    private final UserService         userService;
 
-    @Autowired
-    private LoginLockoutService loginLockoutService;
+    private final LoginLockoutService loginLockoutService;
+
+    public LoginAuditingListener(
+            LoggerUtil util,
+            LoginAttemptService loginAttemptService,
+            LoginBanService loginBanService,
+            UserService userService,
+            LoginLockoutService loginLockoutService) {
+        this.util = util;
+        this.loginAttemptService = loginAttemptService;
+        this.loginBanService = loginBanService;
+        this.userService = userService;
+        this.loginLockoutService = loginLockoutService;
+    }
 
     @Override
     public void onApplicationEvent ( final ApplicationEvent event ) {

@@ -30,17 +30,20 @@ import edu.ncsu.csc.itrust2.utils.LoggerUtil;
 @SuppressWarnings ( { "unchecked", "rawtypes" } )
 public class APIDiagnosisController extends APIController {
 
-    @Autowired
-    private LoggerUtil         loggerUtil;
+    private final LoggerUtil         loggerUtil;
 
-    @Autowired
-    private DiagnosisService   diagnosisService;
+    private final DiagnosisService   diagnosisService;
 
-    @Autowired
-    private OfficeVisitService officeVisitService;
+    private final OfficeVisitService officeVisitService;
 
-    @Autowired
-    private UserService        userService;
+    private final UserService        userService;
+
+    public APIDiagnosisController(LoggerUtil loggerUtil, DiagnosisService diagnosisService, OfficeVisitService officeVisitService, UserService userService) {
+        this.loggerUtil = loggerUtil;
+        this.diagnosisService = diagnosisService;
+        this.officeVisitService = officeVisitService;
+        this.userService = userService;
+    }
 
     /**
      * Returns the Diagnosis with the specified ID.

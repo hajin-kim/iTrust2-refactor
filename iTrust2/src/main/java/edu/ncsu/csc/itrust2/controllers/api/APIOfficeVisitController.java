@@ -25,14 +25,20 @@ import edu.ncsu.csc.itrust2.utils.LoggerUtil;
 @SuppressWarnings ( { "unchecked", "rawtypes" } )
 public class APIOfficeVisitController extends APIController {
 
-    @Autowired
-    private OfficeVisitService officeVisitService;
+    private final OfficeVisitService officeVisitService;
 
-    @Autowired
-    private UserService        userService;
+    private final UserService        userService;
 
-    @Autowired
-    private LoggerUtil         loggerUtil;
+    private final LoggerUtil         loggerUtil;
+
+    public APIOfficeVisitController(
+            OfficeVisitService officeVisitService,
+            UserService userService,
+            LoggerUtil loggerUtil) {
+        this.officeVisitService = officeVisitService;
+        this.userService = userService;
+        this.loggerUtil = loggerUtil;
+    }
 
     /**
      * Retrieves a list of all OfficeVisits in the database

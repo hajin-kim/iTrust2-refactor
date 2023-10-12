@@ -1,13 +1,12 @@
 package edu.ncsu.csc.itrust2.utils;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.core.context.SecurityContextHolder;
-import org.springframework.stereotype.Component;
-
 import edu.ncsu.csc.itrust2.models.User;
 import edu.ncsu.csc.itrust2.models.enums.TransactionType;
 import edu.ncsu.csc.itrust2.models.security.LogEntry;
 import edu.ncsu.csc.itrust2.services.security.LogEntryService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.stereotype.Component;
 
 import java.util.Comparator;
 import java.util.List;
@@ -23,8 +22,11 @@ import java.util.List;
 @Component
 public class LoggerUtil {
 
-    @Autowired
-    private LogEntryService service;
+    private final LogEntryService service;
+
+    public LoggerUtil(LogEntryService service) {
+        this.service = service;
+    }
 
     /**
      * Most complete logger utility. Usually won't need all of this information,

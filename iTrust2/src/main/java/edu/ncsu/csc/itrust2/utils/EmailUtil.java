@@ -10,8 +10,11 @@ import edu.ncsu.csc.itrust2.services.EmailService;
 @Component
 public class EmailUtil {
 
-    @Autowired
-    private EmailService service;
+    private final EmailService service;
+
+    public EmailUtil(EmailService service) {
+        this.service = service;
+    }
 
     public void sendEmail ( final User receiver, final String subject, final String messageBody ) {
         sendEmail( "iTrust2 System", receiver, subject, messageBody );

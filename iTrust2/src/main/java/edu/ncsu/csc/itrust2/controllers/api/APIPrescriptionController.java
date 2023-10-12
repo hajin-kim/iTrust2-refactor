@@ -33,14 +33,17 @@ import edu.ncsu.csc.itrust2.utils.LoggerUtil;
 @SuppressWarnings ( { "rawtypes", "unchecked" } )
 public class APIPrescriptionController extends APIController {
 
-    @Autowired
-    private LoggerUtil          loggerUtil;
+    private final LoggerUtil          loggerUtil;
 
-    @Autowired
-    private PrescriptionService prescriptionService;
+    private final PrescriptionService prescriptionService;
 
-    @Autowired
-    private UserService         userService;
+    private final UserService         userService;
+
+    public APIPrescriptionController(LoggerUtil loggerUtil, PrescriptionService prescriptionService, UserService userService) {
+        this.loggerUtil = loggerUtil;
+        this.prescriptionService = prescriptionService;
+        this.userService = userService;
+    }
 
     /**
      * Adds a new prescription to the system. Requires HCP permissions.

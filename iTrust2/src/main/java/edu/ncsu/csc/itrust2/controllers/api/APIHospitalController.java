@@ -32,11 +32,14 @@ import edu.ncsu.csc.itrust2.utils.LoggerUtil;
 @SuppressWarnings ( { "unchecked", "rawtypes" } )
 public class APIHospitalController extends APIController {
 
-    @Autowired
-    private LoggerUtil      loggerUtil;
+    private final LoggerUtil      loggerUtil;
 
-    @Autowired
-    private HospitalService hospitalService;
+    private final HospitalService hospitalService;
+
+    public APIHospitalController(LoggerUtil loggerUtil, HospitalService hospitalService) {
+        this.loggerUtil = loggerUtil;
+        this.hospitalService = hospitalService;
+    }
 
     /**
      * Retrieves a list of all Hospitals in the database

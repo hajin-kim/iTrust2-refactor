@@ -33,11 +33,14 @@ import edu.ncsu.csc.itrust2.utils.LoggerUtil;
 @SuppressWarnings ( { "unchecked", "rawtypes" } )
 public class APIICDCodeController extends APIController {
 
-    @Autowired
-    private LoggerUtil     loggerUtil;
+    private final LoggerUtil     loggerUtil;
 
-    @Autowired
-    private ICDCodeService service;
+    private final ICDCodeService service;
+
+    public APIICDCodeController(LoggerUtil loggerUtil, ICDCodeService service) {
+        this.loggerUtil = loggerUtil;
+        this.service = service;
+    }
 
     /**
      * Returns a list of Codes in the system
