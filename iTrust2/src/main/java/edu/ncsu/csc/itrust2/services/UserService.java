@@ -2,6 +2,7 @@ package edu.ncsu.csc.itrust2.services;
 
 import javax.transaction.Transactional;
 
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Primary;
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -13,13 +14,10 @@ import edu.ncsu.csc.itrust2.repositories.UserRepository;
 @Component
 @Transactional
 @Primary
+@RequiredArgsConstructor
 public class UserService extends Service {
 
     private final UserRepository repository;
-
-    public UserService(UserRepository repository) {
-        this.repository = repository;
-    }
 
     @Override
     protected JpaRepository getRepository () {

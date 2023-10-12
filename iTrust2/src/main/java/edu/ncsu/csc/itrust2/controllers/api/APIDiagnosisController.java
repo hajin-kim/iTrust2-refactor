@@ -2,6 +2,7 @@ package edu.ncsu.csc.itrust2.controllers.api;
 
 import java.util.List;
 
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -27,6 +28,7 @@ import edu.ncsu.csc.itrust2.utils.LoggerUtil;
  *
  */
 @RestController
+@RequiredArgsConstructor
 @SuppressWarnings ( { "unchecked", "rawtypes" } )
 public class APIDiagnosisController extends APIController {
 
@@ -37,13 +39,6 @@ public class APIDiagnosisController extends APIController {
     private final OfficeVisitService officeVisitService;
 
     private final UserService        userService;
-
-    public APIDiagnosisController(LoggerUtil loggerUtil, DiagnosisService diagnosisService, OfficeVisitService officeVisitService, UserService userService) {
-        this.loggerUtil = loggerUtil;
-        this.diagnosisService = diagnosisService;
-        this.officeVisitService = officeVisitService;
-        this.userService = userService;
-    }
 
     /**
      * Returns the Diagnosis with the specified ID.

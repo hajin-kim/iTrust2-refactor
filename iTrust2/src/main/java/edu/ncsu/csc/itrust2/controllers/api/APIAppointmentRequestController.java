@@ -3,6 +3,7 @@ package edu.ncsu.csc.itrust2.controllers.api;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -34,6 +35,7 @@ import edu.ncsu.csc.itrust2.utils.LoggerUtil;
  * @author Matt Dzwonczyk
  */
 @RestController
+@RequiredArgsConstructor
 @SuppressWarnings ( { "unchecked", "rawtypes" } )
 public class APIAppointmentRequestController extends APIController {
 
@@ -42,12 +44,6 @@ public class APIAppointmentRequestController extends APIController {
     private final LoggerUtil                loggerUtil;
 
     private final UserService               userService;
-
-    public APIAppointmentRequestController(AppointmentRequestService service, LoggerUtil loggerUtil, UserService userService) {
-        this.service = service;
-        this.loggerUtil = loggerUtil;
-        this.userService = userService;
-    }
 
     /**
      * Retrieves a list of all AppointmentRequests in the database

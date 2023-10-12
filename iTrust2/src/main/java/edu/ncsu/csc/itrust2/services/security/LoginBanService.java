@@ -2,6 +2,7 @@ package edu.ncsu.csc.itrust2.services.security;
 
 import javax.transaction.Transactional;
 
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Component;
@@ -12,13 +13,10 @@ import edu.ncsu.csc.itrust2.services.Service;
 
 @Component
 @Transactional
+@RequiredArgsConstructor
 public class LoginBanService extends Service {
 
     private final LoginBanRepository repository;
-
-    public LoginBanService(LoginBanRepository repository) {
-        this.repository = repository;
-    }
 
     @Override
     protected JpaRepository getRepository () {

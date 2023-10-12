@@ -3,6 +3,7 @@ package edu.ncsu.csc.itrust2.controllers.api;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -36,6 +37,7 @@ import edu.ncsu.csc.itrust2.utils.LoggerUtil;
  *
  */
 @RestController
+@RequiredArgsConstructor
 @SuppressWarnings ( { "rawtypes", "unchecked" } )
 public class APIUserController extends APIController {
 
@@ -69,11 +71,6 @@ public class APIUserController extends APIController {
     private final LoggerUtil                loggerUtil;
 
     private final UserService               userService;
-
-    public APIUserController(LoggerUtil loggerUtil, UserService userService) {
-        this.loggerUtil = loggerUtil;
-        this.userService = userService;
-    }
 
     /**
      * Retrieves and returns a list of all Users in the system, regardless of

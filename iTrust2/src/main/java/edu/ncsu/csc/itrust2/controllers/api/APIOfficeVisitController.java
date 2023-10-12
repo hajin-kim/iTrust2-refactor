@@ -2,6 +2,7 @@ package edu.ncsu.csc.itrust2.controllers.api;
 
 import java.util.List;
 
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -22,6 +23,7 @@ import edu.ncsu.csc.itrust2.services.UserService;
 import edu.ncsu.csc.itrust2.utils.LoggerUtil;
 
 @RestController
+@RequiredArgsConstructor
 @SuppressWarnings ( { "unchecked", "rawtypes" } )
 public class APIOfficeVisitController extends APIController {
 
@@ -30,15 +32,6 @@ public class APIOfficeVisitController extends APIController {
     private final UserService        userService;
 
     private final LoggerUtil         loggerUtil;
-
-    public APIOfficeVisitController(
-            OfficeVisitService officeVisitService,
-            UserService userService,
-            LoggerUtil loggerUtil) {
-        this.officeVisitService = officeVisitService;
-        this.userService = userService;
-        this.loggerUtil = loggerUtil;
-    }
 
     /**
      * Retrieves a list of all OfficeVisits in the database

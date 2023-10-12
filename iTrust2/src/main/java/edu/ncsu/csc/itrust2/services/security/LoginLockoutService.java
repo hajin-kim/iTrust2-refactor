@@ -5,6 +5,7 @@ import java.util.stream.Collectors;
 
 import javax.transaction.Transactional;
 
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Component;
@@ -15,13 +16,10 @@ import edu.ncsu.csc.itrust2.services.Service;
 
 @Component
 @Transactional
+@RequiredArgsConstructor
 public class LoginLockoutService extends Service {
 
     private final LoginLockoutRepository repository;
-
-    public LoginLockoutService(LoginLockoutRepository repository) {
-        this.repository = repository;
-    }
 
     @Override
     protected JpaRepository getRepository () {

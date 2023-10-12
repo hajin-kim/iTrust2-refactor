@@ -2,6 +2,7 @@ package edu.ncsu.csc.itrust2.controllers.api;
 
 import java.util.List;
 
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -29,16 +30,12 @@ import edu.ncsu.csc.itrust2.utils.LoggerUtil;
  */
 @SuppressWarnings ( { "unchecked", "rawtypes" } )
 @RestController
+@RequiredArgsConstructor
 public class APIDrugController extends APIController {
 
     private final DrugService service;
 
     private final LoggerUtil  loggerUtil;
-
-    public APIDrugController(DrugService service, LoggerUtil loggerUtil) {
-        this.service = service;
-        this.loggerUtil = loggerUtil;
-    }
 
     /**
      * Adds a new drug to the system. Requires admin permissions. Returns an

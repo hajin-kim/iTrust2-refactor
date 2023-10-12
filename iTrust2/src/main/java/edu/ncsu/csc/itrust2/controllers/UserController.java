@@ -2,6 +2,7 @@ package edu.ncsu.csc.itrust2.controllers;
 
 import java.io.IOException;
 
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.ClassPathResource;
 import org.springframework.http.MediaType;
@@ -21,13 +22,10 @@ import edu.ncsu.csc.itrust2.utils.LoggerUtil;
  *
  */
 @Controller
+@RequiredArgsConstructor
 public class UserController {
 
     private final LoggerUtil util;
-
-    public UserController(LoggerUtil util) {
-        this.util = util;
-    }
 
     /**
      * Controller for iTrust2 personnel to modify their demographics.

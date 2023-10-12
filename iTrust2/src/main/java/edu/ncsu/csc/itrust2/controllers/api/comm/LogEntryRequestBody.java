@@ -1,5 +1,7 @@
 package edu.ncsu.csc.itrust2.controllers.api.comm;
 
+import lombok.RequiredArgsConstructor;
+
 /**
  * A POJO class that represents the request body of a GET request for log
  * entries Spring automatically converts the JSON into this object.
@@ -7,6 +9,7 @@ package edu.ncsu.csc.itrust2.controllers.api.comm;
  * @author Bryce
  *
  */
+@RequiredArgsConstructor
 public class LogEntryRequestBody {
 
     /** Start date to retrieve log entries from */
@@ -19,13 +22,6 @@ public class LogEntryRequestBody {
     public int    page;
     /** Number of items per page */
     public int    pageLength;
-
-    /**
-     * Empty Constructor required for spring to use this as a RequestBody
-     */
-    public LogEntryRequestBody () {
-        // Empty Constructor required for spring to use this
-    }
 
     /**
      * Gets the start date to retrieve log entries from.

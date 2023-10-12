@@ -7,6 +7,7 @@ import java.util.stream.Collectors;
 
 import javax.transaction.Transactional;
 
+import lombok.RequiredArgsConstructor;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Component;
 
@@ -22,6 +23,7 @@ import edu.ncsu.csc.itrust2.repositories.OfficeVisitRepository;
 
 @Component
 @Transactional
+@RequiredArgsConstructor
 public class OfficeVisitService extends Service {
 
     private final OfficeVisitRepository officeVisitRepository;
@@ -37,24 +39,6 @@ public class OfficeVisitService extends Service {
     private final PrescriptionService       prescriptionService;
 
     private final DiagnosisService          diagnosisService;
-
-    public OfficeVisitService(
-            DiagnosisService diagnosisService,
-            PrescriptionService prescriptionService,
-            BasicHealthMetricsService bhmService,
-            HospitalService hospitalService,
-            AppointmentRequestService appointmentRequestService,
-            UserService userService,
-            OfficeVisitRepository officeVisitRepository
-    ) {
-        this.officeVisitRepository = officeVisitRepository;
-        this.userService = userService;
-        this.appointmentRequestService = appointmentRequestService;
-        this.hospitalService = hospitalService;
-        this.bhmService = bhmService;
-        this.prescriptionService = prescriptionService;
-        this.diagnosisService = diagnosisService;
-    }
 
     @Override
     protected JpaRepository getRepository () {

@@ -6,6 +6,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
 
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -30,17 +31,12 @@ import edu.ncsu.csc.itrust2.utils.LoggerUtil;
  * @author Kai Presler-Marshall
  */
 @RestController
+@RequiredArgsConstructor
 public class APIEnumController extends APIController {
 
     private final LoggerUtil  loggerUtil;
 
     private final UserService userService;
-
-    public APIEnumController(LoggerUtil loggerUtil, UserService userService) {
-        this.loggerUtil = loggerUtil;
-        this.userService = userService;
-    }
-
 
     /**
      * Get the blood types

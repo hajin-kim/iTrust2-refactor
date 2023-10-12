@@ -2,6 +2,7 @@ package edu.ncsu.csc.itrust2.controllers;
 
 import java.util.List;
 
+import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -27,6 +28,7 @@ import edu.ncsu.csc.itrust2.models.enums.Role;
  */
 
 @Controller
+@RequiredArgsConstructor
 public class DefaultController {
 
     @GetMapping ( { "login", "login.html" } )

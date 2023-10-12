@@ -56,7 +56,11 @@ public class WebSecurityConfig {
      * override other automatic functionality as desired.
      */
     @Bean
-    public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
+    public SecurityFilterChain securityFilterChain(
+            IPFilter ipBlockFilter,
+            FailureHandler failureHandler,
+            HttpSecurity http
+    ) throws Exception {
         final String[] patterns = new String[] { "/login*", "/DrJenkins" };
         // Add filter for banned/locked IP
         /*
@@ -67,10 +71,10 @@ public class WebSecurityConfig {
          * first filter processed, so this means the IP block will be the
          * absolute first Filter.
          */
-        http.addFilterBefore( ipBlockFilter(), ChannelProcessingFilter.class );
+        http.addFilterBefore( ipBlockFilter, ChannelProcessingFilter.class );
 
         http.authorizeRequests().antMatchers( patterns ).anonymous().anyRequest().authenticated().and().formLogin()
-                .loginPage( "/login" ).failureHandler( failureHandler() ).defaultSuccessUrl( "/" ).and().csrf()
+                .loginPage( "/login" ).failureHandler( failureHandler ).defaultSuccessUrl( "/" ).and().csrf()
 
                 /*
                  * * Credit to https://medium.com/spektrakel
@@ -117,27 +121,5 @@ public class WebSecurityConfig {
     @Bean
     public DefaultAuthenticationEventPublisher defaultAuthenticationEventPublisher () {
         return new DefaultAuthenticationEventPublisher();
-    }
-
-    /**
-     * Failure Handler used to track failed attempts to determine if a user or
-     * IP needs to be banned.
-     *
-     * @return The AuthenticationFailureHandler
-     */
-    @Bean
-    public SimpleUrlAuthenticationFailureHandler failureHandler () {
-        return new FailureHandler();
-    }
-
-    /**
-     * Servlet Filter used to redirect all requests from banned/locked IPs to
-     * the appropriate pages.
-     *
-     * @return The IP FIlter
-     */
-    @Bean
-    public Filter ipBlockFilter () {
-        return new IPFilter();
     }
 }

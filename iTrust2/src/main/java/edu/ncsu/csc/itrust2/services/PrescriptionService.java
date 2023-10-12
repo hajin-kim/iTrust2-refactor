@@ -5,6 +5,7 @@ import java.util.List;
 
 import javax.transaction.Transactional;
 
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Component;
@@ -16,6 +17,7 @@ import edu.ncsu.csc.itrust2.repositories.PrescriptionRepository;
 
 @Component
 @Transactional
+@RequiredArgsConstructor
 public class PrescriptionService extends Service {
 
     private final PrescriptionRepository repository;
@@ -23,12 +25,6 @@ public class PrescriptionService extends Service {
     private final DrugService            drugService;
 
     private final UserService            userService;
-
-    public PrescriptionService(PrescriptionRepository repository, DrugService drugService, UserService userService) {
-        this.repository = repository;
-        this.drugService = drugService;
-        this.userService = userService;
-    }
 
     @Override
     protected JpaRepository getRepository () {

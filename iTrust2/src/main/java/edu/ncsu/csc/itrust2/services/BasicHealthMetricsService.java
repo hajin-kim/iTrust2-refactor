@@ -2,6 +2,7 @@ package edu.ncsu.csc.itrust2.services;
 
 import javax.transaction.Transactional;
 
+import lombok.RequiredArgsConstructor;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Component;
 
@@ -11,17 +12,11 @@ import edu.ncsu.csc.itrust2.repositories.BasicHealthMetricsRepository;
 
 @Component
 @Transactional
+@RequiredArgsConstructor
 public class BasicHealthMetricsService extends Service {
     private final BasicHealthMetricsRepository basicHealthMetricsRepository;
 
     private final UserService                  userService;
-
-    public BasicHealthMetricsService(
-            BasicHealthMetricsRepository basicHealthMetricsRepository,
-            UserService userService) {
-        this.basicHealthMetricsRepository = basicHealthMetricsRepository;
-        this.userService = userService;
-    }
 
     @Override
     protected JpaRepository getRepository () {

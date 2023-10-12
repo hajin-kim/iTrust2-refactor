@@ -9,6 +9,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -36,6 +37,7 @@ import edu.ncsu.csc.itrust2.utils.LoggerUtil;
  *
  */
 @RestController
+@RequiredArgsConstructor
 @SuppressWarnings ( { "unchecked", "rawtypes" } )
 public class APILogEntryController extends APIController {
 
@@ -44,12 +46,6 @@ public class APILogEntryController extends APIController {
     private final UserService     userService;
 
     private final LoggerUtil      loggerUtil;
-
-    public APILogEntryController(LogEntryService leservice, UserService userService, LoggerUtil loggerUtil) {
-        this.leservice = leservice;
-        this.userService = userService;
-        this.loggerUtil = loggerUtil;
-    }
 
     /**
      * Handles GET requests for the current user's log entries when searching by

@@ -2,6 +2,7 @@ package edu.ncsu.csc.itrust2.controllers.api;
 
 import java.util.List;
 
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -30,6 +31,7 @@ import edu.ncsu.csc.itrust2.utils.LoggerUtil;
  * @author Kai Presler-Marshall
  */
 @RestController
+@RequiredArgsConstructor
 @SuppressWarnings ( { "rawtypes", "unchecked" } )
 public class APIPrescriptionController extends APIController {
 
@@ -38,12 +40,6 @@ public class APIPrescriptionController extends APIController {
     private final PrescriptionService prescriptionService;
 
     private final UserService         userService;
-
-    public APIPrescriptionController(LoggerUtil loggerUtil, PrescriptionService prescriptionService, UserService userService) {
-        this.loggerUtil = loggerUtil;
-        this.prescriptionService = prescriptionService;
-        this.userService = userService;
-    }
 
     /**
      * Adds a new prescription to the system. Requires HCP permissions.

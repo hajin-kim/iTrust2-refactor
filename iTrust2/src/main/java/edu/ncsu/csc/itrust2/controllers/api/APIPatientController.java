@@ -2,6 +2,7 @@ package edu.ncsu.csc.itrust2.controllers.api;
 
 import java.util.List;
 
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -31,6 +32,7 @@ import edu.ncsu.csc.itrust2.utils.LoggerUtil;
  *
  */
 @RestController
+@RequiredArgsConstructor
 @SuppressWarnings ( { "rawtypes", "unchecked" } )
 public class APIPatientController extends APIController {
 
@@ -39,12 +41,6 @@ public class APIPatientController extends APIController {
     private final UserService    userService;
 
     private final LoggerUtil     loggerUtil;
-
-    public APIPatientController(PatientService patientService, UserService userService, LoggerUtil loggerUtil) {
-        this.patientService = patientService;
-        this.userService = userService;
-        this.loggerUtil = loggerUtil;
-    }
 
     /**
      * Retrieves and returns a list of all Patients stored in the system

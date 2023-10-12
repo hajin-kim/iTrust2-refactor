@@ -1,11 +1,14 @@
 package edu.ncsu.csc.itrust2.controllers.api.comm;
 
+import lombok.RequiredArgsConstructor;
+
 /**
  * A class representing the 4 string values in a row of the Log Entry view.
  *
  * @author Bryce
  *
  */
+@RequiredArgsConstructor
 public class LogEntryTableRow {
 
     /** Name of primary User */
@@ -22,14 +25,6 @@ public class LogEntryTableRow {
     private boolean isPatient = false;
     /** total number of pages in the table */
     private int     numPages  = 1;
-
-    /**
-     * Empty constructor so that Spring is able to use this class for
-     * communicating over http
-     */
-    public LogEntryTableRow () {
-        // Empty Constructor
-    }
 
     /**
      * Returns the number of pages in the table

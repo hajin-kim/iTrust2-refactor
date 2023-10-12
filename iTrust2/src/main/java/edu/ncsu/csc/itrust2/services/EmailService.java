@@ -4,6 +4,7 @@ import java.util.List;
 
 import javax.transaction.Transactional;
 
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Component;
@@ -14,13 +15,10 @@ import edu.ncsu.csc.itrust2.repositories.EmailRepository;
 
 @Component
 @Transactional
+@RequiredArgsConstructor
 public class EmailService extends Service {
 
     private final EmailRepository repository;
-
-    public EmailService(EmailRepository repository) {
-        this.repository = repository;
-    }
 
     @Override
     protected JpaRepository getRepository () {

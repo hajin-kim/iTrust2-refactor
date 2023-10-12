@@ -5,6 +5,7 @@ import java.util.List;
 
 import javax.transaction.Transactional;
 
+import lombok.RequiredArgsConstructor;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Component;
 
@@ -17,19 +18,12 @@ import edu.ncsu.csc.itrust2.repositories.AppointmentRequestRepository;
 
 @Component
 @Transactional
+@RequiredArgsConstructor
 public class AppointmentRequestService extends Service {
 
     private final AppointmentRequestRepository appointmentRequestRepository;
 
     private final UserService                  userService;
-
-    public AppointmentRequestService(
-            AppointmentRequestRepository appointmentRequestRepository,
-            UserService userService
-    ) {
-        this.appointmentRequestRepository = appointmentRequestRepository;
-        this.userService = userService;
-    }
 
     @Override
     protected JpaRepository getRepository () {

@@ -1,5 +1,7 @@
 package edu.ncsu.csc.itrust2.config;
 
+import lombok.RequiredArgsConstructor;
+import org.jetbrains.annotations.NotNull;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationEvent;
 import org.springframework.context.ApplicationListener;
@@ -26,6 +28,7 @@ import edu.ncsu.csc.itrust2.utils.LoggerUtil;
  *
  */
 @Component
+@RequiredArgsConstructor
 public class LoginAuditingListener implements ApplicationListener<ApplicationEvent> {
 
     private final LoggerUtil          util;
@@ -38,21 +41,8 @@ public class LoginAuditingListener implements ApplicationListener<ApplicationEve
 
     private final LoginLockoutService loginLockoutService;
 
-    public LoginAuditingListener(
-            LoggerUtil util,
-            LoginAttemptService loginAttemptService,
-            LoginBanService loginBanService,
-            UserService userService,
-            LoginLockoutService loginLockoutService) {
-        this.util = util;
-        this.loginAttemptService = loginAttemptService;
-        this.loginBanService = loginBanService;
-        this.userService = userService;
-        this.loginLockoutService = loginLockoutService;
-    }
-
     @Override
-    public void onApplicationEvent ( final ApplicationEvent event ) {
+    public void onApplicationEvent (@NotNull final ApplicationEvent event ) {
         if ( event instanceof InteractiveAuthenticationSuccessEvent ) {
             final InteractiveAuthenticationSuccessEvent authEvent = (InteractiveAuthenticationSuccessEvent) event;
             final Authentication authentication = authEvent.getAuthentication();

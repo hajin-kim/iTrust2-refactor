@@ -2,6 +2,7 @@ package edu.ncsu.csc.itrust2.controllers.api;
 
 import java.util.List;
 
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -27,18 +28,13 @@ import edu.ncsu.csc.itrust2.utils.LoggerUtil;
  *
  */
 @RestController
+@RequiredArgsConstructor
 @SuppressWarnings ( { "rawtypes", "unchecked" } )
 public class APIPersonnelController extends APIController {
 
     private final LoggerUtil       loggerUtil;
 
     private final PersonnelService service;
-
-    public APIPersonnelController(LoggerUtil loggerUtil, PersonnelService service) {
-        this.loggerUtil = loggerUtil;
-        this.service = service;
-    }
-
 
     /**
      * Retrieves and returns a list of all Personnel stored in the system
