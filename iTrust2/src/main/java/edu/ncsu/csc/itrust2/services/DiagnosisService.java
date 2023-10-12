@@ -22,15 +22,15 @@ public class DiagnosisService extends Service {
 
     private final DiagnosisRepository repository;
 
-    private final OfficeVisitService  service;
-
     private final ICDCodeService      icdCodeService;
 
+    private final OfficeVisitRepository  officeVisitRepository;
+
     public DiagnosisService(DiagnosisRepository repository,
-                            OfficeVisitService service,
+                            OfficeVisitRepository officeVisitRepository,
                             ICDCodeService icdCodeService) {
         this.repository = repository;
-        this.service = service;
+        this.officeVisitRepository = officeVisitRepository;
         this.icdCodeService = icdCodeService;
     }
 
@@ -40,8 +40,12 @@ public class DiagnosisService extends Service {
     }
 
     public Diagnosis build ( final DiagnosisForm form ) {
+        var id = form.getId();
+        if ( null == id ) {
+            return null;
+        }
         final Diagnosis diag = new Diagnosis();
-        diag.setVisit( (OfficeVisit) service.findById( form.getVisit() ) );
+        diag.setVisit(officeVisitRepository.findById( id ).orElse(null));
         diag.setNote( form.getNote() );
         diag.setCode( icdCodeService.findByCode( form.getCode() ) );
         diag.setId( form.getId() );
@@ -50,7 +54,7 @@ public class DiagnosisService extends Service {
     }
 
     public List<Diagnosis> findByPatient ( final User patient ) {
-        return service.findByPatient( patient ).stream().map( e -> findByVisit( e ) ).flatMap( e -> e.stream() )
+        return officeVisitRepository.findByPatient( patient ).stream().map( e -> findByVisit( e ) ).flatMap( e -> e.stream() )
                 .collect( Collectors.toList() );
 
     }
