@@ -35,6 +35,9 @@ dependencies {
     implementation("org.hibernate:hibernate-validator:6.1.5.Final")
     runtimeOnly("mysql:mysql-connector-java:8.0.28")
 
+    compileOnly("org.projectlombok:lombok:1.18.22")
+    annotationProcessor("org.projectlombok:lombok:1.18.22")
+
     implementation("org.seleniumhq.selenium:selenium-java:3.141.59")
     implementation("com.paulhammant:ngwebdriver:1.0")
     implementation("io.github.bonigarcia:webdrivermanager:3.6.2")
