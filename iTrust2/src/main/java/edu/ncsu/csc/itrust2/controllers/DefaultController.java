@@ -46,8 +46,11 @@ public class DefaultController {
     public RedirectView index ( final Model model ) {
         final Authentication auth = SecurityContextHolder.getContext().getAuthentication();
         final List< ? extends GrantedAuthority> auths = (List< ? extends GrantedAuthority>) auth.getAuthorities();
-        final Role role = auths.stream().map(Object::toString).map( Role::valueOf ).filter(e -> true)
-                .findAny().get();
+        final Role role = auths
+                .stream()
+                .map(o -> Role.valueOf(o.toString()))
+                .findAny()
+                .get();
         return new RedirectView( role.getLanding() );
     }
 
