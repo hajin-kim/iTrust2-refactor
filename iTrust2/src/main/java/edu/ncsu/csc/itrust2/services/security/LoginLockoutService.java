@@ -28,7 +28,7 @@ public class LoginLockoutService extends Service {
     public boolean isIPLocked ( final String ipAddress ) {
         final long now = ZonedDateTime.now().toEpochSecond();
 
-        return repository.findByIp(ipAddress).stream().noneMatch(e -> (now - e.getTime().toEpochSecond()) < 60 * 60); // locked if within
+        return repository.findByIp(ipAddress).stream().anyMatch(e -> (now - e.getTime().toEpochSecond()) < 60 * 60); // locked if within
                                                             // 60 minutes
     }
 
@@ -55,7 +55,7 @@ public class LoginLockoutService extends Service {
 
     public boolean isUserLocked ( final User user ) {
         final long now = ZonedDateTime.now().toEpochSecond();
-        return repository.findByUser(user).stream().noneMatch(e -> (now - e.getTime().toEpochSecond()) < 60 * 60);  // locked if within
+        return repository.findByUser(user).stream().anyMatch(e -> (now - e.getTime().toEpochSecond()) < 60 * 60);  // locked if within
                                                             // 60 minutes
     }
 
