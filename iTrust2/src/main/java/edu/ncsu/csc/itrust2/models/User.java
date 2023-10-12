@@ -5,6 +5,7 @@ import java.util.HashSet;
 import java.util.Set;
 import java.util.stream.Collectors;
 
+import javax.persistence.Column;
 import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
@@ -86,6 +87,7 @@ public class User extends DomainObject {
      * The username of the user
      */
     @Id
+    @Column(length = 20)
     @Length ( max = 20 )
     private String    username;
 
