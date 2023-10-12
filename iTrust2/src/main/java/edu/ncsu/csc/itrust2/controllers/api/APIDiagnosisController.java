@@ -52,7 +52,7 @@ public class APIDiagnosisController extends APIController {
      *            The id of the diagnosis to retrieved
      * @return Response Entity containing the diagnosis if it exists
      */
-    @GetMapping ( BASE_PATH + "/diagnosis/{id}" )
+    @GetMapping ( "/diagnosis/{id}" )
     public ResponseEntity getDiagnosis ( @PathVariable ( "id" ) final Long id ) {
         final Diagnosis d = (Diagnosis) diagnosisService.findById( id );
         loggerUtil.log( TransactionType.DIAGNOSIS_VIEW_BY_ID, LoggerUtil.currentUser(),
@@ -69,7 +69,7 @@ public class APIDiagnosisController extends APIController {
      *            The ID of the office visit to get diagnoses for
      * @return List of Diagnosis objects for the given visit
      */
-    @GetMapping ( BASE_PATH + "/diagnosesforvisit/{id}" )
+    @GetMapping ( "/diagnosesforvisit/{id}" )
     public List<Diagnosis> getDiagnosesForVisit ( @PathVariable ( "id" ) final Long id ) {
         // Check if office visit exists
         if ( !officeVisitService.existsById( id ) ) {
@@ -88,7 +88,7 @@ public class APIDiagnosisController extends APIController {
      *
      * @return List of Diagnoses for the patient
      */
-    @GetMapping ( BASE_PATH + "/diagnoses" )
+    @GetMapping ( "/diagnoses" )
     public List<Diagnosis> getDiagnosis () {
         final User self = userService.findByName( LoggerUtil.currentUser() );
         if ( self == null ) {

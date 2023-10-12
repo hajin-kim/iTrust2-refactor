@@ -54,7 +54,7 @@ public class APIAppointmentRequestController extends APIController {
      *
      * @return list of appointment requests
      */
-    @GetMapping ( BASE_PATH + "/appointmentrequests" )
+    @GetMapping ( "/appointmentrequests" )
     @PreAuthorize ( "hasAnyRole('ROLE_HCP')" )
     public List<AppointmentRequest> getAppointmentRequests () {
         final List<AppointmentRequest> requests = (List<AppointmentRequest>) service.findAll();
@@ -70,7 +70,7 @@ public class APIAppointmentRequestController extends APIController {
      *
      * @return list of appointment requests for the logged in patient
      */
-    @GetMapping ( BASE_PATH + "/appointmentrequest" )
+    @GetMapping ( "/appointmentrequest" )
     @PreAuthorize ( "hasAnyRole('ROLE_PATIENT')" )
     public List<AppointmentRequest> getAppointmentRequestsForPatient () {
         final User patient = userService.findByName( LoggerUtil.currentUser() );
@@ -83,7 +83,7 @@ public class APIAppointmentRequestController extends APIController {
      *
      * @return list of appointment requests for the logged in hcp
      */
-    @GetMapping ( BASE_PATH + "/appointmentrequestForHCP" )
+    @GetMapping ( "/appointmentrequestForHCP" )
     @PreAuthorize ( "hasAnyRole('ROLE_HCP')" )
     public List<AppointmentRequest> getAppointmentRequestsForHCP () {
 
@@ -102,7 +102,7 @@ public class APIAppointmentRequestController extends APIController {
      * @return The AppointmentRequest corresponding to the ID provided or
      *         HttpStatus.NOT_FOUND if no such AppointmentRequest could be found
      */
-    @GetMapping ( BASE_PATH + "/appointmentrequests/{id}" )
+    @GetMapping ( "/appointmentrequests/{id}" )
     @PreAuthorize ( "hasAnyRole('ROLE_HCP', 'ROLE_PATIENT')" )
     public ResponseEntity getAppointmentRequest ( @PathVariable ( "id" ) final Long id ) {
         final AppointmentRequest request = (AppointmentRequest) service.findById( id );
@@ -134,7 +134,7 @@ public class APIAppointmentRequestController extends APIController {
      *         another error occurred while parsing or saving the Request
      *         provided
      */
-    @PostMapping ( BASE_PATH + "/appointmentrequests" )
+    @PostMapping ( "/appointmentrequests" )
     @PreAuthorize ( "hasRole('ROLE_PATIENT')" )
     public ResponseEntity createAppointmentRequest ( @RequestBody final AppointmentRequestForm requestForm ) {
         try {
@@ -162,7 +162,7 @@ public class APIAppointmentRequestController extends APIController {
      *            The id of the AppointmentRequest to delete
      * @return response
      */
-    @DeleteMapping ( BASE_PATH + "/appointmentrequests/{id}" )
+    @DeleteMapping ( "/appointmentrequests/{id}" )
     @PreAuthorize ( "hasAnyRole('ROLE_HCP', 'ROLE_PATIENT')" )
     public ResponseEntity deleteAppointmentRequest ( @PathVariable final Long id ) {
         final AppointmentRequest request = (AppointmentRequest) service.findById( id );
@@ -203,7 +203,7 @@ public class APIAppointmentRequestController extends APIController {
      * @return The AppointmentRequest that is created from the Form that is
      *         provided
      */
-    @PutMapping ( BASE_PATH + "/appointmentrequests/{id}" )
+    @PutMapping ( "/appointmentrequests/{id}" )
     @PreAuthorize ( "hasAnyRole('ROLE_HCP', 'ROLE_PATIENT')" )
     public ResponseEntity updateAppointmentRequest ( @PathVariable final Long id,
             @RequestBody final AppointmentRequestForm requestF ) {
@@ -255,7 +255,7 @@ public class APIAppointmentRequestController extends APIController {
      *
      * @return The page to display for the user
      */
-    @GetMapping ( BASE_PATH + "/viewAppointments" )
+    @GetMapping ( "/viewAppointments" )
     @PreAuthorize ( "hasAnyRole('ROLE_HCP')" )
     public List<AppointmentRequest> upcomingAppointments () {
         final User hcp = userService.findByName( LoggerUtil.currentUser() );

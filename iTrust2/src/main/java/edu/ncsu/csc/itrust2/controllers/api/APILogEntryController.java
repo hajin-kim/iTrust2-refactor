@@ -59,7 +59,7 @@ public class APILogEntryController extends APIController {
      *            the request body of the GET request
      * @return ResponseEntity with an error or list of LogEntries
      */
-    @PostMapping ( BASE_PATH + "/logentries/range" )
+    @PostMapping ( "/logentries/range" )
     public ResponseEntity getEntryByDateRange ( @RequestBody final LogEntryRequestBody body ) {
         // If no dates are specified, get all entries, otherwise use the date
         // range

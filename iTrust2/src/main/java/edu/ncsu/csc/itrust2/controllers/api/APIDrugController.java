@@ -49,7 +49,7 @@ public class APIDrugController extends APIController {
      * @return the created drug
      */
     @PreAuthorize ( "hasRole('ROLE_ADMIN')" )
-    @PostMapping ( BASE_PATH + "/drugs" )
+    @PostMapping ( "/drugs" )
     public ResponseEntity addDrug ( @RequestBody final DrugForm form ) {
         try {
             final Drug drug = new Drug( form );
@@ -84,7 +84,7 @@ public class APIDrugController extends APIController {
      * @return the edited drug or an error message
      */
     @PreAuthorize ( "hasRole('ROLE_ADMIN')" )
-    @PutMapping ( BASE_PATH + "/drugs" )
+    @PutMapping ( "/drugs" )
     public ResponseEntity editDrug ( @RequestBody final DrugForm form ) {
         try {
             // Check for existing drug in database
@@ -125,7 +125,7 @@ public class APIDrugController extends APIController {
      * @return the id of the deleted drug
      */
     @PreAuthorize ( "hasRole('ROLE_ADMIN')" )
-    @DeleteMapping ( BASE_PATH + "/drugs/{id}" )
+    @DeleteMapping ( "/drugs/{id}" )
     public ResponseEntity deleteDrug ( @PathVariable final String id ) {
         try {
             final Drug drug = (Drug) service.findById( Long.parseLong( id ) );
@@ -151,7 +151,7 @@ public class APIDrugController extends APIController {
      *
      * @return a list of drugs
      */
-    @GetMapping ( BASE_PATH + "/drugs" )
+    @GetMapping ( "/drugs" )
     public List<Drug> getDrugs () {
         loggerUtil.log( TransactionType.DRUG_VIEW, LoggerUtil.currentUser(), "Fetched list of drugs" );
         return (List<Drug>) service.findAll();

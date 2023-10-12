@@ -18,7 +18,7 @@ public class APIEmailController extends APIController {
         this.service = service;
     }
 
-    @GetMapping ( BASE_PATH + "emails" )
+    @GetMapping ( "emails" )
     public List<Email> getEmails () {
         return (List<Email>) service.findAll();
     }

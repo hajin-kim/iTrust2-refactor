@@ -51,7 +51,7 @@ public class APIPatientController extends APIController {
      *
      * @return list of patients
      */
-    @GetMapping ( BASE_PATH + "/patients" )
+    @GetMapping ( "/patients" )
     public List<Patient> getPatients () {
         return (List<Patient>) patientService.findAll();
     }
@@ -63,7 +63,7 @@ public class APIPatientController extends APIController {
      *
      * @return The patient object for the currently authenticated user.
      */
-    @GetMapping ( BASE_PATH + "/patient" )
+    @GetMapping ( "/patient" )
     @PreAuthorize ( "hasRole('ROLE_PATIENT')" )
     public ResponseEntity getPatient () {
         final User self = userService.findByName( LoggerUtil.currentUser() );
@@ -86,7 +86,7 @@ public class APIPatientController extends APIController {
      *            Users table
      * @return response
      */
-    @GetMapping ( BASE_PATH + "/patients/{username}" )
+    @GetMapping ( "/patients/{username}" )
     @PreAuthorize ( "hasRole('ROLE_HCP')" )
     public ResponseEntity getPatient ( @PathVariable ( "username" ) final String username ) {
         final Patient patient = (Patient) patientService.findByName( username );
@@ -112,7 +112,7 @@ public class APIPatientController extends APIController {
      *            The updated Patient to save
      * @return response
      */
-    @PutMapping ( BASE_PATH + "/patients/{id}" )
+    @PutMapping ( "/patients/{id}" )
     public ResponseEntity updatePatient ( @PathVariable final String id, @RequestBody final PatientForm patientF ) {
         // check that the user is an HCP or a patient with username equal to id
         boolean userEdit = false; // true if user edits his or her own
@@ -174,7 +174,7 @@ public class APIPatientController extends APIController {
      *         message)
      *
      */
-    @GetMapping ( BASE_PATH + "/patient/findexperts/getzip" )
+    @GetMapping ( "/patient/findexperts/getzip" )
     @PreAuthorize ( "hasRole( 'ROLE_PATIENT')" )
     public ResponseEntity getPatientZip () {
         final String user = LoggerUtil.currentUser();

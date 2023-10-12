@@ -82,7 +82,7 @@ public class APIUserController extends APIController {
      *
      * @return list of users
      */
-    @GetMapping ( BASE_PATH + "/users" )
+    @GetMapping ( "/users" )
     public List<User> getUsers () {
         loggerUtil.log( TransactionType.VIEW_USERS, LoggerUtil.currentUser() );
         return (List<User>) userService.findAll();
@@ -95,7 +95,7 @@ public class APIUserController extends APIController {
      *            The username of the user to be retrieved
      * @return response
      */
-    @GetMapping ( BASE_PATH + "/users/{id}" )
+    @GetMapping ( "/users/{id}" )
     public ResponseEntity getUser ( @PathVariable ( "id" ) final String id ) {
         final User user = userService.findByName( id );
         loggerUtil.log( TransactionType.VIEW_USER, id );
@@ -111,7 +111,7 @@ public class APIUserController extends APIController {
      *            The user to be saved
      * @return response
      */
-    @PostMapping ( BASE_PATH + "/users" )
+    @PostMapping ( "/users" )
     public ResponseEntity createUser ( @RequestBody final UserForm userF ) {
         if ( null != userService.findByName( userF.getUsername() ) ) {
             return new ResponseEntity( errorResponse( "User with the id " + userF.getUsername() + " already exists" ),
@@ -152,7 +152,7 @@ public class APIUserController extends APIController {
      *            The updated User to save in place of the existing one
      * @return response
      */
-    @PutMapping ( BASE_PATH + "/users/{id}" )
+    @PutMapping ( "/users/{id}" )
     public ResponseEntity updateUser ( @PathVariable final String id, @RequestBody final UserForm userF ) {
         User user = null;
         final List<Role> rolesOnUser = userF.getRoles().stream().map( Role::valueOf ).collect( Collectors.toList() );
@@ -195,7 +195,7 @@ public class APIUserController extends APIController {
      * @return the id of the deleted user
      */
     @PreAuthorize ( "hasRole('ROLE_ADMIN')" )
-    @DeleteMapping ( BASE_PATH + "/users/{id}" )
+    @DeleteMapping ( "/users/{id}" )
     public ResponseEntity deleteUser ( @PathVariable final String id ) {
         final User user = userService.findByName( id );
         try {
@@ -217,7 +217,7 @@ public class APIUserController extends APIController {
      *
      * @return role of the currently logged in user.
      */
-    @GetMapping ( BASE_PATH + "/role" )
+    @GetMapping ( "/role" )
     public ResponseEntity getRole () {
         final List<String> matchingRoles = ALL_ROLES.stream().filter(this::hasRole)
                 .collect( Collectors.toList() );
@@ -231,7 +231,7 @@ public class APIUserController extends APIController {
 
     }
 
-    @PostMapping ( BASE_PATH + "/generateUsers" )
+    @PostMapping ( "/generateUsers" )
     public ResponseEntity generateUsers () {
         final User admin = new Personnel( new UserForm( "admin", "123456", Role.ROLE_ADMIN, 1 ) );
 

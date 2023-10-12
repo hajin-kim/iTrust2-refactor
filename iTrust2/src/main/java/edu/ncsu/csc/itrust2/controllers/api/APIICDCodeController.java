@@ -47,7 +47,7 @@ public class APIICDCodeController extends APIController {
      *
      * @return All the codes in the system
      */
-    @GetMapping ( BASE_PATH + "/icdcodes" )
+    @GetMapping ( "/icdcodes" )
     public List<ICDCode> getCodes () {
         loggerUtil.log( TransactionType.ICD_VIEW_ALL, LoggerUtil.currentUser(), "Fetched icd codes" );
         return (List<ICDCode>) service.findAll();
@@ -60,7 +60,7 @@ public class APIICDCodeController extends APIController {
      *            The ID of the code to retrieve
      * @return The requested Code
      */
-    @GetMapping ( BASE_PATH + "/icdcode/{id}" )
+    @GetMapping ( "/icdcode/{id}" )
     public ResponseEntity getCode ( @PathVariable ( "id" ) final Long id ) {
         try {
             final ICDCode code = (ICDCode) service.findById( id );
@@ -86,7 +86,7 @@ public class APIICDCodeController extends APIController {
      *            The new values for the Code
      * @return The Response of the action
      */
-    @PutMapping ( BASE_PATH + "/icdcode/{id}" )
+    @PutMapping ( "/icdcode/{id}" )
     @PreAuthorize ( "hasRole('ROLE_ADMIN')" )
     public ResponseEntity updateCode ( @PathVariable ( "id" ) final Long id, @RequestBody final ICDCodeForm form ) {
         try {
@@ -115,7 +115,7 @@ public class APIICDCodeController extends APIController {
      *            The data for the new Code
      * @return The result of the action
      */
-    @PostMapping ( BASE_PATH + "/icdcodes" )
+    @PostMapping ( "/icdcodes" )
     @PreAuthorize ( "hasRole('ROLE_ADMIN')" )
     public ResponseEntity addCode ( @RequestBody final ICDCodeForm form ) {
         try {
@@ -140,7 +140,7 @@ public class APIICDCodeController extends APIController {
      *            The ID of the code to delete
      * @return The result of the action.
      */
-    @DeleteMapping ( BASE_PATH + "/icdcode/{id}" )
+    @DeleteMapping ( "/icdcode/{id}" )
     @PreAuthorize ( "hasRole('ROLE_ADMIN')" )
     public ResponseEntity deleteCode ( @PathVariable ( "id" ) final Long id ) {
         try {

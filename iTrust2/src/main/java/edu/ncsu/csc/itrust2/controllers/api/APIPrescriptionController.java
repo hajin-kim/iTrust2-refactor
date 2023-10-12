@@ -53,7 +53,7 @@ public class APIPrescriptionController extends APIController {
      * @return the created prescription
      */
     @PreAuthorize ( "hasAnyRole('ROLE_HCP')" )
-    @PostMapping ( BASE_PATH + "/prescriptions" )
+    @PostMapping ( "/prescriptions" )
     public ResponseEntity addPrescription ( @RequestBody final PrescriptionForm form ) {
         try {
             final Prescription p = prescriptionService.build( form );
@@ -79,7 +79,7 @@ public class APIPrescriptionController extends APIController {
      * @return the edited prescription
      */
     @PreAuthorize ( "hasAnyRole('ROLE_HCP', 'ROLE_OD', 'ROLE_OPH', 'ROLE_VIROLOGIST')" )
-    @PutMapping ( BASE_PATH + "/prescriptions" )
+    @PutMapping ( "/prescriptions" )
     public ResponseEntity editPrescription ( @RequestBody final PrescriptionForm form ) {
         try {
             final Prescription p = prescriptionService.build( form );
@@ -111,7 +111,7 @@ public class APIPrescriptionController extends APIController {
      * @return the id of the deleted prescription
      */
     @PreAuthorize ( "hasAnyRole('ROLE_HCP', 'ROLE_OD', 'ROLE_OPH', 'ROLE_VIROLOGIST')" )
-    @DeleteMapping ( BASE_PATH + "/prescriptions/{id}" )
+    @DeleteMapping ( "/prescriptions/{id}" )
     public ResponseEntity deletePrescription ( @PathVariable final Long id ) {
         final Prescription p = (Prescription) prescriptionService.findById( id );
         if ( p == null ) {
@@ -137,7 +137,7 @@ public class APIPrescriptionController extends APIController {
      * @return all saved prescriptions
      */
     @PreAuthorize ( "hasAnyRole('ROLE_HCP', 'ROLE_OD', 'ROLE_OPH', 'ROLE_VIROLOGIST', 'ROLE_PATIENT')" )
-    @GetMapping ( BASE_PATH + "/prescriptions" )
+    @GetMapping ( "/prescriptions" )
     public List<Prescription> getPrescriptions () {
         final User self = userService.findByName( LoggerUtil.currentUser() );
         if ( self.isDoctor() ) {
@@ -163,7 +163,7 @@ public class APIPrescriptionController extends APIController {
      * @return the requested prescription
      */
     @PreAuthorize ( "hasAnyRole('ROLE_HCP', 'ROLE_OD', 'ROLE_OPH', 'ROLE_VIROLOGIST')" )
-    @GetMapping ( BASE_PATH + "/prescriptions/{id}" )
+    @GetMapping ( "/prescriptions/{id}" )
     public ResponseEntity getPrescription ( @PathVariable final Long id ) {
         final Prescription p = (Prescription) prescriptionService.findById( id );
         if ( p == null ) {

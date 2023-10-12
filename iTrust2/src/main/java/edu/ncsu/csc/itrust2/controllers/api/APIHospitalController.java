@@ -46,7 +46,7 @@ public class APIHospitalController extends APIController {
      *
      * @return list of hospitals
      */
-    @GetMapping ( BASE_PATH + "/hospitals" )
+    @GetMapping ( "/hospitals" )
     public List<Hospital> getHospitals () {
         return (List<Hospital>) hospitalService.findAll();
     }
@@ -58,7 +58,7 @@ public class APIHospitalController extends APIController {
      *            The name of the hospital
      * @return response
      */
-    @GetMapping ( BASE_PATH + "/hospitals/{id}" )
+    @GetMapping ( "/hospitals/{id}" )
     public ResponseEntity getHospital ( @PathVariable ( "id" ) final String id ) {
         final Hospital hospital = hospitalService.findByName( id );
         if ( null != hospital ) {
@@ -76,7 +76,7 @@ public class APIHospitalController extends APIController {
      *            The Hospital to be validated and saved to the database.
      * @return response
      */
-    @PostMapping ( BASE_PATH + "/hospitals" )
+    @PostMapping ( "/hospitals" )
     @PreAuthorize ( "hasAnyRole('ROLE_ADMIN') " )
     public ResponseEntity createHospital ( @RequestBody final HospitalForm hospitalF ) {
         Hospital hospital = hospitalService.findByName( hospitalF.getName() );
@@ -108,7 +108,7 @@ public class APIHospitalController extends APIController {
      *            The new hospital to save to this name
      * @return response
      */
-    @PutMapping ( BASE_PATH + "/hospitals/{id}" )
+    @PutMapping ( "/hospitals/{id}" )
     @PreAuthorize ( "hasRole('ROLE_ADMIN') " )
     public ResponseEntity updateHospital ( @PathVariable final String id, @RequestBody final HospitalForm hospitalF ) {
         final Hospital dbHospital = hospitalService.findByName( id );
@@ -136,7 +136,7 @@ public class APIHospitalController extends APIController {
      * @return the id of the deleted hospital
      */
     @PreAuthorize ( "hasRole('ROLE_ADMIN')" )
-    @DeleteMapping ( BASE_PATH + "/hospitals/{id}" )
+    @DeleteMapping ( "/hospitals/{id}" )
     public ResponseEntity deleteHospital ( @PathVariable final String id ) {
         try {
             final Hospital hospital = hospitalService.findByName( id );

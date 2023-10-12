@@ -45,7 +45,7 @@ public class APIPersonnelController extends APIController {
      *
      * @return list of personnel
      */
-    @GetMapping ( BASE_PATH + "/personnel" )
+    @GetMapping ( "/personnel" )
     @PreAuthorize ( "hasAnyRole('ROLE_HCP', 'ROLE_ADMIN')" )
     public List<Personnel> getPersonnel () {
         return (List<Personnel>) service.findAll();
@@ -59,7 +59,7 @@ public class APIPersonnelController extends APIController {
      *            the Users table
      * @return response
      */
-    @GetMapping ( BASE_PATH + "/personnel/{id}" )
+    @GetMapping ( "/personnel/{id}" )
     @PreAuthorize ( "hasAnyRole('ROLE_HCP', 'ROLE_ADMIN')" )
     public ResponseEntity getPersonnel ( @PathVariable ( "id" ) final String id ) {
         final Personnel personnel = (Personnel) service.findByName( id );
@@ -79,7 +79,7 @@ public class APIPersonnelController extends APIController {
      *
      * @return The personnel object for the currently authenticated user.
      */
-    @GetMapping ( BASE_PATH + "/curPersonnel" )
+    @GetMapping ( "/curPersonnel" )
     @PreAuthorize ( "hasAnyRole('ROLE_HCP', 'ROLE_ADMIN')" )
     public ResponseEntity getCurrentPersonnel () {
         final String username = LoggerUtil.currentUser();
@@ -106,7 +106,7 @@ public class APIPersonnelController extends APIController {
      *            The updated Personnel to save
      * @return response
      */
-    @PutMapping ( BASE_PATH + "/personnel/{id}" )
+    @PutMapping ( "/personnel/{id}" )
     @PreAuthorize ( "hasAnyRole('ROLE_HCP', 'ROLE_ADMIN')" )
     public ResponseEntity updatePersonnel ( @PathVariable final String id,
             @RequestBody final PersonnelForm personnelF ) {
@@ -142,7 +142,7 @@ public class APIPersonnelController extends APIController {
      *            the role to filter out personnel by
      * @return response and list of personnel matching query
      */
-    @GetMapping ( BASE_PATH + "/personnel/getbyroles/{role}" )
+    @GetMapping ( "/personnel/getbyroles/{role}" )
     @PreAuthorize ( "hasAnyRole('ROLE_HCP', 'ROLE_ADMIN', 'ROLE_PATIENT')" )
     public ResponseEntity getPersonnelByRole ( @PathVariable ( "role" ) final String role ) {
         final List<Personnel> allPersonnel = (List<Personnel>) service.findAll();

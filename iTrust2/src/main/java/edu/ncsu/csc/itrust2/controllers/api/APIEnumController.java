@@ -47,7 +47,7 @@ public class APIEnumController extends APIController {
      *
      * @return blood types
      */
-    @GetMapping ( BASE_PATH + "/bloodtype" )
+    @GetMapping ( "/bloodtype" )
     public List<Map<String, Object>> getBloodTypes () {
         return Arrays.stream( BloodType.values() ).map(BloodType::getInfo).collect( Collectors.toList() );
     }
@@ -57,7 +57,7 @@ public class APIEnumController extends APIController {
      *
      * @return ethnicity
      */
-    @GetMapping ( BASE_PATH + "/ethnicity" )
+    @GetMapping ( "/ethnicity" )
     public List<Map<String, Object>> getEthnicity () {
         return Arrays.stream( Ethnicity.values() ).map(Ethnicity::getInfo).collect( Collectors.toList() );
     }
@@ -67,7 +67,7 @@ public class APIEnumController extends APIController {
      *
      * @return genders
      */
-    @GetMapping ( BASE_PATH + "/gender" )
+    @GetMapping ( "/gender" )
     public List<Map<String, Object>> getGenders () {
         return Arrays.stream( Gender.values() ).map(Gender::getInfo).collect( Collectors.toList() );
     }
@@ -77,7 +77,7 @@ public class APIEnumController extends APIController {
      *
      * @return states
      */
-    @GetMapping ( BASE_PATH + "/state" )
+    @GetMapping ( "/state" )
     public List<Map<String, Object>> getStates () {
         return Arrays.stream( State.values() ).map(State::getInfo).collect( Collectors.toList() );
     }
@@ -87,7 +87,7 @@ public class APIEnumController extends APIController {
      *
      * @return appointment types
      */
-    @GetMapping ( BASE_PATH + "/appointmenttype" )
+    @GetMapping ( "/appointmenttype" )
     public List<AppointmentType> getAppointmentTypes () {
         final User user = userService.findByName( LoggerUtil.currentUser() );
         final Collection<Role> role = user.getRoles();
@@ -112,7 +112,7 @@ public class APIEnumController extends APIController {
      *
      * @return appointment statuses
      */
-    @GetMapping ( BASE_PATH + "/appointmentstatus" )
+    @GetMapping ( "/appointmentstatus" )
     public List<Status> getAppointmentStatuses () {
         return Arrays.asList( Status.values() );
     }
@@ -122,7 +122,7 @@ public class APIEnumController extends APIController {
      *
      * @return house smoking statuses
      */
-    @GetMapping ( BASE_PATH + "/housesmoking" )
+    @GetMapping ( "/housesmoking" )
     public List<HouseholdSmokingStatus> getHouseSmokingStatuses () {
         return Arrays.asList( HouseholdSmokingStatus.values() ).subList( 1,
                 HouseholdSmokingStatus.values().length );
@@ -133,7 +133,7 @@ public class APIEnumController extends APIController {
      *
      * @return patient smoking statuses
      */
-    @GetMapping ( BASE_PATH + "/patientsmoking" )
+    @GetMapping ( "/patientsmoking" )
     public List<PatientSmokingStatus> getPatientSmokingStatuses () {
         return Arrays.asList( PatientSmokingStatus.values() ).subList( 1,
                 PatientSmokingStatus.values().length );

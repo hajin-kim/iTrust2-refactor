@@ -1,6 +1,7 @@
 package edu.ncsu.csc.itrust2.controllers.api;
 
 import com.google.gson.Gson;
+import org.springframework.web.bind.annotation.RequestMapping;
 
 /**
  * Base class for all of the API controllers for manipulating DomainObjects. Add
@@ -26,6 +27,7 @@ import com.google.gson.Gson;
  * @author Kai Presler-Marshall
  *
  */
+@RequestMapping ( APIController.BASE_PATH )
 public abstract class APIController {
     /** Base path of API */
     static final protected String BASE_PATH = "/api/v1";
