@@ -28,7 +28,7 @@ import com.google.gson.Gson;
  */
 public abstract class APIController {
     /** Base path of API */
-    static final protected String BASE_PATH = "/api/v1/";
+    static final protected String BASE_PATH = "/api/v1";
 
     /**
      * Used to serialize data and messages to JSON for transmitting through the

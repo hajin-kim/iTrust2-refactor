@@ -231,7 +231,7 @@ public class APIUserController extends APIController {
 
     }
 
-    @PostMapping ( BASE_PATH + "generateUsers" )
+    @PostMapping ( BASE_PATH + "/generateUsers" )
     public ResponseEntity generateUsers () {
         final User admin = new Personnel( new UserForm( "admin", "123456", Role.ROLE_ADMIN, 1 ) );
 
