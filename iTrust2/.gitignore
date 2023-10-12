@@ -367,3 +367,8 @@ gradle-app.setting
 *.hprof
 
 # End of https://www.toptal.com/developers/gitignore/api/macos,visualstudiocode,intellij+all,eclipse,java,maven,gradle,angular
+
+
+
+# Local database volumn
+db/**
