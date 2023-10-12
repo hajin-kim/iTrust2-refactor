@@ -13,6 +13,7 @@
     </extension>
     <method v="2">
       <option name="Make" enabled="true" />
+      <option name="RunConfigurationTask" enabled="true" run_configuration_name="local DB" run_configuration_type="docker-deploy" />
     </method>
   </configuration>
 </component>
