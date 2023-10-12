@@ -17,7 +17,7 @@ import edu.ncsu.csc.itrust2.models.enums.Role;
  * Default controller that handles redirecting the logged-in user to one of the
  * appropriate landing screens based on their user roles. If a new role is added
  * to the system, add to the edu.ncsu.csc.itrust.roles.Role class.
- *
+ * <p>
  * Other functionality should (generally) not be added to this class and instead
  * go in an appropriate controller for the user type. See the sub-packages for
  * location of each controller type.
@@ -46,7 +46,7 @@ public class DefaultController {
     public RedirectView index ( final Model model ) {
         final Authentication auth = SecurityContextHolder.getContext().getAuthentication();
         final List< ? extends GrantedAuthority> auths = (List< ? extends GrantedAuthority>) auth.getAuthorities();
-        final Role role = auths.stream().map( e -> e.toString() ).map( Role::valueOf ).filter( e -> null != e )
+        final Role role = auths.stream().map(Object::toString).map( Role::valueOf ).filter(e -> true)
                 .findAny().get();
         return new RedirectView( role.getLanding() );
     }

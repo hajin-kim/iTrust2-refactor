@@ -9,10 +9,10 @@
 		<script th:inline="javascript">
 	    /* Otherwise Thymeleaf tries to parse Javascript as XML and breaks itself sometimes.  Sigh */
 	    /*<![CDATA[*/
-	    var app = angular.module("editPersonnelApp", []);
-	    app.controller("editPersonnelCtrl", function($scope, $http) {
+        const app = angular.module("editPersonnelApp", []);
+        app.controller("editPersonnelCtrl", function($scope, $http) {
 			$scope.err = [];
-			for(var i = 0; i < 12; i++) {
+			for(const i = 0; i < 12; i++) {
 		   	   $scope.err[i] = "";
 			}
 			$http.get("/iTrust2/api/v1/curPersonnel").then(function(response) {
@@ -31,8 +31,8 @@
 			});
 			
 			function checkValidForm(form) {
-			    var valid = true;
-			    if(!form.firstName || form.firstName.length > 20) {
+                const valid = true;
+                if(!form.firstName || form.firstName.length > 20) {
 				    $scope.err[0] = ("first name can not be empty or longer than 20 characters");
 				    valid = false;
 			    } else {
@@ -84,8 +84,8 @@
 			}
 			
 			$scope.submit = function() {
-			    var valid = checkValidForm($scope.personnelForm);
-			    if(!valid) {
+                const valid = checkValidForm($scope.personnelForm);
+                if(!valid) {
 					$scope.message = "";
 			    } else {
 			    			$http.put("/iTrust2/api/v1/personnel/"

@@ -15,7 +15,7 @@ import edu.ncsu.csc.itrust2.models.DomainObject;
  * persistent class (see the `models` package) that you create. Your new
  * *Service can then be `Autowired` into the API controllers and tests that need
  * it.
- *
+ * <p>
  * Each Service class requires an appropriate *Repository instance (ie,
  * UserService needs a UserRepository; IngredientService needs an
  * IngredientRepository) with the `@Autowired` annotation on it. You'll also
@@ -126,10 +126,7 @@ abstract public class Service {
             return null;
         }
         final Optional<DomainObject> res = getRepository().findById( id );
-        if ( res.isPresent() ) {
-            return res.get();
-        }
-        return null;
+        return res.orElse(null);
     }
 
 }

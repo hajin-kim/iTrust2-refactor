@@ -8,8 +8,8 @@
 		<script th:inline="javascript">
 		/* Otherwise Thymeleaf tries to parse Javascript as XML and breaks itself sometimes.  Sigh */
 		/*<![CDATA[*/
-			var app = angular.module("manageICDCodesApp", []);
-			app.controller('manageICDCodesCtrl', function($scope, $http) {
+		const app = angular.module("manageICDCodesApp", []);
+		app.controller('manageICDCodesCtrl', function($scope, $http) {
 
 				$scope.codes = [];
 				$scope.loadTable = function() {
@@ -28,7 +28,7 @@
 				$scope.addCode = function() {
 					if ($scope.code.description.length > 250) {
 						$scope.errorAdding = "Description exceeds character limit of 250";
-					} else if (/^[A-Z][0-9][0-9|A-Z](\.[0-9|A-Z]{0,4})?$/.test($scope.code.code) == false) {
+					} else if (/^[A-Z][0-9][0-9|A-Z](\.[0-9|A-Z]{0,4})?$/.test($scope.code.code) === false) {
 						$scope.errorAdding = "Code doesn't meet specifications";
 					} else {
 						$http.post("/iTrust2/api/v1/icdcodes", $scope.code).then(

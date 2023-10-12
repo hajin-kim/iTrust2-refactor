@@ -14,7 +14,7 @@ public interface LoginBanRepository extends JpaRepository<LoginBan, Long> {
      *            The IP address to search by.
      * @return True iff a ban was found.
      */
-    public boolean existsByIp ( String ipAddress );
+    boolean existsByIp(String ipAddress);
 
     /**
      * Checks to see if there is a LoginBan for the given user.
@@ -23,7 +23,7 @@ public interface LoginBanRepository extends JpaRepository<LoginBan, Long> {
      *            The User to search by.
      * @return True iff a ban was found.
      */
-    public boolean existsByUser ( User user );
+    boolean existsByUser(User user);
 
     /**
      * Deletes all saved LoginBans for the given IP address.
@@ -32,7 +32,7 @@ public interface LoginBanRepository extends JpaRepository<LoginBan, Long> {
      *            The IP address to delete by
      * @return The number of records deleted.
      */
-    public long deleteByIp ( String ipAddress );
+    long deleteByIp(String ipAddress);
 
     /**
      * Deletes all saved LoginBans for the given user.
@@ -41,6 +41,6 @@ public interface LoginBanRepository extends JpaRepository<LoginBan, Long> {
      *            The User to delete by.
      * @return The number of records deleted.
      */
-    public long deleteByUser ( User user );
+    long deleteByUser(User user);
 
 }

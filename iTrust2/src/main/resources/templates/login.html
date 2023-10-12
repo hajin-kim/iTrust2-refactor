@@ -28,9 +28,9 @@ body {
 		<script th:inline="javascript">
 			/* Otherwise Thymeleaf tries to parse Javascript as XML and breaks itself sometimes.  Sigh */
 			/*<![CDATA[*/
-			var app = angular.module("loginApp", []);
+            const app = angular.module("loginApp", []);
 
-			app.controller('loginCtrl', function($scope, $http) {
+            app.controller('loginCtrl', function($scope, $http) {
 
 				$scope.generateUsers = function() {
 					$http.post("api/v1/generateUsers").then(function(success) {

@@ -47,7 +47,7 @@ public class LogEntryTest {
 
         final ZonedDateTime tomorrow = today.plusDays( 1 );
 
-        final List<LogEntry> entries = new ArrayList<LogEntry>();
+        final List<LogEntry> entries = new ArrayList<>();
 
         entries.add( new LogEntry( TransactionType.LOGIN_SUCCESS, USER_1, null, "User has logged in successfully" ) );
 

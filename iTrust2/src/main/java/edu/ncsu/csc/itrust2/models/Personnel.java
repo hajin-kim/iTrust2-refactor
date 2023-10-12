@@ -307,8 +307,7 @@ public class Personnel extends User {
      */
     @Override
     public String toString () {
-        final String s = this.firstName + " " + this.lastName + " " + this.email;
-        return s;
+        return this.firstName + " " + this.lastName + " " + this.email;
     }
 
 }

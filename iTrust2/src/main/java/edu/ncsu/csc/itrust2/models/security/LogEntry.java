@@ -109,7 +109,6 @@ public class LogEntry extends DomainObject {
     /**
      * Sets the ID on the LogEntry. Used by Hibernate.
      *
-     * @param id
      */
     @SuppressWarnings ( "unused" )
     private void setId ( final Long id ) {

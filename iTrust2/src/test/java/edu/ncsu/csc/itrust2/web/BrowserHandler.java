@@ -25,7 +25,7 @@ public class BrowserHandler {
         return driver;
     }
 
-    static private BrowserHandler instance = new BrowserHandler();
+    static private final BrowserHandler instance = new BrowserHandler();
 
     static private String         OS;
 

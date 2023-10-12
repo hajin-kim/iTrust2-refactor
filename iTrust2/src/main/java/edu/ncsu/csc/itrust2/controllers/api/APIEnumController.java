@@ -45,7 +45,7 @@ public class APIEnumController extends APIController {
      */
     @GetMapping ( BASE_PATH + "/bloodtype" )
     public List<Map<String, Object>> getBloodTypes () {
-        return Arrays.asList( BloodType.values() ).stream().map( bt -> bt.getInfo() ).collect( Collectors.toList() );
+        return Arrays.stream( BloodType.values() ).map(BloodType::getInfo).collect( Collectors.toList() );
     }
 
     /**
@@ -55,7 +55,7 @@ public class APIEnumController extends APIController {
      */
     @GetMapping ( BASE_PATH + "/ethnicity" )
     public List<Map<String, Object>> getEthnicity () {
-        return Arrays.asList( Ethnicity.values() ).stream().map( eth -> eth.getInfo() ).collect( Collectors.toList() );
+        return Arrays.stream( Ethnicity.values() ).map(Ethnicity::getInfo).collect( Collectors.toList() );
     }
 
     /**
@@ -65,7 +65,7 @@ public class APIEnumController extends APIController {
      */
     @GetMapping ( BASE_PATH + "/gender" )
     public List<Map<String, Object>> getGenders () {
-        return Arrays.asList( Gender.values() ).stream().map( gen -> gen.getInfo() ).collect( Collectors.toList() );
+        return Arrays.stream( Gender.values() ).map(Gender::getInfo).collect( Collectors.toList() );
     }
 
     /**
@@ -75,7 +75,7 @@ public class APIEnumController extends APIController {
      */
     @GetMapping ( BASE_PATH + "/state" )
     public List<Map<String, Object>> getStates () {
-        return Arrays.asList( State.values() ).stream().map( st -> st.getInfo() ).collect( Collectors.toList() );
+        return Arrays.stream( State.values() ).map(State::getInfo).collect( Collectors.toList() );
     }
 
     /**
@@ -120,9 +120,8 @@ public class APIEnumController extends APIController {
      */
     @GetMapping ( BASE_PATH + "/housesmoking" )
     public List<HouseholdSmokingStatus> getHouseSmokingStatuses () {
-        final List<HouseholdSmokingStatus> ret = Arrays.asList( HouseholdSmokingStatus.values() ).subList( 1,
+        return Arrays.asList( HouseholdSmokingStatus.values() ).subList( 1,
                 HouseholdSmokingStatus.values().length );
-        return ret;
     }
 
     /**
@@ -132,9 +131,8 @@ public class APIEnumController extends APIController {
      */
     @GetMapping ( BASE_PATH + "/patientsmoking" )
     public List<PatientSmokingStatus> getPatientSmokingStatuses () {
-        final List<PatientSmokingStatus> ret = Arrays.asList( PatientSmokingStatus.values() ).subList( 1,
+        return Arrays.asList( PatientSmokingStatus.values() ).subList( 1,
                 PatientSmokingStatus.values().length );
-        return ret;
     }
 
 }

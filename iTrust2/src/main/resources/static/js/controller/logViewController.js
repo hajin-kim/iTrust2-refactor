@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module("logsApp").controller('logsCtrl', function($scope, $http) {
-	var self = this;
+	const self = this;
 	self.logs = [];
 	self.requestParams = {startDate: null, endDate: null, page: 1, pageLength: 10};
 	
@@ -26,29 +26,29 @@ angular.module("logsApp").controller('logsCtrl', function($scope, $http) {
 		if (!input) {
 			return false;
 		}
-		var match = /^(\d?\d)\/(\d?\d)\/(\d{4})$/.exec(input);
+		const match = /^(\d?\d)\/(\d?\d)\/(\d{4})$/.exec(input);
 		if (!match) {
 			return false;
 		}
-		var parsedDate = {
-			year : +match[3],
-			month : +match[1] - 1,
-			day : +match[2]
+		const parsedDate = {
+			year: +match[3],
+			month: +match[1] - 1,
+			day: +match[2]
 		};
 		if (parsedDate.year < 0 || parsedDate.month < 0
 				|| parsedDate.month > 12 || parsedDate.day < 0
 				|| parsedDate.day > 31) {
 			return false;
 		}
-		var date = new Date(parsedDate.year, parsedDate.month,
-				parsedDate.day);
+		const date = new Date(parsedDate.year, parsedDate.month,
+			parsedDate.day);
 		return date.getFullYear() === parsedDate.year
 				&& date.getMonth() === parsedDate.month
 				&& date.getDate() === parsedDate.day;
 	};
 
-	var checkValidDateRange = function(dateRange) {
-		var err = [];
+	const checkValidDateRange = function (dateRange) {
+		const err = [];
 		if (!isDate(dateRange.startDate)) {
 			err.push("Start date is in an invalid format");
 		}
@@ -56,28 +56,28 @@ angular.module("logsApp").controller('logsCtrl', function($scope, $http) {
 			err.push("End date is in an invalid format");
 		}
 		if (dateRange.startDate.getFullYear() > dateRange.endDate
-				.getFullYear()) {
+			.getFullYear()) {
 			err.push("Start date must come before end date.");
 		}
 		if (dateRange.startDate.getFullYear() == dateRange.endDate
 				.getFullYear()
-				&& dateRange.startDate.getFullMonth() > dateRange.endDate
-						.getMonth()) {
+			&& dateRange.startDate.getFullMonth() > dateRange.endDate
+				.getMonth()) {
 			err.push("Start date must come before end date.");
 		}
 		if (dateRange.startDate.getFullYear() == dateRange.endDate
 				.getFullYear()
-				&& dateRange.startDate.getFullMonth() == dateRange.endDate
-						.getMonth()
-				&& dateRange.startDate.getDate() > dateRange.endDate
-						.getDate()) {
+			&& dateRange.startDate.getFullMonth() == dateRange.endDate
+				.getMonth()
+			&& dateRange.startDate.getDate() > dateRange.endDate
+				.getDate()) {
 			err.push("Start date must come before end date.");
 		}
 
 		return err.join(". ");
-	}
+	};
 
-	
+
 	updateTable();
 	
 	

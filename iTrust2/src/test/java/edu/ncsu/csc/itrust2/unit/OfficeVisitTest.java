@@ -109,7 +109,7 @@ public class OfficeVisitTest {
         visit.setDate( ZonedDateTime.now() );
         officeVisitService.save( visit );
 
-        final List<Diagnosis> diagnoses = new Vector<Diagnosis>();
+        final List<Diagnosis> diagnoses = new Vector<>();
 
         final ICDCode code = new ICDCode();
         code.setCode( "A21" );
@@ -148,7 +148,7 @@ public class OfficeVisitTest {
 
         prescriptionService.save( pres );
 
-        final List<Prescription> pr = new ArrayList<Prescription>();
+        final List<Prescription> pr = new ArrayList<>();
         pr.add( pres );
         visit.setPrescriptions( pr );
 

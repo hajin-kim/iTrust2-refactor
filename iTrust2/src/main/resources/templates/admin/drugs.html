@@ -15,24 +15,24 @@
 		<script th:inline="javascript">
       /* Otherwise Thymeleaf tries to parse Javascript as XML and breaks itself sometimes.  Sigh */
       /*<![CDATA[*/
-      var app = angular.module("drugsApp", []);
+      const app = angular.module("drugsApp", []);
       app.controller('drugsCtrl', function ($scope, $http) {
-    	  
-    	var checkValidDrug = function(drug) {
-    		var err = [];
-    		if (drug.description.length > 1024) {
-    			err.push("Description exceeds character limit of 1024");
-    		}
-    		if (drug.name.length > 64) {
-    			err.push("Name exceeds the character limit of 64");
-    		}
-    		if (!/^\d{4}-\d{4}-\d{2}$/.test(drug.code)) {
-    			err.push("Code must be in the format XXXX-XXXX-XX");
-    		}
-    		return err.join(". ");
-    	}
 
-        $scope.drugs = [];
+          const checkValidDrug = function (drug) {
+              const err = [];
+              if (drug.description.length > 1024) {
+                  err.push("Description exceeds character limit of 1024");
+              }
+              if (drug.name.length > 64) {
+                  err.push("Name exceeds the character limit of 64");
+              }
+              if (!/^\d{4}-\d{4}-\d{2}$/.test(drug.code)) {
+                  err.push("Code must be in the format XXXX-XXXX-XX");
+              }
+              return err.join(". ");
+          };
+
+          $scope.drugs = [];
         $scope.loadTable = function () {
           $http.get("/iTrust2/api/v1/drugs").then(
             function (response) {
@@ -45,8 +45,8 @@
         }
 
         $scope.addDrug = function () {
-          var err = checkValidDrug($scope.drug);
-          if (err) {
+            const err = checkValidDrug($scope.drug);
+            if (err) {
             $scope.errorAdding = err;
           } else {
             $http.post("/iTrust2/api/v1/drugs", $scope.drug).then(
@@ -85,8 +85,8 @@
           $scope.selectedDrug = angular.copy(drug);
         };
         $scope.saveDrug = function () {
-       	  var err = checkValidDrug($scope.selectedDrug);
-          if (err) {
+            const err = checkValidDrug($scope.selectedDrug);
+            if (err) {
             $scope.errorAdding = err;
           } else {
             $http.put("/iTrust2/api/v1/drugs", $scope.selectedDrug).then(

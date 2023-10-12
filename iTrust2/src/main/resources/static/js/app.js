@@ -1,3 +1,3 @@
 'use strict';
 
-var App = angular.module('logsApp',[]);
+const App = angular.module('logsApp', []);

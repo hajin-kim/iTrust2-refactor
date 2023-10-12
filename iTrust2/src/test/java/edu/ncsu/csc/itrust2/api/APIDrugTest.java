@@ -63,8 +63,6 @@ public class APIDrugTest {
     /**
      * Tests basic drug API functionality.
      *
-     * @throws UnsupportedEncodingException
-     * @throws Exception
      */
     @Test
     @Transactional

@@ -18,8 +18,8 @@
 		<script th:inline="javascript">
 		/* Otherwise Thymeleaf tries to parse Javascript as XML and breaks itself sometimes.  Sigh */
 		/*<![CDATA[*/
-			var app = angular.module("viewDiagnoses", []);
-			app.controller('controller', function($scope, $http) {
+        const app = angular.module("viewDiagnoses", []);
+        app.controller('controller', function($scope, $http) {
 				// get all diagnoses of patient and display in table			
 				$http.get("/iTrust2/api/v1/diagnoses").then(
 						function(response) {

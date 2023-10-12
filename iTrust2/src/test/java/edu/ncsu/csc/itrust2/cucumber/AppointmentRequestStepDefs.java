@@ -7,6 +7,7 @@ import java.time.LocalDateTime;
 import java.time.ZoneId;
 import java.time.ZoneOffset;
 import java.time.ZonedDateTime;
+import java.util.Objects;
 import java.util.TimeZone;
 
 import org.openqa.selenium.By;
@@ -186,7 +187,7 @@ public class AppointmentRequestStepDefs extends CucumberTest {
      */
     @Given ( "^The patient has requested a medical appointment with type (.+), HCP (.+), date (.+), time (.+), and comments (.+)$" )
     public void createAppointmentRequest ( final String type, final String hcp, final String date, String time,
-            final String comments ) throws ParseException {
+            final String comments ) {
         patientNavigateToView();
 
         final AppointmentRequestForm form = new AppointmentRequestForm();
@@ -204,7 +205,7 @@ public class AppointmentRequestStepDefs extends CucumberTest {
         String hour = timeSplit[0].length() == 1 ? "0" + timeSplit[0] : timeSplit[0];
         final String minute = timeSplit[1].length() == 1 ? "0" + timeSplit[1] : timeSplit[1];
 
-        if ( timeSplit[2] == "PM" ) {
+        if (Objects.equals(timeSplit[2], "PM")) {
             hour = ( Integer.parseInt( hour ) + 12 ) + "";
         }
 

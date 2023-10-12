@@ -62,7 +62,7 @@ public class APILogEntryController extends APIController {
         // range
         List<LogEntry> entries = null;
         try {
-            if ( body.getStartDate().equals( "" ) || body.getEndDate().equals( "" ) ) {
+            if (body.getStartDate().isEmpty() || body.getEndDate().isEmpty()) {
                 throw new ParseException( "Date", 1 );
             }
 
@@ -103,12 +103,11 @@ public class APILogEntryController extends APIController {
         List<LogEntry> visible;
         final User user = userService.findByName( LoggerUtil.currentUser() );
         if ( user.getRoles().contains( Role.ROLE_PATIENT ) ) {
-            visible = new ArrayList<LogEntry>();
+            visible = new ArrayList<>();
 
-            for ( int i = 0; i < entries.size(); i++ ) {
-                final LogEntry le = entries.get( i );
-                if ( le.getLogCode().isPatientViewable() ) {
-                    visible.add( entries.get( i ) );
+            for (final LogEntry le : entries) {
+                if (le.getLogCode().isPatientViewable()) {
+                    visible.add(le);
                 }
             }
         }
@@ -122,7 +121,7 @@ public class APILogEntryController extends APIController {
 
         // Find only the entries that should show up on the page given the page
         // and page length
-        final List<LogEntry> page = new ArrayList<LogEntry>();
+        final List<LogEntry> page = new ArrayList<>();
         for ( int i = 0; i < body.getPageLength(); i++ ) {
             final int idx = ( body.getPage() - 1 ) * body.getPageLength() + i;
             if ( idx >= 0 && visible.size() > idx ) {
@@ -132,9 +131,8 @@ public class APILogEntryController extends APIController {
 
         // Turn these log entries into proper table rows for the application to
         // display
-        final List<LogEntryTableRow> table = new ArrayList<LogEntryTableRow>();
-        for ( int i = 0; i < page.size(); i++ ) {
-            final LogEntry le = page.get( i );
+        final List<LogEntryTableRow> table = new ArrayList<>();
+        for (final LogEntry le : page) {
             final LogEntryTableRow row = new LogEntryTableRow();
 
             row.setPrimary( le.getPrimaryUser() );

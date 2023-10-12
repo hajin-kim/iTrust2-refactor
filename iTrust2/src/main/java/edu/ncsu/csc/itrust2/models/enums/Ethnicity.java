@@ -39,7 +39,7 @@ public enum Ethnicity {
     /**
      * Name of the Ethnicity
      */
-    private String name;
+    private final String name;
 
     /**
      * Constructor for Ethnicity.
@@ -47,7 +47,7 @@ public enum Ethnicity {
      * @param name
      *            Name of the Ethnicity to create
      */
-    private Ethnicity ( final String name ) {
+    Ethnicity(final String name) {
         this.name = name;
     }
 
@@ -67,7 +67,7 @@ public enum Ethnicity {
      * @return map from field name to value for each of the fields in this enum
      */
     public Map<String, Object> getInfo () {
-        final Map<String, Object> map = new HashMap<String, Object>();
+        final Map<String, Object> map = new HashMap<>();
         map.put( "id", name() );
         map.put( "name", getName() );
         return map;

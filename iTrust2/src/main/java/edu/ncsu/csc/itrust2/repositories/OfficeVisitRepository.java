@@ -7,12 +7,14 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import edu.ncsu.csc.itrust2.models.OfficeVisit;
 import edu.ncsu.csc.itrust2.models.User;
 
+import javax.validation.constraints.NotNull;
+
 public interface OfficeVisitRepository extends JpaRepository<OfficeVisit, Long> {
 
-    public List<OfficeVisit> findByHcp ( User hcp );
+    List<OfficeVisit> findByHcp(@NotNull User hcp);
 
-    public List<OfficeVisit> findByPatient ( User patient );
+    List<OfficeVisit> findByPatient(@NotNull User patient);
 
-    public List<OfficeVisit> findByHcpAndPatient ( User hcp, User patient );
+    List<OfficeVisit> findByHcpAndPatient(@NotNull User hcp, @NotNull User patient);
 
 }

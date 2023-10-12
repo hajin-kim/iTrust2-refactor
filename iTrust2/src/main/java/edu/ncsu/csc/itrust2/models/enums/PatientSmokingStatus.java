@@ -41,7 +41,7 @@ public enum PatientSmokingStatus {
     /**
      * Code of the status
      */
-    private int code;
+    private final int code;
 
     /**
      * Create a Status from the numerical code.
@@ -49,7 +49,7 @@ public enum PatientSmokingStatus {
      * @param code
      *            Code of the Status
      */
-    private PatientSmokingStatus ( final int code ) {
+    PatientSmokingStatus(final int code) {
         this.code = code;
     }
 

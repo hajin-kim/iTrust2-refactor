@@ -131,7 +131,7 @@ public class APIDiagnosisTest {
         form.setHouseSmokingStatus( HouseholdSmokingStatus.NONSMOKING );
         form.setPatientSmokingStatus( PatientSmokingStatus.FORMER );
 
-        final List<Diagnosis> list = new ArrayList<Diagnosis>();
+        final List<Diagnosis> list = new ArrayList<>();
         final Diagnosis d = new Diagnosis();
         d.setCode( code );
         d.setNote( "Test diagnosis" );

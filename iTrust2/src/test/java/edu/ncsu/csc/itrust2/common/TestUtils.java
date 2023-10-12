@@ -10,7 +10,7 @@ import com.google.gson.Gson;
  */
 public class TestUtils {
 
-    private static Gson gson = new Gson();
+    private static final Gson gson = new Gson();
 
     /**
      * Uses Google's GSON parser to serialize a Java object to JSON. Useful for

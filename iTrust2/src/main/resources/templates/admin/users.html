@@ -7,28 +7,28 @@
 		<script th::inline="javascript">
 		/* Otherwise Thymeleaf tries to parse Javascript as XML and breaks itself sometimes.  Sigh */
 		/*<![CDATA[*/
- 			var app = angular.module("manageUsersApp", []);
-			app.controller("manageUsersCtrl", function($scope, $http) {
-				
-				var checkValidUserForm = function(user) {
-					var err = [];
-					for(var i = 0; i < $scope.users.length; i++ ) {
-						if( $scope.user.username === $scope.users[i].username) {
-						    err.push("Username already exists");
-						}
-					}
-	       	        if( $scope.user.password === $scope.user.password2) {
-					    // do nothing
-					} else {
-						err.push("passwords do not match" );
-					}
-	 				if( $scope.user.password.length < 6)
-	 					err.push("Password must be more than 6 characters long");
-					return err.join(".  ");
-				}
-				
-			
-		    $scope.users = [];
+        const app = angular.module("manageUsersApp", []);
+        app.controller("manageUsersCtrl", function($scope, $http) {
+
+                const checkValidUserForm = function (user) {
+                    const err = [];
+                    for (const i = 0; i < $scope.users.length; i++) {
+                        if ($scope.user.username === $scope.users[i].username) {
+                            err.push("Username already exists");
+                        }
+                    }
+                    if ($scope.user.password === $scope.user.password2) {
+                        // do nothing
+                    } else {
+                        err.push("passwords do not match");
+                    }
+                    if ($scope.user.password.length < 6)
+                        err.push("Password must be more than 6 characters long");
+                    return err.join(".  ");
+                };
+
+
+                $scope.users = [];
 	        $scope.loadUsers = function () {
 	          $http.get("/iTrust2/api/v1/users").then(
 	            function (response) {
@@ -49,9 +49,9 @@
 				}
 				
 				$scope.user.roles = roles;
-	        	
-		          var err = checkValidUserForm($scope.user);
-		          if (err) {
+
+                const err = checkValidUserForm($scope.user);
+                if (err) {
 		            $scope.errorAdding = err;
 		            $scope.successMessage = "";
 		          } else {

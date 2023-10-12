@@ -165,10 +165,10 @@ public class UserStepDefs extends CucumberTest {
         submit.click();
         waitForAngular();
 
-        /**
-         * Not an assert statement in the typical sense, but we know that we can
-         * log in if we can find the "iTrust" button in the top-left after
-         * attempting to do so.
+        /*
+          Not an assert statement in the typical sense, but we know that we can
+          log in if we can find the "iTrust" button in the top-left after
+          attempting to do so.
          */
         try {
             waitForAngular();

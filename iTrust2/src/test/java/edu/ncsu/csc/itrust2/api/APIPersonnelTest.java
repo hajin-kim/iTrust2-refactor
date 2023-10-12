@@ -66,7 +66,6 @@ public class APIPersonnelTest {
      * Tests getting a non existent personnel and ensures that the correct
      * status is returned.
      *
-     * @throws Exception
      */
     @Test
     @Transactional
@@ -78,7 +77,6 @@ public class APIPersonnelTest {
     /**
      * Tests PersonnelAPI
      *
-     * @throws Exception
      */
     @Test
     @Transactional
@@ -131,7 +129,6 @@ public class APIPersonnelTest {
     /**
      * Tests getting personnel by their roles.
      *
-     * @throws Exception
      */
     @Test
     @Transactional

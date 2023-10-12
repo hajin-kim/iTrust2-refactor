@@ -65,7 +65,6 @@ public class APIPatientTest {
      * Tests that getting a patient that doesn't exist returns the proper
      * status.
      *
-     * @throws Exception
      */
     @Test
     @Transactional
@@ -77,7 +76,6 @@ public class APIPatientTest {
     /**
      * Tests PatientAPI
      *
-     * @throws Exception
      */
     @Test
     @WithMockUser ( username = "hcp", roles = { "HCP" } )
@@ -143,7 +141,6 @@ public class APIPatientTest {
     /**
      * Test accessing the patient PUT request unauthenticated
      *
-     * @throws Exception
      */
     @Test
     @Transactional
@@ -175,7 +172,6 @@ public class APIPatientTest {
     /**
      * Test accessing the patient PUT request as a patient
      *
-     * @throws Exception
      */
     @Test
     @Transactional

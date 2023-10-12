@@ -56,8 +56,7 @@ public class APIOfficeVisitController extends APIController {
     public List<OfficeVisit> getOfficeVisitsForHCP () {
         final User self = userService.findByName( LoggerUtil.currentUser() );
         loggerUtil.log( TransactionType.VIEW_ALL_OFFICE_VISITS, self );
-        final List<OfficeVisit> visits = officeVisitService.findByHcp( self );
-        return visits;
+        return officeVisitService.findByHcp( self );
     }
 
     /**

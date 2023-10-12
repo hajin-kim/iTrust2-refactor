@@ -5,7 +5,7 @@ import com.google.gson.Gson;
 /**
  * Base class for all of the API controllers for manipulating DomainObjects. Add
  * in any fields or functionality that ought to be shared throughout.
- *
+ * <p>
  * PLEASE NOTE: For (almost) all of the REST API endpoints that deal with the
  * creation or modification of DomainObject entities, we have opted to have the
  * API endpoint receive the appropriate *Form* object for each type instead of
@@ -43,7 +43,7 @@ public abstract class APIController {
      *            The object to serialize
      * @return The resulting JSON String
      */
-    static final protected String toJson ( final Object obj ) {
+    static protected String toJson(final Object obj) {
         return GSON.toJson( obj );
     }
 
@@ -57,7 +57,7 @@ public abstract class APIController {
      *            The class of the object
      * @return The resulting JSON String
      */
-    static final protected String toJson ( final Object obj, final Class<JSONResponse> cls ) {
+    static protected String toJson(final Object obj, final Class<JSONResponse> cls) {
         return GSON.toJson( obj, cls );
     }
 
@@ -71,7 +71,7 @@ public abstract class APIController {
      *            The detailed message to send
      * @return The resulting JSON String
      */
-    static final protected String responseMessage ( final String status, final String message ) {
+    static protected String responseMessage(final String status, final String message) {
         return toJson( new JSONResponse( status, message ), JSONResponse.class );
     }
 
@@ -83,7 +83,7 @@ public abstract class APIController {
      *            The detailed message to send
      * @return The resulting JSON String
      */
-    static final protected String errorResponse ( final String message ) {
+    static protected String errorResponse(final String message) {
         return responseMessage( "failed", message );
     }
 
@@ -95,7 +95,7 @@ public abstract class APIController {
      *            The detailed message to send
      * @return The resulting JSON String
      */
-    static final protected String successResponse ( final String message ) {
+    static protected String successResponse(final String message) {
         return responseMessage( "success", message );
     }
 
@@ -111,12 +111,12 @@ public abstract class APIController {
         /**
          * Status of the response (success/failed)
          */
-        String status;
+        final String status;
 
         /**
          * Message (what went wrong, something informational, etc)
          */
-        String message;
+        final String message;
 
         /**
          * Default constructor for JSONResponse.

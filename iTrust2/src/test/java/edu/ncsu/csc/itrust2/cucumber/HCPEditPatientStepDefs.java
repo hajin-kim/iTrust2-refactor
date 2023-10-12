@@ -31,7 +31,7 @@ import io.cucumber.java.en.When;
 public class HCPEditPatientStepDefs extends CucumberTest {
 
     @Given ( "^Jim Nellie and Shelly exist$" )
-    public void loadRequiredUsers () throws ParseException {
+    public void loadRequiredUsers () {
         // make sure the users we need to login exist
 
         final User svang = new Personnel( new UserForm( "svang", "123456", Role.ROLE_HCP, 1 ) );
@@ -77,7 +77,7 @@ public class HCPEditPatientStepDefs extends CucumberTest {
     }
 
     @Given ( "^Dr Shelly Vang has logged in and chosen to edit a patient$" )
-    public void gotoEditPage () throws Exception {
+    public void gotoEditPage () {
         attemptLogout();
 
         driver.get( BASE_URL );
@@ -90,7 +90,7 @@ public class HCPEditPatientStepDefs extends CucumberTest {
     }
 
     @When ( "^she selects the patient with first name: (.+) and last name: (.+)$" )
-    public void selectPatient ( final String first, final String last ) throws Exception {
+    public void selectPatient ( final String first, final String last ) {
         final String username = first.toLowerCase().charAt( 0 ) + last.toLowerCase();
 
         // wait for the patients to load before searching
@@ -99,7 +99,7 @@ public class HCPEditPatientStepDefs extends CucumberTest {
     }
 
     @When ( "^she changes the zip code to: (.+)$" )
-    public void changeZipcode ( final String zip ) throws Exception {
+    public void changeZipcode ( final String zip ) {
         waitForAngular();
         enterValue( "zip", zip );
     }
@@ -169,7 +169,7 @@ public class HCPEditPatientStepDefs extends CucumberTest {
     }
 
     @Then ( "^the zip code has the value: (.+)$" )
-    public void checkZipcode ( final String zip ) throws Exception {
+    public void checkZipcode ( final String zip ) {
         assertEquals( zip, driver.findElement( By.name( "zip" ) ).getAttribute( "value" ) );
     }
 

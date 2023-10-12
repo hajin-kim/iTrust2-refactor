@@ -16,7 +16,7 @@ public interface LoginLockoutRepository extends JpaRepository<LoginLockout, Long
      *            The IP address to search on.
      * @return The list of matching LoginLockouts.
      */
-    public List<LoginLockout> findByIp ( String ipAddress );
+    List<LoginLockout> findByIp(String ipAddress);
 
     /**
      * Deletes all saved LoginLockouts for the given IP address.
@@ -25,7 +25,7 @@ public interface LoginLockoutRepository extends JpaRepository<LoginLockout, Long
      *            The IP address to delete by.
      * @return The number of records deleted.
      */
-    public long deleteByIp ( String ipAddress );
+    long deleteByIp(String ipAddress);
 
     /**
      * Retrieves a list of LoginLockout records for the given user.
@@ -34,7 +34,7 @@ public interface LoginLockoutRepository extends JpaRepository<LoginLockout, Long
      *            The User to search on.
      * @return The list of matching LoginLockouts.
      */
-    public List<LoginLockout> findByUser ( User user );
+    List<LoginLockout> findByUser(User user);
 
     /**
      * Deletes all saved LoginLockouts for the given User.
@@ -43,6 +43,6 @@ public interface LoginLockoutRepository extends JpaRepository<LoginLockout, Long
      *            The user to delete by.
      * @return The number of records deleted.
      */
-    public long deleteByUser ( User user );
+    long deleteByUser(User user);
 
 }

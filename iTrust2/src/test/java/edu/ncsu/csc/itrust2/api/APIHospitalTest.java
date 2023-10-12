@@ -58,7 +58,6 @@ public class APIHospitalTest {
      * Tests getting a non existent hospital and ensures that the correct status
      * is returned.
      *
-     * @throws Exception
      */
     @Test
     public void testGetNonExistentHospital () throws Exception {
@@ -68,7 +67,6 @@ public class APIHospitalTest {
     /**
      * Tests HospitalAPI
      *
-     * @throws Exception
      */
     @Test
     @Transactional
@@ -112,7 +110,7 @@ public class APIHospitalTest {
     @Test
     @Transactional
     @WithMockUser ( username = "patient", roles = { "PATIENT" } )
-    public void testPermissions () throws Exception {
+    public void testPermissions () {
         Assert.assertEquals( 0, service.count() );
 
         final Hospital hospital = new Hospital( "iTrust Test Hospital 2", "1 iTrust Test Street", "27607", "NC" );

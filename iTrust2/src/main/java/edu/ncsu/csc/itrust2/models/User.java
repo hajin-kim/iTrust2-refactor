@@ -31,7 +31,7 @@ import edu.ncsu.csc.itrust2.models.enums.Role;
  * additional record, such as a Patient or Personnel record, is created and
  * references the User object for that user. This allows the iTrust2 system to
  * keep only what information is needed for a particular type of user.
- *
+ * <p>
  * Note use of JsonIgnoreProperties to make sure that even the (hashed) password
  * isn't sent over the API when the Java objects are serialised to JSON.
  *
@@ -204,7 +204,7 @@ public class User extends DomainObject {
      */
     public void addRole ( final Role role ) {
         if ( null == this.roles ) {
-            this.roles = new HashSet<Role>();
+            this.roles = new HashSet<>();
         }
         if ( role.equals( Role.ROLE_ADMIN ) || role.equals( Role.ROLE_PATIENT ) ) {
             throw new IllegalArgumentException( "Admin and Patient roles cannot be added" );
@@ -269,14 +269,9 @@ public class User extends DomainObject {
             return false;
         }
         if ( username == null ) {
-            if ( other.username != null ) {
-                return false;
-            }
+            return other.username == null;
         }
-        else if ( !username.equals( other.username ) ) {
-            return false;
-        }
-        return true;
+        else return username.equals(other.username);
     }
 
     /**

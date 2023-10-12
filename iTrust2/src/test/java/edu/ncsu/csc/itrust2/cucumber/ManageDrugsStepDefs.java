@@ -21,8 +21,7 @@ public class ManageDrugsStepDefs extends CucumberTest {
     }
 
     @When ( "^submit the values for NDC (.+), name (.+), and description (.*)$" )
-    public void submitDrug ( final String ndc, final String name, final String description )
-            throws InterruptedException {
+    public void submitDrug ( final String ndc, final String name, final String description ) {
 
         waitForAngular();
         assertEquals( "Admin Manage Drugs", driver.findElement( By.tagName( "h3" ) ).getText() );
@@ -35,7 +34,7 @@ public class ManageDrugsStepDefs extends CucumberTest {
     }
 
     @Then ( "^the drug (.+) is successfully added to the system$" )
-    public void drugSuccessful ( final String drug ) throws InterruptedException {
+    public void drugSuccessful ( final String drug ) {
         waitForAngular();
         assertEquals( "", driver.findElement( By.id( "errP" ) ).getText() );
 

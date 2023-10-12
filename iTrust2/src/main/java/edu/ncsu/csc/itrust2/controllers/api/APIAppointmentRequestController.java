@@ -180,7 +180,7 @@ public class APIAppointmentRequestController extends APIController {
         }
         catch ( final Exception e ) {
             return new ResponseEntity(
-                    errorResponse( "Could not delete " + request.toString() + " because of " + e.getMessage() ),
+                    errorResponse( "Could not delete " + request + " because of " + e.getMessage() ),
                     HttpStatus.BAD_REQUEST );
         }
 

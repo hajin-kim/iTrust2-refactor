@@ -495,14 +495,9 @@ public class BasicHealthMetrics extends DomainObject {
             return false;
         }
         if ( weight == null ) {
-            if ( other.weight != null ) {
-                return false;
-            }
+            return other.weight == null;
         }
-        else if ( !weight.equals( other.weight ) ) {
-            return false;
-        }
-        return true;
+        else return weight.equals(other.weight);
     }
 
     /**

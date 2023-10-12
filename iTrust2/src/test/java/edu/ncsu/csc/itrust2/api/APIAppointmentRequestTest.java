@@ -81,7 +81,6 @@ public class APIAppointmentRequestTest {
      * Tests that getting an appointment that doesn't exist returns the proper
      * status
      *
-     * @throws Exception
      */
     @Test
     @WithMockUser ( username = "hcp", roles = { "HCP" } )
@@ -105,7 +104,6 @@ public class APIAppointmentRequestTest {
      * Tests creating an appointment request with bad data. Should return a bad
      * request.
      *
-     * @throws Exception
      */
     @Test
     @WithMockUser ( username = "patient", roles = { "PATIENT" } )
@@ -127,7 +125,6 @@ public class APIAppointmentRequestTest {
     /**
      * Tests AppointmentRequestAPi
      *
-     * @throws Exception
      */
     @Test
     @WithMockUser ( username = "patient", roles = { "PATIENT" } )

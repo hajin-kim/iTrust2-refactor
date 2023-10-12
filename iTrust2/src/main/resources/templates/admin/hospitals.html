@@ -7,27 +7,27 @@
 		<script th::inline="javascript">
 		/* Otherwise Thymeleaf tries to parse Javascript as XML and breaks itself sometimes.  Sigh */
 		/*<![CDATA[*/
- 			var app = angular.module("manageHospitalsApp", []);
-			app.controller("manageHospitalsCtrl", function($scope, $http) {
-				
-				var checkValidHospitalForm = function(hospital) {
-					var err = [];
-					for(var i = 0; i < $scope.hospitals.length; i++) {
-						if(hospital.name === $scope.hospitals[i].name) {
+		const app = angular.module("manageHospitalsApp", []);
+		app.controller("manageHospitalsCtrl", function($scope, $http) {
+
+				const checkValidHospitalForm = function (hospital) {
+					const err = [];
+					for (const i = 0; i < $scope.hospitals.length; i++) {
+						if (hospital.name === $scope.hospitals[i].name) {
 							err.push("A hospital with this name already exists");
 						}
 					}
-					if(!/(^\d{5}$)|(^\d{5}-\d{4}$)/.test(hospital.zip) ) {
+					if (!/(^\d{5}$)|(^\d{5}-\d{4}$)/.test(hospital.zip)) {
 						err.push("zipcode must be 5 numbers");
 					}
-					if(hospital.name === "" || hospital.address === "" || hospital.state == ""
-					   || hospital.zip === "") {
+					if (hospital.name === "" || hospital.address === "" || hospital.state == ""
+							|| hospital.zip === "") {
 						err.push("Make sure no fields are empty");
 					}
 					return err.join(".  ");
-				}
-				
-		    $scope.hospitals = [];
+				};
+
+				$scope.hospitals = [];
 	        $scope.loadHospitals = function () {
 	          $http.get("/iTrust2/api/v1/hospitals").then(
 	            function (response) {
@@ -40,8 +40,8 @@
 	        }
 	        
 	        $scope.addHospital = function () {
-		          var err = checkValidHospitalForm($scope.hospital);
-		          if (err) {
+				const err = checkValidHospitalForm($scope.hospital);
+				if (err) {
 		            $scope.errorAdding = err;
 		            $scope.successMessage = "";
 		          } else {

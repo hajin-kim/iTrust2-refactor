@@ -12,9 +12,9 @@
 		<script th:inline="javascript">
 			/* Otherwise Thymeleaf tries to parse Javascript as XML and breaks itself sometimes.  Sigh */
 			/*<![CDATA[*/
-			var app = angular.module("viewAppointmentRequestHCPApp", []);
-			
-			/**
+            const app = angular.module("viewAppointmentRequestHCPApp", []);
+
+            /**
 			 * A filter to humanize the text to be more user friendly.
 			 */
 			 app.filter('humanize', function() {
@@ -33,7 +33,7 @@
 					$http.get("/iTrust2/api/v1/appointmentrequestForHCP")
 						.then(function (response) {
 							$scope.appointments = response.data;
-							if ($scope.appointments.length == 0) {
+							if ($scope.appointments.length === 0) {
 								$scope.errorMsg = "No appointment requests found."
 							}
 						});
@@ -52,7 +52,7 @@
 					$http.get("/iTrust2/api/v1/viewAppointments")
 						.then(function (response) {
 							$scope.incomingAppointments = response.data;
-							if ($scope.incomingAppointments.length == 0) {
+							if ($scope.incomingAppointments.length === 0) {
 								$scope.errorMsg1 = "No appointment found.";
 							} else {
 								$scope.errorMsg1 = "";

@@ -56,7 +56,7 @@ public class FailureHandler extends SimpleUrlAuthenticationFailureHandler {
 
     @Override
     public void onAuthenticationFailure ( final HttpServletRequest request, final HttpServletResponse response,
-            final AuthenticationException ae ) throws IOException, ServletException {
+            final AuthenticationException ae ) throws IOException {
         /*
          * Credit for username to
          * https://stackoverflow.com/questions/8676206/how-can-i-get-the

@@ -6,6 +6,6 @@ import edu.ncsu.csc.itrust2.models.ICDCode;
 
 public interface ICDCodeRepository extends JpaRepository<ICDCode, Long> {
 
-    public ICDCode findByCode ( String code );
+    ICDCode findByCode(String code);
 
 }

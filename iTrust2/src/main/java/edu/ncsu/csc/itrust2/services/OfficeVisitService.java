@@ -104,7 +104,7 @@ public class OfficeVisitService extends Service {
                 ov.setAppointment( match );
             }
             catch ( final Exception e ) {
-                throw new IllegalArgumentException( "Marked as preschedule but no match can be found" + e.toString() );
+                throw new IllegalArgumentException( "Marked as preschedule but no match can be found" + e);
             }
 
         }

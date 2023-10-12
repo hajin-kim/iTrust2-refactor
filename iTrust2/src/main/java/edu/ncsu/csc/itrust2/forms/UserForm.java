@@ -104,7 +104,7 @@ public class UserForm {
      */
     public UserForm ( final User u ) {
         setUsername( u.getUsername() );
-        setRoles( u.getRoles().stream().map( e -> e.toString() ).collect( Collectors.toSet() ) );
+        setRoles( u.getRoles().stream().map(Enum::toString).collect( Collectors.toSet() ) );
         setEnabled( u.getEnabled().toString() );
     }
 
@@ -192,7 +192,7 @@ public class UserForm {
      */
     public void addRole ( final String role ) {
         if ( null == this.roles ) {
-            this.roles = new HashSet<String>();
+            this.roles = new HashSet<>();
         }
         this.roles.add( role );
     }

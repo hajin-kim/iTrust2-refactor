@@ -50,8 +50,7 @@ public class APIPatientController extends APIController {
      */
     @GetMapping ( BASE_PATH + "/patients" )
     public List<Patient> getPatients () {
-        final List<Patient> patients = (List<Patient>) patientService.findAll();
-        return patients;
+        return (List<Patient>) patientService.findAll();
     }
 
     /**

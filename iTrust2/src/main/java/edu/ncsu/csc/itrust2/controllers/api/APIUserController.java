@@ -216,7 +216,7 @@ public class APIUserController extends APIController {
      */
     @GetMapping ( BASE_PATH + "/role" )
     public ResponseEntity getRole () {
-        final List<String> matchingRoles = ALL_ROLES.stream().filter( role -> hasRole( role ) )
+        final List<String> matchingRoles = ALL_ROLES.stream().filter(this::hasRole)
                 .collect( Collectors.toList() );
 
         if ( matchingRoles.isEmpty() ) {

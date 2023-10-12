@@ -97,7 +97,6 @@ public abstract class CucumberTest {
             driver.findElement( By.id( "logout" ) ).click();
         }
         catch ( final Exception e ) {
-            ;
         }
     }
 

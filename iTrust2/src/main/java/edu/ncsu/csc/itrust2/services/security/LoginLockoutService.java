@@ -28,8 +28,7 @@ public class LoginLockoutService extends Service {
     public boolean isIPLocked ( final String ipAddress ) {
         final long now = ZonedDateTime.now().toEpochSecond();
 
-        return repository.findByIp( ipAddress ).stream().filter( e -> ( now - e.getTime().toEpochSecond() ) < 60 * 60 )
-                .collect( Collectors.toList() ).size() > 0; // locked if within
+        return repository.findByIp(ipAddress).stream().noneMatch(e -> (now - e.getTime().toEpochSecond()) < 60 * 60); // locked if within
                                                             // 60 minutes
     }
 
@@ -40,15 +39,14 @@ public class LoginLockoutService extends Service {
 
     public int getRecentIPLockouts ( final String ipAddress ) {
         final long now = ZonedDateTime.now().toEpochSecond();
-        return repository.findByIp( ipAddress ).stream()
-                .filter( e -> ( now - e.getTime().toEpochSecond() ) < 1440 * 60 ).collect( Collectors.toList() ).size(); // 1440
+        return (int) repository.findByIp(ipAddress).stream()
+                .filter(e -> (now - e.getTime().toEpochSecond()) < 1440 * 60).count(); // 1440
                                                                                                                          // minutes
     }
 
     public int getRecentUserLockouts ( final User user ) {
         final long now = ZonedDateTime.now().toEpochSecond();
-        return repository.findByUser( user ).stream().filter( e -> ( now - e.getTime().toEpochSecond() ) < 1440 * 60 )
-                .collect( Collectors.toList() ).size(); // 1440 minutes
+        return (int) repository.findByUser(user).stream().filter(e -> (now - e.getTime().toEpochSecond()) < 1440 * 60).count(); // 1440 minutes
     }
 
     public long clearUser ( final User user ) {
@@ -57,8 +55,7 @@ public class LoginLockoutService extends Service {
 
     public boolean isUserLocked ( final User user ) {
         final long now = ZonedDateTime.now().toEpochSecond();
-        return repository.findByUser( user ).stream().filter( e -> ( now - e.getTime().toEpochSecond() ) < 60 * 60 )
-                .collect( Collectors.toList() ).size() > 0; // locked if within
+        return repository.findByUser(user).stream().noneMatch(e -> (now - e.getTime().toEpochSecond()) < 60 * 60);  // locked if within
                                                             // 60 minutes
     }
 

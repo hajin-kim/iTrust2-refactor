@@ -10,11 +10,11 @@
 		<script th:inline="javascript">
 	    /* Otherwise Thymeleaf tries to parse Javascript as XML and breaks itself sometimes.  Sigh */
 	    /*<![CDATA[*/
-	    var app = angular.module("editPatientApp", ['dateTimeServices']);
-	    app.controller("editPatientCtrl", function($scope, $http, dateTimeService) {
+		const app = angular.module("editPatientApp", ['dateTimeServices']);
+		app.controller("editPatientCtrl", function($scope, $http, dateTimeService) {
 		
 		$scope.err = [];
-		for(var i = 0; i < 12; i++) {
+		for(const i = 0; i < 12; i++) {
 		    $scope.err[i] = "";
 		}
 		$http.get("/iTrust2/api/v1/patient").then(function(response) {
@@ -29,7 +29,7 @@
 		    	$scope.patientForm.ethnicity = $scope.patient.ethnicity.match(/[A-Z][a-z]+/g).join(' ');
 		    }
 		    
-		    return;
+
 		    
 			
 		}, function(rejection) {
@@ -54,17 +54,17 @@
 		});
 		
 		$http.get("/iTrust2/api/v1/patients").then(function(response) {
-		    var patients = response.data;
-		    var patientNames = [];
-		    for(var i = 0; i < patients.length; i++) {
+			const patients = response.data;
+			const patientNames = [];
+			for(const i = 0; i < patients.length; i++) {
 			   patientNames[i] = patients[i].username;
 		    }
 		    $scope.nameOfpatients = patientNames;
 		});
 		
 		function checkValidForm(form) {
-		    var valid = true;
-		    if(!form.firstName || form.firstName.length > 20) {
+			const valid = true;
+			if(!form.firstName || form.firstName.length > 20) {
 			    $scope.err[0] = ("first name can not be empty or longer than 20 characters");
 			    valid = false;
 		    } else {
@@ -128,11 +128,11 @@
 		}
 
 		$scope.submit = function() {
-		    var valid = checkValidForm($scope.patientForm);
-		    if (!valid) {
+			const valid = checkValidForm($scope.patientForm);
+			if (!valid) {
 				$scope.message = "";
 		    } else {
-			    var form = angular.copy($scope.patientForm);
+				const form = angular.copy($scope.patientForm);
 				form.dateOfBirth = dateTimeService.toDateString(form.dateOfBirth);
 				    
 				$http.put("/iTrust2/api/v1/patients/" + $scope.patient.username, form).then(
@@ -146,11 +146,11 @@
 		}
 			
 		function getBT(bloodtype) {
-		    if (bloodtype == null || bloodtype == undefined){
+		    if (bloodtype == null){
 			    return "";
 		    }
-			var pos = bloodtype.replace("Pos", "+");
-			var neg = pos.replace("Neg", "-");
+			const pos = bloodtype.replace("Pos", "+");
+			const neg = pos.replace("Neg", "-");
 			return neg;
 		}
 

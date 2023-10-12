@@ -11,7 +11,7 @@
 		<script th:inline="javascript">
       /* Otherwise Thymeleaf tries to parse Javascript as XML and breaks itself sometimes.  Sigh */
       /*<![CDATA[*/
-      var app = angular.module("prescriptionsApp", []);
+      const app = angular.module("prescriptionsApp", []);
 
       app.controller('prescriptionsCtrl', function ($scope, $http) {
         $scope.prescriptions = [];

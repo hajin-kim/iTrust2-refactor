@@ -19,7 +19,7 @@ public interface LogEntryRepository extends JpaRepository<LogEntry, Long> {
      *            Ending date
      * @return List of matching records
      */
-    public List<LogEntry> findByTimeBetween ( ZonedDateTime fromDate, ZonedDateTime toDate );
+    List<LogEntry> findByTimeBetween(ZonedDateTime fromDate, ZonedDateTime toDate);
 
     /**
      * Retrieves all log entries for a user where they are either the primary or
@@ -30,6 +30,6 @@ public interface LogEntryRepository extends JpaRepository<LogEntry, Long> {
      * @return List of matching records
      */
     @Query ( "SELECT le FROM LogEntry le WHERE le.primaryUser = ?1 OR le.secondaryUser = ?1" )
-    public List<LogEntry> findByPrimaryUserOrSecondaryUser ( String user );
+    List<LogEntry> findByPrimaryUserOrSecondaryUser(String user);
 
 }

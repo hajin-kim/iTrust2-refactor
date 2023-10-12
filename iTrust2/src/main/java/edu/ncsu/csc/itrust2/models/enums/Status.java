@@ -32,7 +32,7 @@ public enum Status {
     /**
      * Code of the status
      */
-    private int code;
+    private final int code;
 
     /**
      * Create a Status from the numerical code.
@@ -40,7 +40,7 @@ public enum Status {
      * @param code
      *            Code of the Status
      */
-    private Status ( final int code ) {
+    Status(final int code) {
         this.code = code;
     }
 
