@@ -1,4 +1,4 @@
-package edu.ncsu.csc.iTrust2.controllers.api;
+package edu.ncsu.csc.itrust2.controllers.api;
 
 import java.util.List;
 
@@ -13,26 +13,32 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import edu.ncsu.csc.iTrust2.forms.OfficeVisitForm;
-import edu.ncsu.csc.iTrust2.models.OfficeVisit;
-import edu.ncsu.csc.iTrust2.models.User;
-import edu.ncsu.csc.iTrust2.models.enums.TransactionType;
-import edu.ncsu.csc.iTrust2.services.OfficeVisitService;
-import edu.ncsu.csc.iTrust2.services.UserService;
-import edu.ncsu.csc.iTrust2.utils.LoggerUtil;
+import edu.ncsu.csc.itrust2.forms.OfficeVisitForm;
+import edu.ncsu.csc.itrust2.models.OfficeVisit;
+import edu.ncsu.csc.itrust2.models.User;
+import edu.ncsu.csc.itrust2.models.enums.TransactionType;
+import edu.ncsu.csc.itrust2.services.OfficeVisitService;
+import edu.ncsu.csc.itrust2.services.UserService;
+import edu.ncsu.csc.itrust2.utils.LoggerUtil;
 
 @RestController
 @SuppressWarnings ( { "unchecked", "rawtypes" } )
 public class APIOfficeVisitController extends APIController {
 
-    @Autowired
-    private OfficeVisitService officeVisitService;
+    private final OfficeVisitService officeVisitService;
 
-    @Autowired
-    private UserService        userService;
+    private final UserService        userService;
 
-    @Autowired
-    private LoggerUtil         loggerUtil;
+    private final LoggerUtil         loggerUtil;
+
+    public APIOfficeVisitController(
+            OfficeVisitService officeVisitService,
+            UserService userService,
+            LoggerUtil loggerUtil) {
+        this.officeVisitService = officeVisitService;
+        this.userService = userService;
+        this.loggerUtil = loggerUtil;
+    }
 
     /**
      * Retrieves a list of all OfficeVisits in the database
@@ -56,8 +62,7 @@ public class APIOfficeVisitController extends APIController {
     public List<OfficeVisit> getOfficeVisitsForHCP () {
         final User self = userService.findByName( LoggerUtil.currentUser() );
         loggerUtil.log( TransactionType.VIEW_ALL_OFFICE_VISITS, self );
-        final List<OfficeVisit> visits = officeVisitService.findByHcp( self );
-        return visits;
+        return officeVisitService.findByHcp( self );
     }
 
     /**

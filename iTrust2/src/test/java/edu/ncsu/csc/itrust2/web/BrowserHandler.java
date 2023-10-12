@@ -1,4 +1,4 @@
-package edu.ncsu.csc.iTrust2.web;
+package edu.ncsu.csc.itrust2.web;
 
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
@@ -25,7 +25,7 @@ public class BrowserHandler {
         return driver;
     }
 
-    static private BrowserHandler instance = new BrowserHandler();
+    static private final BrowserHandler instance = new BrowserHandler();
 
     static private String         OS;
 

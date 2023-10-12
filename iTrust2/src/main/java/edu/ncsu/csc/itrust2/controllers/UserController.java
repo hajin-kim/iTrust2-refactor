@@ -1,4 +1,4 @@
-package edu.ncsu.csc.iTrust2.controllers;
+package edu.ncsu.csc.itrust2.controllers;
 
 import java.io.IOException;
 
@@ -12,7 +12,7 @@ import org.springframework.ui.Model;
 import org.springframework.util.StreamUtils;
 import org.springframework.web.bind.annotation.GetMapping;
 
-import edu.ncsu.csc.iTrust2.utils.LoggerUtil;
+import edu.ncsu.csc.itrust2.utils.LoggerUtil;
 
 /**
  * Controller for Personnel to edit their information
@@ -23,8 +23,11 @@ import edu.ncsu.csc.iTrust2.utils.LoggerUtil;
 @Controller
 public class UserController {
 
-    @Autowired
-    private LoggerUtil util;
+    private final LoggerUtil util;
+
+    public UserController(LoggerUtil util) {
+        this.util = util;
+    }
 
     /**
      * Controller for iTrust2 personnel to modify their demographics.

@@ -1,4 +1,4 @@
-package edu.ncsu.csc.iTrust2.models;
+package edu.ncsu.csc.itrust2.models;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;

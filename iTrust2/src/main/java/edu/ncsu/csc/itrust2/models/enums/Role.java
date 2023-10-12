@@ -1,4 +1,4 @@
-package edu.ncsu.csc.iTrust2.models.enums;
+package edu.ncsu.csc.itrust2.models.enums;
 
 /**
  * For keeping track of various types of users that are known to the system.
@@ -46,12 +46,12 @@ public enum Role {
     /**
      * Numeric code of the Role
      */
-    private int    code;
+    private final int    code;
 
     /**
      * Landing screen the User should be shown when logging in
      */
-    private String landingPage;
+    private final String landingPage;
 
     /**
      * Create a Role from a code and landing screen.
@@ -61,7 +61,7 @@ public enum Role {
      * @param landingPage
      *            Landing page (upon logging in) for the User
      */
-    private Role ( final int code, final String landingPage ) {
+    Role(final int code, final String landingPage) {
         this.code = code;
         this.landingPage = landingPage;
     }

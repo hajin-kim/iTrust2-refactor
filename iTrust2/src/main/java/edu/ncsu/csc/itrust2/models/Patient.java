@@ -1,4 +1,4 @@
-package edu.ncsu.csc.iTrust2.models;
+package edu.ncsu.csc.itrust2.models;
 
 import java.time.LocalDate;
 
@@ -13,14 +13,14 @@ import org.springframework.data.jpa.convert.threeten.Jsr310JpaConverters.LocalDa
 
 import com.google.gson.annotations.JsonAdapter;
 
-import edu.ncsu.csc.iTrust2.adapters.LocalDateAdapter;
-import edu.ncsu.csc.iTrust2.forms.PatientForm;
-import edu.ncsu.csc.iTrust2.forms.UserForm;
-import edu.ncsu.csc.iTrust2.models.enums.BloodType;
-import edu.ncsu.csc.iTrust2.models.enums.Ethnicity;
-import edu.ncsu.csc.iTrust2.models.enums.Gender;
-import edu.ncsu.csc.iTrust2.models.enums.Role;
-import edu.ncsu.csc.iTrust2.models.enums.State;
+import edu.ncsu.csc.itrust2.adapters.LocalDateAdapter;
+import edu.ncsu.csc.itrust2.forms.PatientForm;
+import edu.ncsu.csc.itrust2.forms.UserForm;
+import edu.ncsu.csc.itrust2.models.enums.BloodType;
+import edu.ncsu.csc.itrust2.models.enums.Ethnicity;
+import edu.ncsu.csc.itrust2.models.enums.Gender;
+import edu.ncsu.csc.itrust2.models.enums.Role;
+import edu.ncsu.csc.itrust2.models.enums.State;
 
 @Entity
 public class Patient extends User {

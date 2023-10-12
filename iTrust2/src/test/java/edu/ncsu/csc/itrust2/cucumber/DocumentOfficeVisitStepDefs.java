@@ -1,4 +1,4 @@
-package edu.ncsu.csc.iTrust2.cucumber;
+package edu.ncsu.csc.itrust2.cucumber;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.fail;
@@ -17,20 +17,20 @@ import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebElement;
 import org.springframework.beans.factory.annotation.Autowired;
 
-import edu.ncsu.csc.iTrust2.models.BasicHealthMetrics;
-import edu.ncsu.csc.iTrust2.models.Drug;
-import edu.ncsu.csc.iTrust2.models.Hospital;
-import edu.ncsu.csc.iTrust2.models.OfficeVisit;
-import edu.ncsu.csc.iTrust2.models.Patient;
-import edu.ncsu.csc.iTrust2.models.Prescription;
-import edu.ncsu.csc.iTrust2.models.enums.AppointmentType;
-import edu.ncsu.csc.iTrust2.models.enums.HouseholdSmokingStatus;
-import edu.ncsu.csc.iTrust2.models.enums.PatientSmokingStatus;
-import edu.ncsu.csc.iTrust2.models.enums.State;
-import edu.ncsu.csc.iTrust2.services.BasicHealthMetricsService;
-import edu.ncsu.csc.iTrust2.services.DrugService;
-import edu.ncsu.csc.iTrust2.services.HospitalService;
-import edu.ncsu.csc.iTrust2.services.OfficeVisitService;
+import edu.ncsu.csc.itrust2.models.BasicHealthMetrics;
+import edu.ncsu.csc.itrust2.models.Drug;
+import edu.ncsu.csc.itrust2.models.Hospital;
+import edu.ncsu.csc.itrust2.models.OfficeVisit;
+import edu.ncsu.csc.itrust2.models.Patient;
+import edu.ncsu.csc.itrust2.models.Prescription;
+import edu.ncsu.csc.itrust2.models.enums.AppointmentType;
+import edu.ncsu.csc.itrust2.models.enums.HouseholdSmokingStatus;
+import edu.ncsu.csc.itrust2.models.enums.PatientSmokingStatus;
+import edu.ncsu.csc.itrust2.models.enums.State;
+import edu.ncsu.csc.itrust2.services.BasicHealthMetricsService;
+import edu.ncsu.csc.itrust2.services.DrugService;
+import edu.ncsu.csc.itrust2.services.HospitalService;
+import edu.ncsu.csc.itrust2.services.OfficeVisitService;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
@@ -108,11 +108,11 @@ public class DocumentOfficeVisitStepDefs extends CucumberTest {
         triElement.sendKeys( "100" );
 
         final WebElement houseSmokeElement = driver.findElement(
-                By.cssSelector( "input[value=\"" + HouseholdSmokingStatus.NONSMOKING.toString() + "\"]" ) );
+                By.cssSelector( "input[value=\"" + HouseholdSmokingStatus.NONSMOKING + "\"]" ) );
         houseSmokeElement.click();
 
         final WebElement patientSmokeElement = driver
-                .findElement( By.cssSelector( "input[value=\"" + PatientSmokingStatus.NEVER.toString() + "\"]" ) );
+                .findElement( By.cssSelector( "input[value=\"" + PatientSmokingStatus.NEVER + "\"]" ) );
         patientSmokeElement.click();
 
         driver.findElement( By.name( "submit" ) ).click();
@@ -167,11 +167,11 @@ public class DocumentOfficeVisitStepDefs extends CucumberTest {
         triElement.sendKeys( "0100" );
 
         final WebElement houseSmokeElement = driver.findElement(
-                By.cssSelector( "input[value=\"" + HouseholdSmokingStatus.NONSMOKING.toString() + "\"]" ) );
+                By.cssSelector( "input[value=\"" + HouseholdSmokingStatus.NONSMOKING + "\"]" ) );
         houseSmokeElement.click();
 
         final WebElement patientSmokeElement = driver
-                .findElement( By.cssSelector( "input[value=\"" + PatientSmokingStatus.NEVER.toString() + "\"]" ) );
+                .findElement( By.cssSelector( "input[value=\"" + PatientSmokingStatus.NEVER + "\"]" ) );
         patientSmokeElement.click();
 
         driver.findElement( By.name( "submit" ) ).click();
@@ -200,10 +200,9 @@ public class DocumentOfficeVisitStepDefs extends CucumberTest {
     /**
      * Ensures that the correct health metrics have been entered
      *
-     * @throws InterruptedException
      */
     @Then ( "The basic health metrics for the infant are correct" )
-    public void healthMetricsCorrectInfant () throws InterruptedException {
+    public void healthMetricsCorrectInfant () {
         final BasicHealthMetrics actualBhm = getMetrics();
         assertEquals( expectedBhm.getWeight(), actualBhm.getWeight() );
         assertEquals( expectedBhm.getHeight(), actualBhm.getHeight() );
@@ -214,10 +213,9 @@ public class DocumentOfficeVisitStepDefs extends CucumberTest {
     /**
      * Ensures that the correct health metrics have been entered
      *
-     * @throws InterruptedException
      */
     @Then ( "The basic health metrics for the child are correct" )
-    public void healthMetricsCorrectChild () throws InterruptedException {
+    public void healthMetricsCorrectChild () {
         final BasicHealthMetrics actualBhm = getMetrics();
 
         assertEquals( expectedBhm.getWeight(), actualBhm.getWeight() );
@@ -237,7 +235,7 @@ public class DocumentOfficeVisitStepDefs extends CucumberTest {
                 }
             }
             catch ( final Exception e ) {
-                if ( i == 10 && actualBhm == null ) {
+                if (i == 10) {
                     fail( "Could not get basic health metrics out of database" );
                 }
                 waitForAngular();
@@ -250,10 +248,9 @@ public class DocumentOfficeVisitStepDefs extends CucumberTest {
     /**
      * Ensures that the correct health metrics have been entered
      *
-     * @throws InterruptedException
      */
     @Then ( "The basic health metrics for the adult are correct" )
-    public void healthMetricsCorrectAdult () throws InterruptedException {
+    public void healthMetricsCorrectAdult () {
         final BasicHealthMetrics actualBhm = getMetrics();
         assertEquals( expectedBhm.getWeight(), actualBhm.getWeight() );
         assertEquals( expectedBhm.getHeight(), actualBhm.getHeight() );
@@ -283,10 +280,9 @@ public class DocumentOfficeVisitStepDefs extends CucumberTest {
      *            The name of the patient.
      * @param birthday
      *            The birthday of the patient.
-     * @throws ParseException
      */
     @Given ( "^The patient has name: (.+) and date of birth: (.+)$" )
-    public void patientExistsWithName ( final String name, final String birthday ) throws ParseException {
+    public void patientExistsWithName ( final String name, final String birthday ) {
         attemptLogout();
 
         final Patient patient = (Patient) userService.findByName( "patient" );
@@ -321,12 +317,10 @@ public class DocumentOfficeVisitStepDefs extends CucumberTest {
      *            The smoking status of the patient's household.
      * @param note
      *            The note that the doctor includes.
-     * @throws InterruptedException
      */
     @When ( "^I fill in information on the office visit for an infant with date: (.+), weight: (.+), length: (.+), head circumference: (.+), household smoking status: (.+), and note: (.+)$" )
     public void documentOVWithSpecificInformation ( final String dateString, final String weightString,
-            final String lengthString, final String headString, final String smokingStatus, final String note )
-            throws InterruptedException {
+            final String lengthString, final String headString, final String smokingStatus, final String note ) {
 
         waitForAngular();
         final WebElement notes = driver.findElement( By.name( "notes" ) );
@@ -424,12 +418,11 @@ public class DocumentOfficeVisitStepDefs extends CucumberTest {
      *            The smoking status of the patient's household.
      * @param note
      *            The note that the doctor includes.
-     * @throws InterruptedException
      */
     @When ( "^I fill in information on the office visit for patients of age 3 to 12 with date: (.+), weight: (.+), height: (.+), systolic blood pressure: (.+), diastolic blood pressure: (.+), household smoking status: (.+), and note: (.+)$" )
     public void documentOVWithSpecificInformation3To12 ( final String dateString, final String weightString,
             final String heightString, final String sys, final String dia, final String smokingStatus,
-            final String note ) throws InterruptedException {
+            final String note ) {
 
         waitForAngular();
         final WebElement notes = driver.findElement( By.name( "notes" ) );
@@ -549,13 +542,11 @@ public class DocumentOfficeVisitStepDefs extends CucumberTest {
      *            The patient's triglycerides levels.
      * @param note
      *            The note entered by the HCP
-     * @throws InterruptedException
      */
     @When ( "^I fill in information on the office visit for people 12 and over with date: (.+), weight: (.+), height: (.+), systolic blood pressure: (.+), diastolic blood pressure: (.+), household smoking status: (.+), patient smoking status: (.+), HDL cholesterol: (.+), LDL cholesterol: (.+), triglycerides: (.+), and note: (.+)$" )
     public void documentOVWithSpecificInformation12Over ( final String dateString, final String weightString,
             final String heightString, final String sys, final String dia, final String houseSmoke,
-            final String patientSmoke, final String hdl, final String ldl, final String tri, final String note )
-            throws InterruptedException {
+            final String patientSmoke, final String hdl, final String ldl, final String tri, final String note ) {
         waitForAngular();
         final WebElement notes = driver.findElement( By.name( "notes" ) );
         notes.clear();
@@ -756,16 +747,16 @@ public class DocumentOfficeVisitStepDefs extends CucumberTest {
         officeVisitService.save( visit );
 
         final Prescription pres = new Prescription();
-        pres.setDosage( Integer.valueOf( dosage ) );
+        pres.setDosage( Integer.parseInt( dosage ) );
         pres.setDrug( drugObj );
 
         final LocalDate now = LocalDate.now();
         pres.setEndDate( now.plus( Period.ofWeeks( 5 ) ) );
         pres.setPatient( userService.findByName( "patient" ) );
         pres.setStartDate( now );
-        pres.setRenewals( Integer.valueOf( renewals ) );
+        pres.setRenewals( Integer.parseInt( renewals ) );
 
-        final List<Prescription> pr = new ArrayList<Prescription>();
+        final List<Prescription> pr = new ArrayList<>();
         pr.add( pres );
         visit.setPrescriptions( pr );
 

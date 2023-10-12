@@ -1,4 +1,4 @@
-package edu.ncsu.csc.iTrust2.unit;
+package edu.ncsu.csc.itrust2.unit;
 
 import java.util.List;
 
@@ -13,12 +13,12 @@ import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
-import edu.ncsu.csc.iTrust2.TestConfig;
-import edu.ncsu.csc.iTrust2.forms.UserForm;
-import edu.ncsu.csc.iTrust2.models.Patient;
-import edu.ncsu.csc.iTrust2.models.User;
-import edu.ncsu.csc.iTrust2.models.enums.Role;
-import edu.ncsu.csc.iTrust2.services.PatientService;
+import edu.ncsu.csc.itrust2.TestConfig;
+import edu.ncsu.csc.itrust2.forms.UserForm;
+import edu.ncsu.csc.itrust2.models.Patient;
+import edu.ncsu.csc.itrust2.models.User;
+import edu.ncsu.csc.itrust2.models.enums.Role;
+import edu.ncsu.csc.itrust2.services.PatientService;
 
 @RunWith ( SpringRunner.class )
 @EnableAutoConfiguration

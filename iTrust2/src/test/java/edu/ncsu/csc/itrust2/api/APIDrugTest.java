@@ -1,4 +1,4 @@
-package edu.ncsu.csc.iTrust2.api;
+package edu.ncsu.csc.itrust2.api;
 
 import static org.junit.Assert.assertEquals;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
@@ -28,10 +28,10 @@ import org.springframework.web.context.WebApplicationContext;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
-import edu.ncsu.csc.iTrust2.common.TestUtils;
-import edu.ncsu.csc.iTrust2.forms.DrugForm;
-import edu.ncsu.csc.iTrust2.models.Drug;
-import edu.ncsu.csc.iTrust2.services.DrugService;
+import edu.ncsu.csc.itrust2.common.TestUtils;
+import edu.ncsu.csc.itrust2.forms.DrugForm;
+import edu.ncsu.csc.itrust2.models.Drug;
+import edu.ncsu.csc.itrust2.services.DrugService;
 
 /**
  * Class for testing drug API.
@@ -63,8 +63,6 @@ public class APIDrugTest {
     /**
      * Tests basic drug API functionality.
      *
-     * @throws UnsupportedEncodingException
-     * @throws Exception
      */
     @Test
     @Transactional

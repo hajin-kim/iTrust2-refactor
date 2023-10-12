@@ -1,4 +1,4 @@
-package edu.ncsu.csc.iTrust2.models.enums;
+package edu.ncsu.csc.itrust2.models.enums;
 
 /**
  * Enum representing the status of patient as a smoker.
@@ -41,7 +41,7 @@ public enum PatientSmokingStatus {
     /**
      * Code of the status
      */
-    private int code;
+    private final int code;
 
     /**
      * Create a Status from the numerical code.
@@ -49,7 +49,7 @@ public enum PatientSmokingStatus {
      * @param code
      *            Code of the Status
      */
-    private PatientSmokingStatus ( final int code ) {
+    PatientSmokingStatus(final int code) {
         this.code = code;
     }
 

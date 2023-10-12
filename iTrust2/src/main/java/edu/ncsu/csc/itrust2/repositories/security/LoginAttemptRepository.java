@@ -1,9 +1,9 @@
-package edu.ncsu.csc.iTrust2.repositories.security;
+package edu.ncsu.csc.itrust2.repositories.security;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 
-import edu.ncsu.csc.iTrust2.models.User;
-import edu.ncsu.csc.iTrust2.models.security.LoginAttempt;
+import edu.ncsu.csc.itrust2.models.User;
+import edu.ncsu.csc.itrust2.models.security.LoginAttempt;
 
 public interface LoginAttemptRepository extends JpaRepository<LoginAttempt, Long> {
 
@@ -14,7 +14,7 @@ public interface LoginAttemptRepository extends JpaRepository<LoginAttempt, Long
      *            IP address to search on
      * @return The number of matched LoginAttempts.
      */
-    public long countByIp ( String ipAddress );
+    long countByIp(String ipAddress);
 
     /**
      * Deletes all saved LoginAttempt records for the given IP address.
@@ -23,7 +23,7 @@ public interface LoginAttemptRepository extends JpaRepository<LoginAttempt, Long
      *            The IP address to delete by
      * @return The number of records deleted
      */
-    public long deleteByIp ( String ipAddress );
+    long deleteByIp(String ipAddress);
 
     /**
      * Counts the number of LoginAttempts for the given user.
@@ -32,7 +32,7 @@ public interface LoginAttemptRepository extends JpaRepository<LoginAttempt, Long
      *            The User to search on
      * @return The number of matched LoginAttempts.
      */
-    public long countByUser ( User user );
+    long countByUser(User user);
 
     /**
      * Deletes all saved LoginAttempt records for the given user.
@@ -41,6 +41,6 @@ public interface LoginAttemptRepository extends JpaRepository<LoginAttempt, Long
      *            The User to delete by.
      * @return The number of records deleted
      */
-    public long deleteByUser ( User user );
+    long deleteByUser(User user);
 
 }

@@ -1,4 +1,4 @@
-package edu.ncsu.csc.iTrust2.controllers.api;
+package edu.ncsu.csc.itrust2.controllers.api;
 
 import java.util.List;
 
@@ -15,13 +15,13 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import edu.ncsu.csc.iTrust2.forms.PatientForm;
-import edu.ncsu.csc.iTrust2.models.Patient;
-import edu.ncsu.csc.iTrust2.models.User;
-import edu.ncsu.csc.iTrust2.models.enums.TransactionType;
-import edu.ncsu.csc.iTrust2.services.PatientService;
-import edu.ncsu.csc.iTrust2.services.UserService;
-import edu.ncsu.csc.iTrust2.utils.LoggerUtil;
+import edu.ncsu.csc.itrust2.forms.PatientForm;
+import edu.ncsu.csc.itrust2.models.Patient;
+import edu.ncsu.csc.itrust2.models.User;
+import edu.ncsu.csc.itrust2.models.enums.TransactionType;
+import edu.ncsu.csc.itrust2.services.PatientService;
+import edu.ncsu.csc.itrust2.services.UserService;
+import edu.ncsu.csc.itrust2.utils.LoggerUtil;
 
 /**
  * Controller responsible for providing various REST API endpoints for the
@@ -34,14 +34,17 @@ import edu.ncsu.csc.iTrust2.utils.LoggerUtil;
 @SuppressWarnings ( { "rawtypes", "unchecked" } )
 public class APIPatientController extends APIController {
 
-    @Autowired
-    private PatientService patientService;
+    private final PatientService patientService;
 
-    @Autowired
-    private UserService    userService;
+    private final UserService    userService;
 
-    @Autowired
-    private LoggerUtil     loggerUtil;
+    private final LoggerUtil     loggerUtil;
+
+    public APIPatientController(PatientService patientService, UserService userService, LoggerUtil loggerUtil) {
+        this.patientService = patientService;
+        this.userService = userService;
+        this.loggerUtil = loggerUtil;
+    }
 
     /**
      * Retrieves and returns a list of all Patients stored in the system
@@ -50,8 +53,7 @@ public class APIPatientController extends APIController {
      */
     @GetMapping ( BASE_PATH + "/patients" )
     public List<Patient> getPatients () {
-        final List<Patient> patients = (List<Patient>) patientService.findAll();
-        return patients;
+        return (List<Patient>) patientService.findAll();
     }
 
     /**

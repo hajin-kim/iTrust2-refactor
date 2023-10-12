@@ -1,8 +1,8 @@
-package edu.ncsu.csc.iTrust2.forms;
+package edu.ncsu.csc.itrust2.forms;
 
 import java.io.Serializable;
 
-import edu.ncsu.csc.iTrust2.models.Diagnosis;
+import edu.ncsu.csc.itrust2.models.Diagnosis;
 
 public class DiagnosisForm implements Serializable {
 

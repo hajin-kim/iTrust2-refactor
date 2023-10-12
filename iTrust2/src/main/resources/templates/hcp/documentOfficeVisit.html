@@ -13,7 +13,7 @@
 			<script th:inline="javascript">
                 /* Otherwise Thymeleaf tries to parse Javascript as XML and breaks itself sometimes. */
                 /*<![CDATA[*/
-                var app = angular.module('myApp', ['dateTimeServices']);
+                const app = angular.module('myApp', ['dateTimeServices']);
 
                 /**
                  * A filter to humanize the text to be more user friendly.
@@ -29,8 +29,8 @@
                 app.controller('documentOfficeVisitCtrl', function ($scope, $http, dateTimeService) {
 
                     /*method for checking added perscriptions for vailidity*/
-                    var checkValidPrescription = function (p) {
-                        var err = [];
+                    const checkValidPrescription = function (p) {
+                        const err = [];
                         if (!p.drug) {
                             err.push("Prescription must be associated with a drug");
                         }
@@ -51,19 +51,19 @@
                         }
 
                         return err.join(". ");
-                    }
+                    };
 
                     /*Method for checking added diagnoses for validity*/
-                    var checkValidDiagnosis = function (d) {
-                        var err = [];
+                    const checkValidDiagnosis = function (d) {
+                        const err = [];
                         if (!d.code) {
                             err.push("Diagnosis must be associated with a diagnosis code");
                         }
                         return err.join(". ");
-                    }
+                    };
 
-                    var checkValidProcedure = function (p) {
-                        var err = [];
+                    const checkValidProcedure = function (p) {
+                        const err = [];
                         if (!p.loinc) {
                             err.push("Lab procedure must be associated with a diagnosis code");
                         }
@@ -74,7 +74,7 @@
                             err.push("Lab procedure must have an associated lab tech");
                         }
                         return err.join(". ");
-                    }
+                    };
 
                     $scope.three = false;
                     $scope.threeAndUp = false;
@@ -167,7 +167,7 @@
                     $http.get("/iTrust2/api/v1/personnel/getbyroles/ROLE_LABTECH").then(
                         function (response) {
                             $scope.tech = response.data;
-                            var techLength = $scope.tech.length;
+                            const techLength = $scope.tech.length;
                             for (i = 0; i < techLength; i++) {
                                 //passing to inner loop taken from https://stackoverflow.com/questions/17244614/passing-variable-to-promise-in-a-loop
                                 (function (i) {
@@ -191,98 +191,98 @@
 
                     /*Checks Basic Health Metrics for correctness*/
                     function checkBasicHealthMetrics() {
-                        if (/^[0-9]{1,3}(\.[0-9]?)?$/.test(String($scope.visit.height).replace(/^0+/, '')) == false) {
+                        if (/^[0-9]{1,3}(\.[0-9]?)?$/.test(String($scope.visit.height).replace(/^0+/, '')) === false) {
                             $scope.errorMsg += "Height/length can be up to a 3-digit positive number and potentially one digit of decimal precision\n"
                         }
-                        if (/^[0-9]{1,3}(\.[0-9]?)?$/.test(String($scope.visit.weight).replace(/^0+/, '')) == false) {
+                        if (/^[0-9]{1,3}(\.[0-9]?)?$/.test(String($scope.visit.weight).replace(/^0+/, '')) === false) {
                             $scope.errorMsg += "Weight can be up to a 3-digit positive number and potentially one digit of decimal precision\n"
                         }
-                        if ($scope.three && /^[0-9]{1,3}(\.[0-9]?)?$/.test(String($scope.visit.headCircumference).replace(/^0+/, '')) == false) {
+                        if ($scope.three && /^[0-9]{1,3}(\.[0-9]?)?$/.test(String($scope.visit.headCircumference).replace(/^0+/, '')) === false) {
                             $scope.errorMsg += "Head circumference can be up to a 3-digit positive number and potentially one digit of decimal precision\n"
                         }
-                        if ($scope.threeAndUp && /^[0-9]{1,3}$/.test(String($scope.visit.systolic).replace(/^0+/, '')) == false) {
+                        if ($scope.threeAndUp && /^[0-9]{1,3}$/.test(String($scope.visit.systolic).replace(/^0+/, '')) === false) {
                             $scope.errorMsg += "Systolic blood pressure can be up to a 3-digit positive number\n"
                         }
-                        if ($scope.threeAndUp && /^[0-9]{1,3}$/.test(String($scope.visit.diastolic).replace(/^0+/, '')) == false) {
+                        if ($scope.threeAndUp && /^[0-9]{1,3}$/.test(String($scope.visit.diastolic).replace(/^0+/, '')) === false) {
                             $scope.errorMsg += "Diastolic blood pressure can be up to a 3-digit positive number\n"
                         }
                         //handle invalid and outside of range
-                        if ($scope.twelveAndUp && /^[0-9]{1,2}$/.test(String($scope.visit.hdl).replace(/^0+/, '')) == false) {
+                        if ($scope.twelveAndUp && /^[0-9]{1,2}$/.test(String($scope.visit.hdl).replace(/^0+/, '')) === false) {
                             $scope.errorMsg += "HDL cholesterol can be a number between 0 and 90\n"
                         } else if ($scope.twelveAndUp) {
-                            var hdlInt = parseInt($scope.visit.hdl);
+                            const hdlInt = parseInt($scope.visit.hdl);
                             if (hdlInt > 90) {
                                 $scope.errorMsg += "HDL cholesterol can be a number between 0 and 90\n"
                             }
                         }
                         //handle invalid and outside of range
-                        if ($scope.twelveAndUp && /^[0-9]{1,3}$/.test(String($scope.visit.ldl).replace(/^0+/, '')) == false) {
+                        if ($scope.twelveAndUp && /^[0-9]{1,3}$/.test(String($scope.visit.ldl).replace(/^0+/, '')) === false) {
                             $scope.errorMsg += "LDL cholesterol can be a number between 0 and 600\n"
                         } else if ($scope.twelveAndUp) {
-                            var ldlInt = parseInt($scope.visit.ldl);
+                            const ldlInt = parseInt($scope.visit.ldl);
                             if (ldlInt > 600) {
                                 $scope.errorMsg += "LDL cholesterol can be a number between 0 and 600\n"
                             }
                         }
                         //handle invalid and outside of range
-                        if ($scope.twelveAndUp && /^[0-9]{1,3}$/.test(String($scope.visit.tri).replace(/^0+/, '')) == false) {
+                        if ($scope.twelveAndUp && /^[0-9]{1,3}$/.test(String($scope.visit.tri).replace(/^0+/, '')) === false) {
                             $scope.errorMsg += "Triglycerides can be a number between 100 and 600\n"
                         } else if ($scope.twelveAndUp) {
-                            var triInt = parseInt($scope.visit.tri);
+                            const triInt = parseInt($scope.visit.tri);
                             if (triInt > 600 || triInt < 100) {
                                 $scope.errorMsg += "Triglycerides can be a number between 100 and 600\n"
                             }
                         }
-                        if ($scope.visit.houseSmokingStatus == undefined) {
+                        if ($scope.visit.houseSmokingStatus === undefined) {
                             $scope.errorMsg += "Please select one of the listed household smoking statuses\n";
                         }
-                        if ($scope.twelveAndUp && $scope.visit.patientSmokingStatus == undefined) {
+                        if ($scope.twelveAndUp && $scope.visit.patientSmokingStatus === undefined) {
                             $scope.errorMsg += "Please select one of the listed patient smoking statuses\n";
                         }
                     }
 
                     /*Checks validity of eye health metrics*/
                     function checkEyeHealthMetrics() {
-                        if (/^[0-9]{1,3}?$/.test(String($scope.visit.visualAcuityOS).replace(/^0+/, '')) == false) {
+                        if (/^[0-9]{1,3}?$/.test(String($scope.visit.visualAcuityOS).replace(/^0+/, '')) === false) {
                             $scope.errorMsg += "Visual Acuity OS must be an integer value between 20 and 200 inclusive\n"
                         } else if (parseInt($scope.visit.visualAcuityOS) < 20 || parseInt($scope.visit.visualAcuityOS) > 200) {
                             $scope.errorMsg += "Visual Acuity OS must be an integer value between 20 and 200 inclusive\n"
                         }
 
-                        if (/^[0-9]{1,3}?$/.test(String($scope.visit.visualAcuityOD).replace(/^0+/, '')) == false) {
+                        if (/^[0-9]{1,3}?$/.test(String($scope.visit.visualAcuityOD).replace(/^0+/, '')) === false) {
                             $scope.errorMsg += "Visual Acuity OD must be an integer value between 20 and 200 inclusive\n"
                         } else if (parseInt($scope.visit.visualAcuityOD) < 20 || parseInt($scope.visit.visualAcuityOD) > 200) {
                             $scope.errorMsg += "Visual Acuity OD must be an integer value between 20 and 200 inclusive\n"
                         }
 
-                        if (/^[\-\+]?(?=.*\d)\d*(?:\.\d\d?)?$/.test(String($scope.visit.sphereOS)) == false) {
+                        if (/^[\-\+]?(?=.*\d)\d*(?:\.\d\d?)?$/.test(String($scope.visit.sphereOS)) === false) {
                             $scope.errorMsg += "Sphere OS must be a floating point number up to two digits\n"
                         }
-                        if (/^[\-\+]?(?=.*\d)\d*(?:\.\d\d?)?$/.test(String($scope.visit.sphereOD)) == false) {
+                        if (/^[\-\+]?(?=.*\d)\d*(?:\.\d\d?)?$/.test(String($scope.visit.sphereOD)) === false) {
                             $scope.errorMsg += "Sphere OD must be a floating point number up to two digits\n"
                         }
 
-                        if ($scope.visit.cylinderOS != undefined || $scope.visit.cylinderOD != undefined) {
-                            if (/^[\-\+]?(?=.*\d)\d*(?:\.\d\d?)?$/.test(String($scope.visit.cylinderOS)) == false) {
+                        if ($scope.visit.cylinderOS !== undefined || $scope.visit.cylinderOD !== undefined) {
+                            if (/^[\-\+]?(?=.*\d)\d*(?:\.\d\d?)?$/.test(String($scope.visit.cylinderOS)) === false) {
                                 $scope.errorMsg += "Cylinder OS must be a floating point number up to two digits\n"
                             }
-                            if (/^[\-\+]?(?=.*\d)\d*(?:\.\d\d?)?$/.test(String($scope.visit.cylinderOD)) == false) {
+                            if (/^[\-\+]?(?=.*\d)\d*(?:\.\d\d?)?$/.test(String($scope.visit.cylinderOD)) === false) {
                                 $scope.errorMsg += "Cylinder OD must be a floating point number up to two digits\n"
                             }
                             
-                            if (/^[0-9]{1,3}?$/.test(String($scope.visit.axisOS).replace(/^0+/, '')) == false) {
+                            if (/^[0-9]{1,3}?$/.test(String($scope.visit.axisOS).replace(/^0+/, '')) === false) {
                                 $scope.errorMsg += "Axis OS must be an integer value between 1 and 180 inclusive\n"
                             } else if (parseInt($scope.visit.axisOS) < 1 || parseInt($scope.visit.axisOS) > 180) {
                                 $scope.errorMsg += "Axis OS must be an integer value between 1 and 180 inclusive\n"
                             }
-                            if (/^[0-9]{1,3}?$/.test(String($scope.visit.axisOD).replace(/^0+/, '')) == false) {
+                            if (/^[0-9]{1,3}?$/.test(String($scope.visit.axisOD).replace(/^0+/, '')) === false) {
                                 $scope.errorMsg += "Axis OD must be an integer value between 1 and 180 inclusive\n"
                             } else if (parseInt($scope.visit.axisOD) < 1 || parseInt($scope.visit.axisOD) > 180) {
                                 $scope.errorMsg += "Axis OD must be an integer value between 1 and 180 inclusive\n"
                             }
                         }
 
-                        if ($scope.visit.type == "OPHTHALMOLOGY_SURGERY" && !$scope.visit.surgeryType) {
+                        if ($scope.visit.type === "OPHTHALMOLOGY_SURGERY" && !$scope.visit.surgeryType) {
                             $scope.errorMsg += "Please select one of the listed surgery types\n";
                         }
                     }
@@ -324,7 +324,7 @@
                         }
 
                         // Validate date and time
-                        var date = new Date($scope.visitInputDate);
+                        const date = new Date($scope.visitInputDate);
                         if (!dateTimeService.isValidDate($scope.visitInputDate)) {
                             $scope.errorMsg += "Please input a valid date\n";
                         }
@@ -347,7 +347,7 @@
                         /*Submitting Office Visits by type*/
                         if ($scope.visit.type === 'GENERAL_CHECKUP') {
                             checkBasicHealthMetrics();
-                            if ($scope.errorMsg == "") {
+                            if ($scope.errorMsg === "") {
                                 $scope.visit.diagnoses = $scope.diagnoses;
                                 $scope.visit.prescriptions = $scope.prescriptions;
                                 $scope.visit.prescriptions.forEach(function (p) {
@@ -412,11 +412,11 @@
                     $scope.eyediagnoses = [];
                     $scope.fillDiagnosis = function () {
                         $scope.errorMsg = "";
-                        var d = {
+                        const d = {
                             note: $scope.noteEntry,
                             code: $scope.codeEntry.code
-                        }
-                        var err = checkValidDiagnosis(d);
+                        };
+                        const err = checkValidDiagnosis(d);
                         if (err) {
                             $scope.errorMsg = err;
                             $scope.message = "";
@@ -437,15 +437,15 @@
                     $scope.prescriptions = [];
                     $scope.fillPrescription = function () {
                         $scope.errorMsg = "";
-                        var p = {
+                        const p = {
                             drug: $scope.drugEntry,
                             dosage: $scope.dosageEntry,
                             startDate: $scope.startEntry,
                             endDate: $scope.endEntry,
                             renewals: $scope.renewalEntry
-                        }
-                        
-                        var err = checkValidPrescription(p);
+                        };
+
+                        const err = checkValidPrescription(p);
                         if (err) {
                             $scope.errorMsg = err;
                             $scope.message = "";
@@ -459,12 +459,12 @@
 
                     /*Adding a procedure to Office visit*/
                     $scope.addProcedure = function () {
-                        var procCopy = {};
+                        const procCopy = {};
                         $scope.errorMsg = "";
                         $scope.procedure.patient = $scope.visit.actualPatient.self;
                         $scope.procedure.status = "ASSIGNED";
                         angular.copy($scope.procedure, procCopy);
-                        var err = checkValidProcedure($scope.procedure);
+                        const err = checkValidProcedure($scope.procedure);
                         if (err) {
                             $scope.errorMsg = err;
                             $scope.message = "";

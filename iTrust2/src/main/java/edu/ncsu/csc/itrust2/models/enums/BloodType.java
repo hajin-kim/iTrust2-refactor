@@ -1,4 +1,4 @@
-package edu.ncsu.csc.iTrust2.models.enums;
+package edu.ncsu.csc.itrust2.models.enums;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -51,7 +51,7 @@ public enum BloodType {
     /**
      * Name of the BloodType
      */
-    private String name;
+    private final String name;
 
     /**
      * Constructor for Enum.
@@ -59,7 +59,7 @@ public enum BloodType {
      * @param name
      *            Name of the BloodType
      */
-    private BloodType ( final String name ) {
+    BloodType(final String name) {
         this.name = name;
     }
 
@@ -79,7 +79,7 @@ public enum BloodType {
      * @return map from field name to value for each of the fields in this enum
      */
     public Map<String, Object> getInfo () {
-        final Map<String, Object> map = new HashMap<String, Object>();
+        final Map<String, Object> map = new HashMap<>();
         map.put( "id", name() );
         map.put( "name", getName() );
         return map;

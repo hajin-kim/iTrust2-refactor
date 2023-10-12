@@ -1,4 +1,4 @@
-package edu.ncsu.csc.iTrust2.controllers;
+package edu.ncsu.csc.itrust2.controllers;
 
 import java.util.List;
 
@@ -11,13 +11,13 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.view.RedirectView;
 
-import edu.ncsu.csc.iTrust2.models.enums.Role;
+import edu.ncsu.csc.itrust2.models.enums.Role;
 
 /**
  * Default controller that handles redirecting the logged-in user to one of the
  * appropriate landing screens based on their user roles. If a new role is added
  * to the system, add to the edu.ncsu.csc.itrust.roles.Role class.
- *
+ * <p>
  * Other functionality should (generally) not be added to this class and instead
  * go in an appropriate controller for the user type. See the sub-packages for
  * location of each controller type.
@@ -46,8 +46,11 @@ public class DefaultController {
     public RedirectView index ( final Model model ) {
         final Authentication auth = SecurityContextHolder.getContext().getAuthentication();
         final List< ? extends GrantedAuthority> auths = (List< ? extends GrantedAuthority>) auth.getAuthorities();
-        final Role role = auths.stream().map( e -> e.toString() ).map( Role::valueOf ).filter( e -> null != e )
-                .findAny().get();
+        final Role role = auths
+                .stream()
+                .map(o -> Role.valueOf(o.toString()))
+                .findAny()
+                .get();
         return new RedirectView( role.getLanding() );
     }
 

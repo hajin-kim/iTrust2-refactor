@@ -1,4 +1,4 @@
-package edu.ncsu.csc.iTrust2.cucumber;
+package edu.ncsu.csc.itrust2.cucumber;
 
 import static org.junit.Assert.assertTrue;
 import static org.junit.Assert.fail;
@@ -11,7 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import com.paulhammant.ngwebdriver.NgWebDriver;
 
-import edu.ncsu.csc.iTrust2.services.UserService;
+import edu.ncsu.csc.itrust2.services.UserService;
 import io.github.bonigarcia.wdm.ChromeDriverManager;
 
 public abstract class CucumberTest {
@@ -97,7 +97,6 @@ public abstract class CucumberTest {
             driver.findElement( By.id( "logout" ) ).click();
         }
         catch ( final Exception e ) {
-            ;
         }
     }
 

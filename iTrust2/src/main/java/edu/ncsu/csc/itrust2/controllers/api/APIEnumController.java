@@ -1,4 +1,4 @@
-package edu.ncsu.csc.iTrust2.controllers.api;
+package edu.ncsu.csc.itrust2.controllers.api;
 
 import java.util.Arrays;
 import java.util.Collection;
@@ -10,18 +10,18 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import edu.ncsu.csc.iTrust2.models.User;
-import edu.ncsu.csc.iTrust2.models.enums.AppointmentType;
-import edu.ncsu.csc.iTrust2.models.enums.BloodType;
-import edu.ncsu.csc.iTrust2.models.enums.Ethnicity;
-import edu.ncsu.csc.iTrust2.models.enums.Gender;
-import edu.ncsu.csc.iTrust2.models.enums.HouseholdSmokingStatus;
-import edu.ncsu.csc.iTrust2.models.enums.PatientSmokingStatus;
-import edu.ncsu.csc.iTrust2.models.enums.Role;
-import edu.ncsu.csc.iTrust2.models.enums.State;
-import edu.ncsu.csc.iTrust2.models.enums.Status;
-import edu.ncsu.csc.iTrust2.services.UserService;
-import edu.ncsu.csc.iTrust2.utils.LoggerUtil;
+import edu.ncsu.csc.itrust2.models.User;
+import edu.ncsu.csc.itrust2.models.enums.AppointmentType;
+import edu.ncsu.csc.itrust2.models.enums.BloodType;
+import edu.ncsu.csc.itrust2.models.enums.Ethnicity;
+import edu.ncsu.csc.itrust2.models.enums.Gender;
+import edu.ncsu.csc.itrust2.models.enums.HouseholdSmokingStatus;
+import edu.ncsu.csc.itrust2.models.enums.PatientSmokingStatus;
+import edu.ncsu.csc.itrust2.models.enums.Role;
+import edu.ncsu.csc.itrust2.models.enums.State;
+import edu.ncsu.csc.itrust2.models.enums.Status;
+import edu.ncsu.csc.itrust2.services.UserService;
+import edu.ncsu.csc.itrust2.utils.LoggerUtil;
 
 /**
  * This class provides GET endpoints for all of the Enums, so that they can be
@@ -32,11 +32,15 @@ import edu.ncsu.csc.iTrust2.utils.LoggerUtil;
 @RestController
 public class APIEnumController extends APIController {
 
-    @Autowired
-    private LoggerUtil  loggerUtil;
+    private final LoggerUtil  loggerUtil;
 
-    @Autowired
-    private UserService userService;
+    private final UserService userService;
+
+    public APIEnumController(LoggerUtil loggerUtil, UserService userService) {
+        this.loggerUtil = loggerUtil;
+        this.userService = userService;
+    }
+
 
     /**
      * Get the blood types
@@ -45,7 +49,7 @@ public class APIEnumController extends APIController {
      */
     @GetMapping ( BASE_PATH + "/bloodtype" )
     public List<Map<String, Object>> getBloodTypes () {
-        return Arrays.asList( BloodType.values() ).stream().map( bt -> bt.getInfo() ).collect( Collectors.toList() );
+        return Arrays.stream( BloodType.values() ).map(BloodType::getInfo).collect( Collectors.toList() );
     }
 
     /**
@@ -55,7 +59,7 @@ public class APIEnumController extends APIController {
      */
     @GetMapping ( BASE_PATH + "/ethnicity" )
     public List<Map<String, Object>> getEthnicity () {
-        return Arrays.asList( Ethnicity.values() ).stream().map( eth -> eth.getInfo() ).collect( Collectors.toList() );
+        return Arrays.stream( Ethnicity.values() ).map(Ethnicity::getInfo).collect( Collectors.toList() );
     }
 
     /**
@@ -65,7 +69,7 @@ public class APIEnumController extends APIController {
      */
     @GetMapping ( BASE_PATH + "/gender" )
     public List<Map<String, Object>> getGenders () {
-        return Arrays.asList( Gender.values() ).stream().map( gen -> gen.getInfo() ).collect( Collectors.toList() );
+        return Arrays.stream( Gender.values() ).map(Gender::getInfo).collect( Collectors.toList() );
     }
 
     /**
@@ -75,7 +79,7 @@ public class APIEnumController extends APIController {
      */
     @GetMapping ( BASE_PATH + "/state" )
     public List<Map<String, Object>> getStates () {
-        return Arrays.asList( State.values() ).stream().map( st -> st.getInfo() ).collect( Collectors.toList() );
+        return Arrays.stream( State.values() ).map(State::getInfo).collect( Collectors.toList() );
     }
 
     /**
@@ -120,9 +124,8 @@ public class APIEnumController extends APIController {
      */
     @GetMapping ( BASE_PATH + "/housesmoking" )
     public List<HouseholdSmokingStatus> getHouseSmokingStatuses () {
-        final List<HouseholdSmokingStatus> ret = Arrays.asList( HouseholdSmokingStatus.values() ).subList( 1,
+        return Arrays.asList( HouseholdSmokingStatus.values() ).subList( 1,
                 HouseholdSmokingStatus.values().length );
-        return ret;
     }
 
     /**
@@ -132,9 +135,8 @@ public class APIEnumController extends APIController {
      */
     @GetMapping ( BASE_PATH + "/patientsmoking" )
     public List<PatientSmokingStatus> getPatientSmokingStatuses () {
-        final List<PatientSmokingStatus> ret = Arrays.asList( PatientSmokingStatus.values() ).subList( 1,
+        return Arrays.asList( PatientSmokingStatus.values() ).subList( 1,
                 PatientSmokingStatus.values().length );
-        return ret;
     }
 
 }

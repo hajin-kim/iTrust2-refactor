@@ -1,4 +1,4 @@
-package edu.ncsu.csc.iTrust2.controllers.api;
+package edu.ncsu.csc.itrust2.controllers.api;
 
 import java.util.List;
 
@@ -14,11 +14,11 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import edu.ncsu.csc.iTrust2.forms.DrugForm;
-import edu.ncsu.csc.iTrust2.models.Drug;
-import edu.ncsu.csc.iTrust2.models.enums.TransactionType;
-import edu.ncsu.csc.iTrust2.services.DrugService;
-import edu.ncsu.csc.iTrust2.utils.LoggerUtil;
+import edu.ncsu.csc.itrust2.forms.DrugForm;
+import edu.ncsu.csc.itrust2.models.Drug;
+import edu.ncsu.csc.itrust2.models.enums.TransactionType;
+import edu.ncsu.csc.itrust2.services.DrugService;
+import edu.ncsu.csc.itrust2.utils.LoggerUtil;
 
 /**
  * Provides REST endpoints that deal with drugs. Exposes functionality to add,
@@ -31,11 +31,14 @@ import edu.ncsu.csc.iTrust2.utils.LoggerUtil;
 @RestController
 public class APIDrugController extends APIController {
 
-    @Autowired
-    private DrugService service;
+    private final DrugService service;
 
-    @Autowired
-    private LoggerUtil  loggerUtil;
+    private final LoggerUtil  loggerUtil;
+
+    public APIDrugController(DrugService service, LoggerUtil loggerUtil) {
+        this.service = service;
+        this.loggerUtil = loggerUtil;
+    }
 
     /**
      * Adds a new drug to the system. Requires admin permissions. Returns an

@@ -1,4 +1,4 @@
-package edu.ncsu.csc.iTrust2.api;
+package edu.ncsu.csc.itrust2.api;
 
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.put;
@@ -24,14 +24,14 @@ import org.springframework.test.web.servlet.MvcResult;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import org.springframework.web.context.WebApplicationContext;
 
-import edu.ncsu.csc.iTrust2.common.TestUtils;
-import edu.ncsu.csc.iTrust2.forms.PersonnelForm;
-import edu.ncsu.csc.iTrust2.forms.UserForm;
-import edu.ncsu.csc.iTrust2.models.Personnel;
-import edu.ncsu.csc.iTrust2.models.User;
-import edu.ncsu.csc.iTrust2.models.enums.Role;
-import edu.ncsu.csc.iTrust2.models.enums.State;
-import edu.ncsu.csc.iTrust2.services.PersonnelService;
+import edu.ncsu.csc.itrust2.common.TestUtils;
+import edu.ncsu.csc.itrust2.forms.PersonnelForm;
+import edu.ncsu.csc.itrust2.forms.UserForm;
+import edu.ncsu.csc.itrust2.models.Personnel;
+import edu.ncsu.csc.itrust2.models.User;
+import edu.ncsu.csc.itrust2.models.enums.Role;
+import edu.ncsu.csc.itrust2.models.enums.State;
+import edu.ncsu.csc.itrust2.services.PersonnelService;
 
 /**
  * Test for API functionality for interacting with Personnel
@@ -66,7 +66,6 @@ public class APIPersonnelTest {
      * Tests getting a non existent personnel and ensures that the correct
      * status is returned.
      *
-     * @throws Exception
      */
     @Test
     @Transactional
@@ -78,7 +77,6 @@ public class APIPersonnelTest {
     /**
      * Tests PersonnelAPI
      *
-     * @throws Exception
      */
     @Test
     @Transactional
@@ -131,7 +129,6 @@ public class APIPersonnelTest {
     /**
      * Tests getting personnel by their roles.
      *
-     * @throws Exception
      */
     @Test
     @Transactional

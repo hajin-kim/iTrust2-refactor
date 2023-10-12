@@ -1,4 +1,4 @@
-package edu.ncsu.csc.iTrust2.controllers.api;
+package edu.ncsu.csc.itrust2.controllers.api;
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -15,15 +15,15 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import edu.ncsu.csc.iTrust2.forms.AppointmentRequestForm;
-import edu.ncsu.csc.iTrust2.models.AppointmentRequest;
-import edu.ncsu.csc.iTrust2.models.User;
-import edu.ncsu.csc.iTrust2.models.enums.Role;
-import edu.ncsu.csc.iTrust2.models.enums.Status;
-import edu.ncsu.csc.iTrust2.models.enums.TransactionType;
-import edu.ncsu.csc.iTrust2.services.AppointmentRequestService;
-import edu.ncsu.csc.iTrust2.services.UserService;
-import edu.ncsu.csc.iTrust2.utils.LoggerUtil;
+import edu.ncsu.csc.itrust2.forms.AppointmentRequestForm;
+import edu.ncsu.csc.itrust2.models.AppointmentRequest;
+import edu.ncsu.csc.itrust2.models.User;
+import edu.ncsu.csc.itrust2.models.enums.Role;
+import edu.ncsu.csc.itrust2.models.enums.Status;
+import edu.ncsu.csc.itrust2.models.enums.TransactionType;
+import edu.ncsu.csc.itrust2.services.AppointmentRequestService;
+import edu.ncsu.csc.itrust2.services.UserService;
+import edu.ncsu.csc.itrust2.utils.LoggerUtil;
 
 /**
  * Class that provides REST API endpoints for the AppointmentRequest model. In
@@ -37,14 +37,17 @@ import edu.ncsu.csc.iTrust2.utils.LoggerUtil;
 @SuppressWarnings ( { "unchecked", "rawtypes" } )
 public class APIAppointmentRequestController extends APIController {
 
-    @Autowired
-    private AppointmentRequestService service;
+    private final AppointmentRequestService service;
 
-    @Autowired
-    private LoggerUtil                loggerUtil;
+    private final LoggerUtil                loggerUtil;
 
-    @Autowired
-    private UserService               userService;
+    private final UserService               userService;
+
+    public APIAppointmentRequestController(AppointmentRequestService service, LoggerUtil loggerUtil, UserService userService) {
+        this.service = service;
+        this.loggerUtil = loggerUtil;
+        this.userService = userService;
+    }
 
     /**
      * Retrieves a list of all AppointmentRequests in the database
@@ -180,7 +183,7 @@ public class APIAppointmentRequestController extends APIController {
         }
         catch ( final Exception e ) {
             return new ResponseEntity(
-                    errorResponse( "Could not delete " + request.toString() + " because of " + e.getMessage() ),
+                    errorResponse( "Could not delete " + request + " because of " + e.getMessage() ),
                     HttpStatus.BAD_REQUEST );
         }
 

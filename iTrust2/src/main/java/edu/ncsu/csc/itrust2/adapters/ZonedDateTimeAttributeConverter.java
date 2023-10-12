@@ -1,4 +1,4 @@
-package edu.ncsu.csc.iTrust2.adapters;
+package edu.ncsu.csc.itrust2.adapters;
 
 import java.sql.Timestamp;
 import java.time.ZoneId;

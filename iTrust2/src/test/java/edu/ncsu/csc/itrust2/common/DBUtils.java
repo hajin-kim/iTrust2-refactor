@@ -1,4 +1,4 @@
-package edu.ncsu.csc.iTrust2.common;
+package edu.ncsu.csc.itrust2.common;
 
 import java.sql.Connection;
 import java.sql.DatabaseMetaData;
@@ -13,7 +13,7 @@ public class DBUtils {
 
     static public void resetDB ( final DataSource dataSource ) {
 
-        try ( Connection conn = dataSource.getConnection(); ) {
+        try ( Connection conn = dataSource.getConnection()) {
 
             final DatabaseMetaData metaData = conn.getMetaData();
             String dbName = metaData.getURL();
@@ -28,7 +28,7 @@ public class DBUtils {
 
             final ResultSet tables = metaData.getTables( dbName, null, null, new String[] { "TABLE" } );
 
-            try ( Statement st = conn.createStatement(); ) {
+            try ( Statement st = conn.createStatement()) {
 
                 st.executeUpdate( "SET FOREIGN_KEY_CHECKS = 0" );
 

@@ -1,4 +1,4 @@
-package edu.ncsu.csc.iTrust2.unit;
+package edu.ncsu.csc.itrust2.unit;
 
 import java.time.LocalDate;
 import java.time.Period;
@@ -19,28 +19,28 @@ import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
-import edu.ncsu.csc.iTrust2.TestConfig;
-import edu.ncsu.csc.iTrust2.forms.UserForm;
-import edu.ncsu.csc.iTrust2.models.BasicHealthMetrics;
-import edu.ncsu.csc.iTrust2.models.Diagnosis;
-import edu.ncsu.csc.iTrust2.models.Drug;
-import edu.ncsu.csc.iTrust2.models.Hospital;
-import edu.ncsu.csc.iTrust2.models.ICDCode;
-import edu.ncsu.csc.iTrust2.models.OfficeVisit;
-import edu.ncsu.csc.iTrust2.models.Patient;
-import edu.ncsu.csc.iTrust2.models.Personnel;
-import edu.ncsu.csc.iTrust2.models.Prescription;
-import edu.ncsu.csc.iTrust2.models.User;
-import edu.ncsu.csc.iTrust2.models.enums.AppointmentType;
-import edu.ncsu.csc.iTrust2.models.enums.HouseholdSmokingStatus;
-import edu.ncsu.csc.iTrust2.models.enums.Role;
-import edu.ncsu.csc.iTrust2.services.BasicHealthMetricsService;
-import edu.ncsu.csc.iTrust2.services.DrugService;
-import edu.ncsu.csc.iTrust2.services.HospitalService;
-import edu.ncsu.csc.iTrust2.services.ICDCodeService;
-import edu.ncsu.csc.iTrust2.services.OfficeVisitService;
-import edu.ncsu.csc.iTrust2.services.PrescriptionService;
-import edu.ncsu.csc.iTrust2.services.UserService;
+import edu.ncsu.csc.itrust2.TestConfig;
+import edu.ncsu.csc.itrust2.forms.UserForm;
+import edu.ncsu.csc.itrust2.models.BasicHealthMetrics;
+import edu.ncsu.csc.itrust2.models.Diagnosis;
+import edu.ncsu.csc.itrust2.models.Drug;
+import edu.ncsu.csc.itrust2.models.Hospital;
+import edu.ncsu.csc.itrust2.models.ICDCode;
+import edu.ncsu.csc.itrust2.models.OfficeVisit;
+import edu.ncsu.csc.itrust2.models.Patient;
+import edu.ncsu.csc.itrust2.models.Personnel;
+import edu.ncsu.csc.itrust2.models.Prescription;
+import edu.ncsu.csc.itrust2.models.User;
+import edu.ncsu.csc.itrust2.models.enums.AppointmentType;
+import edu.ncsu.csc.itrust2.models.enums.HouseholdSmokingStatus;
+import edu.ncsu.csc.itrust2.models.enums.Role;
+import edu.ncsu.csc.itrust2.services.BasicHealthMetricsService;
+import edu.ncsu.csc.itrust2.services.DrugService;
+import edu.ncsu.csc.itrust2.services.HospitalService;
+import edu.ncsu.csc.itrust2.services.ICDCodeService;
+import edu.ncsu.csc.itrust2.services.OfficeVisitService;
+import edu.ncsu.csc.itrust2.services.PrescriptionService;
+import edu.ncsu.csc.itrust2.services.UserService;
 
 @RunWith ( SpringRunner.class )
 @EnableAutoConfiguration
@@ -109,7 +109,7 @@ public class OfficeVisitTest {
         visit.setDate( ZonedDateTime.now() );
         officeVisitService.save( visit );
 
-        final List<Diagnosis> diagnoses = new Vector<Diagnosis>();
+        final List<Diagnosis> diagnoses = new Vector<>();
 
         final ICDCode code = new ICDCode();
         code.setCode( "A21" );
@@ -148,7 +148,7 @@ public class OfficeVisitTest {
 
         prescriptionService.save( pres );
 
-        final List<Prescription> pr = new ArrayList<Prescription>();
+        final List<Prescription> pr = new ArrayList<>();
         pr.add( pres );
         visit.setPrescriptions( pr );
 

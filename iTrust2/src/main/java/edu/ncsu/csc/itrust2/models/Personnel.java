@@ -1,4 +1,4 @@
-package edu.ncsu.csc.iTrust2.models;
+package edu.ncsu.csc.itrust2.models;
 
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
@@ -6,10 +6,10 @@ import javax.persistence.Enumerated;
 
 import org.hibernate.validator.constraints.Length;
 
-import edu.ncsu.csc.iTrust2.forms.PersonnelForm;
-import edu.ncsu.csc.iTrust2.forms.UserForm;
-import edu.ncsu.csc.iTrust2.models.enums.Role;
-import edu.ncsu.csc.iTrust2.models.enums.State;
+import edu.ncsu.csc.itrust2.forms.PersonnelForm;
+import edu.ncsu.csc.itrust2.forms.UserForm;
+import edu.ncsu.csc.itrust2.models.enums.Role;
+import edu.ncsu.csc.itrust2.models.enums.State;
 
 @Entity
 public class Personnel extends User {
@@ -307,8 +307,7 @@ public class Personnel extends User {
      */
     @Override
     public String toString () {
-        final String s = this.firstName + " " + this.lastName + " " + this.email;
-        return s;
+        return this.firstName + " " + this.lastName + " " + this.email;
     }
 
 }

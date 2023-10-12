@@ -1,4 +1,4 @@
-package edu.ncsu.csc.iTrust2.api;
+package edu.ncsu.csc.itrust2.api;
 
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
@@ -22,9 +22,9 @@ import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import org.springframework.web.context.WebApplicationContext;
 
-import edu.ncsu.csc.iTrust2.common.TestUtils;
-import edu.ncsu.csc.iTrust2.models.Hospital;
-import edu.ncsu.csc.iTrust2.services.HospitalService;
+import edu.ncsu.csc.itrust2.common.TestUtils;
+import edu.ncsu.csc.itrust2.models.Hospital;
+import edu.ncsu.csc.itrust2.services.HospitalService;
 
 /**
  * Test for API functionality for interacting with Hospitals
@@ -58,7 +58,6 @@ public class APIHospitalTest {
      * Tests getting a non existent hospital and ensures that the correct status
      * is returned.
      *
-     * @throws Exception
      */
     @Test
     public void testGetNonExistentHospital () throws Exception {
@@ -68,7 +67,6 @@ public class APIHospitalTest {
     /**
      * Tests HospitalAPI
      *
-     * @throws Exception
      */
     @Test
     @Transactional
@@ -112,7 +110,7 @@ public class APIHospitalTest {
     @Test
     @Transactional
     @WithMockUser ( username = "patient", roles = { "PATIENT" } )
-    public void testPermissions () throws Exception {
+    public void testPermissions () {
         Assert.assertEquals( 0, service.count() );
 
         final Hospital hospital = new Hospital( "iTrust Test Hospital 2", "1 iTrust Test Street", "27607", "NC" );

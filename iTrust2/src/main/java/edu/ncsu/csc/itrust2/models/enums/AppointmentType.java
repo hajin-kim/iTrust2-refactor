@@ -1,4 +1,4 @@
-package edu.ncsu.csc.iTrust2.models.enums;
+package edu.ncsu.csc.itrust2.models.enums;
 
 /**
  * Enum of all of the types of appointments that are recognized by the system.
@@ -28,7 +28,7 @@ public enum AppointmentType {
     /**
      * Numerical code of the AppointmentType
      */
-    private int code;
+    private final int code;
 
     /**
      * Creates the AppointmentType from its code.
@@ -36,7 +36,7 @@ public enum AppointmentType {
      * @param code
      *            Code of the AppointmentType
      */
-    private AppointmentType ( final int code ) {
+    AppointmentType(final int code) {
         this.code = code;
     }
 

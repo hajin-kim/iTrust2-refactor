@@ -1,4 +1,4 @@
-package edu.ncsu.csc.iTrust2.cucumber;
+package edu.ncsu.csc.itrust2.cucumber;
 
 import static org.junit.Assert.assertEquals;
 
@@ -7,6 +7,7 @@ import java.time.LocalDateTime;
 import java.time.ZoneId;
 import java.time.ZoneOffset;
 import java.time.ZonedDateTime;
+import java.util.Objects;
 import java.util.TimeZone;
 
 import org.openqa.selenium.By;
@@ -17,10 +18,10 @@ import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.springframework.beans.factory.annotation.Autowired;
 
-import edu.ncsu.csc.iTrust2.forms.AppointmentRequestForm;
-import edu.ncsu.csc.iTrust2.models.AppointmentRequest;
-import edu.ncsu.csc.iTrust2.services.AppointmentRequestService;
-import edu.ncsu.csc.iTrust2.services.UserService;
+import edu.ncsu.csc.itrust2.forms.AppointmentRequestForm;
+import edu.ncsu.csc.itrust2.models.AppointmentRequest;
+import edu.ncsu.csc.itrust2.services.AppointmentRequestService;
+import edu.ncsu.csc.itrust2.services.UserService;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
@@ -186,7 +187,7 @@ public class AppointmentRequestStepDefs extends CucumberTest {
      */
     @Given ( "^The patient has requested a medical appointment with type (.+), HCP (.+), date (.+), time (.+), and comments (.+)$" )
     public void createAppointmentRequest ( final String type, final String hcp, final String date, String time,
-            final String comments ) throws ParseException {
+            final String comments ) {
         patientNavigateToView();
 
         final AppointmentRequestForm form = new AppointmentRequestForm();
@@ -204,7 +205,7 @@ public class AppointmentRequestStepDefs extends CucumberTest {
         String hour = timeSplit[0].length() == 1 ? "0" + timeSplit[0] : timeSplit[0];
         final String minute = timeSplit[1].length() == 1 ? "0" + timeSplit[1] : timeSplit[1];
 
-        if ( timeSplit[2] == "PM" ) {
+        if (Objects.equals(timeSplit[2], "PM")) {
             hour = ( Integer.parseInt( hour ) + 12 ) + "";
         }
 

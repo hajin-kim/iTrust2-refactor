@@ -1,18 +1,20 @@
-package edu.ncsu.csc.iTrust2.repositories;
+package edu.ncsu.csc.itrust2.repositories;
 
 import java.util.List;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 
-import edu.ncsu.csc.iTrust2.models.AppointmentRequest;
-import edu.ncsu.csc.iTrust2.models.User;
+import edu.ncsu.csc.itrust2.models.AppointmentRequest;
+import edu.ncsu.csc.itrust2.models.User;
+
+import javax.validation.constraints.NotNull;
 
 public interface AppointmentRequestRepository extends JpaRepository<AppointmentRequest, Long> {
 
-    public List<AppointmentRequest> findByPatient ( User patient );
+    List<AppointmentRequest> findByPatient(@NotNull User patient);
 
-    public List<AppointmentRequest> findByHcp ( User hcp );
+    List<AppointmentRequest> findByHcp(@NotNull User hcp);
 
-    public List<AppointmentRequest> findByHcpAndPatient ( User hcp, User patient );
+    List<AppointmentRequest> findByHcpAndPatient(@NotNull User hcp, @NotNull User patient);
 
 }

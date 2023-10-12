@@ -1,4 +1,4 @@
-package edu.ncsu.csc.iTrust2.controllers.api;
+package edu.ncsu.csc.itrust2.controllers.api;
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -19,14 +19,14 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import edu.ncsu.csc.iTrust2.forms.UserForm;
-import edu.ncsu.csc.iTrust2.models.Patient;
-import edu.ncsu.csc.iTrust2.models.Personnel;
-import edu.ncsu.csc.iTrust2.models.User;
-import edu.ncsu.csc.iTrust2.models.enums.Role;
-import edu.ncsu.csc.iTrust2.models.enums.TransactionType;
-import edu.ncsu.csc.iTrust2.services.UserService;
-import edu.ncsu.csc.iTrust2.utils.LoggerUtil;
+import edu.ncsu.csc.itrust2.forms.UserForm;
+import edu.ncsu.csc.itrust2.models.Patient;
+import edu.ncsu.csc.itrust2.models.Personnel;
+import edu.ncsu.csc.itrust2.models.User;
+import edu.ncsu.csc.itrust2.models.enums.Role;
+import edu.ncsu.csc.itrust2.models.enums.TransactionType;
+import edu.ncsu.csc.itrust2.services.UserService;
+import edu.ncsu.csc.itrust2.utils.LoggerUtil;
 
 /**
  * Class that provides multiple API endpoints for interacting with the Users
@@ -66,11 +66,14 @@ public class APIUserController extends APIController {
     private static final List<String> ALL_ROLES        = List.of( ROLE_ADMIN, ROLE_PATIENT, ROLE_HCP, ROLE_ER,
             ROLE_LABTECH, ROLE_VIROLOGIST, ROLE_OD, ROLE_OPH );
 
-    @Autowired
-    private LoggerUtil                loggerUtil;
+    private final LoggerUtil                loggerUtil;
 
-    @Autowired
-    private UserService               userService;
+    private final UserService               userService;
+
+    public APIUserController(LoggerUtil loggerUtil, UserService userService) {
+        this.loggerUtil = loggerUtil;
+        this.userService = userService;
+    }
 
     /**
      * Retrieves and returns a list of all Users in the system, regardless of
@@ -216,7 +219,7 @@ public class APIUserController extends APIController {
      */
     @GetMapping ( BASE_PATH + "/role" )
     public ResponseEntity getRole () {
-        final List<String> matchingRoles = ALL_ROLES.stream().filter( role -> hasRole( role ) )
+        final List<String> matchingRoles = ALL_ROLES.stream().filter(this::hasRole)
                 .collect( Collectors.toList() );
 
         if ( matchingRoles.isEmpty() ) {

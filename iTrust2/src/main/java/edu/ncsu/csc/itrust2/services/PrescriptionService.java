@@ -1,4 +1,4 @@
-package edu.ncsu.csc.iTrust2.services;
+package edu.ncsu.csc.itrust2.services;
 
 import java.time.LocalDate;
 import java.util.List;
@@ -9,23 +9,26 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Component;
 
-import edu.ncsu.csc.iTrust2.forms.PrescriptionForm;
-import edu.ncsu.csc.iTrust2.models.Prescription;
-import edu.ncsu.csc.iTrust2.models.User;
-import edu.ncsu.csc.iTrust2.repositories.PrescriptionRepository;
+import edu.ncsu.csc.itrust2.forms.PrescriptionForm;
+import edu.ncsu.csc.itrust2.models.Prescription;
+import edu.ncsu.csc.itrust2.models.User;
+import edu.ncsu.csc.itrust2.repositories.PrescriptionRepository;
 
 @Component
 @Transactional
 public class PrescriptionService extends Service {
 
-    @Autowired
-    private PrescriptionRepository repository;
+    private final PrescriptionRepository repository;
 
-    @Autowired
-    private DrugService            drugService;
+    private final DrugService            drugService;
 
-    @Autowired
-    private UserService            userService;
+    private final UserService            userService;
+
+    public PrescriptionService(PrescriptionRepository repository, DrugService drugService, UserService userService) {
+        this.repository = repository;
+        this.drugService = drugService;
+        this.userService = userService;
+    }
 
     @Override
     protected JpaRepository getRepository () {

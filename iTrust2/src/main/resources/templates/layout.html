@@ -97,15 +97,15 @@ a {
 			$http = angular.injector(["ng"]).get("$http");
 			$http.get("/iTrust2/api/v1/role").then(
 				function (response) {
-					var role = response.data.message; //contains user role
-					var navbarparent = document.getElementById('navbar-parent');
-					var admindropdown = document.getElementById('admin-dropdown');
-					var patientdropdown = document.getElementById('patient-dropdown');
-					var hcpdropdown = document.getElementById('hcp-dropdown');
-					var erdropdown = document.getElementById('er-dropdown');
-					var ltdropdown = document.getElementById('labtech-dropdown');
-					var virologistdropdown = document.getElementById('virologist-dropdown');
-					if (!role.includes('PATIENT')) {
+                    const role = response.data.message; //contains user role
+                    const navbarparent = document.getElementById('navbar-parent');
+                    const admindropdown = document.getElementById('admin-dropdown');
+                    const patientdropdown = document.getElementById('patient-dropdown');
+                    const hcpdropdown = document.getElementById('hcp-dropdown');
+                    const erdropdown = document.getElementById('er-dropdown');
+                    const ltdropdown = document.getElementById('labtech-dropdown');
+                    const virologistdropdown = document.getElementById('virologist-dropdown');
+                    if (!role.includes('PATIENT')) {
 						navbarparent.removeChild(patientdropdown);
 					}
 					if (!role.includes('ADMIN')) {

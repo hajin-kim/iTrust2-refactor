@@ -1,4 +1,4 @@
-package edu.ncsu.csc.iTrust2.controllers.api;
+package edu.ncsu.csc.itrust2.controllers.api;
 
 import java.util.List;
 
@@ -14,11 +14,11 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import edu.ncsu.csc.iTrust2.forms.HospitalForm;
-import edu.ncsu.csc.iTrust2.models.Hospital;
-import edu.ncsu.csc.iTrust2.models.enums.TransactionType;
-import edu.ncsu.csc.iTrust2.services.HospitalService;
-import edu.ncsu.csc.iTrust2.utils.LoggerUtil;
+import edu.ncsu.csc.itrust2.forms.HospitalForm;
+import edu.ncsu.csc.itrust2.models.Hospital;
+import edu.ncsu.csc.itrust2.models.enums.TransactionType;
+import edu.ncsu.csc.itrust2.services.HospitalService;
+import edu.ncsu.csc.itrust2.utils.LoggerUtil;
 
 /**
  * Class that provides REST API endpoints for the Hospital model. In all
@@ -32,11 +32,14 @@ import edu.ncsu.csc.iTrust2.utils.LoggerUtil;
 @SuppressWarnings ( { "unchecked", "rawtypes" } )
 public class APIHospitalController extends APIController {
 
-    @Autowired
-    private LoggerUtil      loggerUtil;
+    private final LoggerUtil      loggerUtil;
 
-    @Autowired
-    private HospitalService hospitalService;
+    private final HospitalService hospitalService;
+
+    public APIHospitalController(LoggerUtil loggerUtil, HospitalService hospitalService) {
+        this.loggerUtil = loggerUtil;
+        this.hospitalService = hospitalService;
+    }
 
     /**
      * Retrieves a list of all Hospitals in the database

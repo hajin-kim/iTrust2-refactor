@@ -1,9 +1,6 @@
-package edu.ncsu.csc.iTrust2.api;
+package edu.ncsu.csc.itrust2.api;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertNotNull;
-import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.*;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.put;
@@ -29,30 +26,30 @@ import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import org.springframework.web.context.WebApplicationContext;
 
-import edu.ncsu.csc.iTrust2.common.TestUtils;
-import edu.ncsu.csc.iTrust2.forms.AppointmentRequestForm;
-import edu.ncsu.csc.iTrust2.forms.OfficeVisitForm;
-import edu.ncsu.csc.iTrust2.forms.UserForm;
-import edu.ncsu.csc.iTrust2.models.BasicHealthMetrics;
-import edu.ncsu.csc.iTrust2.models.Hospital;
-import edu.ncsu.csc.iTrust2.models.OfficeVisit;
-import edu.ncsu.csc.iTrust2.models.Patient;
-import edu.ncsu.csc.iTrust2.models.Personnel;
-import edu.ncsu.csc.iTrust2.models.User;
-import edu.ncsu.csc.iTrust2.models.enums.AppointmentType;
-import edu.ncsu.csc.iTrust2.models.enums.BloodType;
-import edu.ncsu.csc.iTrust2.models.enums.Ethnicity;
-import edu.ncsu.csc.iTrust2.models.enums.Gender;
-import edu.ncsu.csc.iTrust2.models.enums.HouseholdSmokingStatus;
-import edu.ncsu.csc.iTrust2.models.enums.PatientSmokingStatus;
-import edu.ncsu.csc.iTrust2.models.enums.Role;
-import edu.ncsu.csc.iTrust2.models.enums.State;
-import edu.ncsu.csc.iTrust2.models.enums.Status;
-import edu.ncsu.csc.iTrust2.services.AppointmentRequestService;
-import edu.ncsu.csc.iTrust2.services.BasicHealthMetricsService;
-import edu.ncsu.csc.iTrust2.services.HospitalService;
-import edu.ncsu.csc.iTrust2.services.OfficeVisitService;
-import edu.ncsu.csc.iTrust2.services.UserService;
+import edu.ncsu.csc.itrust2.common.TestUtils;
+import edu.ncsu.csc.itrust2.forms.AppointmentRequestForm;
+import edu.ncsu.csc.itrust2.forms.OfficeVisitForm;
+import edu.ncsu.csc.itrust2.forms.UserForm;
+import edu.ncsu.csc.itrust2.models.BasicHealthMetrics;
+import edu.ncsu.csc.itrust2.models.Hospital;
+import edu.ncsu.csc.itrust2.models.OfficeVisit;
+import edu.ncsu.csc.itrust2.models.Patient;
+import edu.ncsu.csc.itrust2.models.Personnel;
+import edu.ncsu.csc.itrust2.models.User;
+import edu.ncsu.csc.itrust2.models.enums.AppointmentType;
+import edu.ncsu.csc.itrust2.models.enums.BloodType;
+import edu.ncsu.csc.itrust2.models.enums.Ethnicity;
+import edu.ncsu.csc.itrust2.models.enums.Gender;
+import edu.ncsu.csc.itrust2.models.enums.HouseholdSmokingStatus;
+import edu.ncsu.csc.itrust2.models.enums.PatientSmokingStatus;
+import edu.ncsu.csc.itrust2.models.enums.Role;
+import edu.ncsu.csc.itrust2.models.enums.State;
+import edu.ncsu.csc.itrust2.models.enums.Status;
+import edu.ncsu.csc.itrust2.services.AppointmentRequestService;
+import edu.ncsu.csc.itrust2.services.BasicHealthMetricsService;
+import edu.ncsu.csc.itrust2.services.HospitalService;
+import edu.ncsu.csc.itrust2.services.OfficeVisitService;
+import edu.ncsu.csc.itrust2.services.UserService;
 
 /**
  * Test for the API functionality for interacting with office visits
@@ -138,7 +135,6 @@ public class APIOfficeVisitTest {
      * Tests getting a non existent office visit and ensures that the correct
      * status is returned.
      *
-     * @throws Exception
      */
     @Test
     @Transactional
@@ -151,7 +147,6 @@ public class APIOfficeVisitTest {
      * Tests handling of errors when creating a visit for a pre-scheduled
      * appointment.
      *
-     * @throws Exception
      */
     @Test
     @Transactional
@@ -200,7 +195,6 @@ public class APIOfficeVisitTest {
     /**
      * Tests OfficeVisitAPI
      *
-     * @throws Exception
      */
     @Test
     @Transactional
@@ -262,117 +256,117 @@ public class APIOfficeVisitTest {
         /* Create new BasicHealthMetrics for testing */
         final BasicHealthMetrics bhm1 = bhmService.build( visit );
         final BasicHealthMetrics bhm2 = bhmService.build( visit );
-        assertTrue( bhm1.equals( bhm1 ) );
-        assertTrue( bhm1.equals( bhm2 ) );
-        assertTrue( bhm2.equals( bhm1 ) );
+        assertEquals(bhm1, bhm1);
+        assertEquals(bhm1, bhm2);
+        assertEquals(bhm2, bhm1);
 
         /* Hash codes are the same for equal objects */
         assertEquals( bhm1.hashCode(), bhm2.hashCode() );
-        assertTrue( bhm1.equals( bhm2 ) );
-        assertTrue( bhm2.equals( bhm1 ) );
+        assertEquals(bhm1, bhm2);
+        assertEquals(bhm2, bhm1);
 
         /* Weights are different */
         bhm2.setWeight( 172.3f );
-        assertFalse( bhm1.equals( bhm2 ) );
-        assertFalse( bhm2.equals( bhm1 ) );
+        assertNotEquals(bhm1, bhm2);
+        assertNotEquals(bhm2, bhm1);
 
         /* One weight is null */
         bhm2.setWeight( null );
-        assertFalse( bhm1.equals( bhm2 ) );
-        assertFalse( bhm2.equals( bhm1 ) );
+        assertNotEquals(bhm1, bhm2);
+        assertNotEquals(bhm2, bhm1);
         bhm2.setWeight( 175.2f );
 
         /* Tri is different */
         bhm2.setTri( 140 );
-        assertFalse( bhm1.equals( bhm2 ) );
-        assertFalse( bhm2.equals( bhm1 ) );
+        assertNotEquals(bhm1, bhm2);
+        assertNotEquals(bhm2, bhm1);
 
         /* One tri is null */
         bhm2.setTri( null );
-        assertFalse( bhm1.equals( bhm2 ) );
-        assertFalse( bhm2.equals( bhm1 ) );
+        assertNotEquals(bhm1, bhm2);
+        assertNotEquals(bhm2, bhm1);
         bhm2.setTri( 150 );
 
         /* Systolics are different */
         bhm2.setSystolic( 100 );
-        assertFalse( bhm1.equals( bhm2 ) );
-        assertFalse( bhm2.equals( bhm1 ) );
+        assertNotEquals(bhm1, bhm2);
+        assertNotEquals(bhm2, bhm1);
 
         /* One systolic is null */
         bhm2.setSystolic( null );
-        assertFalse( bhm1.equals( bhm2 ) );
-        assertFalse( bhm2.equals( bhm1 ) );
+        assertNotEquals(bhm1, bhm2);
+        assertNotEquals(bhm2, bhm1);
         bhm2.setSystolic( 102 );
 
         /* Patient smoking statuses are different */
         bhm2.setPatientSmokingStatus( PatientSmokingStatus.NEVER );
-        assertFalse( bhm1.equals( bhm2 ) );
-        assertFalse( bhm2.equals( bhm1 ) );
+        assertNotEquals(bhm1, bhm2);
+        assertNotEquals(bhm2, bhm1);
         bhm2.setPatientSmokingStatus( PatientSmokingStatus.FORMER );
 
         /* One patient is null */
         bhm2.setPatient( null );
-        assertFalse( bhm1.equals( bhm2 ) );
-        assertFalse( bhm2.equals( bhm1 ) );
+        assertNotEquals(bhm1, bhm2);
+        assertNotEquals(bhm2, bhm1);
         bhm2.setPatient( userService.findByName( "antti" ) );
 
         /* LDL's are different */
         bhm2.setLdl( 40 );
-        assertFalse( bhm1.equals( bhm2 ) );
-        assertFalse( bhm2.equals( bhm1 ) );
+        assertNotEquals(bhm1, bhm2);
+        assertNotEquals(bhm2, bhm1);
 
         /* One LDL is null */
         bhm2.setLdl( null );
-        assertFalse( bhm1.equals( bhm2 ) );
-        assertFalse( bhm2.equals( bhm1 ) );
+        assertNotEquals(bhm1, bhm2);
+        assertNotEquals(bhm2, bhm1);
         bhm2.setLdl( 30 );
 
         /* Household smoking statuses are different */
         bhm2.setHouseSmokingStatus( HouseholdSmokingStatus.OUTDOOR );
-        assertFalse( bhm1.equals( bhm2 ) );
-        assertFalse( bhm2.equals( bhm1 ) );
+        assertNotEquals(bhm1, bhm2);
+        assertNotEquals(bhm2, bhm1);
         bhm2.setHouseSmokingStatus( HouseholdSmokingStatus.INDOOR );
 
         /* Heights are different */
         bhm2.setHeight( 60.2f );
-        assertFalse( bhm1.equals( bhm2 ) );
-        assertFalse( bhm2.equals( bhm1 ) );
+        assertNotEquals(bhm1, bhm2);
+        assertNotEquals(bhm2, bhm1);
 
         /* One height is null */
         bhm2.setHeight( null );
-        assertFalse( bhm1.equals( bhm2 ) );
-        assertFalse( bhm2.equals( bhm1 ) );
+        assertNotEquals(bhm1, bhm2);
+        assertNotEquals(bhm2, bhm1);
         bhm2.setHeight( 69.1f );
 
         /* Different head circumferences */
         bhm2.setHeadCircumference( 8.7f );
-        assertFalse( bhm1.equals( bhm2 ) );
-        assertFalse( bhm2.equals( bhm1 ) );
+        assertNotEquals(bhm1, bhm2);
+        assertNotEquals(bhm2, bhm1);
         bhm1.setHeadCircumference( 8.7f );
 
         /* HDL's are different */
         bhm2.setHdl( 80 );
-        assertFalse( bhm1.equals( bhm2 ) );
-        assertFalse( bhm2.equals( bhm1 ) );
+        assertNotEquals(bhm1, bhm2);
+        assertNotEquals(bhm2, bhm1);
 
         /* One HDL is null */
         bhm2.setHdl( null );
-        assertFalse( bhm1.equals( bhm2 ) );
-        assertFalse( bhm2.equals( bhm1 ) );
+        assertNotEquals(bhm1, bhm2);
+        assertNotEquals(bhm2, bhm1);
         bhm2.setHdl( 70 );
 
         /* Diastolics are different */
         bhm2.setDiastolic( 85 );
-        assertFalse( bhm1.equals( bhm2 ) );
-        assertFalse( bhm2.equals( bhm1 ) );
+        assertNotEquals(bhm1, bhm2);
+        assertNotEquals(bhm2, bhm1);
 
         /* One diastolic is null */
         bhm2.setDiastolic( null );
-        assertFalse( bhm1.equals( bhm2 ) );
-        assertFalse( bhm2.equals( bhm1 ) );
+        assertNotEquals(bhm1, bhm2);
+        assertNotEquals(bhm2, bhm1);
         bhm2.setDiastolic( 83 );
-        assertTrue( bhm1.equals( bhm2 ) );
-        assertTrue( bhm2.equals( bhm1 ) );
+        assertEquals(bhm1, bhm2);
+        assertEquals(bhm2, bhm1);
 
         /* Create appointment with patient younger than 12 years old */
 

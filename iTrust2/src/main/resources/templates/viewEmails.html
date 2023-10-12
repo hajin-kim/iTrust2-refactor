@@ -15,8 +15,8 @@
 		<script th:inline="javascript">
 			/* Otherwise Thymeleaf tries to parse Javascript as XML and breaks itself sometimes.  Sigh */
 			/*<![CDATA[*/
-			var app = angular.module("emailsApp", []);
-			app.controller('emailsCtrl', function($scope, $http) {
+            const app = angular.module("emailsApp", []);
+            app.controller('emailsCtrl', function($scope, $http) {
 				$scope.fetchEmails = function() {
 					$http.get("api/v1/emails").then(function(response) {
 						$scope.emails = response.data;

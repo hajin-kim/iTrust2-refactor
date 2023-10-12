@@ -1,11 +1,11 @@
-package edu.ncsu.csc.iTrust2.models.enums;
+package edu.ncsu.csc.itrust2.models.enums;
 
 /**
  * A TransactionType represents an event that took place in the system and that
  * is to be logged. This is used to provide a code that can easily be saved in
  * the database and a longer description of it that can be displayed to the
  * user. Also stores whether the event is patient-visible.
- *
+ * <p>
  * As new functionality is added to iTrust2, add in new TransactionType codes
  * representing the event.
  *
@@ -547,7 +547,7 @@ public enum TransactionType {
      *            Whether this logged event can be viewed by the patient
      *            involved
      */
-    private TransactionType ( final int code, final String description, final boolean patientViewable ) {
+    TransactionType(final int code, final String description, final boolean patientViewable) {
         this.code = code;
         this.description = description;
         this.patientView = patientViewable;
@@ -556,15 +556,15 @@ public enum TransactionType {
     /**
      * Code of the TransactionType, from the iTrust2 wiki.
      */
-    private int     code;
+    private final int     code;
     /**
      * Description of the event
      */
-    private String  description;
+    private final String  description;
     /**
      * Whether the patient can view the event
      */
-    private boolean patientView;
+    private final boolean patientView;
 
     /**
      * Retrieves the code of this TransactionType

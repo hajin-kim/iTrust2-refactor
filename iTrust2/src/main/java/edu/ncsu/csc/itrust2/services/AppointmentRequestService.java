@@ -1,46 +1,51 @@
-package edu.ncsu.csc.iTrust2.services;
+package edu.ncsu.csc.itrust2.services;
 
 import java.time.ZonedDateTime;
 import java.util.List;
 
 import javax.transaction.Transactional;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Component;
 
-import edu.ncsu.csc.iTrust2.forms.AppointmentRequestForm;
-import edu.ncsu.csc.iTrust2.models.AppointmentRequest;
-import edu.ncsu.csc.iTrust2.models.User;
-import edu.ncsu.csc.iTrust2.models.enums.AppointmentType;
-import edu.ncsu.csc.iTrust2.models.enums.Status;
-import edu.ncsu.csc.iTrust2.repositories.AppointmentRequestRepository;
+import edu.ncsu.csc.itrust2.forms.AppointmentRequestForm;
+import edu.ncsu.csc.itrust2.models.AppointmentRequest;
+import edu.ncsu.csc.itrust2.models.User;
+import edu.ncsu.csc.itrust2.models.enums.AppointmentType;
+import edu.ncsu.csc.itrust2.models.enums.Status;
+import edu.ncsu.csc.itrust2.repositories.AppointmentRequestRepository;
 
 @Component
 @Transactional
 public class AppointmentRequestService extends Service {
 
-    @Autowired
-    private AppointmentRequestRepository repository;
+    private final AppointmentRequestRepository appointmentRequestRepository;
 
-    @Autowired
-    private UserService                  userService;
+    private final UserService                  userService;
+
+    public AppointmentRequestService(
+            AppointmentRequestRepository appointmentRequestRepository,
+            UserService userService
+    ) {
+        this.appointmentRequestRepository = appointmentRequestRepository;
+        this.userService = userService;
+    }
 
     @Override
     protected JpaRepository getRepository () {
-        return repository;
+        return appointmentRequestRepository;
     }
 
     public List<AppointmentRequest> findByPatient ( final User patient ) {
-        return repository.findByPatient( patient );
+        return appointmentRequestRepository.findByPatient( patient );
     }
 
     public List<AppointmentRequest> findByHcp ( final User hcp ) {
-        return repository.findByHcp( hcp );
+        return appointmentRequestRepository.findByHcp( hcp );
     }
 
     public List<AppointmentRequest> findByHcpAndPatient ( final User hcp, final User patient ) {
-        return repository.findByHcpAndPatient( hcp, patient );
+        return appointmentRequestRepository.findByHcpAndPatient( hcp, patient );
     }
 
     public AppointmentRequest build ( final AppointmentRequestForm raf ) {

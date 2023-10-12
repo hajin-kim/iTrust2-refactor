@@ -125,12 +125,12 @@
 		</div>
 
 		<script>
-		
-		var App = angular.module('logsApp',['dateTimeServices']);
-		
-		angular.module("logsApp").controller('logsCtrl', function($scope, $http, $filter, dateTimeService) {
-			var self = this;
-			self.logs = [];
+
+            const App = angular.module('logsApp', ['dateTimeServices']);
+
+            angular.module("logsApp").controller('logsCtrl', function($scope, $http, $filter, dateTimeService) {
+            const self = this;
+            self.logs = [];
 			self.isPatient = false;
 			self.numPages = 1;
 			self.requestParams = {startDate: "", endDate: "", page: 1, pageLength: 10};
@@ -180,38 +180,38 @@
 				self.updateTable();
 			}
 
-			var checkValidDateRange = function(dateRange) {
-				var err = [];
-				if (!dateTimeService.isValidDate(dateRange.startDate)) {
-					err.push("Start date is in an invalid format");
-				}
-				if (!dateTimeService.isValidDate(dateRange.endDate)) {
-					err.push("End date is in an invalid format");
-				}
-				if (dateRange.startDate.getFullYear() > dateRange.endDate
-						.getFullYear()) {
-					err.push("Start date must come before end date.");
-				}
-				if (dateRange.startDate.getFullYear() == dateRange.endDate
-						.getFullYear()
-						&& dateRange.startDate.getFullMonth() > dateRange.endDate
-								.getMonth()) {
-					err.push("Start date must come before end date.");
-				}
-				if (dateRange.startDate.getFullYear() == dateRange.endDate
-						.getFullYear()
-						&& dateRange.startDate.getFullMonth() == dateRange.endDate
-								.getMonth()
-						&& dateRange.startDate.getDate() > dateRange.endDate
-								.getDate()) {
-					err.push("Start date must come before end date.");
-				}
+            const checkValidDateRange = function (dateRange) {
+                const err = [];
+                if (!dateTimeService.isValidDate(dateRange.startDate)) {
+                    err.push("Start date is in an invalid format");
+                }
+                if (!dateTimeService.isValidDate(dateRange.endDate)) {
+                    err.push("End date is in an invalid format");
+                }
+                if (dateRange.startDate.getFullYear() > dateRange.endDate
+                    .getFullYear()) {
+                    err.push("Start date must come before end date.");
+                }
+                if (dateRange.startDate.getFullYear() == dateRange.endDate
+                        .getFullYear()
+                    && dateRange.startDate.getFullMonth() > dateRange.endDate
+                        .getMonth()) {
+                    err.push("Start date must come before end date.");
+                }
+                if (dateRange.startDate.getFullYear() == dateRange.endDate
+                        .getFullYear()
+                    && dateRange.startDate.getFullMonth() == dateRange.endDate
+                        .getMonth()
+                    && dateRange.startDate.getDate() > dateRange.endDate
+                        .getDate()) {
+                    err.push("Start date must come before end date.");
+                }
 
-				return err.join(". ");
-			}
+                return err.join(". ");
+            };
 
-			
-			self.updateTable();
+
+            self.updateTable();
 			
 			/*
 			$scope.loadTable = function() {

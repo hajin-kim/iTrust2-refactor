@@ -1,4 +1,4 @@
-package edu.ncsu.csc.iTrust2.models;
+package edu.ncsu.csc.itrust2.models;
 
 import java.time.ZonedDateTime;
 import java.util.List;
@@ -21,9 +21,9 @@ import javax.validation.constraints.NotNull;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import com.google.gson.annotations.JsonAdapter;
 
-import edu.ncsu.csc.iTrust2.adapters.ZonedDateTimeAdapter;
-import edu.ncsu.csc.iTrust2.adapters.ZonedDateTimeAttributeConverter;
-import edu.ncsu.csc.iTrust2.models.enums.AppointmentType;
+import edu.ncsu.csc.itrust2.adapters.ZonedDateTimeAdapter;
+import edu.ncsu.csc.itrust2.adapters.ZonedDateTimeAttributeConverter;
+import edu.ncsu.csc.itrust2.models.enums.AppointmentType;
 
 /**
  * This is the validated database-persisted office visit representation

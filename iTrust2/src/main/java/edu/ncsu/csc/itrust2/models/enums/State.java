@@ -1,4 +1,4 @@
-package edu.ncsu.csc.iTrust2.models.enums;
+package edu.ncsu.csc.itrust2.models.enums;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -218,7 +218,7 @@ public enum State {
     /**
      * Name of the State
      */
-    private String name;
+    private final String name;
 
     /**
      * Create a State from its Name
@@ -226,7 +226,7 @@ public enum State {
      * @param name
      *            Name of the state
      */
-    private State ( final String name ) {
+    State(final String name) {
         this.name = name;
     }
 
@@ -246,7 +246,7 @@ public enum State {
      * @return map from field name to value for each of the fields in this enum
      */
     public Map<String, Object> getInfo () {
-        final Map<String, Object> map = new HashMap<String, Object>();
+        final Map<String, Object> map = new HashMap<>();
         map.put( "id", name() );
         map.put( "name", getName() );
         return map;

@@ -1,4 +1,4 @@
-package edu.ncsu.csc.iTrust2.forms;
+package edu.ncsu.csc.itrust2.forms;
 
 import java.util.HashSet;
 import java.util.Set;
@@ -8,8 +8,8 @@ import javax.validation.constraints.NotEmpty;
 
 import org.hibernate.validator.constraints.Length;
 
-import edu.ncsu.csc.iTrust2.models.User;
-import edu.ncsu.csc.iTrust2.models.enums.Role;
+import edu.ncsu.csc.itrust2.models.User;
+import edu.ncsu.csc.itrust2.models.enums.Role;
 
 /**
  * Form used for creating a new User. Will be parsed into an actual User object
@@ -104,7 +104,7 @@ public class UserForm {
      */
     public UserForm ( final User u ) {
         setUsername( u.getUsername() );
-        setRoles( u.getRoles().stream().map( e -> e.toString() ).collect( Collectors.toSet() ) );
+        setRoles( u.getRoles().stream().map(Enum::toString).collect( Collectors.toSet() ) );
         setEnabled( u.getEnabled().toString() );
     }
 
@@ -192,7 +192,7 @@ public class UserForm {
      */
     public void addRole ( final String role ) {
         if ( null == this.roles ) {
-            this.roles = new HashSet<String>();
+            this.roles = new HashSet<>();
         }
         this.roles.add( role );
     }

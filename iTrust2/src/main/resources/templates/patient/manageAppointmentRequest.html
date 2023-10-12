@@ -12,9 +12,9 @@
 		<script th:inline="javascript">
 		/* Otherwise Thymeleaf tries to parse Javascript as XML and breaks itself sometimes.  Sigh */
 		/*<![CDATA[*/
-			var app = angular.module("manageAppointmentRequestApp", ['dateTimeServices']);
+        const app = angular.module("manageAppointmentRequestApp", ['dateTimeServices']);
 
-			/**
+        /**
 			 * A filter to humanize the text to be more user friendly.
 			 */
 			app.filter('humanize', function() {
@@ -35,13 +35,13 @@
 				 */
 				$scope.getPersonnelByRole = function(roleObj) {
 					if (Array.isArray(roleObj)) {
-						for (var role of roleObj) {
+						for (let role of roleObj) {
 							$scope.getPersonnelByRole(role);
 						}
 					} else {
 						$http.get(`/iTrust2/api/v1/personnel/getbyroles/ROLE_${roleObj}`).then(
 							function(response) {
-								for (var user of response.data) {
+								for (let user of response.data) {
 									$scope.hcps.push(user);
 								}
 							}, function(rejection) {
@@ -87,8 +87,8 @@
 					$scope.appointment.patient = /*[[${#httpServletRequest.remoteUser}]]*/null;
 
 					// Validate request date
-					var date = new Date($scope.inputDate);
-					const now = new Date();
+                    const date = new Date($scope.inputDate);
+                    const now = new Date();
 					if (!dateTimeService.isValidDate(date) || date - now < 0) {
 						$scope.errorMsg += "Please input a valid date\n";
 					}

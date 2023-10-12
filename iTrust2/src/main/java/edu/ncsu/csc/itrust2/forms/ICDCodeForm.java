@@ -1,6 +1,6 @@
-package edu.ncsu.csc.iTrust2.forms;
+package edu.ncsu.csc.itrust2.forms;
 
-import edu.ncsu.csc.iTrust2.models.ICDCode;
+import edu.ncsu.csc.itrust2.models.ICDCode;
 
 /**
  * Intermediate form for adding or editing ICDCodes. Used to create and

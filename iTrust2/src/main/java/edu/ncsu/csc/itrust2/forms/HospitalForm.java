@@ -1,10 +1,10 @@
-package edu.ncsu.csc.iTrust2.forms;
+package edu.ncsu.csc.itrust2.forms;
 
 import javax.validation.constraints.NotEmpty;
 
 import org.hibernate.validator.constraints.Length;
 
-import edu.ncsu.csc.iTrust2.models.Hospital;
+import edu.ncsu.csc.itrust2.models.Hospital;
 
 /**
  * Form used for creating a new Hospital. Will be parsed into an actual Hospital

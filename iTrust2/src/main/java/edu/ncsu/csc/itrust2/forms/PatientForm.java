@@ -1,4 +1,4 @@
-package edu.ncsu.csc.iTrust2.forms;
+package edu.ncsu.csc.itrust2.forms;
 
 import javax.validation.constraints.Max;
 import javax.validation.constraints.Min;
@@ -8,7 +8,7 @@ import javax.validation.constraints.Pattern;
 
 import org.hibernate.validator.constraints.Length;
 
-import edu.ncsu.csc.iTrust2.models.Patient;
+import edu.ncsu.csc.itrust2.models.Patient;
 
 /**
  * Form for user to fill out to add a Patient to the system.

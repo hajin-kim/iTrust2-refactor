@@ -1,15 +1,15 @@
-package edu.ncsu.csc.iTrust2.utils;
+package edu.ncsu.csc.itrust2.utils;
 
-import java.util.List;
-
+import edu.ncsu.csc.itrust2.models.User;
+import edu.ncsu.csc.itrust2.models.enums.TransactionType;
+import edu.ncsu.csc.itrust2.models.security.LogEntry;
+import edu.ncsu.csc.itrust2.services.security.LogEntryService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Component;
 
-import edu.ncsu.csc.iTrust2.models.User;
-import edu.ncsu.csc.iTrust2.models.enums.TransactionType;
-import edu.ncsu.csc.iTrust2.models.security.LogEntry;
-import edu.ncsu.csc.iTrust2.services.security.LogEntryService;
+import java.util.Comparator;
+import java.util.List;
 
 /**
  * Logging class to handle saving log-worthy events and for retrieving those
@@ -22,8 +22,11 @@ import edu.ncsu.csc.iTrust2.services.security.LogEntryService;
 @Component
 public class LoggerUtil {
 
-    @Autowired
-    private LogEntryService service;
+    private final LogEntryService service;
+
+    public LoggerUtil(LogEntryService service) {
+        this.service = service;
+    }
 
     /**
      * Most complete logger utility. Usually won't need all of this information,
@@ -117,7 +120,7 @@ public class LoggerUtil {
      */
     public Object getTopForUser ( final String user, final Integer top ) {
         final List<LogEntry> all = getAllForUser( user );
-        all.sort( ( x1, x2 ) -> x1.getTime().compareTo( x2.getTime() ) );
+        all.sort(Comparator.comparing(LogEntry::getTime));
         try {
             return all.subList( 0, top );
         }

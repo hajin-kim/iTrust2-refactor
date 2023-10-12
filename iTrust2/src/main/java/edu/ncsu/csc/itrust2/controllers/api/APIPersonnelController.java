@@ -1,4 +1,4 @@
-package edu.ncsu.csc.iTrust2.controllers.api;
+package edu.ncsu.csc.itrust2.controllers.api;
 
 import java.util.List;
 
@@ -12,12 +12,12 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import edu.ncsu.csc.iTrust2.forms.PersonnelForm;
-import edu.ncsu.csc.iTrust2.models.Personnel;
-import edu.ncsu.csc.iTrust2.models.enums.Role;
-import edu.ncsu.csc.iTrust2.models.enums.TransactionType;
-import edu.ncsu.csc.iTrust2.services.PersonnelService;
-import edu.ncsu.csc.iTrust2.utils.LoggerUtil;
+import edu.ncsu.csc.itrust2.forms.PersonnelForm;
+import edu.ncsu.csc.itrust2.models.Personnel;
+import edu.ncsu.csc.itrust2.models.enums.Role;
+import edu.ncsu.csc.itrust2.models.enums.TransactionType;
+import edu.ncsu.csc.itrust2.services.PersonnelService;
+import edu.ncsu.csc.itrust2.utils.LoggerUtil;
 
 /**
  * Controller responsible for providing various REST API endpoints for the
@@ -30,11 +30,15 @@ import edu.ncsu.csc.iTrust2.utils.LoggerUtil;
 @SuppressWarnings ( { "rawtypes", "unchecked" } )
 public class APIPersonnelController extends APIController {
 
-    @Autowired
-    private LoggerUtil       loggerUtil;
+    private final LoggerUtil       loggerUtil;
 
-    @Autowired
-    private PersonnelService service;
+    private final PersonnelService service;
+
+    public APIPersonnelController(LoggerUtil loggerUtil, PersonnelService service) {
+        this.loggerUtil = loggerUtil;
+        this.service = service;
+    }
+
 
     /**
      * Retrieves and returns a list of all Personnel stored in the system

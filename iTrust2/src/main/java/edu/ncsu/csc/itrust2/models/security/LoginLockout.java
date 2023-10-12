@@ -1,4 +1,4 @@
-package edu.ncsu.csc.iTrust2.models.security;
+package edu.ncsu.csc.itrust2.models.security;
 
 import java.time.ZonedDateTime;
 
@@ -13,10 +13,10 @@ import javax.persistence.ManyToOne;
 
 import com.google.gson.annotations.JsonAdapter;
 
-import edu.ncsu.csc.iTrust2.adapters.ZonedDateTimeAdapter;
-import edu.ncsu.csc.iTrust2.adapters.ZonedDateTimeAttributeConverter;
-import edu.ncsu.csc.iTrust2.models.DomainObject;
-import edu.ncsu.csc.iTrust2.models.User;
+import edu.ncsu.csc.itrust2.adapters.ZonedDateTimeAdapter;
+import edu.ncsu.csc.itrust2.adapters.ZonedDateTimeAttributeConverter;
+import edu.ncsu.csc.itrust2.models.DomainObject;
+import edu.ncsu.csc.itrust2.models.User;
 
 /**
  * Class that holds a lockout for a user or ip. It contains a timestamp used to

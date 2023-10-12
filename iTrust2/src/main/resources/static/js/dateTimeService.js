@@ -33,9 +33,9 @@ angular.module('dateTimeServices', [])
         this.getAge = function(birthDate, date = new Date()) {
             // Provides accurate comparison despite timezone conversion
             birthDate = new Date(`${birthDate.getUTCFullYear()}/${birthDate.getUTCMonth() + 1}/${birthDate.getUTCDate()}`);
-            
-            var age = date.getFullYear() - birthDate.getFullYear();
-            var monthDiff = date.getMonth() - birthDate.getMonth();
+
+            let age = date.getFullYear() - birthDate.getFullYear();
+            const monthDiff = date.getMonth() - birthDate.getMonth();
 
             if (monthDiff < 0 || (monthDiff === 0 && date.getDate() < birthDate.getDate())) {
                 age--;

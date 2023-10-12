@@ -1,4 +1,4 @@
-package edu.ncsu.csc.iTrust2.models;
+package edu.ncsu.csc.itrust2.models;
 
 import java.io.Serializable;
 
@@ -10,8 +10,8 @@ import javax.validation.constraints.NotEmpty;
 
 import org.hibernate.validator.constraints.Length;
 
-import edu.ncsu.csc.iTrust2.forms.HospitalForm;
-import edu.ncsu.csc.iTrust2.models.enums.State;
+import edu.ncsu.csc.itrust2.forms.HospitalForm;
+import edu.ncsu.csc.itrust2.models.enums.State;
 
 /**
  * Class representing a Hospital object, as stored in the DB
@@ -186,8 +186,7 @@ public class Hospital extends DomainObject implements Serializable {
 
     @Override
     public String toString () {
-        final String s = this.name + "  " + this.address;
-        return s;
+        return this.name + "  " + this.address;
     }
 
     @Override

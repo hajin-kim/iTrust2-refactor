@@ -1,4 +1,4 @@
-package edu.ncsu.csc.iTrust2.config;
+package edu.ncsu.csc.itrust2.config;
 
 import javax.servlet.Filter;
 import javax.sql.DataSource;
@@ -37,7 +37,6 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
      * @param auth
      *            AuthenticationManagerBuilder to use to configure the
      *            Authentication.
-     * @throws Exception
      */
     @Autowired
     public void configureGlobal ( final AuthenticationManagerBuilder auth ) throws Exception {
@@ -93,7 +92,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     }
 
     @Override
-    public void configure ( final WebSecurity web ) throws Exception {
+    public void configure ( final WebSecurity web ) {
         // Allow anonymous access to the 3 mappings related to resetting a
         // forgotten password
         web.ignoring().antMatchers( "/api/v1/requestPasswordReset", "/api/v1/resetPassword/*", "/requestPasswordReset",
