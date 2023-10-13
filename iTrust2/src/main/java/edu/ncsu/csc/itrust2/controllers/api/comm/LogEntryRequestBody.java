@@ -3,11 +3,10 @@ package edu.ncsu.csc.itrust2.controllers.api.comm;
 import lombok.RequiredArgsConstructor;
 
 /**
- * A POJO class that represents the request body of a GET request for log
- * entries Spring automatically converts the JSON into this object.
+ * A POJO class that represents the request body of a GET request for log entries Spring
+ * automatically converts the JSON into this object.
  *
  * @author Bryce
- *
  */
 @RequiredArgsConstructor
 public class LogEntryRequestBody {
@@ -19,26 +18,26 @@ public class LogEntryRequestBody {
     public String endDate;
 
     /** Current page number */
-    public int    page;
+    public int page;
+
     /** Number of items per page */
-    public int    pageLength;
+    public int pageLength;
 
     /**
      * Gets the start date to retrieve log entries from.
      *
      * @return start date for log entry search
      */
-    public String getStartDate () {
+    public String getStartDate() {
         return startDate;
     }
 
     /**
      * Sets the start date to retrieve log entries from.
      *
-     * @param startDate
-     *            for log entry search
+     * @param startDate for log entry search
      */
-    public void setStartDate ( final String startDate ) {
+    public void setStartDate(final String startDate) {
         this.startDate = startDate;
     }
 
@@ -47,17 +46,16 @@ public class LogEntryRequestBody {
      *
      * @return end date for log entry search
      */
-    public String getEndDate () {
+    public String getEndDate() {
         return endDate;
     }
 
     /**
      * Sets the end date to retrieve log entries from.
      *
-     * @param endDate
-     *            for log entry search
+     * @param endDate for log entry search
      */
-    public void setEndDate ( final String endDate ) {
+    public void setEndDate(final String endDate) {
         this.endDate = endDate;
     }
 
@@ -66,17 +64,16 @@ public class LogEntryRequestBody {
      *
      * @return page number integer
      */
-    public int getPage () {
+    public int getPage() {
         return page;
     }
 
     /**
      * Sets the page number on the list of log entries.
      *
-     * @param page
-     *            number integer
+     * @param page number integer
      */
-    public void setPage ( final int page ) {
+    public void setPage(final int page) {
         this.page = page;
     }
 
@@ -85,18 +82,16 @@ public class LogEntryRequestBody {
      *
      * @return page length
      */
-    public int getPageLength () {
+    public int getPageLength() {
         return pageLength;
     }
 
     /**
      * Sets the length of the page.
      *
-     * @param pageLength
-     *            length of page
+     * @param pageLength length of page
      */
-    public void setPageLength ( final int pageLength ) {
+    public void setPageLength(final int pageLength) {
         this.pageLength = pageLength;
     }
-
 }

@@ -1,11 +1,11 @@
 package edu.ncsu.csc.itrust2.models.security;
 
-import com.google.gson.annotations.JsonAdapter;
 import edu.ncsu.csc.itrust2.adapters.ZonedDateTimeAdapter;
 import edu.ncsu.csc.itrust2.adapters.ZonedDateTimeAttributeConverter;
 import edu.ncsu.csc.itrust2.models.DomainObject;
 import edu.ncsu.csc.itrust2.models.User;
 
+import java.time.ZonedDateTime;
 import javax.persistence.Basic;
 import javax.persistence.Convert;
 import javax.persistence.Entity;
@@ -14,34 +14,33 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-import java.time.ZonedDateTime;
+
+import com.google.gson.annotations.JsonAdapter;
 
 /**
- * Contains info about a LoginBan from the system. A ban does not expire, and
- * can only be removed by an admin (Not Implemented). A ban can be for either a
- * User or an IP.
+ * Contains info about a LoginBan from the system. A ban does not expire, and can only be removed by
+ * an admin (Not Implemented). A ban can be for either a User or an IP.
  *
  * @author Thomas
  * @author Kai Presler-Marshall
- *
  */
 @Entity
 public class LoginBan extends DomainObject {
 
     @Id
-    @GeneratedValue ( strategy = GenerationType.AUTO )
-    private Long          id;
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private Long id;
 
-    private String        ip;
+    private String ip;
 
     @ManyToOne
-    @JoinColumn ( name = "user_id", columnDefinition = "varchar(100)" )
-    private User          user;
+    @JoinColumn(name = "user_id", columnDefinition = "varchar(100)")
+    private User user;
 
     @Basic
     // Allows the field to show up nicely in the database
-    @Convert ( converter = ZonedDateTimeAttributeConverter.class )
-    @JsonAdapter ( ZonedDateTimeAdapter.class )
+    @Convert(converter = ZonedDateTimeAttributeConverter.class)
+    @JsonAdapter(ZonedDateTimeAdapter.class)
     private ZonedDateTime time;
 
     /**
@@ -49,17 +48,16 @@ public class LoginBan extends DomainObject {
      *
      * @return the id
      */
-    public Long getId () {
+    public Long getId() {
         return id;
     }
 
     /**
      * Sets the ID of the LoginBan.
      *
-     * @param id
-     *            the id to set
+     * @param id the id to set
      */
-    public void setId ( final Long id ) {
+    public void setId(final Long id) {
         this.id = id;
     }
 
@@ -68,17 +66,16 @@ public class LoginBan extends DomainObject {
      *
      * @return the user
      */
-    public User getUser () {
+    public User getUser() {
         return user;
     }
 
     /**
      * Sets the User associated with the ban.
      *
-     * @param user
-     *            the user to set
+     * @param user the user to set
      */
-    public void setUser ( final User user ) {
+    public void setUser(final User user) {
         this.user = user;
     }
 
@@ -87,17 +84,16 @@ public class LoginBan extends DomainObject {
      *
      * @return the ip
      */
-    public String getIp () {
+    public String getIp() {
         return ip;
     }
 
     /**
      * Sets the IP to ban.
      *
-     * @param ip
-     *            the ip to set
+     * @param ip the ip to set
      */
-    public void setIp ( final String ip ) {
+    public void setIp(final String ip) {
         this.ip = ip;
     }
 
@@ -106,18 +102,16 @@ public class LoginBan extends DomainObject {
      *
      * @return the time
      */
-    public ZonedDateTime getTime () {
+    public ZonedDateTime getTime() {
         return time;
     }
 
     /**
      * Sets the start time of the ban.
      *
-     * @param time
-     *            the time to set
+     * @param time the time to set
      */
-    public void setTime ( final ZonedDateTime time ) {
+    public void setTime(final ZonedDateTime time) {
         this.time = time;
     }
-
 }

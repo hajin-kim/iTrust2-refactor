@@ -3,15 +3,12 @@ package edu.ncsu.csc.itrust2.models;
 import java.io.Serializable;
 
 /**
- * The root class for all of our persistent entities. Defines no fields or
- * methods, but is used to provide a common superclass that the `Service`
- * methods can use.
+ * The root class for all of our persistent entities. Defines no fields or methods, but is used to
+ * provide a common superclass that the `Service` methods can use.
  *
  * @author Kai Presler-Marshall
- *
  */
-abstract public class DomainObject {
+public abstract class DomainObject {
 
-    public abstract Serializable getId ();
-
+    public abstract Serializable getId();
 }

@@ -1,6 +1,5 @@
 package edu.ncsu.csc.itrust2.models;
 
-import com.google.gson.annotations.JsonAdapter;
 import edu.ncsu.csc.itrust2.adapters.LocalDateAdapter;
 import edu.ncsu.csc.itrust2.forms.PatientForm;
 import edu.ncsu.csc.itrust2.forms.UserForm;
@@ -9,289 +8,246 @@ import edu.ncsu.csc.itrust2.models.enums.Ethnicity;
 import edu.ncsu.csc.itrust2.models.enums.Gender;
 import edu.ncsu.csc.itrust2.models.enums.Role;
 import edu.ncsu.csc.itrust2.models.enums.State;
-import org.hibernate.validator.constraints.Length;
-import org.springframework.data.jpa.convert.threeten.Jsr310JpaConverters.LocalDateConverter;
 
+import java.time.LocalDate;
 import javax.persistence.Basic;
 import javax.persistence.Convert;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
-import java.time.LocalDate;
+
+import com.google.gson.annotations.JsonAdapter;
+import org.hibernate.validator.constraints.Length;
+import org.springframework.data.jpa.convert.threeten.Jsr310JpaConverters.LocalDateConverter;
 
 @Entity
 public class Patient extends User {
 
-    /**
-     * The first name of this patient
-     */
-    @Length ( min = 1 )
-    private String    firstName;
+    /** The first name of this patient */
+    @Length(min = 1) private String firstName;
 
-    /**
-     * The preferred name of this patient
-     */
-    @Length ( max = 20 )
-    private String    preferredName;
+    /** The preferred name of this patient */
+    @Length(max = 20) private String preferredName;
 
-    /**
-     * The last name of this patient
-     */
-    @Length ( min = 1 )
-    private String    lastName;
+    /** The last name of this patient */
+    @Length(min = 1) private String lastName;
 
-    /**
-     * The email address of this patient
-     */
-    @Length ( max = 30 )
-    private String    email;
+    /** The email address of this patient */
+    @Length(max = 30) private String email;
 
-    /**
-     * The address line 1 of this patient
-     */
-    @Length ( max = 50 )
-    private String    address1;
+    /** The address line 1 of this patient */
+    @Length(max = 50) private String address1;
 
-    /**
-     * The address line 2 of this patient
-     */
-    @Length ( max = 50 )
-    private String    address2;
+    /** The address line 2 of this patient */
+    @Length(max = 50) private String address2;
 
-    /**
-     * The city of residence of this patient
-     */
-    @Length ( max = 15 )
-    private String    city;
+    /** The city of residence of this patient */
+    @Length(max = 15) private String city;
 
-    /**
-     * The state of residence of this patient
-     */
-    @Enumerated ( EnumType.STRING )
-    private State     state;
+    /** The state of residence of this patient */
+    @Enumerated(EnumType.STRING)
+    private State state;
 
-    /**
-     * The zip code of this patient
-     */
-    @Length ( min = 5, max = 10 )
-    private String    zip;
+    /** The zip code of this patient */
+    @Length(min = 5, max = 10) private String zip;
 
-    /**
-     * The phone number of this patient
-     */
-    @Length ( min = 12, max = 12 )
-    private String    phone;
+    /** The phone number of this patient */
+    @Length(min = 12, max = 12) private String phone;
 
-    /**
-     * The birthday of this patient
-     */
+    /** The birthday of this patient */
     @Basic
     // Allows the field to show up nicely in the database
-    @Convert ( converter = LocalDateConverter.class )
-    @JsonAdapter ( LocalDateAdapter.class )
+    @Convert(converter = LocalDateConverter.class)
+    @JsonAdapter(LocalDateAdapter.class)
     private LocalDate dateOfBirth;
 
-    /**
-     * The date of death of this patient
-     */
+    /** The date of death of this patient */
     @Basic
     // Allows the field to show up nicely in the database
-    @Convert ( converter = LocalDateConverter.class )
-    @JsonAdapter ( LocalDateAdapter.class )
+    @Convert(converter = LocalDateConverter.class)
+    @JsonAdapter(LocalDateAdapter.class)
     private LocalDate dateOfDeath;
 
-    /**
-     * The cause of death of this patient
-     */
-    private String    causeOfDeath;
+    /** The cause of death of this patient */
+    private String causeOfDeath;
 
-    /**
-     * The blood type of this patient
-     */
-    @Enumerated ( EnumType.STRING )
+    /** The blood type of this patient */
+    @Enumerated(EnumType.STRING)
     private BloodType bloodType;
 
-    /**
-     * The ethnicity of this patient
-     */
-    @Enumerated ( EnumType.STRING )
+    /** The ethnicity of this patient */
+    @Enumerated(EnumType.STRING)
     private Ethnicity ethnicity;
 
-    /**
-     * The gender of this patient
-     */
-    @Enumerated ( EnumType.STRING )
-    private Gender    gender;
+    /** The gender of this patient */
+    @Enumerated(EnumType.STRING)
+    private Gender gender;
 
-    /**
-     * For Hibernate
-     */
-    public Patient () {
+    /** For Hibernate */
+    public Patient() {}
 
-    }
-
-    public Patient ( final UserForm uf ) {
-        super( uf );
-        if ( !getRoles().contains( Role.ROLE_PATIENT ) ) {
-            throw new IllegalArgumentException( "Attempted to create a Patient record for a non-Patient user!" );
+    public Patient(final UserForm uf) {
+        super(uf);
+        if (!getRoles().contains(Role.ROLE_PATIENT)) {
+            throw new IllegalArgumentException(
+                    "Attempted to create a Patient record for a non-Patient user!");
         }
     }
 
-    public Patient update ( final PatientForm form ) {
-        setFirstName( form.getFirstName() );
-        setPreferredName( form.getPreferredName() );
-        setLastName( form.getLastName() );
-        setEmail( form.getEmail() );
-        setAddress1( form.getAddress1() );
-        setAddress2( form.getAddress2() );
-        setCity( form.getCity() );
-        setState( State.parse( form.getState() ) );
-        setZip( form.getZip() );
-        setPhone( form.getPhone() );
+    public Patient update(final PatientForm form) {
+        setFirstName(form.getFirstName());
+        setPreferredName(form.getPreferredName());
+        setLastName(form.getLastName());
+        setEmail(form.getEmail());
+        setAddress1(form.getAddress1());
+        setAddress2(form.getAddress2());
+        setCity(form.getCity());
+        setState(State.parse(form.getState()));
+        setZip(form.getZip());
+        setPhone(form.getPhone());
 
-        setDateOfBirth( LocalDate.parse( form.getDateOfBirth() ) );
+        setDateOfBirth(LocalDate.parse(form.getDateOfBirth()));
 
         // Patient can't set their date of death
-        if ( form.getDateOfDeath() != null ) {
-            setDateOfDeath( LocalDate.parse( form.getDateOfDeath() ) );
-            setCauseOfDeath( form.getCauseOfDeath() );
+        if (form.getDateOfDeath() != null) {
+            setDateOfDeath(LocalDate.parse(form.getDateOfDeath()));
+            setCauseOfDeath(form.getCauseOfDeath());
         }
 
-        setBloodType( BloodType.parse( form.getBloodType() ) );
+        setBloodType(BloodType.parse(form.getBloodType()));
 
-        setEthnicity( Ethnicity.parse( form.getEthnicity() ) );
+        setEthnicity(Ethnicity.parse(form.getEthnicity()));
 
-        setGender( Gender.parse( form.getGender() ) );
+        setGender(Gender.parse(form.getGender()));
 
         return this;
     }
 
-    public String getFirstName () {
+    public String getFirstName() {
         return firstName;
     }
 
-    public void setFirstName ( final String firstName ) {
+    public void setFirstName(final String firstName) {
         this.firstName = firstName;
     }
 
-    public String getPreferredName () {
+    public String getPreferredName() {
         return preferredName;
     }
 
-    public void setPreferredName ( final String preferredName ) {
+    public void setPreferredName(final String preferredName) {
         this.preferredName = preferredName;
     }
 
-    public String getLastName () {
+    public String getLastName() {
         return lastName;
     }
 
-    public void setLastName ( final String lastName ) {
+    public void setLastName(final String lastName) {
         this.lastName = lastName;
     }
 
-    public String getEmail () {
+    public String getEmail() {
         return email;
     }
 
-    public void setEmail ( final String email ) {
+    public void setEmail(final String email) {
         this.email = email;
     }
 
-    public String getAddress1 () {
+    public String getAddress1() {
         return address1;
     }
 
-    public void setAddress1 ( final String address1 ) {
+    public void setAddress1(final String address1) {
         this.address1 = address1;
     }
 
-    public String getAddress2 () {
+    public String getAddress2() {
         return address2;
     }
 
-    public void setAddress2 ( final String address2 ) {
+    public void setAddress2(final String address2) {
         this.address2 = address2;
     }
 
-    public String getCity () {
+    public String getCity() {
         return city;
     }
 
-    public void setCity ( final String city ) {
+    public void setCity(final String city) {
         this.city = city;
     }
 
-    public State getState () {
+    public State getState() {
         return state;
     }
 
-    public void setState ( final State state ) {
+    public void setState(final State state) {
         this.state = state;
     }
 
-    public String getZip () {
+    public String getZip() {
         return zip;
     }
 
-    public void setZip ( final String zip ) {
+    public void setZip(final String zip) {
         this.zip = zip;
     }
 
-    public String getPhone () {
+    public String getPhone() {
         return phone;
     }
 
-    public void setPhone ( final String phone ) {
+    public void setPhone(final String phone) {
         this.phone = phone;
     }
 
-    public LocalDate getDateOfBirth () {
+    public LocalDate getDateOfBirth() {
         return dateOfBirth;
     }
 
-    public void setDateOfBirth ( final LocalDate dateOfBirth ) {
+    public void setDateOfBirth(final LocalDate dateOfBirth) {
         this.dateOfBirth = dateOfBirth;
     }
 
-    public LocalDate getDateOfDeath () {
+    public LocalDate getDateOfDeath() {
         return dateOfDeath;
     }
 
-    public void setDateOfDeath ( final LocalDate dateOfDeath ) {
+    public void setDateOfDeath(final LocalDate dateOfDeath) {
         this.dateOfDeath = dateOfDeath;
     }
 
-    public String getCauseOfDeath () {
+    public String getCauseOfDeath() {
         return causeOfDeath;
     }
 
-    public void setCauseOfDeath ( final String causeOfDeath ) {
+    public void setCauseOfDeath(final String causeOfDeath) {
         this.causeOfDeath = causeOfDeath;
     }
 
-    public BloodType getBloodType () {
+    public BloodType getBloodType() {
         return bloodType;
     }
 
-    public void setBloodType ( final BloodType bloodType ) {
+    public void setBloodType(final BloodType bloodType) {
         this.bloodType = bloodType;
     }
 
-    public Ethnicity getEthnicity () {
+    public Ethnicity getEthnicity() {
         return ethnicity;
     }
 
-    public void setEthnicity ( final Ethnicity ethnicity ) {
+    public void setEthnicity(final Ethnicity ethnicity) {
         this.ethnicity = ethnicity;
     }
 
-    public Gender getGender () {
+    public Gender getGender() {
         return gender;
     }
 
-    public void setGender ( final Gender gender ) {
+    public void setGender(final Gender gender) {
         this.gender = gender;
     }
-
 }

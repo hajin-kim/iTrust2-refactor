@@ -1,11 +1,11 @@
 package edu.ncsu.csc.itrust2.models.security;
 
-import com.google.gson.annotations.JsonAdapter;
 import edu.ncsu.csc.itrust2.adapters.ZonedDateTimeAdapter;
 import edu.ncsu.csc.itrust2.adapters.ZonedDateTimeAttributeConverter;
 import edu.ncsu.csc.itrust2.models.DomainObject;
 import edu.ncsu.csc.itrust2.models.enums.TransactionType;
 
+import java.time.ZonedDateTime;
 import javax.persistence.Basic;
 import javax.persistence.Convert;
 import javax.persistence.Entity;
@@ -13,103 +13,80 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.validation.constraints.NotNull;
-import java.time.ZonedDateTime;
+
+import com.google.gson.annotations.JsonAdapter;
 
 /**
- * Class that represents a LogEntry that is created in response to certain user
- * actions. Contains a required TransactionType code (specifying the event that
- * happened), a username, and a time when the event occurred. Has support for an
- * optional secondary user and message for further elaboration
+ * Class that represents a LogEntry that is created in response to certain user actions. Contains a
+ * required TransactionType code (specifying the event that happened), a username, and a time when
+ * the event occurred. Has support for an optional secondary user and message for further
+ * elaboration
  *
  * @author Kai Presler-Marshall
- *
  */
 @Entity
 public class LogEntry extends DomainObject {
 
-    /**
-     * Type of event that has been logged
-     */
-    @NotNull
-    private TransactionType logCode;
+    /** Type of event that has been logged */
+    @NotNull private TransactionType logCode;
 
-    /**
-     * The primary user for the event that has been logged
-     */
-    @NotNull
-    private String          primaryUser;
+    /** The primary user for the event that has been logged */
+    @NotNull private String primaryUser;
 
-    /**
-     * The timestamp of when the event occurred
-     */
-    @NotNull
-    @Basic
+    /** The timestamp of when the event occurred */
+    @NotNull @Basic
     // Allows the field to show up nicely in the database
-    @Convert ( converter = ZonedDateTimeAttributeConverter.class )
-    @JsonAdapter ( ZonedDateTimeAdapter.class )
-    private ZonedDateTime   time;
+    @Convert(converter = ZonedDateTimeAttributeConverter.class)
+    @JsonAdapter(ZonedDateTimeAdapter.class)
+    private ZonedDateTime time;
 
-    /**
-     * The secondary user for the event that has been logged (optional)
-     */
-    private String          secondaryUser;
+    /** The secondary user for the event that has been logged (optional) */
+    private String secondaryUser;
 
-    /**
-     * An additional elaborative message for the event that has been logged.
-     * Optional.
-     */
-    private String          message;
+    /** An additional elaborative message for the event that has been logged. Optional. */
+    private String message;
 
-    /**
-     * ID of the LogEntry
-     */
+    /** ID of the LogEntry */
     @Id
-    @GeneratedValue ( strategy = GenerationType.AUTO )
-    private Long            id;
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private Long id;
 
     /**
      * Create a LogEntry from the most complete set of information.
      *
-     * @param code
-     *            The type of event that occurred and will be logged.
-     * @param primaryUser
-     *            The primary user that triggered the event
-     * @param secondaryUser
-     *            The secondary user involved
-     * @param message
-     *            An optional message for the event
+     * @param code The type of event that occurred and will be logged.
+     * @param primaryUser The primary user that triggered the event
+     * @param secondaryUser The secondary user involved
+     * @param message An optional message for the event
      */
-    public LogEntry ( final TransactionType code, final String primaryUser, final String secondaryUser,
-            final String message ) {
-        this.setLogCode( code );
-        this.setPrimaryUser( primaryUser );
-        this.setSecondaryUser( secondaryUser );
-        this.setMessage( message );
-        this.setTime( ZonedDateTime.now() );
+    public LogEntry(
+            final TransactionType code,
+            final String primaryUser,
+            final String secondaryUser,
+            final String message) {
+        this.setLogCode(code);
+        this.setPrimaryUser(primaryUser);
+        this.setSecondaryUser(secondaryUser);
+        this.setMessage(message);
+        this.setTime(ZonedDateTime.now());
     }
 
-    /**
-     * Creates an empty LogEntry. Used by Hibernate.
-     */
-    public LogEntry () {
-    }
+    /** Creates an empty LogEntry. Used by Hibernate. */
+    public LogEntry() {}
 
     /**
      * Retrieves the ID of the LogEntry
-     * 
+     *
      * @return the ID of the LogEntry
      */
     @Override
-    public Long getId () {
+    public Long getId() {
         return id;
     }
 
-    /**
-     * Sets the ID on the LogEntry. Used by Hibernate.
-     *
-     */
-    @SuppressWarnings ( "unused" )
-    private void setId ( final Long id ) {
+    /** Sets the ID on the LogEntry. Used by Hibernate. */
+    @SuppressWarnings("unused")
+    private void setId(final Long id) {
         this.id = id;
     }
 
@@ -118,7 +95,7 @@ public class LogEntry extends DomainObject {
      *
      * @return Time
      */
-    public ZonedDateTime getTime () {
+    public ZonedDateTime getTime() {
         return this.time;
     }
 
@@ -127,18 +104,17 @@ public class LogEntry extends DomainObject {
      *
      * @return Username of the secondary user
      */
-    public String getSecondaryUser () {
+    public String getSecondaryUser() {
         return secondaryUser;
     }
 
     /**
      * Sets the SecondaryUser on the Log Entry
      *
-     * @param secondaryUser
-     *            Optional secondary user for the LogEntry
+     * @param secondaryUser Optional secondary user for the LogEntry
      */
-    public void setSecondaryUser ( final String secondaryUser ) {
-        if ( !this.getPrimaryUser().equals( secondaryUser ) ) {
+    public void setSecondaryUser(final String secondaryUser) {
+        if (!this.getPrimaryUser().equals(secondaryUser)) {
             this.secondaryUser = secondaryUser;
         }
     }
@@ -148,17 +124,16 @@ public class LogEntry extends DomainObject {
      *
      * @return Any message present
      */
-    public String getMessage () {
+    public String getMessage() {
         return message;
     }
 
     /**
      * Sets the optional Message on the LogEntry
      *
-     * @param message
-     *            New Message to set
+     * @param message New Message to set
      */
-    public void setMessage ( final String message ) {
+    public void setMessage(final String message) {
         this.message = message;
     }
 
@@ -167,17 +142,16 @@ public class LogEntry extends DomainObject {
      *
      * @return The type
      */
-    public TransactionType getLogCode () {
+    public TransactionType getLogCode() {
         return logCode;
     }
 
     /**
      * Sets the Type of the LogEntry
      *
-     * @param logCode
-     *            New Type of the LogEntry
+     * @param logCode New Type of the LogEntry
      */
-    public void setLogCode ( final TransactionType logCode ) {
+    public void setLogCode(final TransactionType logCode) {
         this.logCode = logCode;
     }
 
@@ -186,28 +160,25 @@ public class LogEntry extends DomainObject {
      *
      * @return The primary user
      */
-    public String getPrimaryUser () {
+    public String getPrimaryUser() {
         return primaryUser;
     }
 
     /**
      * Sets the primary User of the LogEntry
      *
-     * @param primaryUser
-     *            The primary user to set.
+     * @param primaryUser The primary user to set.
      */
-    public void setPrimaryUser ( final String primaryUser ) {
+    public void setPrimaryUser(final String primaryUser) {
         this.primaryUser = primaryUser;
     }
 
     /**
      * Sets the time at which the LogEntry occurred.
      *
-     * @param time
-     *            Timestamp when the event occurred.
+     * @param time Timestamp when the event occurred.
      */
-    public void setTime ( final ZonedDateTime time ) {
+    public void setTime(final ZonedDateTime time) {
         this.time = time;
     }
-
 }

@@ -1,9 +1,8 @@
 package edu.ncsu.csc.itrust2.models;
 
-import com.google.gson.annotations.JsonAdapter;
 import edu.ncsu.csc.itrust2.adapters.LocalDateAdapter;
-import org.springframework.data.jpa.convert.threeten.Jsr310JpaConverters.LocalDateConverter;
 
+import java.time.LocalDate;
 import javax.persistence.Basic;
 import javax.persistence.CascadeType;
 import javax.persistence.Convert;
@@ -15,11 +14,13 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
-import java.time.LocalDate;
+
+import com.google.gson.annotations.JsonAdapter;
+import org.springframework.data.jpa.convert.threeten.Jsr310JpaConverters.LocalDateConverter;
 
 /**
- * Represents a prescription in the system. Each prescription is associated with
- * a patient and a drug.
+ * Represents a prescription in the system. Each prescription is associated with a patient and a
+ * drug.
  *
  * @author Connor
  * @author Kai Presler-Marshall
@@ -28,51 +29,42 @@ import java.time.LocalDate;
 public class Prescription extends DomainObject {
 
     @Id
-    @GeneratedValue ( strategy = GenerationType.AUTO )
-    private Long      id;
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private Long id;
 
-    @NotNull
-    @ManyToOne
-    private Drug      drug;
+    @NotNull @ManyToOne private Drug drug;
 
-    @Min ( 1 )
-    private int       dosage;
+    @Min(1)
+    private int dosage;
 
-    @NotNull
-    @Basic
+    @NotNull @Basic
     // Allows the field to show up nicely in the database
-    @Convert ( converter = LocalDateConverter.class )
-    @JsonAdapter ( LocalDateAdapter.class )
+    @Convert(converter = LocalDateConverter.class)
+    @JsonAdapter(LocalDateAdapter.class)
     private LocalDate startDate;
 
-    @NotNull
-    @Basic
+    @NotNull @Basic
     // Allows the field to show up nicely in the database
-    @Convert ( converter = LocalDateConverter.class )
-    @JsonAdapter ( LocalDateAdapter.class )
+    @Convert(converter = LocalDateConverter.class)
+    @JsonAdapter(LocalDateAdapter.class)
     private LocalDate endDate;
 
-    @Min ( 0 )
-    private int       renewals;
+    @Min(0)
+    private int renewals;
 
-    @NotNull
-    @ManyToOne ( cascade = CascadeType.ALL )
-    @JoinColumn ( name = "patient_id", columnDefinition = "varchar(100)" )
-    private User      patient;
+    @NotNull @ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "patient_id", columnDefinition = "varchar(100)")
+    private User patient;
 
-    /**
-     * Empty constructor for Hibernate.
-     */
-    public Prescription () {
-    }
+    /** Empty constructor for Hibernate. */
+    public Prescription() {}
 
     /**
      * Sets the Prescription's unique id.
      *
-     * @param id
-     *            the prescription id
+     * @param id the prescription id
      */
-    public void setId ( final Long id ) {
+    public void setId(final Long id) {
         this.id = id;
     }
 
@@ -81,7 +73,7 @@ public class Prescription extends DomainObject {
      *
      * @return the prescription id
      */
-    public Long getId () {
+    public Long getId() {
         return id;
     }
 
@@ -90,17 +82,16 @@ public class Prescription extends DomainObject {
      *
      * @return the prescription's drug
      */
-    public Drug getDrug () {
+    public Drug getDrug() {
         return drug;
     }
 
     /**
      * Associates this prescription with the given drug.
      *
-     * @param drug
-     *            the drug
+     * @param drug the drug
      */
-    public void setDrug ( final Drug drug ) {
+    public void setDrug(final Drug drug) {
         this.drug = drug;
     }
 
@@ -109,17 +100,16 @@ public class Prescription extends DomainObject {
      *
      * @return the drug dosage
      */
-    public int getDosage () {
+    public int getDosage() {
         return dosage;
     }
 
     /**
      * Sets the prescription's dosage in milligrams.
      *
-     * @param dosage
-     *            prescription dosage
+     * @param dosage prescription dosage
      */
-    public void setDosage ( final int dosage ) {
+    public void setDosage(final int dosage) {
         this.dosage = dosage;
     }
 
@@ -128,17 +118,16 @@ public class Prescription extends DomainObject {
      *
      * @return the start date
      */
-    public LocalDate getStartDate () {
+    public LocalDate getStartDate() {
         return startDate;
     }
 
     /**
      * Sets the prescription's first valid day to the given date.
      *
-     * @param startDate
-     *            the first valid day
+     * @param startDate the first valid day
      */
-    public void setStartDate ( final LocalDate startDate ) {
+    public void setStartDate(final LocalDate startDate) {
         this.startDate = startDate;
     }
 
@@ -147,17 +136,16 @@ public class Prescription extends DomainObject {
      *
      * @return the prescription's end date
      */
-    public LocalDate getEndDate () {
+    public LocalDate getEndDate() {
         return endDate;
     }
 
     /**
      * Sets the prescription's final valid date.
      *
-     * @param endDate
-     *            the end date
+     * @param endDate the end date
      */
-    public void setEndDate ( final LocalDate endDate ) {
+    public void setEndDate(final LocalDate endDate) {
         this.endDate = endDate;
     }
 
@@ -166,17 +154,16 @@ public class Prescription extends DomainObject {
      *
      * @return the number of renewals
      */
-    public int getRenewals () {
+    public int getRenewals() {
         return renewals;
     }
 
     /**
      * Sets the prescription's number of renewals to the given number.
      *
-     * @param renewals
-     *            the number of renewals
+     * @param renewals the number of renewals
      */
-    public void setRenewals ( final int renewals ) {
+    public void setRenewals(final int renewals) {
         this.renewals = renewals;
     }
 
@@ -185,18 +172,16 @@ public class Prescription extends DomainObject {
      *
      * @return the patient
      */
-    public User getPatient () {
+    public User getPatient() {
         return patient;
     }
 
     /**
      * Sets the prescription's patient to the given user
      *
-     * @param user
-     *            the user
+     * @param user the user
      */
-    public void setPatient ( final User user ) {
+    public void setPatient(final User user) {
         this.patient = user;
     }
-
 }

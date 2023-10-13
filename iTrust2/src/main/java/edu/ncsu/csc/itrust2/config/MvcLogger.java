@@ -1,13 +1,13 @@
 package edu.ncsu.csc.itrust2.config;
 
-import lombok.extern.log4j.Log4j2;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.validation.constraints.NotNull;
+
+import lombok.extern.log4j.Log4j2;
 import org.springframework.stereotype.Component;
 import org.springframework.web.servlet.HandlerInterceptor;
 import org.springframework.web.servlet.ModelAndView;
-
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 
 @Log4j2
 @Component
@@ -29,8 +29,7 @@ public class MvcLogger implements HandlerInterceptor {
             ModelAndView modelAndView) {
         if (response.getStatus() >= 400)
             log.error("response: {}\nerror: {}", modelAndView, response);
-        else
-            log.info("response status: {}", response.getStatus());
+        else log.info("response status: {}", response.getStatus());
     }
 
     @Override
@@ -38,6 +37,5 @@ public class MvcLogger implements HandlerInterceptor {
             @NotNull HttpServletRequest request,
             @NotNull HttpServletResponse response,
             @NotNull Object handler,
-            Exception ex) {
-    }
+            Exception ex) {}
 }

@@ -1,5 +1,7 @@
 package edu.ncsu.csc.itrust2.config;
 
+import javax.sql.DataSource;
+
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.DefaultAuthenticationEventPublisher;
@@ -16,18 +18,14 @@ import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.access.channel.ChannelProcessingFilter;
 import org.springframework.security.web.csrf.CookieCsrfTokenRepository;
 
-import javax.sql.DataSource;
-
 @Configuration
 @EnableWebSecurity
-@EnableGlobalMethodSecurity ( prePostEnabled = true )
+@EnableGlobalMethodSecurity(prePostEnabled = true)
 public class WebSecurityConfig {
     /**
      * Login configuration for iTrust2.
      *
-     * @param auth
-     *            AuthenticationManagerBuilder to use to configure the
-     *            Authentication.
+     * @param auth AuthenticationManagerBuilder to use to configure the Authentication.
      */
     @Bean
     public UserDetailsManager configureGlobal(DataSource dataSource) {
@@ -39,24 +37,24 @@ public class WebSecurityConfig {
         // of this:
         // http://websystique.com/springmvc/spring-mvc-4-and-spring-security-4-integration-example/
         return new JdbcUserDetailsManagerConfigurer<AuthenticationManagerBuilder>()
-                .dataSource( dataSource )
-                .passwordEncoder( passwordEncoder() )
-                .usersByUsernameQuery( "select username,password,enabled from user WHERE username = ?;" )
-                .authoritiesByUsernameQuery( "select user_username, roles from user_roles where user_username=?" )
+                .dataSource(dataSource)
+                .passwordEncoder(passwordEncoder())
+                .usersByUsernameQuery(
+                        "select username,password,enabled from user WHERE username = ?;")
+                .authoritiesByUsernameQuery(
+                        "select user_username, roles from user_roles where user_username=?")
                 .getUserDetailsService();
     }
 
     /**
-     * Method responsible for the Login page. Can be extended to explicitly
-     * override other automatic functionality as desired.
+     * Method responsible for the Login page. Can be extended to explicitly override other automatic
+     * functionality as desired.
      */
     @Bean
     public SecurityFilterChain securityFilterChain(
-            IPFilter ipBlockFilter,
-            FailureHandler failureHandler,
-            HttpSecurity http
-    ) throws Exception {
-        final String[] patterns = new String[] { "/login*", "/DrJenkins" };
+            IPFilter ipBlockFilter, FailureHandler failureHandler, HttpSecurity http)
+            throws Exception {
+        final String[] patterns = new String[] {"/login*", "/DrJenkins"};
         // Add filter for banned/locked IP
         /*
          * According to
@@ -66,10 +64,20 @@ public class WebSecurityConfig {
          * first filter processed, so this means the IP block will be the
          * absolute first Filter.
          */
-        http.addFilterBefore( ipBlockFilter, ChannelProcessingFilter.class );
+        http.addFilterBefore(ipBlockFilter, ChannelProcessingFilter.class);
 
-        http.authorizeRequests().antMatchers( patterns ).anonymous().anyRequest().authenticated().and().formLogin()
-                .loginPage( "/login" ).failureHandler( failureHandler ).defaultSuccessUrl( "/" ).and().csrf()
+        http.authorizeRequests()
+                .antMatchers(patterns)
+                .anonymous()
+                .anyRequest()
+                .authenticated()
+                .and()
+                .formLogin()
+                .loginPage("/login")
+                .failureHandler(failureHandler)
+                .defaultSuccessUrl("/")
+                .and()
+                .csrf()
 
                 /*
                  * * Credit to https://medium.com/spektrakel
@@ -80,31 +88,38 @@ public class WebSecurityConfig {
                  * to make Angular work properly with CSRF protection
                  */
 
-                .csrfTokenRepository( CookieCsrfTokenRepository.withHttpOnlyFalse() );
+                .csrfTokenRepository(CookieCsrfTokenRepository.withHttpOnlyFalse());
 
         return http.build();
     }
 
     /**
-     * Method responsible for the Login page. Can be extended to explicitly
-     * override other automatic functionality as desired.
+     * Method responsible for the Login page. Can be extended to explicitly override other automatic
+     * functionality as desired.
      */
     @Bean
     public WebSecurityCustomizer webSecurityCustomizer() {
         // Allow anonymous access to the 3 mappings related to resetting a
         // forgotten password
-        return (web) -> web.ignoring().antMatchers( "/api/v1/requestPasswordReset", "/api/v1/resetPassword/*", "/requestPasswordReset",
-                "/resetPassword", "/api/v1/generateUsers", "/viewEmails", "/api/v1/emails" );
+        return (web) ->
+                web.ignoring()
+                        .antMatchers(
+                                "/api/v1/requestPasswordReset",
+                                "/api/v1/resetPassword/*",
+                                "/requestPasswordReset",
+                                "/resetPassword",
+                                "/api/v1/generateUsers",
+                                "/viewEmails",
+                                "/api/v1/emails");
     }
 
     /**
-     * Bean used to generate a PasswordEncoder to hash the user-provided
-     * password.
+     * Bean used to generate a PasswordEncoder to hash the user-provided password.
      *
      * @return The password encoder.
      */
     @Bean
-    public PasswordEncoder passwordEncoder () {
+    public PasswordEncoder passwordEncoder() {
         return new BCryptPasswordEncoder();
     }
 
@@ -114,7 +129,7 @@ public class WebSecurityConfig {
      * @return The AuthenticationEventPublisher.
      */
     @Bean
-    public DefaultAuthenticationEventPublisher defaultAuthenticationEventPublisher () {
+    public DefaultAuthenticationEventPublisher defaultAuthenticationEventPublisher() {
         return new DefaultAuthenticationEventPublisher();
     }
 }
