@@ -10,9 +10,22 @@ spring:
   jpa:
     hibernate:
       ddl-auto: update
-    show-sql: true
     database: mysql
-
+  mvc:
+    log-request-details: true
+    log-resolved-exception: true
+logging:
+  level:
+    edu:
+      ncsu:
+        csc: TRACE
+    org:
+      springframework:
+        web:
+          filter:
+            CommonsRequestLoggingFilter: DEBUG
+      hibernate:
+        SQL: DEBUG
 server:
   port: 8080
   servlet:
