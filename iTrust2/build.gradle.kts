@@ -2,6 +2,8 @@ plugins {
     java
     id("org.springframework.boot") version "2.7.16"
     id("io.spring.dependency-management") version "1.0.15.RELEASE"
+
+    id("com.diffplug.spotless") version "6.22.0"
 }
 
 group = "edu.ncsu.csc"
@@ -48,6 +50,29 @@ dependencies {
     testImplementation("org.springframework.boot:spring-boot-starter-test")
     testImplementation("org.springframework.security:spring-security-test:5.3.6.RELEASE")
     testImplementation("junit:junit:4.13.1")
+}
+
+spotless {
+    // optional: limit format enforcement to just the files changed by this feature branch
+//    ratchetFrom("origin/main")
+
+    format("misc") {
+        target("*.gradle", "*.md", ".gitignore")
+
+        trimTrailingWhitespace()
+        indentWithSpaces()
+        endWithNewline()
+    }
+    java {
+        googleJavaFormat("1.18.1")
+            .aosp()
+            .reflowLongStrings()
+            .formatJavadoc(true)
+            .reorderImports(true)
+
+        formatAnnotations()
+        importOrder(group as String, "java|javax|jakarta", "", "\\#$group", "\\#")
+    }
 }
 
 tasks {

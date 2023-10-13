@@ -12,6 +12,8 @@
       <option name="useCurrentConnection" value="false" />
     </extension>
     <method v="2">
+      <option name="Gradle.BeforeRunTask" enabled="false" tasks="spotlessApply" externalProjectPath="$PROJECT_DIR$" vmOptions="" scriptParameters="" />
+      <option name="Gradle.BeforeRunTask" enabled="true" tasks="spotlessCheck" externalProjectPath="$PROJECT_DIR$" vmOptions="" scriptParameters="" />
       <option name="Make" enabled="true" />
       <option name="RunConfigurationTask" enabled="true" run_configuration_name="local DB" run_configuration_type="docker-deploy" />
     </method>
