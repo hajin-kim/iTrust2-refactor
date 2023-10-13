@@ -2,8 +2,12 @@ package edu.ncsu.csc.itrust2.forms;
 
 import edu.ncsu.csc.itrust2.models.User;
 import edu.ncsu.csc.itrust2.models.enums.Role;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 import org.hibernate.validator.constraints.Length;
 
+import javax.validation.constraints.NotNull;
 import javax.validation.constraints.NotEmpty;
 import java.util.HashSet;
 import java.util.Set;
@@ -16,6 +20,9 @@ import java.util.stream.Collectors;
  * @author Kai Presler-Marshall
  *
  */
+@Setter
+@Getter
+@NoArgsConstructor
 public class UserForm {
 
     /**
@@ -49,12 +56,6 @@ public class UserForm {
      * Whether the User is enabled or not
      */
     private String      enabled;
-
-    /**
-     * Empty constructor used to generate a blank form for the user to fill out.
-     */
-    public UserForm () {
-    }
 
     /**
      * Create a UserForm from all of its fields.
@@ -100,86 +101,10 @@ public class UserForm {
      * @param u
      *            User object to convert to a UserForm.
      */
-    public UserForm ( final User u ) {
+    public UserForm (@NotNull final User u ) {
         setUsername( u.getUsername() );
         setRoles( u.getRoles().stream().map(Enum::toString).collect( Collectors.toSet() ) );
         setEnabled( u.getEnabled().toString() );
-    }
-
-    /**
-     * Get the Username of the User for the form
-     *
-     * @return The Username of the User
-     */
-    public String getUsername () {
-        return username;
-    }
-
-    /**
-     * Sets a new Username for the User on the form
-     *
-     * @param username
-     *            New Username to set
-     */
-    public void setUsername ( final String username ) {
-        this.username = username;
-    }
-
-    /**
-     * Gets the Password provided in the form
-     *
-     * @return Password provided
-     */
-    public String getPassword () {
-        return password;
-    }
-
-    /**
-     * Sets the Password for the User on the form.
-     *
-     * @param password
-     *            Password of the user
-     */
-    public void setPassword ( final String password ) {
-        this.password = password;
-    }
-
-    /**
-     * Gets the Password confirmation provided in the form
-     *
-     * @return Password confirmation provided
-     */
-    public String getPassword2 () {
-        return password2;
-    }
-
-    /**
-     * Sets the Password confirmation in the Form
-     *
-     * @param password2
-     *            The password confirmation
-     */
-    public void setPassword2 ( final String password2 ) {
-        this.password2 = password2;
-    }
-
-    /**
-     * Role of the new User
-     *
-     * @return The User's role
-     */
-    public Set<String> getRoles () {
-        return roles;
-    }
-
-    /**
-     * Sets the Role of the new User
-     *
-     * @param roles
-     *            Roles of the user
-     */
-    public void setRoles ( final Set<String> roles ) {
-        this.roles = roles;
     }
 
     /**
@@ -193,25 +118,6 @@ public class UserForm {
             this.roles = new HashSet<>();
         }
         this.roles.add( role );
-    }
-
-    /**
-     * Gets whether the new User created is to be enabled or not
-     *
-     * @return Whether the User is enabled
-     */
-    public String getEnabled () {
-        return enabled;
-    }
-
-    /**
-     * Retrieves whether the user is enabled or not
-     *
-     * @param enabled
-     *            New Enabled setting
-     */
-    public void setEnabled ( final String enabled ) {
-        this.enabled = enabled;
     }
 
 }
