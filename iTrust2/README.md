@@ -6,11 +6,11 @@ iTrust2 was founded as a class project for [CSC326 Software Engineering](http://
 iTrust2 is an electronics health records system (EHR) that provides patients with a means to maintain their health records and communicate with their health care providers (HCPs).  HCPs can record information about office visits including basic health metrics, diagnoses, prescriptions, eye care, and pregnancy care. iTrust2 follows [HIPAA statue](http://www.hhs.gov/ocr/hipaa/) for ensuring security and privacy of patient records.
 
 ## Technical Info
-iTrust2 is written with Java EE and JavaScript.  It uses Spring to handle the backend and AngularJS on the frontend (currently AngularJS v1.6; work is underway to migrate to AngularJS v7) and runs with a MySQL/MariaDB database.  Testing is performed using Spring for the API and a combination of [Cucumber](https://cucumber.io/docs) and [Selenium](https://www.seleniumhq.org/) on the frontend. 
+iTrust2 is written with Java EE and JavaScript.  It uses Spring to handle the backend and AngularJS on the frontend (currently AngularJS v1.6; work is underway to migrate to AngularJS v7) and runs with a MySQL/MariaDB database.  Testing is performed using Spring for the API and a combination of [Cucumber](https://cucumber.io/docs) and [Selenium](https://www.seleniumhq.org/) on the frontend.
 
 iTrust2 is a successor to the original [iTrust](https://github.com/ncsu-csc326/iTrust) also developed at NC State University.
 
-Each semester, the teaching staff releases a new version of iTrust2, taking a project from one team that followed particularly good practise and implemented a particularly good version, and cleans it up a bit. 
+Each semester, the teaching staff releases a new version of iTrust2, taking a project from one team that followed particularly good practise and implemented a particularly good version, and cleans it up a bit.
 
 Starting with `v8`, iTrust2 received a significant rewrite of the Java layers of the system.  This was done to upgrade to Spring Boot 2.x (`2.3.7.RELEASE` as of the time of this writing) and use a more moduler, component-based architecture.  This brought several benefits, such as transaction-based rollback in tests and separate test/production databases through Application Profiles.  However, from a functional perspective, iTrust2-v8 marks a significant regression from iTrust2-v7, losing about half of the usecases.  Efforts are underway to rewrite them.
 
