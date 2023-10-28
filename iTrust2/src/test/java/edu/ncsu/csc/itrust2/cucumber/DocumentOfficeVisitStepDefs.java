@@ -694,10 +694,7 @@ public class DocumentOfficeVisitStepDefs extends CucumberTest {
 
     @Given("^A drug named (.+) exists in iTrust2$")
     public void drugExists(final String drugName) {
-        final Drug drug = new Drug();
-        drug.setName(drugName);
-        drug.setCode("1234-1234-12");
-        drug.setDescription("May induce haluncinations");
+        final Drug drug = new Drug("1234-1234-12", drugName, "May induce haluncinations");
 
         drugService.save(drug);
     }

@@ -16,6 +16,8 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
 import com.google.gson.annotations.JsonAdapter;
+import lombok.Getter;
+import lombok.Setter;
 
 /**
  * Class to hold failed login attempts. An entry is either for an IP address or for a User, but not
@@ -28,94 +30,24 @@ import com.google.gson.annotations.JsonAdapter;
  * @author Thomas
  * @author Kai Presler-Marshall
  */
+@Getter
 @Entity
 public class LoginAttempt extends DomainObject {
-
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
-    private String ip;
+    @Setter private String ip;
 
+    @Setter
     @ManyToOne
     @JoinColumn(name = "user_id", columnDefinition = "varchar(100)")
     private User user;
 
+    @Setter
     @Basic
     // Allows the field to show up nicely in the database
     @Convert(converter = ZonedDateTimeAttributeConverter.class)
     @JsonAdapter(ZonedDateTimeAdapter.class)
     private ZonedDateTime time;
-
-    /**
-     * Returns the ID of the Attempt for Hibernate
-     *
-     * @return the id
-     */
-    public Long getId() {
-        return id;
-    }
-
-    /**
-     * Sets the ID of the attempt for Hibernate.
-     *
-     * @param id the id to set
-     */
-    public void setId(final Long id) {
-        this.id = id;
-    }
-
-    /**
-     * Returns the user associated ith the attempt, or null if this is an IP attempt.
-     *
-     * @return the user
-     */
-    public User getUser() {
-        return user;
-    }
-
-    /**
-     * Sets the user associated witht he attempt
-     *
-     * @param user the user to set
-     */
-    public void setUser(final User user) {
-        this.user = user;
-    }
-
-    /**
-     * Gets the IP associated with the attempt, or null if this holds a User.
-     *
-     * @return the ip
-     */
-    public String getIp() {
-        return ip;
-    }
-
-    /**
-     * Sets the IP associated with the attempt
-     *
-     * @param ip the ip to set
-     */
-    public void setIp(final String ip) {
-        this.ip = ip;
-    }
-
-    /**
-     * Gets the time of the attempt
-     *
-     * @return the time
-     */
-    public ZonedDateTime getTime() {
-        return time;
-    }
-
-    /**
-     * Sets th etime of the attempt
-     *
-     * @param time the time to set
-     */
-    public void setTime(final ZonedDateTime time) {
-        this.time = time;
-    }
 }

@@ -19,8 +19,8 @@ import org.hibernate.validator.constraints.Length;
  * @author Kai Presler-Marshall
  */
 @Setter
-@Getter
 @NoArgsConstructor
+@Getter
 public class PatientForm {
     /**
      * Populate the patient form from a patient object

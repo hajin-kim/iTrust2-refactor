@@ -15,6 +15,9 @@ import javax.persistence.Id;
 import javax.validation.constraints.NotNull;
 
 import com.google.gson.annotations.JsonAdapter;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 /**
  * Class that represents a LogEntry that is created in response to certain user actions. Contains a
@@ -24,16 +27,19 @@ import com.google.gson.annotations.JsonAdapter;
  *
  * @author Kai Presler-Marshall
  */
+@NoArgsConstructor
+@Getter
 @Entity
 public class LogEntry extends DomainObject {
 
     /** Type of event that has been logged */
-    @NotNull private TransactionType logCode;
+    @Setter @NotNull private TransactionType logCode;
 
     /** The primary user for the event that has been logged */
-    @NotNull private String primaryUser;
+    @Setter @NotNull private String primaryUser;
 
     /** The timestamp of when the event occurred */
+    @Setter
     @NotNull @Basic
     // Allows the field to show up nicely in the database
     @Convert(converter = ZonedDateTimeAttributeConverter.class)
@@ -44,7 +50,7 @@ public class LogEntry extends DomainObject {
     private String secondaryUser;
 
     /** An additional elaborative message for the event that has been logged. Optional. */
-    private String message;
+    @Setter private String message;
 
     /** ID of the LogEntry */
     @Id
@@ -71,43 +77,6 @@ public class LogEntry extends DomainObject {
         this.setTime(ZonedDateTime.now());
     }
 
-    /** Creates an empty LogEntry. Used by Hibernate. */
-    public LogEntry() {}
-
-    /**
-     * Retrieves the ID of the LogEntry
-     *
-     * @return the ID of the LogEntry
-     */
-    @Override
-    public Long getId() {
-        return id;
-    }
-
-    /** Sets the ID on the LogEntry. Used by Hibernate. */
-    @SuppressWarnings("unused")
-    private void setId(final Long id) {
-        this.id = id;
-    }
-
-    /**
-     * Retrieves the time when the LogEntry occurred.
-     *
-     * @return Time
-     */
-    public ZonedDateTime getTime() {
-        return this.time;
-    }
-
-    /**
-     * Retrieves the secondary (optional) user on the LogEntry
-     *
-     * @return Username of the secondary user
-     */
-    public String getSecondaryUser() {
-        return secondaryUser;
-    }
-
     /**
      * Sets the SecondaryUser on the Log Entry
      *
@@ -117,68 +86,5 @@ public class LogEntry extends DomainObject {
         if (!this.getPrimaryUser().equals(secondaryUser)) {
             this.secondaryUser = secondaryUser;
         }
-    }
-
-    /**
-     * Retrieves the optional Message on the LogEntry
-     *
-     * @return Any message present
-     */
-    public String getMessage() {
-        return message;
-    }
-
-    /**
-     * Sets the optional Message on the LogEntry
-     *
-     * @param message New Message to set
-     */
-    public void setMessage(final String message) {
-        this.message = message;
-    }
-
-    /**
-     * Retrieves the type of the LogEntry
-     *
-     * @return The type
-     */
-    public TransactionType getLogCode() {
-        return logCode;
-    }
-
-    /**
-     * Sets the Type of the LogEntry
-     *
-     * @param logCode New Type of the LogEntry
-     */
-    public void setLogCode(final TransactionType logCode) {
-        this.logCode = logCode;
-    }
-
-    /**
-     * Retrieves the primary User of the LogEntry
-     *
-     * @return The primary user
-     */
-    public String getPrimaryUser() {
-        return primaryUser;
-    }
-
-    /**
-     * Sets the primary User of the LogEntry
-     *
-     * @param primaryUser The primary user to set.
-     */
-    public void setPrimaryUser(final String primaryUser) {
-        this.primaryUser = primaryUser;
-    }
-
-    /**
-     * Sets the time at which the LogEntry occurred.
-     *
-     * @param time Timestamp when the event occurred.
-     */
-    public void setTime(final ZonedDateTime time) {
-        this.time = time;
     }
 }

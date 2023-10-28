@@ -16,8 +16,8 @@ import lombok.Setter;
  * @author Kai Presler-Marshall
  */
 @Setter
-@Getter
 @NoArgsConstructor
+@Getter
 public class AppointmentRequestForm {
 
     /** The status of the appt request * */

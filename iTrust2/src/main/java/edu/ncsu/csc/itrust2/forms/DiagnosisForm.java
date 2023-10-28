@@ -10,8 +10,8 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 @Setter
-@Getter
 @NoArgsConstructor
+@Getter
 public class DiagnosisForm implements Serializable {
 
     private Long visit;

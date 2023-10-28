@@ -14,8 +14,8 @@ import org.hibernate.validator.constraints.Length;
  * @author Kai Presler-Marshall
  */
 @Setter
-@Getter
 @NoArgsConstructor
+@Getter
 public class PersonnelForm {
 
     /** Username of the iTrust2 personnel to make a Personnel object for */

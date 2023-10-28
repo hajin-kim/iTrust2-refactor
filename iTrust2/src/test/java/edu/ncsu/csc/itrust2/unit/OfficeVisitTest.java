@@ -105,9 +105,7 @@ public class OfficeVisitTest {
 
         final List<Diagnosis> diagnoses = new Vector<>();
 
-        final ICDCode code = new ICDCode();
-        code.setCode("A21");
-        code.setDescription("Top Quality");
+        final ICDCode code = new ICDCode("A21", "Top Quality");
 
         icdCodeService.save(code);
 
@@ -162,10 +160,7 @@ public class OfficeVisitTest {
 
         Assert.assertEquals(0, retrieved.getPrescriptions().size());
 
-        final Drug drug2 = new Drug();
-        drug2.setCode("1235-1234-12");
-        drug2.setDescription("Selenium Compounds");
-        drug2.setName("Se2O2");
+        final Drug drug2 = new Drug("1235-1234-12", "Se2O2", "Selenium Compounds");
         drugService.save(drug2);
 
         /* Make sure we can add multiple prescriptions */

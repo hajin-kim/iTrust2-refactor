@@ -93,11 +93,8 @@ public class APIOfficeVisitTest {
 
         userService.saveAll(List.of(patient, hcp, antti));
 
-        final Hospital hosp = new Hospital();
-        hosp.setAddress("123 Raleigh Road");
-        hosp.setState(State.NC);
-        hosp.setZip("27514");
-        hosp.setName("iTrust Test Hospital 2");
+        final Hospital hosp =
+                new Hospital("iTrust Test Hospital 2", "123 Raleigh Road", "27514", State.NC);
 
         hospitalService.save(hosp);
     }

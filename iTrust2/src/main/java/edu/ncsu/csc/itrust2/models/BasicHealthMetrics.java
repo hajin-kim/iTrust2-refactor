@@ -12,6 +12,10 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.validation.constraints.NotNull;
 
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+
 /**
  * Object persisted in the database that represents the BasicHealthMetrics of a patient's office
  * visit.
@@ -19,36 +23,15 @@ import javax.validation.constraints.NotNull;
  * @author Matthew Gray
  * @author Kai Presler-Marshall
  */
+@NoArgsConstructor
+@Getter
 @Entity
 public class BasicHealthMetrics extends DomainObject {
-
-    /** Used so that Hibernate can construct and load objects */
-    public BasicHealthMetrics() {}
 
     /** ID of the AppointmentRequest */
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
-
-    /**
-     * Retrieves the ID of the BasicHealthMetrics
-     *
-     * @return The ID of this BasicHealthMetrics
-     */
-    @Override
-    public Long getId() {
-        return id;
-    }
-
-    /**
-     * Sets the ID of the BasicHealthMetrics
-     *
-     * @param id The new ID of the BasicHealthMetrics. For Hibernate.
-     */
-    @SuppressWarnings("unused")
-    private void setId(final Long id) {
-        this.id = id;
-    }
 
     /**
      * Height or length of the person. Up to a 3-digit number and potentially one digit of decimal
@@ -84,65 +67,22 @@ public class BasicHealthMetrics extends DomainObject {
     private Integer tri;
 
     /** Smoking status of the patient's household. */
-    private HouseholdSmokingStatus houseSmokingStatus;
+    @Setter private HouseholdSmokingStatus houseSmokingStatus;
 
     /** Smoking status of the patient. */
-    private PatientSmokingStatus patientSmokingStatus;
+    @Setter private PatientSmokingStatus patientSmokingStatus;
 
     /** The Patient who is associated with this AppointmentRequest */
+    @Setter
     @NotNull @ManyToOne
     @JoinColumn(name = "patient_id", columnDefinition = "varchar(100)")
     private User patient;
 
     /** The HCP who is associated with this AppointmentRequest */
+    @Setter
     @NotNull @ManyToOne
     @JoinColumn(name = "hcp_id", columnDefinition = "varchar(100)")
     private User hcp;
-
-    /**
-     * Retrieves the User object for the Patient for the AppointmentRequest
-     *
-     * @return The associated Patient
-     */
-    public User getPatient() {
-        return patient;
-    }
-
-    /**
-     * Sets the Patient for the AppointmentRequest
-     *
-     * @param patient The User object for the Patient on the Request
-     */
-    public void setPatient(final User patient) {
-        this.patient = patient;
-    }
-
-    /**
-     * Gets the User object for the HCP on the request
-     *
-     * @return The User object for the HCP on the request
-     */
-    public User getHcp() {
-        return hcp;
-    }
-
-    /**
-     * Sets the User object for the HCP on the AppointmentRequest
-     *
-     * @param hcp User object for the HCP on the Request
-     */
-    public void setHcp(final User hcp) {
-        this.hcp = hcp;
-    }
-
-    /**
-     * Gets the height
-     *
-     * @return the height
-     */
-    public Float getHeight() {
-        return height;
-    }
 
     /**
      * Sets the height
@@ -162,15 +102,6 @@ public class BasicHealthMetrics extends DomainObject {
     }
 
     /**
-     * Gets the weight
-     *
-     * @return the weight
-     */
-    public Float getWeight() {
-        return weight;
-    }
-
-    /**
      * Sets the weight
      *
      * @param weight the weight to set, min .1, max 999.9
@@ -184,15 +115,6 @@ public class BasicHealthMetrics extends DomainObject {
                     "Weight cannot be less than .1 or greater than 999.9");
         }
         this.weight = weight;
-    }
-
-    /**
-     * Gets the head circumference
-     *
-     * @return the head circumference
-     */
-    public Float getHeadCircumference() {
-        return headCircumference;
     }
 
     /**
@@ -212,15 +134,6 @@ public class BasicHealthMetrics extends DomainObject {
     }
 
     /**
-     * Gets the diastolic blood pressure
-     *
-     * @return the diastolic
-     */
-    public Integer getDiastolic() {
-        return diastolic;
-    }
-
-    /**
      * Sets the diastolic blood pressure
      *
      * @param diastolic the diastolic to set
@@ -233,15 +146,6 @@ public class BasicHealthMetrics extends DomainObject {
             throw new IllegalArgumentException("Diastolic must be a 3 digit positive number.");
         }
         this.diastolic = diastolic;
-    }
-
-    /**
-     * Gets the systolic blood pressure
-     *
-     * @return the systolic
-     */
-    public Integer getSystolic() {
-        return systolic;
     }
 
     /**
@@ -260,15 +164,6 @@ public class BasicHealthMetrics extends DomainObject {
     }
 
     /**
-     * Gets HDL cholesterol.
-     *
-     * @return the hdl
-     */
-    public Integer getHdl() {
-        return hdl;
-    }
-
-    /**
      * Sets HDL cholesterol. Between 0 and 90 inclusive.
      *
      * @param hdl the hdl to set
@@ -281,15 +176,6 @@ public class BasicHealthMetrics extends DomainObject {
             throw new IllegalArgumentException("HDL must be between 0 and 90 inclusive.");
         }
         this.hdl = hdl;
-    }
-
-    /**
-     * Gets the LDL cholesterol.
-     *
-     * @return the ldl
-     */
-    public Integer getLdl() {
-        return ldl;
     }
 
     /**
@@ -308,15 +194,6 @@ public class BasicHealthMetrics extends DomainObject {
     }
 
     /**
-     * Gets triglycerides level.
-     *
-     * @return the tri
-     */
-    public Integer getTri() {
-        return tri;
-    }
-
-    /**
      * Sets triglycerides cholesterol. Between 100 and 600 inclusive.
      *
      * @param tri the tri to set
@@ -330,24 +207,6 @@ public class BasicHealthMetrics extends DomainObject {
                     "Triglycerides must be between 100 and 600 inclusive.");
         }
         this.tri = tri;
-    }
-
-    /**
-     * Gets the smoking status of the patient's household.
-     *
-     * @return the houseSmokingStatus
-     */
-    public HouseholdSmokingStatus getHouseSmokingStatus() {
-        return houseSmokingStatus;
-    }
-
-    /**
-     * Sets the smoking status of the patient's household.
-     *
-     * @param houseSmokingStatus the houseSmokingStatus to set
-     */
-    public void setHouseSmokingStatus(final HouseholdSmokingStatus houseSmokingStatus) {
-        this.houseSmokingStatus = houseSmokingStatus;
     }
 
     @Override
@@ -456,23 +315,5 @@ public class BasicHealthMetrics extends DomainObject {
         if (weight == null) {
             return other.weight == null;
         } else return weight.equals(other.weight);
-    }
-
-    /**
-     * Gets the smoking status of the patient.
-     *
-     * @return the patientSmokingStatus
-     */
-    public PatientSmokingStatus getPatientSmokingStatus() {
-        return patientSmokingStatus;
-    }
-
-    /**
-     * Sets the smoking status of the patient.
-     *
-     * @param patientSmokingStatus the patientSmokingStatus to set
-     */
-    public void setPatientSmokingStatus(final PatientSmokingStatus patientSmokingStatus) {
-        this.patientSmokingStatus = patientSmokingStatus;
     }
 }

@@ -25,8 +25,8 @@ import org.hibernate.validator.constraints.Length;
  * @author Elizabeth Gilbert
  */
 @Setter
-@Getter
 @NoArgsConstructor
+@Getter
 public class OfficeVisitForm implements Serializable {
     /** Serial Version of the Form. For the Serializable */
     @Serial private static final long serialVersionUID = 1L;

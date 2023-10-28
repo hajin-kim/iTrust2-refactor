@@ -7,6 +7,11 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
+import lombok.AccessLevel;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+
 /**
  * Class for Diagnosis codes. These codes themselves are stored as a String, along with a
  * description and an ID.
@@ -14,21 +19,28 @@ import javax.persistence.Id;
  * @author Thomas
  * @author Kai Presler-Marshall
  */
+@NoArgsConstructor
+@Getter
 @Entity
 public class ICDCode extends DomainObject {
 
+    @Setter(AccessLevel.PRIVATE)
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
     /** The ICD Code string */
+    @Setter(AccessLevel.PRIVATE)
     private String code;
 
     /** Description of the diagnosis */
+    @Setter(AccessLevel.PRIVATE)
     private String description;
 
-    /** Empty constructor for Hibernate */
-    public ICDCode() {}
+    public ICDCode(String code, String description) {
+        this.code = code;
+        this.description = description;
+    }
 
     /**
      * Construct from a form
@@ -80,63 +92,13 @@ public class ICDCode extends DomainObject {
         }
     }
 
-    /**
-     * Sets the ID of the Code
-     *
-     * @param id The new ID of the Code. For Hibernate.
-     */
-    public void setId(final Long id) {
-        this.id = id;
-    }
-
-    /**
-     * Returns the String representation of the code
-     *
-     * @return The code
-     */
-    public String getCode() {
-        return code;
-    }
-
-    /**
-     * Sets the String representation of the code
-     *
-     * @param code The new code
-     */
-    public void setCode(final String code) {
-        this.code = code;
-    }
-
-    /**
-     * Returns the description of the code
-     *
-     * @return The description
-     */
-    public String getDescription() {
-        return this.description;
-    }
-
-    /**
-     * Sets the description of this code
-     *
-     * @param d The new description
-     */
-    public void setDescription(final String d) {
-        description = d;
-    }
-
     @Override
     public boolean equals(final Object o) {
-        if (o instanceof ICDCode) {
-            final ICDCode c = (ICDCode) o;
+        if (o instanceof ICDCode c) {
             return id.equals(c.getId())
                     && description.equals(c.getDescription())
                     && code.equals(c.getCode());
         }
         return false;
-    }
-
-    public Long getId() {
-        return id;
     }
 }

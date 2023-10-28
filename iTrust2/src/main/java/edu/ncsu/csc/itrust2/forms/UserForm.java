@@ -20,8 +20,8 @@ import org.hibernate.validator.constraints.Length;
  * @author Kai Presler-Marshall
  */
 @Setter
-@Getter
 @NoArgsConstructor
+@Getter
 public class UserForm {
 
     /** Username of the user */

@@ -95,14 +95,10 @@ public class APIDiagnosisTest {
         String content;
 
         // create 2 ICDCode to use
-        final ICDCode code = new ICDCode();
-        code.setCode("T10");
-        code.setDescription("Test 10");
+        final ICDCode code = new ICDCode("T10", "Test 10");
 
         // create an ICDCode to use
-        final ICDCode code2 = new ICDCode();
-        code2.setCode("T11");
-        code2.setDescription("Test 11");
+        final ICDCode code2 = new ICDCode("T11", "Test 11");
 
         icdCodeService.saveAll(List.of(code, code2));
 

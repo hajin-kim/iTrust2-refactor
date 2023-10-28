@@ -15,8 +15,8 @@ import lombok.Setter;
  * @author Connor
  */
 @Setter
-@Getter
 @NoArgsConstructor
+@Getter
 public class PrescriptionForm implements Serializable {
 
     @Serial private static final long serialVersionUID = 1L;

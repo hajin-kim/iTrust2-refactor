@@ -32,13 +32,11 @@ public class ICDCodeTest {
         form.setId(1L);
         form.setCode("T11");
         form.setDescription("Testing");
-        final ICDCode base = new ICDCode();
-        base.setCode("T11");
-        base.setDescription("Testing");
-        base.setId(1L);
+        final ICDCode base = new ICDCode("T11", "Testing");
 
         final ICDCode code = new ICDCode(form);
-        assertEquals(code, base);
+        assertEquals(code.getCode(), base.getCode());
+        assertEquals(code.getDescription(), base.getDescription());
 
         final ICDCodeForm f2 = new ICDCodeForm(code);
         assertEquals(form, f2);

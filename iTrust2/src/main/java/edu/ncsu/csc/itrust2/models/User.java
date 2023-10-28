@@ -3,7 +3,6 @@ package edu.ncsu.csc.itrust2.models;
 import edu.ncsu.csc.itrust2.forms.UserForm;
 import edu.ncsu.csc.itrust2.models.enums.Role;
 
-import java.util.Collection;
 import java.util.HashSet;
 import java.util.Set;
 import java.util.stream.Collectors;
@@ -18,6 +17,10 @@ import javax.validation.constraints.Max;
 import javax.validation.constraints.Min;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import lombok.AccessLevel;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 import org.hibernate.validator.constraints.Length;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -34,12 +37,11 @@ import org.springframework.security.crypto.password.PasswordEncoder;
  *
  * @author Kai Presler-Marshall
  */
+@NoArgsConstructor(access = AccessLevel.PROTECTED)
+@Getter
 @Entity
 @JsonIgnoreProperties(value = {"password"})
 public class User extends DomainObject {
-
-    /** For Hibernate */
-    protected User() {}
 
     /**
      * All-argument constructor for User
@@ -74,14 +76,16 @@ public class User extends DomainObject {
     }
 
     /** The username of the user */
+    @Setter // TODO: remove
     @Id
     @Column(length = 20)
     @Length(max = 20) private String username;
 
     /** The password of the user */
-    private String password;
+    @Setter private String password;
 
     /** Whether or not the user is enabled */
+    @Setter
     @Min(0)
     @Max(1)
     private Integer enabled;
@@ -90,69 +94,6 @@ public class User extends DomainObject {
     @ElementCollection(targetClass = Role.class, fetch = FetchType.EAGER)
     @Enumerated(EnumType.STRING)
     private Set<Role> roles;
-
-    /**
-     * Get the username of this user
-     *
-     * @return the username of this user
-     */
-    public String getUsername() {
-        return username;
-    }
-
-    /**
-     * Set the username of this user
-     *
-     * @param username the username to set this user to
-     */
-    public void setUsername(final String username) {
-        this.username = username;
-    }
-
-    /**
-     * Get the password of this user
-     *
-     * @return the password of this user
-     */
-    public String getPassword() {
-        return password;
-    }
-
-    /**
-     * Set the password of this user
-     *
-     * @param password the password to set this user to
-     */
-    public void setPassword(final String password) {
-        this.password = password;
-    }
-
-    /**
-     * Get whether or not the user is enabled
-     *
-     * @return Whether or not the user is enabled
-     */
-    public Integer getEnabled() {
-        return enabled;
-    }
-
-    /**
-     * Set whether or not the user is enabled
-     *
-     * @param enabled Whether or not the user is enabled
-     */
-    public void setEnabled(final Integer enabled) {
-        this.enabled = enabled;
-    }
-
-    /**
-     * Get the role of this user
-     *
-     * @return the role of this user
-     */
-    public Collection<Role> getRoles() {
-        return roles;
-    }
 
     /**
      * Set the roles of this user. Throws an exception if the Set of roles provided contains either

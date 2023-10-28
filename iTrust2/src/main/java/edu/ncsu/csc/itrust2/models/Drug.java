@@ -1,7 +1,5 @@
 package edu.ncsu.csc.itrust2.models;
 
-import edu.ncsu.csc.itrust2.forms.DrugForm;
-
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -10,6 +8,10 @@ import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
 
+import edu.ncsu.csc.itrust2.forms.DrugForm;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 import org.hibernate.validator.constraints.Length;
 
 /**
@@ -18,11 +20,30 @@ import org.hibernate.validator.constraints.Length;
  * @author Connor
  * @author Kai Presler-Marshall
  */
+@NoArgsConstructor
+@Getter
 @Entity
 public class Drug extends DomainObject {
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private Long id;
 
-    /** For Hibernate/Thymeleaf _must_ be an empty constructor */
-    public Drug() {}
+    @Setter
+    @NotNull @Pattern(regexp = "^\\d{4}-\\d{4}-\\d{2}$")
+    private String code;
+
+    @Setter
+    @NotEmpty
+    @Length(max = 64) private String name;
+
+    @Setter
+    @NotNull @Length(max = 1024) private String description;
+
+    public Drug(String code, String name, String description) {
+        this.code = code;
+        this.name = name;
+        this.description = description;
+    }
 
     /**
      * Constructs a new form from the details in the given form
@@ -30,93 +51,9 @@ public class Drug extends DomainObject {
      * @param form the form to base the new drug on
      */
     public Drug(final DrugForm form) {
-        setId(form.getId());
+        id = form.getId();
         setCode(form.getCode());
         setName(form.getName());
         setDescription(form.getDescription());
-    }
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long id;
-
-    @Pattern(regexp = "^\\d{4}-\\d{4}-\\d{2}$")
-    private String code;
-
-    @NotEmpty
-    @Length(max = 64) private String name;
-
-    @NotNull @Length(max = 1024) private String description;
-
-    /**
-     * Sets the drug's id to the given value. All saved drugs must have unique ids.
-     *
-     * @param id the new id
-     */
-    public void setId(final Long id) {
-        this.id = id;
-    }
-
-    /**
-     * Returns the id associated with this drug.
-     *
-     * @return the id
-     */
-    public Long getId() {
-        return id;
-    }
-
-    /**
-     * Returns the drug's NDC
-     *
-     * @return the NDC
-     */
-    public String getCode() {
-        return code;
-    }
-
-    /**
-     * Sets the NDC to the given string. Must be in the format "####-####-##".
-     *
-     * @param code the NDC
-     */
-    public void setCode(final String code) {
-        this.code = code;
-    }
-
-    /**
-     * The name of the drug.
-     *
-     * @return the drug's name
-     */
-    public String getName() {
-        return name;
-    }
-
-    /**
-     * Sets the drug name.
-     *
-     * @param name the name of the drug
-     */
-    public void setName(final String name) {
-        this.name = name;
-    }
-
-    /**
-     * Gets this drug's description.
-     *
-     * @return this description
-     */
-    public String getDescription() {
-        return description;
-    }
-
-    /**
-     * Sets this drug's description to the given value.
-     *
-     * @param description the description
-     */
-    public void setDescription(final String description) {
-        this.description = description;
     }
 }
