@@ -11,6 +11,7 @@ import edu.ncsu.csc.itrust2.services.HospitalService;
 import edu.ncsu.csc.itrust2.services.ICDCodeService;
 import edu.ncsu.csc.itrust2.services.OfficeVisitService;
 
+import java.time.Duration;
 import java.time.ZonedDateTime;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -86,7 +87,7 @@ public class DiagnosesStepDefs extends CucumberTest {
             driver.findElement(By.name("submit")).click();
             waitForAngular();
             try {
-                new WebDriverWait(driver, 10)
+                new WebDriverWait(driver, Duration.ofSeconds(10))
                         .until(
                                 ExpectedConditions.or(
                                         ExpectedConditions.numberOfElementsToBeMoreThan(

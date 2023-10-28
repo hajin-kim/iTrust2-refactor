@@ -5,6 +5,7 @@ import edu.ncsu.csc.itrust2.models.AppointmentRequest;
 import edu.ncsu.csc.itrust2.services.AppointmentRequestService;
 import edu.ncsu.csc.itrust2.services.UserService;
 
+import java.time.Duration;
 import java.time.LocalDateTime;
 import java.time.ZoneId;
 import java.time.ZoneOffset;
@@ -48,7 +49,7 @@ public class AppointmentRequestStepDefs extends CucumberTest {
     public void navigateToView() {
         ((JavascriptExecutor) driver)
                 .executeScript("document.getElementById('requestappointment').click();");
-        final WebDriverWait wait = new WebDriverWait(driver, 20);
+        final WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(20));
         wait.until(ExpectedConditions.titleContains("Request Appointment"));
         assertEquals("iTrust2: Request Appointment", driver.getTitle());
     }
@@ -58,7 +59,7 @@ public class AppointmentRequestStepDefs extends CucumberTest {
     public void patientNavigateToView() {
         ((JavascriptExecutor) driver)
                 .executeScript("document.getElementById('requestappointment').click();");
-        final WebDriverWait wait = new WebDriverWait(driver, 20);
+        final WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(20));
         wait.until(ExpectedConditions.titleContains("Request Appointment"));
         assertEquals("iTrust2: Request Appointment", driver.getTitle());
     }
@@ -268,7 +269,7 @@ public class AppointmentRequestStepDefs extends CucumberTest {
     public void hcpNavigateToApptRequests() {
         ((JavascriptExecutor) driver)
                 .executeScript("document.getElementById('viewrequests').click();");
-        final WebDriverWait wait = new WebDriverWait(driver, 20);
+        final WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(20));
         wait.until(ExpectedConditions.titleContains("View Appointment Requests"));
         assertEquals("iTrust2: View Appointment Requests", driver.getTitle());
     }
@@ -346,7 +347,7 @@ public class AppointmentRequestStepDefs extends CucumberTest {
         // Needs to be done
         driver.get(BASE_URL);
 
-        final WebDriverWait wait = new WebDriverWait(driver, 20);
+        final WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(20));
         wait.until(ExpectedConditions.titleContains("HCP Home"));
         assertEquals("iTrust2: HCP Home", driver.getTitle());
     }
