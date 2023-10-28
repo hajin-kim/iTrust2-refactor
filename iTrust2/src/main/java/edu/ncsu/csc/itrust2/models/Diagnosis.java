@@ -23,7 +23,7 @@ import lombok.Setter;
 @NoArgsConstructor
 @Getter
 @Entity
-@Table(name = "Diagnoses")
+@Table(name = "diagnosis")
 public class Diagnosis extends DomainObject {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)

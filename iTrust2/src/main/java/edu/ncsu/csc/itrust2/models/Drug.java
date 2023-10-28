@@ -1,14 +1,16 @@
 package edu.ncsu.csc.itrust2.models;
 
+import edu.ncsu.csc.itrust2.forms.DrugForm;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Table;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
 
-import edu.ncsu.csc.itrust2.forms.DrugForm;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -23,6 +25,7 @@ import org.hibernate.validator.constraints.Length;
 @NoArgsConstructor
 @Getter
 @Entity
+@Table(name = "drug")
 public class Drug extends DomainObject {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)

@@ -16,6 +16,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 
 import com.google.gson.annotations.JsonAdapter;
@@ -32,6 +33,7 @@ import lombok.Setter;
 @NoArgsConstructor
 @Getter
 @Entity
+@Table(name = "appointment_request")
 public class AppointmentRequest extends DomainObject {
     /** ID of the AppointmentRequest */
     @Setter

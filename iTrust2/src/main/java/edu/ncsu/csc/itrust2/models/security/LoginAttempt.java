@@ -14,6 +14,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.Table;
 
 import com.google.gson.annotations.JsonAdapter;
 import lombok.Getter;
@@ -32,6 +33,7 @@ import lombok.Setter;
  */
 @Getter
 @Entity
+@Table(name = "login_attempt")
 public class LoginAttempt extends DomainObject {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)

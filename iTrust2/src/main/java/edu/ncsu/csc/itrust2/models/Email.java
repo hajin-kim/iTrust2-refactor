@@ -6,6 +6,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 
 import lombok.Getter;
@@ -15,6 +16,7 @@ import lombok.Setter;
 @NoArgsConstructor
 @Getter
 @Entity
+@Table(name = "email")
 public class Email extends DomainObject {
 
     @Id

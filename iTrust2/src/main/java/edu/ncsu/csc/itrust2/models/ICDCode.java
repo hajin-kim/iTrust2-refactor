@@ -6,6 +6,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Table;
 
 import lombok.AccessLevel;
 import lombok.Getter;
@@ -22,6 +23,7 @@ import lombok.Setter;
 @NoArgsConstructor
 @Getter
 @Entity
+@Table(name = "icd_code")
 public class ICDCode extends DomainObject {
 
     @Setter(AccessLevel.PRIVATE)
