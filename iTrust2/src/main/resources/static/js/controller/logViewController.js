@@ -59,15 +59,15 @@ angular.module("logsApp").controller('logsCtrl', function($scope, $http) {
 			.getFullYear()) {
 			err.push("Start date must come before end date.");
 		}
-		if (dateRange.startDate.getFullYear() == dateRange.endDate
+		if (dateRange.startDate.getFullYear() === dateRange.endDate
 				.getFullYear()
 			&& dateRange.startDate.getFullMonth() > dateRange.endDate
 				.getMonth()) {
 			err.push("Start date must come before end date.");
 		}
-		if (dateRange.startDate.getFullYear() == dateRange.endDate
+		if (dateRange.startDate.getFullYear() === dateRange.endDate
 				.getFullYear()
-			&& dateRange.startDate.getFullMonth() == dateRange.endDate
+			&& dateRange.startDate.getFullMonth() === dateRange.endDate
 				.getMonth()
 			&& dateRange.startDate.getDate() > dateRange.endDate
 				.getDate()) {
