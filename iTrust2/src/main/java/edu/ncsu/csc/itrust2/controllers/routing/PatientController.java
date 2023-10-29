@@ -63,7 +63,7 @@ public class PatientController {
     @RequestMapping(value = "patient/index")
     @PreAuthorize("hasRole('ROLE_PATIENT')")
     public String index(final Model model) {
-        return Role.ROLE_PATIENT.getLanding();
+        return Role.ROLE_PATIENT.getLandingPage();
     }
 
     /**

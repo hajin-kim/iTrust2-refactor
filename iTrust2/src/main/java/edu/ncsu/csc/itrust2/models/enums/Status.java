@@ -1,11 +1,14 @@
 package edu.ncsu.csc.itrust2.models.enums;
 
+import lombok.Getter;
+
 /**
  * Status enum that should be used for various different statuses rather than just using Strings or
  * Integers. "Positive" statuses should be odd; "negative" statuses should be even.
  *
  * @author Kai Presler-Marshall
  */
+@Getter
 public enum Status {
 
     /* Positive statuses */
@@ -30,14 +33,5 @@ public enum Status {
      */
     Status(final int code) {
         this.code = code;
-    }
-
-    /**
-     * Gets the numerical Code of the Status
-     *
-     * @return Code of the Status
-     */
-    public int getCode() {
-        return code;
     }
 }

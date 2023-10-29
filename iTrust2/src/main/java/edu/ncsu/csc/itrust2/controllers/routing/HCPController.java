@@ -27,7 +27,7 @@ public class HCPController {
     @RequestMapping(value = "hcp/index")
     @PreAuthorize("hasRole('ROLE_HCP')")
     public String index(final Model model) {
-        return Role.ROLE_HCP.getLanding();
+        return Role.ROLE_HCP.getLandingPage();
     }
 
     /**

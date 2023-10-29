@@ -3,11 +3,14 @@ package edu.ncsu.csc.itrust2.models.enums;
 import java.util.HashMap;
 import java.util.Map;
 
+import lombok.Getter;
+
 /**
  * Enum representing possible ethnicities known by the system.
  *
  * @author Kai Presler-Marshall
  */
+@Getter
 public enum Ethnicity {
 
     /** Caucasian */
@@ -33,15 +36,6 @@ public enum Ethnicity {
      */
     Ethnicity(final String name) {
         this.name = name;
-    }
-
-    /**
-     * Retrieve the Name of the Ethnicity
-     *
-     * @return Name of the Ethnicity
-     */
-    public String getName() {
-        return this.name;
     }
 
     /**

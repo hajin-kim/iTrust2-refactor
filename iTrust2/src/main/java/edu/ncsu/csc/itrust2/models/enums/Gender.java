@@ -3,11 +3,14 @@ package edu.ncsu.csc.itrust2.models.enums;
 import java.util.HashMap;
 import java.util.Map;
 
+import lombok.Getter;
+
 /**
  * Enum representing possible Genders for users of the system.
  *
  * @author Kai Presler-Marshall
  */
+@Getter
 public enum Gender {
 
     /** Male */
@@ -29,15 +32,6 @@ public enum Gender {
      */
     Gender(final String name) {
         this.name = name;
-    }
-
-    /**
-     * Get the Name of the Gender
-     *
-     * @return Name of the Gender
-     */
-    public String getName() {
-        return this.name;
     }
 
     /**

@@ -1,10 +1,13 @@
 package edu.ncsu.csc.itrust2.models.enums;
 
+import lombok.Getter;
+
 /**
  * Enum representing the status of smokers in a patient's house.
  *
  * @author mrgray4
  */
+@Getter
 public enum HouseholdSmokingStatus {
 
     /** This field is unrelated */
@@ -28,15 +31,6 @@ public enum HouseholdSmokingStatus {
      */
     HouseholdSmokingStatus(final int code) {
         this.code = code;
-    }
-
-    /**
-     * Gets the numerical Code of the Status
-     *
-     * @return Code of the Status
-     */
-    public int getCode() {
-        return code;
     }
 
     /**

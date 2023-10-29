@@ -1,5 +1,7 @@
 package edu.ncsu.csc.itrust2.models.enums;
 
+import lombok.Getter;
+
 /**
  * For keeping track of various types of users that are known to the system. Different users have
  * different functionality.
@@ -7,6 +9,7 @@ package edu.ncsu.csc.itrust2.models.enums;
  * @author Kai Presler-Marshall
  * @author Jack MacDonald
  */
+@Getter
 public enum Role {
 
     /** Patient */
@@ -42,23 +45,5 @@ public enum Role {
     Role(final int code, final String landingPage) {
         this.code = code;
         this.landingPage = landingPage;
-    }
-
-    /**
-     * Gets the numeric code of the Role
-     *
-     * @return Code of this role
-     */
-    public int getCode() {
-        return this.code;
-    }
-
-    /**
-     * Gets the landing page for this user
-     *
-     * @return Landing page for the user
-     */
-    public String getLanding() {
-        return this.landingPage;
     }
 }

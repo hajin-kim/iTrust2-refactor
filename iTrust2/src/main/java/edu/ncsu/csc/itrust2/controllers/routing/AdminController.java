@@ -26,7 +26,7 @@ public class AdminController {
     @RequestMapping(value = "admin/index")
     @PreAuthorize("hasRole('ROLE_ADMIN')")
     public String index(final Model model) {
-        return Role.ROLE_ADMIN.getLanding();
+        return Role.ROLE_ADMIN.getLandingPage();
     }
 
     /**

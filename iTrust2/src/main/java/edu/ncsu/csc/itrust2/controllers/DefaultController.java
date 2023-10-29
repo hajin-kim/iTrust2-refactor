@@ -47,7 +47,7 @@ public class DefaultController {
         final List<? extends GrantedAuthority> auths =
                 (List<? extends GrantedAuthority>) auth.getAuthorities();
         final Role role = auths.stream().map(o -> Role.valueOf(o.toString())).findAny().get();
-        return new RedirectView(role.getLanding());
+        return new RedirectView(role.getLandingPage());
     }
 
     @RequestMapping(value = "/viewEmails")

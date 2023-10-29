@@ -3,11 +3,14 @@ package edu.ncsu.csc.itrust2.models.enums;
 import java.util.HashMap;
 import java.util.Map;
 
+import lombok.Getter;
+
 /**
  * Enum of all possible blood types.
  *
  * @author Kai Presler-Marshall
  */
+@Getter
 public enum BloodType {
 
     /** A Positive */
@@ -39,15 +42,6 @@ public enum BloodType {
      */
     BloodType(final String name) {
         this.name = name;
-    }
-
-    /**
-     * Gets the Name of this BloodType
-     *
-     * @return Name of the BloodType
-     */
-    public String getName() {
-        return name;
     }
 
     /**

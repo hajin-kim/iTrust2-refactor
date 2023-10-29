@@ -1,10 +1,13 @@
 package edu.ncsu.csc.itrust2.models.enums;
 
+import lombok.Getter;
+
 /**
  * Enum of all of the types of appointments that are recognized by the system.
  *
  * @author Kai Presler-Marshall
  */
+@Getter
 public enum AppointmentType {
 
     /** General Checkup */
@@ -27,14 +30,5 @@ public enum AppointmentType {
      */
     AppointmentType(final int code) {
         this.code = code;
-    }
-
-    /**
-     * Gets the numerical code of the AppointmentType
-     *
-     * @return Code of the AppointmentType
-     */
-    public int getCode() {
-        return code;
     }
 }

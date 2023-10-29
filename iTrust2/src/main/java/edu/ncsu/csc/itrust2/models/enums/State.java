@@ -3,11 +3,14 @@ package edu.ncsu.csc.itrust2.models.enums;
 import java.util.HashMap;
 import java.util.Map;
 
+import lombok.Getter;
+
 /**
  * Enum of all US states. Used in addresses; stores abbreviation and full name.
  *
  * @author Kai Presler-Marshall
  */
+@Getter
 public enum State {
     /** Alabama */
     AL("Alabama"),
@@ -122,15 +125,6 @@ public enum State {
      */
     State(final String name) {
         this.name = name;
-    }
-
-    /**
-     * Gets the Name of this state
-     *
-     * @return Name of the State
-     */
-    public String getName() {
-        return name;
     }
 
     /**

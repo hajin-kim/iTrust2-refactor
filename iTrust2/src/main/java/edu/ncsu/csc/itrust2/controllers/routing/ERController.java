@@ -26,7 +26,7 @@ public class ERController {
     @RequestMapping(value = "er/index")
     @PreAuthorize("hasRole('ROLE_ER')")
     public String index(final Model model) {
-        return Role.ROLE_ER.getLanding();
+        return Role.ROLE_ER.getLandingPage();
     }
 
     /**
