@@ -50,8 +50,7 @@ public class WebSecurityConfig {
     public SecurityFilterChain securityFilterChain(
             IPFilter ipBlockFilter, FailureHandler failureHandler, HttpSecurity http)
             throws Exception {
-        final String[] patterns =
-                new String[] {"/login*", "/DrJenkins", "/swagger-ui/**", "/v3/api-docs/**"};
+        final String[] patterns = new String[] {"/login*", "/DrJenkins"};
         // Add filter for banned/locked IP
         /*
          * According to
@@ -64,6 +63,8 @@ public class WebSecurityConfig {
         http.addFilterBefore(ipBlockFilter, ChannelProcessingFilter.class);
 
         http.authorizeRequests()
+                .antMatchers(new String[] {"/swagger-ui/**", "/v3/api-docs/**"})
+                .permitAll()
                 .antMatchers(patterns)
                 .anonymous()
                 .anyRequest()
