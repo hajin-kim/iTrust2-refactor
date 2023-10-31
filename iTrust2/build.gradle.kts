@@ -34,6 +34,10 @@ dependencies {
     implementation("org.springframework.boot:spring-boot-devtools")
     implementation("org.springframework.boot:spring-boot-starter-validation")
 
+    implementation("org.springdoc", "springdoc-openapi-webmvc-core", "1.7.0")
+    implementation("org.springdoc", "springdoc-openapi-security", "1.7.0")
+    implementation("org.springdoc", "springdoc-openapi-ui", "1.7.0")
+
     implementation("com.google.code.gson:gson:2.8.9")
     implementation("org.hibernate:hibernate-validator:6.1.5.Final")
     runtimeOnly("mysql:mysql-connector-java:8.0.28")

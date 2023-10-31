@@ -22,11 +22,7 @@ import org.springframework.security.web.csrf.CookieCsrfTokenRepository;
 @EnableWebSecurity
 @EnableGlobalMethodSecurity(prePostEnabled = true)
 public class WebSecurityConfig {
-    /**
-     * Login configuration for iTrust2.
-     *
-     * @param auth AuthenticationManagerBuilder to use to configure the Authentication.
-     */
+    /** Login configuration for iTrust2. */
     @Bean
     public UserDetailsManager configureGlobal(DataSource dataSource) {
         // User query enabled flag also checks for locked or banned users. The
@@ -54,7 +50,8 @@ public class WebSecurityConfig {
     public SecurityFilterChain securityFilterChain(
             IPFilter ipBlockFilter, FailureHandler failureHandler, HttpSecurity http)
             throws Exception {
-        final String[] patterns = new String[] {"/login*", "/DrJenkins"};
+        final String[] patterns =
+                new String[] {"/login*", "/DrJenkins", "/swagger-ui/**", "/v3/api-docs/**"};
         // Add filter for banned/locked IP
         /*
          * According to

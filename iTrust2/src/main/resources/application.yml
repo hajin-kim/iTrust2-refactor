@@ -30,3 +30,8 @@ server:
   port: 8080
   servlet:
     contextPath: /iTrust2
+springdoc:
+  swagger-ui:
+    tags-sorter: alpha
+    operations-sorter: alpha
+  show-actuator: true
