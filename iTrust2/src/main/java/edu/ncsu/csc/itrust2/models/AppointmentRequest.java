@@ -1,10 +1,5 @@
 package edu.ncsu.csc.itrust2.models;
 
-import edu.ncsu.csc.itrust2.adapters.ZonedDateTimeAdapter;
-import edu.ncsu.csc.itrust2.adapters.ZonedDateTimeAttributeConverter;
-import edu.ncsu.csc.itrust2.models.enums.AppointmentType;
-import edu.ncsu.csc.itrust2.models.enums.Status;
-
 import java.time.ZonedDateTime;
 import javax.persistence.Basic;
 import javax.persistence.Convert;
@@ -20,6 +15,10 @@ import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 
 import com.google.gson.annotations.JsonAdapter;
+import edu.ncsu.csc.itrust2.adapters.ZonedDateTimeAdapter;
+import edu.ncsu.csc.itrust2.adapters.ZonedDateTimeAttributeConverter;
+import edu.ncsu.csc.itrust2.models.enums.AppointmentType;
+import edu.ncsu.csc.itrust2.models.enums.Status;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -38,7 +37,7 @@ public class AppointmentRequest extends DomainObject {
     /** ID of the AppointmentRequest */
     @Setter
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     /** The Patient who is associated with this AppointmentRequest */

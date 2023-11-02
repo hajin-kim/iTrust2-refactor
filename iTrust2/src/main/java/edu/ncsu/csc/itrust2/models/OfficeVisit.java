@@ -68,7 +68,7 @@ public class OfficeVisit extends DomainObject {
     /** The id of this office visit */
     @Setter // TODO: remove
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     /** The type of this office visit */

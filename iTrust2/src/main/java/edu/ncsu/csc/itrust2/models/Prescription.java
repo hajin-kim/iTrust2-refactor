@@ -37,7 +37,7 @@ public class Prescription extends DomainObject {
 
     @Setter
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     @Setter @NotNull @ManyToOne private Drug drug;

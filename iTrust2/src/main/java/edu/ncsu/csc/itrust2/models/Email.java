@@ -20,7 +20,7 @@ import lombok.Setter;
 public class Email extends DomainObject {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     @NotNull @Setter private String sender;

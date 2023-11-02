@@ -32,7 +32,7 @@ public class BasicHealthMetrics extends DomainObject {
 
     /** ID of the AppointmentRequest */
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     /**

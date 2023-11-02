@@ -28,7 +28,7 @@ import org.hibernate.validator.constraints.Length;
 @Table(name = "drug")
 public class Drug extends DomainObject {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     @Setter

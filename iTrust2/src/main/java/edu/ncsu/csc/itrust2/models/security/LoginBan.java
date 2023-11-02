@@ -32,7 +32,7 @@ import lombok.Setter;
 @Table(name = "login_ban")
 public class LoginBan extends DomainObject {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     @Setter private String ip;

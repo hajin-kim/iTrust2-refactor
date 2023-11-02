@@ -26,7 +26,7 @@ import lombok.Setter;
 @Table(name = "diagnosis")
 public class Diagnosis extends DomainObject {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     @Setter
