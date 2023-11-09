@@ -1,5 +1,8 @@
 package edu.ncsu.csc.itrust2.models;
 
+import edu.ncsu.csc.itrust2.forms.HospitalForm;
+import edu.ncsu.csc.itrust2.models.enums.State;
+
 import java.io.Serial;
 import java.io.Serializable;
 import javax.persistence.Entity;
@@ -10,8 +13,6 @@ import javax.persistence.Table;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 
-import edu.ncsu.csc.itrust2.forms.HospitalForm;
-import edu.ncsu.csc.itrust2.models.enums.State;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;

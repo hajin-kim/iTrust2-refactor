@@ -1,10 +1,5 @@
 package edu.ncsu.csc.itrust2.cucumber;
 
-import java.time.Duration;
-import java.time.ZonedDateTime;
-import java.util.List;
-import java.util.stream.Collectors;
-
 import edu.ncsu.csc.itrust2.models.BasicHealthMetrics;
 import edu.ncsu.csc.itrust2.models.Diagnosis;
 import edu.ncsu.csc.itrust2.models.Hospital;
@@ -15,6 +10,12 @@ import edu.ncsu.csc.itrust2.models.enums.HouseholdSmokingStatus;
 import edu.ncsu.csc.itrust2.services.HospitalService;
 import edu.ncsu.csc.itrust2.services.ICDCodeService;
 import edu.ncsu.csc.itrust2.services.OfficeVisitService;
+
+import java.time.Duration;
+import java.time.ZonedDateTime;
+import java.util.List;
+import java.util.stream.Collectors;
+
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
