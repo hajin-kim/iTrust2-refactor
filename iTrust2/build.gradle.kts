@@ -82,6 +82,6 @@ spotless {
 
 tasks {
     withType<Test> {
-        useJUnitPlatform()
+        useJUnit()
     }
 }
