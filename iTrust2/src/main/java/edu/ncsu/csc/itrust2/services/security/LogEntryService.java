@@ -6,7 +6,6 @@ import edu.ncsu.csc.itrust2.services.Service;
 
 import java.time.ZonedDateTime;
 import java.util.List;
-import java.util.stream.Collectors;
 import javax.transaction.Transactional;
 
 import lombok.RequiredArgsConstructor;
@@ -36,6 +35,6 @@ public class LogEntryService extends Service {
 
         return withinRange.stream()
                 .filter(e -> e.getPrimaryUser().equals(user) || e.getSecondaryUser().equals(user))
-                .collect(Collectors.toList());
+                .toList();
     }
 }

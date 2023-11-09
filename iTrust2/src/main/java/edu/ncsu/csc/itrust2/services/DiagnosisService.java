@@ -7,8 +7,8 @@ import edu.ncsu.csc.itrust2.models.User;
 import edu.ncsu.csc.itrust2.repositories.DiagnosisRepository;
 import edu.ncsu.csc.itrust2.repositories.OfficeVisitRepository;
 
+import java.util.Collection;
 import java.util.List;
-import java.util.stream.Collectors;
 import javax.transaction.Transactional;
 
 import lombok.RequiredArgsConstructor;
@@ -47,9 +47,9 @@ public class DiagnosisService extends Service {
 
     public List<Diagnosis> findByPatient(final User patient) {
         return officeVisitRepository.findByPatient(patient).stream()
-                .map(e -> findByVisit(e))
-                .flatMap(e -> e.stream())
-                .collect(Collectors.toList());
+                .map(this::findByVisit)
+                .flatMap(Collection::stream)
+                .toList();
     }
 
     public List<Diagnosis> findByVisit(final OfficeVisit visit) {

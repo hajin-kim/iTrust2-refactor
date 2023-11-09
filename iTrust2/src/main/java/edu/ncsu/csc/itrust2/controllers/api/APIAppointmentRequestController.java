@@ -11,7 +11,6 @@ import edu.ncsu.csc.itrust2.services.UserService;
 import edu.ncsu.csc.itrust2.utils.LoggerUtil;
 
 import java.util.List;
-import java.util.stream.Collectors;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -78,7 +77,7 @@ public class APIAppointmentRequestController extends APIController {
         final User patient = userService.findByName(LoggerUtil.currentUser());
         return service.findByPatient(patient).stream()
                 .filter(e -> e.getStatus().equals(Status.PENDING))
-                .collect(Collectors.toList());
+                .toList();
     }
 
     /**
@@ -94,7 +93,7 @@ public class APIAppointmentRequestController extends APIController {
 
         return service.findByHcp(hcp).stream()
                 .filter(e -> e.getStatus().equals(Status.PENDING))
-                .collect(Collectors.toList());
+                .toList();
     }
 
     /**
@@ -286,7 +285,7 @@ public class APIAppointmentRequestController extends APIController {
         final List<AppointmentRequest> appointment =
                 service.findByHcp(hcp).stream()
                         .filter(e -> e.getStatus().equals(Status.APPROVED))
-                        .collect(Collectors.toList());
+                        .toList();
         /* Log the event */
         appointment.stream()
                 .map(AppointmentRequest::getPatient)

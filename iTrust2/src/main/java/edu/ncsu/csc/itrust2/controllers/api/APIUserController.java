@@ -10,7 +10,6 @@ import edu.ncsu.csc.itrust2.services.UserService;
 import edu.ncsu.csc.itrust2.utils.LoggerUtil;
 
 import java.util.List;
-import java.util.stream.Collectors;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -120,8 +119,7 @@ public class APIUserController extends APIController {
                     HttpStatus.CONFLICT);
         }
         User user = null;
-        final List<Role> rolesOnUser =
-                userF.getRoles().stream().map(Role::valueOf).collect(Collectors.toList());
+        final List<Role> rolesOnUser = userF.getRoles().stream().map(Role::valueOf).toList();
 
         try {
             if (rolesOnUser.contains(Role.ROLE_PATIENT)) {
@@ -161,8 +159,7 @@ public class APIUserController extends APIController {
     public ResponseEntity updateUser(
             @PathVariable final String id, @RequestBody final UserForm userF) {
         User user = null;
-        final List<Role> rolesOnUser =
-                userF.getRoles().stream().map(Role::valueOf).collect(Collectors.toList());
+        final List<Role> rolesOnUser = userF.getRoles().stream().map(Role::valueOf).toList();
 
         try {
             if (rolesOnUser.contains(Role.ROLE_PATIENT)) {
@@ -224,8 +221,7 @@ public class APIUserController extends APIController {
      */
     @GetMapping("/role")
     public ResponseEntity getRole() {
-        final List<String> matchingRoles =
-                ALL_ROLES.stream().filter(this::hasRole).collect(Collectors.toList());
+        final List<String> matchingRoles = ALL_ROLES.stream().filter(this::hasRole).toList();
 
         if (matchingRoles.isEmpty()) {
             return new ResponseEntity(errorResponse("UNAUTHORIZED"), HttpStatus.UNAUTHORIZED);

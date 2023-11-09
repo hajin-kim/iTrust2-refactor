@@ -24,7 +24,6 @@ import edu.ncsu.csc.itrust2.services.UserService;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.Collectors;
 import javax.transaction.Transactional;
 
 import com.google.gson.Gson;
@@ -130,7 +129,7 @@ public class APIDiagnosisTest {
         d2.setNote("Second Diagnosis");
         list.add(d2);
 
-        form.setDiagnoses(list.stream().map(DiagnosisForm::new).collect(Collectors.toList()));
+        form.setDiagnoses(list.stream().map(DiagnosisForm::new).toList());
 
         final OfficeVisit visit = officeVisitService.build(form);
 
@@ -193,7 +192,7 @@ public class APIDiagnosisTest {
         // work.
         form.setId(id + "");
         d.setNote("Edited");
-        form.setDiagnoses(list.stream().map(DiagnosisForm::new).collect(Collectors.toList()));
+        form.setDiagnoses(list.stream().map(DiagnosisForm::new).toList());
         content =
                 mvc.perform(
                                 put("/api/v1/officevisits/" + id)
@@ -227,7 +226,7 @@ public class APIDiagnosisTest {
         // edit the office visit and remove a diagnosis
 
         list.remove(d);
-        form.setDiagnoses(list.stream().map(DiagnosisForm::new).collect(Collectors.toList()));
+        form.setDiagnoses(list.stream().map(DiagnosisForm::new).toList());
         content =
                 mvc.perform(
                                 put("/api/v1/officevisits/" + id)

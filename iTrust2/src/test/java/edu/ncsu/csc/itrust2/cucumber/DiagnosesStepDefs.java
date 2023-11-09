@@ -14,7 +14,6 @@ import edu.ncsu.csc.itrust2.services.OfficeVisitService;
 import java.time.Duration;
 import java.time.ZonedDateTime;
 import java.util.List;
-import java.util.stream.Collectors;
 
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
@@ -79,7 +78,7 @@ public class DiagnosesStepDefs extends CucumberTest {
         before =
                 driver.findElements(By.name("codeRow")).stream()
                         .map(x -> x.getAttribute("codeid"))
-                        .collect(Collectors.toList());
+                        .toList();
 
         try {
             setTextField(By.name("code"), code);
@@ -109,7 +108,7 @@ public class DiagnosesStepDefs extends CucumberTest {
         after =
                 driver.findElements(By.name("codeRow")).stream()
                         .map(x -> x.getAttribute("codeid"))
-                        .collect(Collectors.toList());
+                        .toList();
         after.removeAll(before);
 
         waitForAngular();
@@ -142,7 +141,7 @@ public class DiagnosesStepDefs extends CucumberTest {
             after =
                     driver.findElements(By.name("codeRow")).stream()
                             .map(x -> x.getAttribute("codeid"))
-                            .collect(Collectors.toList());
+                            .toList();
             after.removeAll(before);
             assertEquals(0, after.size());
         } catch (final Exception e) {
@@ -178,7 +177,7 @@ public class DiagnosesStepDefs extends CucumberTest {
         final List<String> current =
                 driver.findElements(By.name("codeRow")).stream()
                         .map(x -> x.getAttribute("codeid"))
-                        .collect(Collectors.toList());
+                        .toList();
         assertFalse(current.contains(after.get(0)));
     }
 

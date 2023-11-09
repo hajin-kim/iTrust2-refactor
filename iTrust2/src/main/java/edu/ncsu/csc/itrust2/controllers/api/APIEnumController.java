@@ -17,7 +17,6 @@ import java.util.Arrays;
 import java.util.Collection;
 import java.util.List;
 import java.util.Map;
-import java.util.stream.Collectors;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -33,8 +32,6 @@ import org.springframework.web.bind.annotation.RestController;
 @RequiredArgsConstructor
 public class APIEnumController extends APIController {
 
-    private final LoggerUtil loggerUtil;
-
     private final UserService userService;
 
     /**
@@ -44,9 +41,7 @@ public class APIEnumController extends APIController {
      */
     @GetMapping("/bloodtype")
     public List<Map<String, Object>> getBloodTypes() {
-        return Arrays.stream(BloodType.values())
-                .map(BloodType::getInfo)
-                .collect(Collectors.toList());
+        return Arrays.stream(BloodType.values()).map(BloodType::getInfo).toList();
     }
 
     /**
@@ -56,9 +51,7 @@ public class APIEnumController extends APIController {
      */
     @GetMapping("/ethnicity")
     public List<Map<String, Object>> getEthnicity() {
-        return Arrays.stream(Ethnicity.values())
-                .map(Ethnicity::getInfo)
-                .collect(Collectors.toList());
+        return Arrays.stream(Ethnicity.values()).map(Ethnicity::getInfo).toList();
     }
 
     /**
@@ -68,7 +61,7 @@ public class APIEnumController extends APIController {
      */
     @GetMapping("/gender")
     public List<Map<String, Object>> getGenders() {
-        return Arrays.stream(Gender.values()).map(Gender::getInfo).collect(Collectors.toList());
+        return Arrays.stream(Gender.values()).map(Gender::getInfo).toList();
     }
 
     /**
@@ -78,7 +71,7 @@ public class APIEnumController extends APIController {
      */
     @GetMapping("/state")
     public List<Map<String, Object>> getStates() {
-        return Arrays.stream(State.values()).map(State::getInfo).collect(Collectors.toList());
+        return Arrays.stream(State.values()).map(State::getInfo).toList();
     }
 
     /**

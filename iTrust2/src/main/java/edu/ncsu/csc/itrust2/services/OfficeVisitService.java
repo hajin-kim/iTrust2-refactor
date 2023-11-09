@@ -13,7 +13,6 @@ import edu.ncsu.csc.itrust2.repositories.OfficeVisitRepository;
 import java.time.LocalDate;
 import java.time.ZonedDateTime;
 import java.util.List;
-import java.util.stream.Collectors;
 import javax.transaction.Transactional;
 
 import lombok.RequiredArgsConstructor;
@@ -89,7 +88,7 @@ public class OfficeVisitService extends Service {
                 final AppointmentRequest match =
                         requests.stream()
                                 .filter(e -> e.getDate().equals(ov.getDate()))
-                                .collect(Collectors.toList())
+                                .toList()
                                 .get(0); /*
                                     * We should have one and only one
                                     * appointment for the provided HCP & patient
@@ -106,10 +105,7 @@ public class OfficeVisitService extends Service {
 
         // associate all diagnoses with this visit
         if (ovf.getDiagnoses() != null) {
-            ov.setDiagnoses(
-                    ovf.getDiagnoses().stream()
-                            .map(diagnosisService::build)
-                            .collect(Collectors.toList()));
+            ov.setDiagnoses(ovf.getDiagnoses().stream().map(diagnosisService::build).toList());
             for (final Diagnosis d : ov.getDiagnoses()) {
                 d.setVisit(ov);
             }
@@ -119,8 +115,7 @@ public class OfficeVisitService extends Service {
 
         final List<PrescriptionForm> ps = ovf.getPrescriptions();
         if (ps != null) {
-            ov.setPrescriptions(
-                    ps.stream().map(prescriptionService::build).collect(Collectors.toList()));
+            ov.setPrescriptions(ps.stream().map(prescriptionService::build).toList());
         }
 
         final Patient p = (Patient) ov.getPatient();
