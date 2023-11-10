@@ -4,6 +4,7 @@ plugins {
     id("io.spring.dependency-management") version "1.0.15.RELEASE"
 
     id("com.diffplug.spotless") version "6.22.0"
+    id("jacoco")
 }
 
 group = "edu.ncsu.csc"
@@ -57,6 +58,10 @@ dependencies {
     testImplementation("junit:junit:4.13.1")
 }
 
+jacoco {
+    toolVersion = "0.8.11"
+}
+
 spotless {
     // optional: limit format enforcement to just the files changed by this feature branch
 //    ratchetFrom("origin/main")
@@ -83,5 +88,15 @@ spotless {
 tasks {
     withType<Test> {
         useJUnit()
+        finalizedBy(jacocoTestReport)
+    }
+
+    jacocoTestReport {
+        dependsOn(test)
+        reports {
+            html.required.set(true)
+            xml.required.set(true)
+            csv.required.set(true)
+        }
     }
 }
