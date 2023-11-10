@@ -16,7 +16,7 @@ import org.junit.runner.RunWith;
  */
 @RunWith(Cucumber.class)
 @CucumberOptions(features = "src/test/resources/edu/ncsu/csc/itrust/cucumber/")
-public class ITRunner {
+abstract class ITRunner {
 
     @BeforeClass
     public static void setUp() {
