@@ -135,7 +135,7 @@ public class LoggerUtil {
      *
      * @return the name of the current user
      */
-    public static String currentUser() {
+    public String getCurrentUsername() {
         try {
             return SecurityContextHolder.getContext().getAuthentication().getName();
         } catch (final NullPointerException npe) {

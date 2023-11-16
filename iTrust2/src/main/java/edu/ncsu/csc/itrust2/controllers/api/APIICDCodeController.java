@@ -43,7 +43,8 @@ public class APIICDCodeController extends APIController {
      */
     @GetMapping("/icdcodes")
     public List<ICDCode> getCodes() {
-        loggerUtil.log(TransactionType.ICD_VIEW_ALL, LoggerUtil.currentUser(), "Fetched icd codes");
+        loggerUtil.log(
+                TransactionType.ICD_VIEW_ALL, loggerUtil.getCurrentUsername(), "Fetched icd codes");
         return (List<ICDCode>) service.findAll();
     }
 
@@ -63,7 +64,7 @@ public class APIICDCodeController extends APIController {
             }
             loggerUtil.log(
                     TransactionType.ICD_VIEW,
-                    LoggerUtil.currentUser(),
+                    loggerUtil.getCurrentUsername(),
                     "Fetched icd code with id " + id);
             return new ResponseEntity(code, HttpStatus.OK);
         } catch (final Exception e) {
@@ -94,8 +95,8 @@ public class APIICDCodeController extends APIController {
             service.save(code);
             loggerUtil.log(
                     TransactionType.ICD_EDIT,
-                    LoggerUtil.currentUser(),
-                    LoggerUtil.currentUser() + " edited an ICD Code");
+                    loggerUtil.getCurrentUsername(),
+                    loggerUtil.getCurrentUsername() + " edited an ICD Code");
 
             return new ResponseEntity(code, HttpStatus.OK);
         } catch (final Exception e) {
@@ -120,8 +121,8 @@ public class APIICDCodeController extends APIController {
             service.save(code);
             loggerUtil.log(
                     TransactionType.ICD_CREATE,
-                    LoggerUtil.currentUser(),
-                    LoggerUtil.currentUser() + " created an ICD Code");
+                    loggerUtil.getCurrentUsername(),
+                    loggerUtil.getCurrentUsername() + " created an ICD Code");
 
             return new ResponseEntity(code, HttpStatus.OK);
         } catch (final Exception e) {
@@ -149,8 +150,8 @@ public class APIICDCodeController extends APIController {
             service.delete(code);
             loggerUtil.log(
                     TransactionType.ICD_DELETE,
-                    LoggerUtil.currentUser(),
-                    LoggerUtil.currentUser() + " deleted an ICD Code");
+                    loggerUtil.getCurrentUsername(),
+                    loggerUtil.getCurrentUsername() + " deleted an ICD Code");
 
             return new ResponseEntity(HttpStatus.OK);
         } catch (final Exception e) {

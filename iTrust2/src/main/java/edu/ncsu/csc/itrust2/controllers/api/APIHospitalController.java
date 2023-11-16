@@ -1,13 +1,12 @@
 package edu.ncsu.csc.itrust2.controllers.api;
 
+import java.util.List;
+
 import edu.ncsu.csc.itrust2.forms.HospitalForm;
 import edu.ncsu.csc.itrust2.models.Hospital;
 import edu.ncsu.csc.itrust2.models.enums.TransactionType;
 import edu.ncsu.csc.itrust2.services.HospitalService;
 import edu.ncsu.csc.itrust2.utils.LoggerUtil;
-
-import java.util.List;
-
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -55,7 +54,7 @@ public class APIHospitalController extends APIController {
     public ResponseEntity getHospital(@PathVariable("id") final String id) {
         final Hospital hospital = hospitalService.findByName(id);
         if (null != hospital) {
-            loggerUtil.log(TransactionType.VIEW_HOSPITAL, LoggerUtil.currentUser());
+            loggerUtil.log(TransactionType.VIEW_HOSPITAL, loggerUtil.getCurrentUsername());
         }
         return null == hospital
                 ? new ResponseEntity(
@@ -82,7 +81,7 @@ public class APIHospitalController extends APIController {
         try {
             hospital = new Hospital(hospitalF);
             hospitalService.save(hospital);
-            loggerUtil.log(TransactionType.CREATE_HOSPITAL, LoggerUtil.currentUser());
+            loggerUtil.log(TransactionType.CREATE_HOSPITAL, loggerUtil.getCurrentUsername());
             return new ResponseEntity(hospital, HttpStatus.OK);
         } catch (final Exception e) {
             return new ResponseEntity(
@@ -114,7 +113,7 @@ public class APIHospitalController extends APIController {
         try {
             dbHospital.update(hospitalF);
             hospitalService.save(dbHospital);
-            loggerUtil.log(TransactionType.EDIT_HOSPITAL, LoggerUtil.currentUser());
+            loggerUtil.log(TransactionType.EDIT_HOSPITAL, loggerUtil.getCurrentUsername());
             return new ResponseEntity(dbHospital, HttpStatus.OK);
         } catch (final Exception e) {
             return new ResponseEntity(
@@ -137,7 +136,7 @@ public class APIHospitalController extends APIController {
             if (hospital == null) {
                 loggerUtil.log(
                         TransactionType.DELETE_HOSPITAL,
-                        LoggerUtil.currentUser(),
+                        loggerUtil.getCurrentUsername(),
                         "Could not find hospital with id " + id);
                 return new ResponseEntity(
                         errorResponse("No hospital found with name " + id), HttpStatus.NOT_FOUND);
@@ -145,13 +144,13 @@ public class APIHospitalController extends APIController {
             hospitalService.delete(hospital);
             loggerUtil.log(
                     TransactionType.DELETE_HOSPITAL,
-                    LoggerUtil.currentUser(),
+                    loggerUtil.getCurrentUsername(),
                     "Deleted hospital with name " + hospital.getName());
             return new ResponseEntity(id, HttpStatus.OK);
         } catch (final Exception e) {
             loggerUtil.log(
                     TransactionType.DELETE_HOSPITAL,
-                    LoggerUtil.currentUser(),
+                    loggerUtil.getCurrentUsername(),
                     "Failed to delete hospital");
             return new ResponseEntity(
                     errorResponse("Could not delete hospital: " + e.getMessage()),

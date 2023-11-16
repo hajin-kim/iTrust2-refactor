@@ -58,7 +58,7 @@ public class APIPersonnelController extends APIController {
             return new ResponseEntity(
                     errorResponse("No personnel found for id " + id), HttpStatus.NOT_FOUND);
         } else {
-            loggerUtil.log(TransactionType.VIEW_DEMOGRAPHICS, LoggerUtil.currentUser());
+            loggerUtil.log(TransactionType.VIEW_DEMOGRAPHICS, loggerUtil.getCurrentUsername());
             return new ResponseEntity(personnel, HttpStatus.OK);
         }
     }
@@ -73,7 +73,7 @@ public class APIPersonnelController extends APIController {
     @GetMapping("/curPersonnel")
     @PreAuthorize("hasAnyRole('ROLE_HCP', 'ROLE_ADMIN')")
     public ResponseEntity getCurrentPersonnel() {
-        final String username = LoggerUtil.currentUser();
+        final String username = loggerUtil.getCurrentUsername();
         final Personnel personnel = (Personnel) service.findByName(username);
         if (personnel == null) {
             return new ResponseEntity(
@@ -119,7 +119,7 @@ public class APIPersonnelController extends APIController {
         }
         try {
             service.save(fromDb);
-            loggerUtil.log(TransactionType.EDIT_DEMOGRAPHICS, LoggerUtil.currentUser());
+            loggerUtil.log(TransactionType.EDIT_DEMOGRAPHICS, loggerUtil.getCurrentUsername());
             return new ResponseEntity(fromDb, HttpStatus.OK);
         } catch (final Exception e) {
             return new ResponseEntity(

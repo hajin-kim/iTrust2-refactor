@@ -85,7 +85,7 @@ public class APIUserController extends APIController {
      */
     @GetMapping("/users")
     public List<User> getUsers() {
-        loggerUtil.log(TransactionType.VIEW_USERS, LoggerUtil.currentUser());
+        loggerUtil.log(TransactionType.VIEW_USERS, loggerUtil.getCurrentUsername());
         return (List<User>) userService.findAll();
     }
 
@@ -131,7 +131,7 @@ public class APIUserController extends APIController {
             userService.save(user);
             loggerUtil.log(
                     TransactionType.CREATE_USER,
-                    LoggerUtil.currentUser(),
+                    loggerUtil.getCurrentUsername(),
                     user.getUsername(),
                     null);
             return new ResponseEntity(user, HttpStatus.OK);
@@ -180,7 +180,7 @@ public class APIUserController extends APIController {
             }
 
             userService.save(user); /* Will overwrite existing user */
-            loggerUtil.log(TransactionType.UPDATE_USER, LoggerUtil.currentUser());
+            loggerUtil.log(TransactionType.UPDATE_USER, loggerUtil.getCurrentUsername());
             return new ResponseEntity(user, HttpStatus.OK);
         } catch (final Exception e) {
             return new ResponseEntity(
@@ -205,7 +205,7 @@ public class APIUserController extends APIController {
                         errorResponse("No user found for id " + id), HttpStatus.NOT_FOUND);
             }
             userService.delete(user);
-            loggerUtil.log(TransactionType.DELETE_USER, LoggerUtil.currentUser());
+            loggerUtil.log(TransactionType.DELETE_USER, loggerUtil.getCurrentUsername());
             return new ResponseEntity(id, HttpStatus.OK);
         } catch (final Exception e) {
             return new ResponseEntity(

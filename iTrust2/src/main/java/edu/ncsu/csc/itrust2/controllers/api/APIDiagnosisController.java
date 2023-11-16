@@ -48,7 +48,7 @@ public class APIDiagnosisController extends APIController {
         final Diagnosis d = (Diagnosis) diagnosisService.findById(id);
         loggerUtil.log(
                 TransactionType.DIAGNOSIS_VIEW_BY_ID,
-                LoggerUtil.currentUser(),
+                loggerUtil.getCurrentUsername(),
                 "Retrieved diagnosis with id " + id);
         return null == d
                 ? new ResponseEntity(
@@ -73,7 +73,7 @@ public class APIDiagnosisController extends APIController {
 
         loggerUtil.log(
                 TransactionType.DIAGNOSIS_VIEW_BY_OFFICE_VISIT,
-                LoggerUtil.currentUser(),
+                loggerUtil.getCurrentUsername(),
                 (visit).getPatient().getUsername(),
                 "Retrieved diagnoses for office visit with id " + id);
         return visit.getDiagnoses();
@@ -86,7 +86,7 @@ public class APIDiagnosisController extends APIController {
      */
     @GetMapping("/diagnoses")
     public List<Diagnosis> getDiagnosis() {
-        final User self = userService.findByName(LoggerUtil.currentUser());
+        final User self = userService.findByName(loggerUtil.getCurrentUsername());
         if (self == null) {
             return null;
         }

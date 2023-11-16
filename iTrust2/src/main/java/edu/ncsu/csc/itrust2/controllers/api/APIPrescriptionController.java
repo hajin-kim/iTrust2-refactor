@@ -54,14 +54,14 @@ public class APIPrescriptionController extends APIController {
             prescriptionService.save(p);
             loggerUtil.log(
                     TransactionType.PRESCRIPTION_CREATE,
-                    LoggerUtil.currentUser(),
+                    loggerUtil.getCurrentUsername(),
                     p.getPatient().getUsername(),
                     "Created prescription with id " + p.getId());
             return new ResponseEntity(p, HttpStatus.OK);
         } catch (final Exception e) {
             loggerUtil.log(
                     TransactionType.PRESCRIPTION_CREATE,
-                    LoggerUtil.currentUser(),
+                    loggerUtil.getCurrentUsername(),
                     "Failed to create prescription");
             return new ResponseEntity(
                     errorResponse("Could not save the prescription: " + e.getMessage()),
@@ -85,7 +85,7 @@ public class APIPrescriptionController extends APIController {
             if (saved == null) {
                 loggerUtil.log(
                         TransactionType.PRESCRIPTION_EDIT,
-                        LoggerUtil.currentUser(),
+                        loggerUtil.getCurrentUsername(),
                         "No prescription found with id " + p.getId());
                 return new ResponseEntity(
                         errorResponse("No prescription found with id " + p.getId()),
@@ -94,14 +94,14 @@ public class APIPrescriptionController extends APIController {
             prescriptionService.save(p);
             loggerUtil.log(
                     TransactionType.PRESCRIPTION_EDIT,
-                    LoggerUtil.currentUser(),
+                    loggerUtil.getCurrentUsername(),
                     p.getPatient().getUsername(),
                     "Edited prescription with id " + p.getId());
             return new ResponseEntity(p, HttpStatus.OK);
         } catch (final Exception e) {
             loggerUtil.log(
                     TransactionType.PRESCRIPTION_EDIT,
-                    LoggerUtil.currentUser(),
+                    loggerUtil.getCurrentUsername(),
                     "Failed to edit prescription");
             return new ResponseEntity(
                     errorResponse("Failed to update prescription: " + e.getMessage()),
@@ -127,14 +127,14 @@ public class APIPrescriptionController extends APIController {
             prescriptionService.delete(p);
             loggerUtil.log(
                     TransactionType.PRESCRIPTION_DELETE,
-                    LoggerUtil.currentUser(),
+                    loggerUtil.getCurrentUsername(),
                     p.getPatient().getUsername(),
                     "Deleted prescription with id " + p.getId());
             return new ResponseEntity(p.getId(), HttpStatus.OK);
         } catch (final Exception e) {
             loggerUtil.log(
                     TransactionType.PRESCRIPTION_DELETE,
-                    LoggerUtil.currentUser(),
+                    loggerUtil.getCurrentUsername(),
                     p.getPatient().getUsername(),
                     "Failed to delete prescription");
             return new ResponseEntity(
@@ -152,12 +152,12 @@ public class APIPrescriptionController extends APIController {
             "hasAnyRole('ROLE_HCP', 'ROLE_OD', 'ROLE_OPH', 'ROLE_VIROLOGIST', 'ROLE_PATIENT')")
     @GetMapping("/prescriptions")
     public List<Prescription> getPrescriptions() {
-        final User self = userService.findByName(LoggerUtil.currentUser());
+        final User self = userService.findByName(loggerUtil.getCurrentUsername());
         if (self.isDoctor()) {
             // Return all prescriptions in system
             loggerUtil.log(
                     TransactionType.PRESCRIPTION_VIEW,
-                    LoggerUtil.currentUser(),
+                    loggerUtil.getCurrentUsername(),
                     "HCP viewed a list of all prescriptions");
             return (List<Prescription>) prescriptionService.findAll();
         } else {
@@ -165,7 +165,7 @@ public class APIPrescriptionController extends APIController {
             // Return only prescriptions assigned to the patient
             loggerUtil.log(
                     TransactionType.PATIENT_PRESCRIPTION_VIEW,
-                    LoggerUtil.currentUser(),
+                    loggerUtil.getCurrentUsername(),
                     "Patient viewed a list of their prescriptions");
             return prescriptionService.findByPatient(self);
         }
@@ -184,14 +184,14 @@ public class APIPrescriptionController extends APIController {
         if (p == null) {
             loggerUtil.log(
                     TransactionType.PRESCRIPTION_VIEW,
-                    LoggerUtil.currentUser(),
+                    loggerUtil.getCurrentUsername(),
                     "Failed to find prescription with id " + id);
             return new ResponseEntity(
                     errorResponse("No prescription found for " + id), HttpStatus.NOT_FOUND);
         } else {
             loggerUtil.log(
                     TransactionType.PRESCRIPTION_VIEW,
-                    LoggerUtil.currentUser(),
+                    loggerUtil.getCurrentUsername(),
                     "Viewed prescription  " + id);
             return new ResponseEntity(p, HttpStatus.OK);
         }

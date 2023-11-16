@@ -84,9 +84,9 @@ public class APILogEntryController extends APIController {
                 return new ResponseEntity(
                         errorResponse("Start Date is after End Date"), HttpStatus.NOT_ACCEPTABLE);
             }
-            entries = leservice.findByDateRange(LoggerUtil.currentUser(), start, end);
+            entries = leservice.findByDateRange(loggerUtil.getCurrentUsername(), start, end);
         } catch (final ParseException ex) {
-            entries = leservice.findAllForUser(LoggerUtil.currentUser());
+            entries = leservice.findAllForUser(loggerUtil.getCurrentUsername());
         }
 
         // If the entries array is null give an error response
@@ -98,7 +98,7 @@ public class APILogEntryController extends APIController {
 
         // Use only log entries that are viewable by the user
         List<LogEntry> visible;
-        final User user = userService.findByName(LoggerUtil.currentUser());
+        final User user = userService.findByName(loggerUtil.getCurrentUsername());
         if (user.getRoles().contains(Role.ROLE_PATIENT)) {
             visible = new ArrayList<>();
 
@@ -143,7 +143,7 @@ public class APILogEntryController extends APIController {
             if (user.getRoles().contains(Role.ROLE_PATIENT)) {
                 row.setPatient(true);
 
-                if (le.getPrimaryUser().equals(LoggerUtil.currentUser())) {
+                if (le.getPrimaryUser().equals(loggerUtil.getCurrentUsername())) {
                     final User secondary = userService.findByName(le.getSecondaryUser());
                     if (secondary != null) {
                         row.setRole(secondary.getRoles().toString());
@@ -159,7 +159,7 @@ public class APILogEntryController extends APIController {
 
         // Create a log entry as long as the user is on the first page
         if (body.page == 1) {
-            loggerUtil.log(TransactionType.VIEW_USER_LOG, LoggerUtil.currentUser());
+            loggerUtil.log(TransactionType.VIEW_USER_LOG, loggerUtil.getCurrentUsername());
         }
         return new ResponseEntity(table, HttpStatus.OK);
     }

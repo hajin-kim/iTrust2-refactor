@@ -40,7 +40,7 @@ public class APIOfficeVisitController extends APIController {
     @GetMapping("/officevisits")
     @PreAuthorize("hasRole('ROLE_HCP')")
     public List<OfficeVisit> getOfficeVisits() {
-        loggerUtil.log(TransactionType.VIEW_ALL_OFFICE_VISITS, LoggerUtil.currentUser());
+        loggerUtil.log(TransactionType.VIEW_ALL_OFFICE_VISITS, loggerUtil.getCurrentUsername());
         return (List<OfficeVisit>) officeVisitService.findAll();
     }
 
@@ -52,7 +52,7 @@ public class APIOfficeVisitController extends APIController {
     @GetMapping("/officevisits/HCP")
     @PreAuthorize("hasRole('ROLE_HCP')")
     public List<OfficeVisit> getOfficeVisitsForHCP() {
-        final User self = userService.findByName(LoggerUtil.currentUser());
+        final User self = userService.findByName(loggerUtil.getCurrentUsername());
         loggerUtil.log(TransactionType.VIEW_ALL_OFFICE_VISITS, self);
         return officeVisitService.findByHcp(self);
     }
@@ -65,7 +65,7 @@ public class APIOfficeVisitController extends APIController {
     @GetMapping("/officevisits/myofficevisits")
     @PreAuthorize("hasRole('ROLE_PATIENT')")
     public List<OfficeVisit> getMyOfficeVisits() {
-        final User self = userService.findByName(LoggerUtil.currentUser());
+        final User self = userService.findByName(loggerUtil.getCurrentUsername());
         loggerUtil.log(TransactionType.VIEW_ALL_OFFICE_VISITS, self);
         return officeVisitService.findByPatient(self);
     }
@@ -79,7 +79,7 @@ public class APIOfficeVisitController extends APIController {
     @GetMapping("/officevisits/{id}")
     @PreAuthorize("hasRole('ROLE_HCP')")
     public ResponseEntity getOfficeVisit(@PathVariable final Long id) {
-        final User self = userService.findByName(LoggerUtil.currentUser());
+        final User self = userService.findByName(loggerUtil.getCurrentUsername());
         loggerUtil.log(TransactionType.GENERAL_CHECKUP_HCP_VIEW, self);
         if (!officeVisitService.existsById(id)) {
             return new ResponseEntity(HttpStatus.NOT_FOUND);
@@ -109,7 +109,7 @@ public class APIOfficeVisitController extends APIController {
             officeVisitService.save(visit);
             loggerUtil.log(
                     TransactionType.GENERAL_CHECKUP_CREATE,
-                    LoggerUtil.currentUser(),
+                    loggerUtil.getCurrentUsername(),
                     visit.getPatient().getUsername());
             return new ResponseEntity(visit, HttpStatus.OK);
 
@@ -146,7 +146,7 @@ public class APIOfficeVisitController extends APIController {
             officeVisitService.save(visit);
             loggerUtil.log(
                     TransactionType.GENERAL_CHECKUP_EDIT,
-                    LoggerUtil.currentUser(),
+                    loggerUtil.getCurrentUsername(),
                     visit.getPatient().getUsername());
             return new ResponseEntity(visit, HttpStatus.OK);
 

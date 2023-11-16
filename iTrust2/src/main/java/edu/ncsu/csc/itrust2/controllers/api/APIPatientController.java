@@ -59,7 +59,7 @@ public class APIPatientController extends APIController {
     @GetMapping("/patient")
     @PreAuthorize("hasRole('ROLE_PATIENT')")
     public ResponseEntity getPatient() {
-        final User self = userService.findByName(LoggerUtil.currentUser());
+        final User self = userService.findByName(loggerUtil.getCurrentUsername());
         final Patient patient = (Patient) patientService.findByName(self.getUsername());
         if (patient == null) {
             return new ResponseEntity(
@@ -88,7 +88,7 @@ public class APIPatientController extends APIController {
         } else {
             loggerUtil.log(
                     TransactionType.PATIENT_DEMOGRAPHICS_VIEW,
-                    LoggerUtil.currentUser(),
+                    loggerUtil.getCurrentUsername(),
                     username,
                     "HCP retrieved demographics for patient with username " + username);
             return new ResponseEntity(patient, HttpStatus.OK);
@@ -146,14 +146,14 @@ public class APIPatientController extends APIController {
             if (userEdit) {
                 loggerUtil.log(
                         TransactionType.EDIT_DEMOGRAPHICS,
-                        LoggerUtil.currentUser(),
+                        loggerUtil.getCurrentUsername(),
                         "User with username "
                                 + patient.getUsername()
                                 + "updated their demographics");
             } else {
                 loggerUtil.log(
                         TransactionType.PATIENT_DEMOGRAPHICS_EDIT,
-                        LoggerUtil.currentUser(),
+                        loggerUtil.getCurrentUsername(),
                         patient.getUsername(),
                         "HCP edited demographics for patient with username "
                                 + patient.getUsername());
@@ -178,7 +178,7 @@ public class APIPatientController extends APIController {
     @GetMapping("/patient/findexperts/getzip")
     @PreAuthorize("hasRole( 'ROLE_PATIENT')")
     public ResponseEntity getPatientZip() {
-        final String user = LoggerUtil.currentUser();
+        final String user = loggerUtil.getCurrentUsername();
         if (user == null) {
             return new ResponseEntity(errorResponse("Patient not found"), HttpStatus.NOT_FOUND);
         }

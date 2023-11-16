@@ -53,7 +53,7 @@ public class APIDrugController extends APIController {
             if (service.existsByCode(drug.getCode())) {
                 loggerUtil.log(
                         TransactionType.DRUG_CREATE,
-                        LoggerUtil.currentUser(),
+                        loggerUtil.getCurrentUsername(),
                         "Conflict: drug with code " + drug.getCode() + " already exists");
                 return new ResponseEntity(
                         errorResponse("Drug with code " + drug.getCode() + " already exists"),
@@ -63,12 +63,14 @@ public class APIDrugController extends APIController {
             service.save(drug);
             loggerUtil.log(
                     TransactionType.DRUG_CREATE,
-                    LoggerUtil.currentUser(),
+                    loggerUtil.getCurrentUsername(),
                     "Drug " + drug.getCode() + " created");
             return new ResponseEntity(drug, HttpStatus.OK);
         } catch (final Exception e) {
             loggerUtil.log(
-                    TransactionType.DRUG_CREATE, LoggerUtil.currentUser(), "Failed to create drug");
+                    TransactionType.DRUG_CREATE,
+                    loggerUtil.getCurrentUsername(),
+                    "Failed to create drug");
             return new ResponseEntity(
                     errorResponse("Could not add drug: " + e.getMessage()), HttpStatus.BAD_REQUEST);
         }
@@ -107,12 +109,14 @@ public class APIDrugController extends APIController {
 
             loggerUtil.log(
                     TransactionType.DRUG_EDIT,
-                    LoggerUtil.currentUser(),
+                    loggerUtil.getCurrentUsername(),
                     "Drug with id " + drug.getId() + " edited");
             return new ResponseEntity(drug, HttpStatus.OK);
         } catch (final Exception e) {
             loggerUtil.log(
-                    TransactionType.DRUG_EDIT, LoggerUtil.currentUser(), "Failed to edit drug");
+                    TransactionType.DRUG_EDIT,
+                    loggerUtil.getCurrentUsername(),
+                    "Failed to edit drug");
             return new ResponseEntity(
                     errorResponse("Could not update drug: " + e.getMessage()),
                     HttpStatus.BAD_REQUEST);
@@ -133,7 +137,7 @@ public class APIDrugController extends APIController {
             if (drug == null) {
                 loggerUtil.log(
                         TransactionType.DRUG_DELETE,
-                        LoggerUtil.currentUser(),
+                        loggerUtil.getCurrentUsername(),
                         "Could not find drug with id " + id);
                 return new ResponseEntity(
                         errorResponse("No drug found with id " + id), HttpStatus.NOT_FOUND);
@@ -141,12 +145,14 @@ public class APIDrugController extends APIController {
             service.delete(drug);
             loggerUtil.log(
                     TransactionType.DRUG_DELETE,
-                    LoggerUtil.currentUser(),
+                    loggerUtil.getCurrentUsername(),
                     "Deleted drug with id " + drug.getId());
             return new ResponseEntity(id, HttpStatus.OK);
         } catch (final Exception e) {
             loggerUtil.log(
-                    TransactionType.DRUG_DELETE, LoggerUtil.currentUser(), "Failed to delete drug");
+                    TransactionType.DRUG_DELETE,
+                    loggerUtil.getCurrentUsername(),
+                    "Failed to delete drug");
             return new ResponseEntity(
                     errorResponse("Could not delete drug: " + e.getMessage()),
                     HttpStatus.BAD_REQUEST);
@@ -161,7 +167,9 @@ public class APIDrugController extends APIController {
     @GetMapping("/drugs")
     public List<Drug> getDrugs() {
         loggerUtil.log(
-                TransactionType.DRUG_VIEW, LoggerUtil.currentUser(), "Fetched list of drugs");
+                TransactionType.DRUG_VIEW,
+                loggerUtil.getCurrentUsername(),
+                "Fetched list of drugs");
         return (List<Drug>) service.findAll();
     }
 }

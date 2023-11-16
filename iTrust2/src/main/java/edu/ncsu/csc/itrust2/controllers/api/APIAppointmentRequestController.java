@@ -60,7 +60,7 @@ public class APIAppointmentRequestController extends APIController {
                         e ->
                                 loggerUtil.log(
                                         TransactionType.APPOINTMENT_REQUEST_VIEWED,
-                                        LoggerUtil.currentUser(),
+                                        loggerUtil.getCurrentUsername(),
                                         e.getUsername()));
 
         return requests;
@@ -74,7 +74,7 @@ public class APIAppointmentRequestController extends APIController {
     @GetMapping("/appointmentrequest")
     @PreAuthorize("hasAnyRole('ROLE_PATIENT')")
     public List<AppointmentRequest> getAppointmentRequestsForPatient() {
-        final User patient = userService.findByName(LoggerUtil.currentUser());
+        final User patient = userService.findByName(loggerUtil.getCurrentUsername());
         return service.findByPatient(patient).stream()
                 .filter(e -> e.getStatus().equals(Status.PENDING))
                 .toList();
@@ -89,7 +89,7 @@ public class APIAppointmentRequestController extends APIController {
     @PreAuthorize("hasAnyRole('ROLE_HCP')")
     public List<AppointmentRequest> getAppointmentRequestsForHCP() {
 
-        final User hcp = userService.findByName(LoggerUtil.currentUser());
+        final User hcp = userService.findByName(loggerUtil.getCurrentUsername());
 
         return service.findByHcp(hcp).stream()
                 .filter(e -> e.getStatus().equals(Status.PENDING))
@@ -114,7 +114,7 @@ public class APIAppointmentRequestController extends APIController {
                     request.getHcp());
 
             /* Patient can't look at anyone else's requests */
-            final User self = userService.findByName(LoggerUtil.currentUser());
+            final User self = userService.findByName(loggerUtil.getCurrentUsername());
             if (self.getRoles().contains(Role.ROLE_PATIENT) && !request.getPatient().equals(self)) {
                 return new ResponseEntity(HttpStatus.UNAUTHORIZED);
             }
@@ -186,7 +186,7 @@ public class APIAppointmentRequestController extends APIController {
         }
 
         /* Patient can't look at anyone else's requests */
-        final User self = userService.findByName(LoggerUtil.currentUser());
+        final User self = userService.findByName(loggerUtil.getCurrentUsername());
         if (self.getRoles().contains(Role.ROLE_PATIENT) && !request.getPatient().equals(self)) {
             return new ResponseEntity(HttpStatus.UNAUTHORIZED);
         }
@@ -230,7 +230,7 @@ public class APIAppointmentRequestController extends APIController {
             }
 
             /* Patient can't look at anyone else's requests */
-            final User self = userService.findByName(LoggerUtil.currentUser());
+            final User self = userService.findByName(loggerUtil.getCurrentUsername());
             if (self.getRoles().contains(Role.ROLE_PATIENT) && !request.getPatient().equals(self)) {
                 return new ResponseEntity(HttpStatus.UNAUTHORIZED);
             }
@@ -280,7 +280,7 @@ public class APIAppointmentRequestController extends APIController {
     @GetMapping("/viewAppointments")
     @PreAuthorize("hasAnyRole('ROLE_HCP')")
     public List<AppointmentRequest> upcomingAppointments() {
-        final User hcp = userService.findByName(LoggerUtil.currentUser());
+        final User hcp = userService.findByName(loggerUtil.getCurrentUsername());
 
         final List<AppointmentRequest> appointment =
                 service.findByHcp(hcp).stream()
@@ -294,7 +294,7 @@ public class APIAppointmentRequestController extends APIController {
                         e ->
                                 loggerUtil.log(
                                         TransactionType.APPOINTMENT_REQUEST_VIEWED,
-                                        LoggerUtil.currentUser(),
+                                        loggerUtil.getCurrentUsername(),
                                         e.getUsername()));
         return appointment;
     }

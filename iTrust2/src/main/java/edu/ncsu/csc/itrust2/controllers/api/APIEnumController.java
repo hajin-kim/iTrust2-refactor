@@ -33,6 +33,7 @@ import org.springframework.web.bind.annotation.RestController;
 public class APIEnumController extends APIController {
 
     private final UserService userService;
+    private final LoggerUtil loggerUtil;
 
     /**
      * Get the blood types
@@ -81,7 +82,7 @@ public class APIEnumController extends APIController {
      */
     @GetMapping("/appointmenttype")
     public List<AppointmentType> getAppointmentTypes() {
-        final User user = userService.findByName(LoggerUtil.currentUser());
+        final User user = userService.findByName(loggerUtil.getCurrentUsername());
         final Collection<Role> role = user.getRoles();
         if (role.contains(Role.ROLE_OD)) {
             return List.of(AppointmentType.GENERAL_CHECKUP, AppointmentType.GENERAL_OPHTHALMOLOGY);
